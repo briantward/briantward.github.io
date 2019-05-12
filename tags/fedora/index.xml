@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fedora on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/fedora/</link>
+    <link>https://briantward.github.io/tags/fedora/</link>
     <description>Recent content in Fedora on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>Java on RHEL / Centos / Fedora</title>
-        <link>https://btw-blog.apps.opencontainer.io/java-on-rhel/</link>
+        <link>https://briantward.github.io/java-on-rhel/</link>
         <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/java-on-rhel/</guid>
+        <guid>https://briantward.github.io/java-on-rhel/</guid>
         <description>Java on RHEL / Centos / Fedora $ ls -lah /usr/lib/jvm total 20K drwxr-xr-x. 5 root root 4.0K Jul 30 09:56 . dr-xr-xr-x. 51 root root 4.0K Jul 20 12:02 .. lrwxrwxrwx. 1 root root 26 Jul 30 09:56 java -&amp;gt; /etc/alternatives/java_sdk lrwxrwxrwx. 1 root root 32 Jul 30 09:56 java-1.8.0 -&amp;gt; /etc/alternatives/java_sdk_1.8.0 lrwxrwxrwx. 1 root root 40 Jul 30 09:56 java-1.8.0-openjdk -&amp;gt; /etc/alternatives/java_sdk_1.8.0_openjdk drwxr-xr-x. 3 root root 4.0K Mar 29 10:21 java-1.</description>
       </item>
     

@@ -2,37 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tips on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/tips/</link>
+    <link>https://briantward.github.io/tags/tips/</link>
     <description>Recent content in Tips on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2019 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
+        <title>Git Tips</title>
+        <link>https://briantward.github.io/git/</link>
+        <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/git/</guid>
+        <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
+$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
+$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;      https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+   </description>
+      </item>
+    
+      <item>
         <title>Terminal to File Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/terminal-to-file/</link>
+        <link>https://briantward.github.io/terminal-to-file/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/terminal-to-file/</guid>
+        <guid>https://briantward.github.io/terminal-to-file/</guid>
         <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -     </description>
       </item>
     
       <item>
-        <title>Git Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/git/</link>
-        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/git/</guid>
-        <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
-$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;        </description>
-      </item>
-    
-      <item>
         <title>Helpful Filesystem Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/filesystems/</link>
+        <link>https://briantward.github.io/filesystems/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/filesystems/</guid>
+        <guid>https://briantward.github.io/filesystems/</guid>
         <description>Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
 # tune2fs -m 0 /dev/sdb1     print UUID of filesystems
 # blkid     remount a readonly filesystem to rewrite
@@ -41,18 +43,18 @@ $ git config --global credential.helper cache $ git config credential.helper &#3
     
       <item>
         <title>Lenovo Linux Power Configuration T460s</title>
-        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-power/</link>
+        <link>https://briantward.github.io/lenovo-linux-power/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-power/</guid>
+        <guid>https://briantward.github.io/lenovo-linux-power/</guid>
         <description>Lenovo Linux Power Configuration T460s /etc/UPower/UPower.conf CriticalPowerAction=Hibernate
    </description>
       </item>
     
       <item>
         <title>Navigating Linux</title>
-        <link>https://btw-blog.apps.opencontainer.io/navigating-linux/</link>
+        <link>https://briantward.github.io/navigating-linux/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/navigating-linux/</guid>
+        <guid>https://briantward.github.io/navigating-linux/</guid>
         <description>Navigating Linux   Move a file to different extension, or change parts of a name
 $ mv /etc/yum.repos.d/redhat.{repo,disabled}     Search for all mac dot underscore files
 $ find -name ._\* $ find -name .DS_Store $ find -name .DS_Store -delete     find and replace text in files in a directory, recursively:
@@ -61,9 +63,9 @@ $ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#
     
       <item>
         <title>Networking tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/networking/</link>
+        <link>https://briantward.github.io/networking/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/networking/</guid>
+        <guid>https://briantward.github.io/networking/</guid>
         <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
 -nn: Show PCI vendor and device codes as both numbers and names.
 -k: Show driver information for a device.
@@ -73,9 +75,9 @@ $ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#
     
       <item>
         <title>VIM Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/vim/</link>
+        <link>https://briantward.github.io/vim/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/vim/</guid>
+        <guid>https://briantward.github.io/vim/</guid>
         <description>VIM Tips   Set YAML filetypes to have two spaces on indent
 $ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn&amp;#8217;t opened with sudo:
 :w !sudo tee %        </description>
@@ -83,9 +85,9 @@ $ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp
     
       <item>
         <title>XML Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/xml/</link>
+        <link>https://briantward.github.io/xml/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/xml/</guid>
+        <guid>https://briantward.github.io/xml/</guid>
         <description>XML Tips   Format raw xml on the cli
 echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&#34;ipsum&#34; /&amp;gt;&amp;lt;/root&amp;gt;&#39; | xmllint --format -        </description>
       </item>

@@ -27,7 +27,7 @@
   Create a configmap to mount a log.conf file that contains your apache loglevel configuration. Be sure to update &lt;PROJECT_NAMESPACE&gt; below before running this command.
    echo &#39;apiVersion: v1 data: log.conf: | LogLevel debug ErrorLog /dev/stdout TransferLog /dev/stdout&#39; kind: ConfigMap metadata: name: logfile namespace: &lt;PROJECT_NAMESPACE&gt;&#39; | oc create -f -    Update your deploymentConfig." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/openshift-httpd-loglevel/" />
+<meta property="og:url" content="https://briantward.github.io/openshift-httpd-loglevel/" />
 
 
 

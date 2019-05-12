@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Crashloopbackoff on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/crashloopbackoff/</link>
+    <link>https://briantward.github.io/tags/crashloopbackoff/</link>
     <description>Recent content in Crashloopbackoff on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/crashloopbackoff/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/crashloopbackoff/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>OpenShift Prometheus Node Exporter CrashLoop</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-prometheus-node-exporter-crashloop/</link>
+        <link>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-prometheus-node-exporter-crashloop/</guid>
+        <guid>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</guid>
         <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&amp;#8217;ve only seen it once, we just kill the process holding the port open from the node itself.</description>
       </item>
     

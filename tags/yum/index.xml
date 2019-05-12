@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Yum on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/yum/</link>
+    <link>https://briantward.github.io/tags/yum/</link>
     <description>Recent content in Yum on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 01 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/yum/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/yum/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>YUM DNF Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/yum-dnf-tips/</link>
+        <link>https://briantward.github.io/yum-dnf-tips/</link>
         <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/yum-dnf-tips/</guid>
+        <guid>https://briantward.github.io/yum-dnf-tips/</guid>
         <description>YUM and DNF Tips Remove all cache $ rm -rf /var/cache/yum      </description>
       </item>
     

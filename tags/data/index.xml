@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/data/</link>
+    <link>https://briantward.github.io/tags/data/</link>
     <description>Recent content in Data on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 12 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>Restore Files from rm</title>
-        <link>https://btw-blog.apps.opencontainer.io/restore-files-from-rm/</link>
+        <link>https://briantward.github.io/restore-files-from-rm/</link>
         <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/restore-files-from-rm/</guid>
+        <guid>https://briantward.github.io/restore-files-from-rm/</guid>
         <description>Restore files from rm I wanted to type:
  $ rm *.retry   Instead I accidentally typed:
  $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&amp;#8217;t more. I was lucky I didn&amp;#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.</description>

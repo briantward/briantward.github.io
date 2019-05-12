@@ -2,20 +2,42 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/categories/linux/</link>
+    <link>https://briantward.github.io/categories/linux/</link>
     <description>Recent content in Linux on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2019 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
+        <title>Convert WMA to MP3</title>
+        <link>https://briantward.github.io/convert-wma-to-mp3/</link>
+        <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/convert-wma-to-mp3/</guid>
+        <description>Convert WMA to MP3 A one liner to convert all WMA files in a directory to MP3
+ for file in *.wma; do ffmpeg -i &#34;${file}&#34; -acodec libmp3lame -ab 192k &#34;${file/.wma/.mp3}&#34;; done   From:
+   https://askubuntu.com/questions/508278/how-to-use-ffmpeg-to-convert-wma-to-mp3-recursively-importing-from-txt-file
+     </description>
+      </item>
+    
+      <item>
+        <title>Managing Certificates</title>
+        <link>https://briantward.github.io/cert-tips/</link>
+        <pubDate>Thu, 14 Mar 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/cert-tips/</guid>
+        <description>Managing Certificates My favorite quick ref:
+ https://www.sslshopper.com/article-most-common-openssl-commands.html
+ Checking certificates on OpenShift You could just as easily modify this for other applications.
+ # cat &amp;lt;&amp;lt; &#39;EOF&#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;</description>
+      </item>
+    
+      <item>
         <title>Regex Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/regex-tips/</link>
+        <link>https://briantward.github.io/regex-tips/</link>
         <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/regex-tips/</guid>
+        <guid>https://briantward.github.io/regex-tips/</guid>
         <description>Regex Tips Grab content across lines:
  ((.|\n)*)   My favorite tester:
    https://regex101.com/
@@ -24,9 +46,9 @@
     
       <item>
         <title>Restore Files from rm</title>
-        <link>https://btw-blog.apps.opencontainer.io/restore-files-from-rm/</link>
+        <link>https://briantward.github.io/restore-files-from-rm/</link>
         <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/restore-files-from-rm/</guid>
+        <guid>https://briantward.github.io/restore-files-from-rm/</guid>
         <description>Restore files from rm I wanted to type:
  $ rm *.retry   Instead I accidentally typed:
  $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&amp;#8217;t more. I was lucky I didn&amp;#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.</description>
@@ -34,9 +56,9 @@
     
       <item>
         <title>bash Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/bash-tips/</link>
+        <link>https://briantward.github.io/bash-tips/</link>
         <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/bash-tips/</guid>
+        <guid>https://briantward.github.io/bash-tips/</guid>
         <description>Command Tips watch &#39;command | othertool | yet-another-tool&#39;
  https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
    </description>
@@ -44,27 +66,27 @@
     
       <item>
         <title>Red Hat Virtualization Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/rhv-tips/</link>
+        <link>https://briantward.github.io/rhv-tips/</link>
         <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rhv-tips/</guid>
+        <guid>https://briantward.github.io/rhv-tips/</guid>
         <description>Red Hat Virtualization Tips Set up a user who can run virsh list --all
  saslpasswd2 -a libvirt username     </description>
       </item>
     
       <item>
         <title>Configuring an External Heketi Prometheus Monitor on OpenShift</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-prometheus-external-heketi/</link>
+        <link>https://briantward.github.io/openshift-prometheus-external-heketi/</link>
         <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-prometheus-external-heketi/</guid>
+        <guid>https://briantward.github.io/openshift-prometheus-external-heketi/</guid>
         <description>Configuring an External Heketi Prometheus Monitor on OpenShift Kudos goes to Ido Braunstain at devops.college for doing this on a raw Kubernetes cluster to monitor a GPU node. I adapted my information from his article to apply to monitoring both heketi and my external gluster nodes.
  Install the node-exporter on the external host First install docker to run the node-exporter container. You may want to consider configuring other docker options.</description>
       </item>
     
       <item>
         <title>Lenovo Intel i915 Video Drivers in Linux, Part 2</title>
-        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video-part2/</link>
+        <link>https://briantward.github.io/lenovo-linux-intel-i915-video-part2/</link>
         <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video-part2/</guid>
+        <guid>https://briantward.github.io/lenovo-linux-intel-i915-video-part2/</guid>
         <description>Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
 Lenovo T460s
 thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
@@ -75,26 +97,26 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/2
     
       <item>
         <title>Lenovo BIOS/UEFI update via USB from Linux</title>
-        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-bios-update/</link>
+        <link>https://briantward.github.io/lenovo-linux-bios-update/</link>
         <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-bios-update/</guid>
+        <guid>https://briantward.github.io/lenovo-linux-bios-update/</guid>
         <description>I&amp;#8217;m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.</description>
       </item>
     
       <item>
         <title>Lenovo Intel i915 Video Drivers in Linux</title>
-        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video/</link>
+        <link>https://briantward.github.io/lenovo-linux-intel-i915-video/</link>
         <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video/</guid>
+        <guid>https://briantward.github.io/lenovo-linux-intel-i915-video/</guid>
         <description>Note: Out of Date and incorrect analysis.
  I&amp;#8217;m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn&amp;#8217;t come on, sometimes one monitor came on, and sometimes things worked fine.</description>
       </item>
     
       <item>
         <title>SSH-Agent</title>
-        <link>https://btw-blog.apps.opencontainer.io/ssh-agent/</link>
+        <link>https://briantward.github.io/ssh-agent/</link>
         <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/ssh-agent/</guid>
+        <guid>https://briantward.github.io/ssh-agent/</guid>
         <description>Every now and then for some reason my ssh-agent does work by default on startup. I have to reach out to this lovely stackoverflow to remember such a simple command:
  exec ssh-agent bash ssh-add ~/.ssh/*   alternatively
  eval `ssh-agent -s` ssh-add ~/.ssh/*   https://stackoverflow.com/questions/17846529/could-not-open-a-connection-to-your-authentication-agent

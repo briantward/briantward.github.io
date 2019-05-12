@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Red Hat on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/red-hat/</link>
+    <link>https://briantward.github.io/tags/red-hat/</link>
     <description>Recent content in Red Hat on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 15 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/red-hat/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/red-hat/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>OpenShift Remove Stuck ServiceInstance</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-remove-stuck-serviceinstance/</link>
+        <link>https://briantward.github.io/openshift-remove-stuck-serviceinstance/</link>
         <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-remove-stuck-serviceinstance/</guid>
+        <guid>https://briantward.github.io/openshift-remove-stuck-serviceinstance/</guid>
         <description>OpenShift Remove Stuck ServiceInstance To delete a stuck serviceinstance where a project namespace no longer exists:
  $ oc get serviceinstance --all-namespaces -o wide NAMESPACE NAME CLASS PLAN STATUS AGE test cakephp-mysql-example-vfzkq ClusterServiceClass/cakephp-mysql-example default Failed 113d test cakephp-mysql-persistent-f75gl ClusterServiceClass/cakephp-mysql-persistent default Failed 113d webconsole-extensions httpd-example-6fxx5 ClusterServiceClass/httpd-example default DeprovisionCallFailed 10d    Create the project namespace again
 $ oc new-project test     Now delete the serviceinstance
@@ -24,17 +24,17 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
     
       <item>
         <title>OpenShift Reissue Certificate Manually</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-reissue-certificate-manually/</link>
+        <link>https://briantward.github.io/openshift-reissue-certificate-manually/</link>
         <pubDate>Fri, 14 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-reissue-certificate-manually/</guid>
+        <guid>https://briantward.github.io/openshift-reissue-certificate-manually/</guid>
         <description>OpenShift Reissue Certificate Manually I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps). In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router.</description>
       </item>
     
       <item>
         <title>Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift</title>
-        <link>https://btw-blog.apps.opencontainer.io/memory-in-openshift/</link>
+        <link>https://briantward.github.io/memory-in-openshift/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/memory-in-openshift/</guid>
+        <guid>https://briantward.github.io/memory-in-openshift/</guid>
         <description>Work In Progress
    Linux top
  VIRT RES SHR free used buff/cache avail Mem
@@ -45,9 +45,9 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
     
       <item>
         <title>OpenShift HTTPD loglevel</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-httpd-loglevel/</link>
+        <link>https://briantward.github.io/openshift-httpd-loglevel/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-httpd-loglevel/</guid>
+        <guid>https://briantward.github.io/openshift-httpd-loglevel/</guid>
         <description>OpenShift HTTPD loglevel OpenShift comes with a container image packaged from this source. To make further configuration changes check the documentation here.
  https://github.com/sclorg/httpd-container
   Create a configmap to mount a log.conf file that contains your apache loglevel configuration. Be sure to update &amp;lt;PROJECT_NAMESPACE&amp;gt; below before running this command.
@@ -56,9 +56,9 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
     
       <item>
         <title>OpenShift Project Backup and Migration Strategies</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</link>
+        <link>https://briantward.github.io/openshift-backup-migration/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</guid>
+        <guid>https://briantward.github.io/openshift-backup-migration/</guid>
         <description>OpenShift Project Backup and Migration Strategies Work In Progress
  export
  secret bc is dc service route pv pvc
@@ -69,26 +69,26 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
     
       <item>
         <title>OpenShift Prometheus Node Exporter CrashLoop</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-prometheus-node-exporter-crashloop/</link>
+        <link>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-prometheus-node-exporter-crashloop/</guid>
+        <guid>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</guid>
         <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&amp;#8217;ve only seen it once, we just kill the process holding the port open from the node itself.</description>
       </item>
     
       <item>
         <title>OpenShift Update Router Fix</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-update-router-fix/</link>
+        <link>https://briantward.github.io/openshift-update-router-fix/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-update-router-fix/</guid>
+        <guid>https://briantward.github.io/openshift-update-router-fix/</guid>
         <description>OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
  Log message on router pod attempting to spin up. If you don&amp;#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
       </item>
     
       <item>
         <title>Migrate OpenShift PersistentVolumes from One Cluster to Another</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-migrate-pv/</link>
+        <link>https://briantward.github.io/openshift-migrate-pv/</link>
         <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-migrate-pv/</guid>
+        <guid>https://briantward.github.io/openshift-migrate-pv/</guid>
         <description>Migrate OpenShift PersistentVolumes from One Cluster to Another Work In Progress!
  $ oc get pv mypvid -o yaml --export &amp;gt; mypv.yaml $ oc get pvc mypvcid -o yaml --export &amp;gt; mypvc.yaml   Remove all annotations and instance identifiers. If you leave them in place, you may get an error stating the PVC is lost.
  Verify that all SecurityContextContstraints are the same between each cluster and project environment, otherwise you may fail to gain ownership of the volume.</description>
@@ -96,9 +96,9 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
     
       <item>
         <title>OpenShift Web Console Extensions</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-web-console-extensions/</link>
+        <link>https://briantward.github.io/openshift-web-console-extensions/</link>
         <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-web-console-extensions/</guid>
+        <guid>https://briantward.github.io/openshift-web-console-extensions/</guid>
         <description>OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
 Applicable Environment: OpenShift 3.9+
  As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
@@ -107,42 +107,42 @@ Applicable Environment: OpenShift 3.9+
     
       <item>
         <title>Automatically Update Red Hat Container Images on OpenShift 3.11</title>
-        <link>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-311/</link>
+        <link>https://briantward.github.io/sync-redhat-images-on-openshift-311/</link>
         <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-311/</guid>
+        <guid>https://briantward.github.io/sync-redhat-images-on-openshift-311/</guid>
         <description>Automatically Update Red Hat Container Images on OpenShift 3.11 OpenShift manages container images using a registry. This is the place where it caches upstream container images and stores the images from your own builds as well. Each build or container image correlates to an ImageStream, which is an object that defines any number of related images by tags. For example, one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2.</description>
       </item>
     
       <item>
         <title>OpenShift Image Management</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-image-management/</link>
+        <link>https://briantward.github.io/openshift-image-management/</link>
         <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-image-management/</guid>
+        <guid>https://briantward.github.io/openshift-image-management/</guid>
         <description>OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 + 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&amp;lt;none&amp;gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.</description>
       </item>
     
       <item>
         <title>Import Images with dockerImageRepository</title>
-        <link>https://btw-blog.apps.opencontainer.io/import-images-with-dockerimagerepository/</link>
+        <link>https://briantward.github.io/import-images-with-dockerimagerepository/</link>
         <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/import-images-with-dockerimagerepository/</guid>
+        <guid>https://briantward.github.io/import-images-with-dockerimagerepository/</guid>
         <description>Import Images with dockerImageRepository $ echo &#39;apiVersion: v1 &amp;gt; kind: ImageStream &amp;gt; metadata: &amp;gt; creationTimestamp: null &amp;gt; generation: 2 &amp;gt; labels: &amp;gt; build: is-test &amp;gt; name: jenkins-slave-base-centos7 &amp;gt; spec: &amp;gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&#39; | oc apply -f- imagestream &#34;jenkins-slave-base-centos7&#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;ImageStream&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;creationTimestamp&#34;:null,&#34;generation&#34;:2,&#34;labels&#34;:{&#34;build&#34;:&#34;is-test&#34;},&#34;name&#34;:&#34;jenkins-slave-base-centos7&#34;,&#34;namespace&#34;:&#34;sbx-esauer&#34;},&#34;spec&#34;:{&#34;dockerImageRepository&#34;:&#34;docker.io/openshift/jenkins-slave-base-centos7&#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker.</description>
       </item>
     
       <item>
         <title>Sync Red Hat Container Images on OpenShift 3.9</title>
-        <link>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-39/</link>
+        <link>https://briantward.github.io/sync-redhat-images-on-openshift-39/</link>
         <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-39/</guid>
+        <guid>https://briantward.github.io/sync-redhat-images-on-openshift-39/</guid>
         <description>Sync Red Hat Container Images on OpenShift 3.9 If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples [1] in your cluster (or using the default which is true), you will find that the ansible installer adds some nice stuff to your local registry from the openshift_examples [2] folder.
  $ oc get is -n openshift NAME DOCKER REPO TAGS UPDATED imagestreams/eap71-openshift docker-registry.default.svc:5000/openshift/eap71-openshift latest 3 months ago imagestreams/httpd docker-registry.</description>
       </item>
     
       <item>
         <title>Securing Red Hat JBoss Web Server 3.X</title>
-        <link>https://btw-blog.apps.opencontainer.io/jws-secured/</link>
+        <link>https://briantward.github.io/jws-secured/</link>
         <pubDate>Thu, 29 Jun 2017 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/jws-secured/</guid>
+        <guid>https://briantward.github.io/jws-secured/</guid>
         <description>Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
    RPM Base Installation  Register your machine if you have not done so.

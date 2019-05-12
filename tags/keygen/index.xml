@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Keygen on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/keygen/</link>
+    <link>https://briantward.github.io/tags/keygen/</link>
     <description>Recent content in Keygen on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/keygen/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/keygen/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>SSH Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/ssh-tips/</link>
+        <link>https://briantward.github.io/ssh-tips/</link>
         <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/ssh-tips/</guid>
+        <guid>https://briantward.github.io/ssh-tips/</guid>
         <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;      </description>
       </item>
     

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thread on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/thread/</link>
+    <description>Recent content in Thread on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/thread/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift JBoss EAP</title>
+        <link>https://briantward.github.io/openshift-jboss-eap/</link>
+        <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-jboss-eap/</guid>
+        <description>OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don&amp;#8217;t want your change to be persistent:
+ oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you&amp;#8217;ll need to update the standalone configuration. You may also want changes on a more permanent basis.
+  Get the existing configuration:</description>
+      </item>
+    
+  </channel>
+</rss>

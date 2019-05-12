@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Managing Certificates - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Managing Certificates" />
+<meta property="og:description" content="Managing Certificates My favorite quick ref:
+ https://www.sslshopper.com/article-most-common-openssl-commands.html
+ Checking certificates on OpenShift You could just as easily modify this for other applications.
+ # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/cert-tips/" />
+
+
+
+<meta property="article:published_time" content="2019-03-14T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2019-03-14T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Managing Certificates">
+<meta itemprop="description" content="Managing Certificates My favorite quick ref:
+ https://www.sslshopper.com/article-most-common-openssl-commands.html
+ Checking certificates on OpenShift You could just as easily modify this for other applications.
+ # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;">
+
+
+<meta itemprop="datePublished" content="2019-03-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-03-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="80">
+
+
+
+<meta itemprop="keywords" content="bash,certificates," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Managing Certificates"/>
+<meta name="twitter:description" content="Managing Certificates My favorite quick ref:
+ https://www.sslshopper.com/article-most-common-openssl-commands.html
+ Checking certificates on OpenShift You could just as easily modify this for other applications.
+ # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;"/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-03-14 12:00">2019-03-14</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          
+            , 
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>Managing Certificates</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/bash">
+              <span class="hash">#</span>bash</a>
+          
+            , 
+            <a href="/tags/certificates">
+              <span class="hash">#</span>certificates</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_managing_certificates">Managing Certificates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My favorite quick ref:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.sslshopper.com/article-most-common-openssl-commands.html" class="bare">https://www.sslshopper.com/article-most-common-openssl-commands.html</a></p>
+</div>
+<div class="sect2">
+<h3 id="_checking_certificates_on_openshift">Checking certificates on OpenShift</h3>
+<div class="paragraph">
+<p>You could just as easily modify this for other applications.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># cat &lt;&lt; 'EOF' &gt;&gt; check-certs.sh
+#!/bin/bash
+
+for filename in `find /etc/origin -name "*.crt*" -o -name "*.pem*" -o -name "*.cer*"` ; do
+  echo $filename;
+  echo "  contains" `grep BEGIN $filename | wc -l`;
+  openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E "Issuer:|Subject:|Not|CA"
+done
+EOF
+
+# chmod u+x ./check-certs.sh
+# ./check-certs.sh &gt; certs-$(hostname)-$(date +"%Y-%m-%d-%H-%M-%S").log</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

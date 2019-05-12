@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pool on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/pool/</link>
+    <link>https://briantward.github.io/tags/pool/</link>
     <description>Recent content in Pool on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/pool/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/pool/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>Attach a Specific Subscription Pool to a RHEL Machine</title>
-        <link>https://btw-blog.apps.opencontainer.io/rhel-subscription-manager-pool-id/</link>
+        <link>https://briantward.github.io/rhel-subscription-manager-pool-id/</link>
         <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rhel-subscription-manager-pool-id/</guid>
+        <guid>https://briantward.github.io/rhel-subscription-manager-pool-id/</guid>
         <description>Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1)     </description>
       </item>
     

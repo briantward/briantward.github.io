@@ -2,28 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Middleware on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/categories/middleware/</link>
+    <link>https://briantward.github.io/categories/middleware/</link>
     <description>Recent content in Middleware on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 01 May 2018 12:00:00 -0400</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/categories/middleware/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/categories/middleware/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>RH-SSO 7.2 on Red Hat Enterprise Linux 7.5 integrated with Identity Management or Directory Server</title>
-        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-rhel7/</link>
+        <link>https://briantward.github.io/rh-sso-on-rhel7/</link>
         <pubDate>Tue, 01 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-rhel7/</guid>
+        <guid>https://briantward.github.io/rh-sso-on-rhel7/</guid>
         <description>RH-SSO server install. This can be done with yum/rpm or zip. Using zips allows you to leverage more middleware services on one VM/box. $ unzip rh-sso-7.2.0.GA.zip $ cd rh-sso-7.2/bin $ ./add-user-keycloak.sh -u admin -p admin     EAP server install. $ jboss-eap-7.1.0.zip $ cd jboss-eap-7.1 $ unzip rh-sso-7.2.0.GA-eap7-adapter.zip -d jboss-eap-7.1 $ unzip -o rh-sso-7.2.0.GA-saml-eap7-adapter.zip -d jboss-eap-7.1 $ cd bin $ ./standalone.sh &amp;amp; ENTER $ ./jboss-cli.sh -c --file=adapter-install.cli $ .</description>
       </item>
     
       <item>
         <title>Securing Red Hat JBoss Web Server 3.X</title>
-        <link>https://btw-blog.apps.opencontainer.io/jws-secured/</link>
+        <link>https://briantward.github.io/jws-secured/</link>
         <pubDate>Thu, 29 Jun 2017 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/jws-secured/</guid>
+        <guid>https://briantward.github.io/jws-secured/</guid>
         <description>Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
    RPM Base Installation  Register your machine if you have not done so.

@@ -23,15 +23,17 @@
 
 <meta property="og:title" content="Git Tips" />
 <meta property="og:description" content="Git Tips   When you are required to use git over HTTPS but you don&#8217;t want to be prompted for your credentials every time.
-$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;        " />
+$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
+$ git config --add rebase.instructionFormat &#34;(%an &lt;%ae&gt;) %s&#34;      https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+   " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/git/" />
+<meta property="og:url" content="https://briantward.github.io/git/" />
 
 
 
-<meta property="article:published_time" content="2018-05-21T00:00:00&#43;00:00"/>
+<meta property="article:published_time" content="2019-05-11T00:00:00&#43;00:00"/>
 
-<meta property="article:modified_time" content="2018-05-21T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-05-11T00:00:00&#43;00:00"/>
 
 
 
@@ -47,12 +49,14 @@ $ git config --global credential.helper cache $ git config credential.helper &#3
 
 <meta itemprop="name" content="Git Tips">
 <meta itemprop="description" content="Git Tips   When you are required to use git over HTTPS but you don&#8217;t want to be prompted for your credentials every time.
-$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;        ">
+$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
+$ git config --add rebase.instructionFormat &#34;(%an &lt;%ae&gt;) %s&#34;      https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+   ">
 
 
-<meta itemprop="datePublished" content="2018-05-21T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-05-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="35">
+<meta itemprop="datePublished" content="2019-05-11T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-11T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="50">
 
 
 
@@ -61,7 +65,9 @@ $ git config --global credential.helper cache $ git config credential.helper &#3
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git Tips"/>
 <meta name="twitter:description" content="Git Tips   When you are required to use git over HTTPS but you don&#8217;t want to be prompted for your credentials every time.
-$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;        "/>
+$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
+$ git config --add rebase.instructionFormat &#34;(%an &lt;%ae&gt;) %s&#34;      https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+   "/>
 
 
   </head>
@@ -119,7 +125,7 @@ $ git config --global credential.helper cache $ git config credential.helper &#3
   <article>
     <header>
       <p>
-        <time datetime="2018-05-21 12:00">2018-05-21</time> &bull;
+        <time datetime="2019-05-11 12:00">2019-05-11</time> &bull;
           
             
             <a href="/categories/tips">TIPS</a>
@@ -155,7 +161,18 @@ $ git config credential.helper 'cache --timeout=3600'</pre>
 </div>
 </div>
 </li>
+<li>
+<p>Set author display on git rebase</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ git config --add rebase.instructionFormat "(%an &lt;%ae&gt;) %s"</pre>
+</div>
+</div>
+</li>
 </ul>
+</div>
+<div class="paragraph">
+<p><a href="https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive" class="bare">https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive</a></p>
 </div>
 </div>
 </div>

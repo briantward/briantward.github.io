@@ -2,22 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/git/</link>
+    <link>https://briantward.github.io/tags/git/</link>
     <description>Recent content in Git on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2019 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>Git Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/git/</link>
-        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/git/</guid>
+        <link>https://briantward.github.io/git/</link>
+        <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/git/</guid>
         <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
-$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;        </description>
+$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
+$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;      https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+   </description>
       </item>
     
   </channel>

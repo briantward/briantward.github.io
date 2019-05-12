@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Migration on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/migration/</link>
+    <link>https://briantward.github.io/tags/migration/</link>
     <description>Recent content in Migration on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/migration/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/migration/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>OpenShift Project Backup and Migration Strategies</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</link>
+        <link>https://briantward.github.io/openshift-backup-migration/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</guid>
+        <guid>https://briantward.github.io/openshift-backup-migration/</guid>
         <description>OpenShift Project Backup and Migration Strategies Work In Progress
  export
  secret bc is dc service route pv pvc

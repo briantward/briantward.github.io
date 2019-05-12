@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authentication on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/authentication/</link>
+    <link>https://briantward.github.io/tags/authentication/</link>
     <description>Recent content in Authentication on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 09 May 2018 12:00:00 -0400</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>Authenticate Openshift Console with RH-SSO</title>
-        <link>https://btw-blog.apps.opencontainer.io/rh-sso-authenticating-openshift-console/</link>
+        <link>https://briantward.github.io/rh-sso-authenticating-openshift-console/</link>
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-authenticating-openshift-console/</guid>
+        <guid>https://briantward.github.io/rh-sso-authenticating-openshift-console/</guid>
         <description>Authenticate Openshift Console with RH-SSO Install based on OpenShift 3.7. Will probably work on other similar versions.
  Be aware of default permissions on your platform.
    https://docs.openshift.com/container-platform/3.7/admin_solutions/user_role_mgmt.html#determine-default-user-roles
@@ -28,9 +28,9 @@
     
       <item>
         <title>Configure Google OIDC</title>
-        <link>https://btw-blog.apps.opencontainer.io/configure-google-oidc/</link>
+        <link>https://briantward.github.io/configure-google-oidc/</link>
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/configure-google-oidc/</guid>
+        <guid>https://briantward.github.io/configure-google-oidc/</guid>
         <description>Configure Google OIDC https://console.cloud.google.com
  Since this topic has been well handled by the Keycloak team, I&amp;#8217;m adding there documentation here.
    https://www.keycloak.org/docs/3.4/server_admin/index.html#google
@@ -39,9 +39,9 @@
     
       <item>
         <title>Configure RH-SSO to Identity Broker with Google by Hosted Domain</title>
-        <link>https://btw-blog.apps.opencontainer.io/rh-sso-google-oidc/</link>
+        <link>https://briantward.github.io/rh-sso-google-oidc/</link>
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-google-oidc/</guid>
+        <guid>https://briantward.github.io/rh-sso-google-oidc/</guid>
         <description>Configure RH-SSO to Identity Broker with Google by Hosted Domain In a browser, go to your RH-SSO admin console. This should be your hostname with context /auth/admin, e.g. https://sso.apps.example.com/auth/admin/
  Login with the username and password you set in your template for fields:
  SSO_ADMIN_USERNAME=admin SSO_ADMIN_PASSWORD=redacted   First, create a new realm for your OpenShift users. Out of the box, RH-SSO is configured with a master realm, but this should only be used for administration of the RH-SSO server itself.</description>
@@ -49,9 +49,9 @@
     
       <item>
         <title>Install RH-SSO on Openshift</title>
-        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-openshift/</link>
+        <link>https://briantward.github.io/rh-sso-on-openshift/</link>
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-openshift/</guid>
+        <guid>https://briantward.github.io/rh-sso-on-openshift/</guid>
         <description>Install RH-SSO on Openshift First create a new project to keep RH-SSO work clean and easily delete it if necessary.
  oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You&amp;#8217;ve got lots of other choices.
  $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application.</description>
@@ -59,18 +59,18 @@
     
       <item>
         <title>Install a Quickstart App on Openshift Authenticated by RH-SSO</title>
-        <link>https://btw-blog.apps.opencontainer.io/rh-sso-openshift-quickstart/</link>
+        <link>https://briantward.github.io/rh-sso-openshift-quickstart/</link>
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-openshift-quickstart/</guid>
+        <guid>https://briantward.github.io/rh-sso-openshift-quickstart/</guid>
         <description>Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
  $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application.</description>
       </item>
     
       <item>
         <title>RH-SSO Authentication on Openshift Series</title>
-        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-ocp-series/</link>
+        <link>https://briantward.github.io/rh-sso-on-ocp-series/</link>
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-ocp-series/</guid>
+        <guid>https://briantward.github.io/rh-sso-on-ocp-series/</guid>
         <description>RH-SSO Authentication on Openshift Series This is a multi-part series on RH-SSO.
   Install RH-SSO on Openshift
   Install a Quickstart App on Openshift Authenticated by RH-SSO
@@ -82,9 +82,9 @@
     
       <item>
         <title>RH-SSO 7.2 on Red Hat Enterprise Linux 7.5 integrated with Identity Management or Directory Server</title>
-        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-rhel7/</link>
+        <link>https://briantward.github.io/rh-sso-on-rhel7/</link>
         <pubDate>Tue, 01 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-rhel7/</guid>
+        <guid>https://briantward.github.io/rh-sso-on-rhel7/</guid>
         <description>RH-SSO server install. This can be done with yum/rpm or zip. Using zips allows you to leverage more middleware services on one VM/box. $ unzip rh-sso-7.2.0.GA.zip $ cd rh-sso-7.2/bin $ ./add-user-keycloak.sh -u admin -p admin     EAP server install. $ jboss-eap-7.1.0.zip $ cd jboss-eap-7.1 $ unzip rh-sso-7.2.0.GA-eap7-adapter.zip -d jboss-eap-7.1 $ unzip -o rh-sso-7.2.0.GA-saml-eap7-adapter.zip -d jboss-eap-7.1 $ cd bin $ ./standalone.sh &amp;amp; ENTER $ ./jboss-cli.sh -c --file=adapter-install.cli $ .</description>
       </item>
     

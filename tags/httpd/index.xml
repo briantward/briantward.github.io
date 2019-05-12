@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Httpd on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/httpd/</link>
+    <link>https://briantward.github.io/tags/httpd/</link>
     <description>Recent content in Httpd on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/httpd/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/httpd/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>OpenShift HTTPD loglevel</title>
-        <link>https://btw-blog.apps.opencontainer.io/openshift-httpd-loglevel/</link>
+        <link>https://briantward.github.io/openshift-httpd-loglevel/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/openshift-httpd-loglevel/</guid>
+        <guid>https://briantward.github.io/openshift-httpd-loglevel/</guid>
         <description>OpenShift HTTPD loglevel OpenShift comes with a container image packaged from this source. To make further configuration changes check the documentation here.
  https://github.com/sclorg/httpd-container
   Create a configmap to mount a log.conf file that contains your apache loglevel configuration. Be sure to update &amp;lt;PROJECT_NAMESPACE&amp;gt; below before running this command.

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Certificates on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/certificates/</link>
+    <description>Recent content in Certificates on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/certificates/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Managing Certificates</title>
+        <link>https://briantward.github.io/cert-tips/</link>
+        <pubDate>Thu, 14 Mar 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/cert-tips/</guid>
+        <description>Managing Certificates My favorite quick ref:
+ https://www.sslshopper.com/article-most-common-openssl-commands.html
+ Checking certificates on OpenShift You could just as easily modify this for other applications.
+ # cat &amp;lt;&amp;lt; &#39;EOF&#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;</description>
+      </item>
+    
+  </channel>
+</rss>

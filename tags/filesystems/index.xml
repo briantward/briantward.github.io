@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Filesystems on Everyday Linux</title>
-    <link>https://btw-blog.apps.opencontainer.io/tags/filesystems/</link>
+    <link>https://briantward.github.io/tags/filesystems/</link>
     <description>Recent content in Filesystems on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 21 May 2018 00:00:00 +0000</lastBuildDate>
     
-      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/filesystems/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://briantward.github.io/tags/filesystems/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
         <title>Helpful Filesystem Tips</title>
-        <link>https://btw-blog.apps.opencontainer.io/filesystems/</link>
+        <link>https://briantward.github.io/filesystems/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
-        <guid>https://btw-blog.apps.opencontainer.io/filesystems/</guid>
+        <guid>https://briantward.github.io/filesystems/</guid>
         <description>Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
 # tune2fs -m 0 /dev/sdb1     print UUID of filesystems
 # blkid     remount a readonly filesystem to rewrite

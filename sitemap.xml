@@ -3,996 +3,1075 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/regex-tips/</loc>
+    <loc>https://briantward.github.io/convert-wma-to-mp3/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/git/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/openshift-jboss-eap/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/cert-tips/</loc>
+    <lastmod>2019-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/regex-tips/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/restore-files-from-rm/</loc>
+    <loc>https://briantward.github.io/restore-files-from-rm/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/bash-tips/</loc>
+    <loc>https://briantward.github.io/bash-tips/</loc>
     <lastmod>2019-02-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/rhv-tips/</loc>
+    <loc>https://briantward.github.io/rhv-tips/</loc>
     <lastmod>2019-01-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-prometheus-external-heketi/</loc>
+    <loc>https://briantward.github.io/openshift-prometheus-external-heketi/</loc>
     <lastmod>2019-01-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video-part2/</loc>
+    <loc>https://briantward.github.io/lenovo-linux-intel-i915-video-part2/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/image-video-metadata/</loc>
+    <loc>https://briantward.github.io/image-video-metadata/</loc>
     <lastmod>2018-12-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/ansible-tips/</loc>
+    <loc>https://briantward.github.io/ansible-tips/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-remove-stuck-serviceinstance/</loc>
+    <loc>https://briantward.github.io/openshift-remove-stuck-serviceinstance/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-reissue-certificate-manually/</loc>
+    <loc>https://briantward.github.io/openshift-reissue-certificate-manually/</loc>
     <lastmod>2018-12-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/memory-in-openshift/</loc>
+    <loc>https://briantward.github.io/memory-in-openshift/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-httpd-loglevel/</loc>
+    <loc>https://briantward.github.io/openshift-httpd-loglevel/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</loc>
+    <loc>https://briantward.github.io/openshift-backup-migration/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-prometheus-node-exporter-crashloop/</loc>
+    <loc>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-update-router-fix/</loc>
+    <loc>https://briantward.github.io/openshift-update-router-fix/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/terminal-to-file/</loc>
+    <loc>https://briantward.github.io/terminal-to-file/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-migrate-pv/</loc>
+    <loc>https://briantward.github.io/openshift-migrate-pv/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-web-console-extensions/</loc>
+    <loc>https://briantward.github.io/openshift-web-console-extensions/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-311/</loc>
+    <loc>https://briantward.github.io/sync-redhat-images-on-openshift-311/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/openshift-image-management/</loc>
+    <loc>https://briantward.github.io/openshift-image-management/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/performance-and-benchmarking/</loc>
+    <loc>https://briantward.github.io/performance-and-benchmarking/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/ssh-tips/</loc>
+    <loc>https://briantward.github.io/ssh-tips/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/oc-tips/</loc>
+    <loc>https://briantward.github.io/oc-tips/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/java-on-rhel/</loc>
+    <loc>https://briantward.github.io/java-on-rhel/</loc>
     <lastmod>2018-08-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/gnome-session/</loc>
+    <loc>https://briantward.github.io/gnome-session/</loc>
     <lastmod>2018-08-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/yum-dnf-tips/</loc>
+    <loc>https://briantward.github.io/yum-dnf-tips/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/import-images-with-dockerimagerepository/</loc>
+    <loc>https://briantward.github.io/import-images-with-dockerimagerepository/</loc>
     <lastmod>2018-07-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-39/</loc>
+    <loc>https://briantward.github.io/sync-redhat-images-on-openshift-39/</loc>
     <lastmod>2018-07-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/rhel-subscription-manager-pool-id/</loc>
+    <loc>https://briantward.github.io/rhel-subscription-manager-pool-id/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/configure-dell-powerconnect-pc5324/</loc>
+    <loc>https://briantward.github.io/configure-dell-powerconnect-pc5324/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/git/</loc>
+    <loc>https://briantward.github.io/filesystems/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/filesystems/</loc>
+    <loc>https://briantward.github.io/lenovo-linux-power/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/lenovo-linux-power/</loc>
+    <loc>https://briantward.github.io/lets-encrypt-on-openshift/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/lets-encrypt-on-openshift/</loc>
+    <loc>https://briantward.github.io/navigating-linux/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/navigating-linux/</loc>
+    <loc>https://briantward.github.io/networking/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/networking/</loc>
+    <loc>https://briantward.github.io/vim/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/vim/</loc>
+    <loc>https://briantward.github.io/xml/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/xml/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://btw-blog.apps.opencontainer.io/lenovo-linux-bios-update/</loc>
+    <loc>https://briantward.github.io/lenovo-linux-bios-update/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video/</loc>
+    <loc>https://briantward.github.io/lenovo-linux-intel-i915-video/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/ssh-agent/</loc>
+    <loc>https://briantward.github.io/ssh-agent/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/hugo-blog-on-openshift/</loc>
+    <loc>https://briantward.github.io/hugo-blog-on-openshift/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/rh-sso-authenticating-openshift-console/</loc>
+    <loc>https://briantward.github.io/rh-sso-authenticating-openshift-console/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/configure-google-oidc/</loc>
+    <loc>https://briantward.github.io/configure-google-oidc/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/rh-sso-google-oidc/</loc>
+    <loc>https://briantward.github.io/rh-sso-google-oidc/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/rh-sso-on-openshift/</loc>
+    <loc>https://briantward.github.io/rh-sso-on-openshift/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/rh-sso-openshift-quickstart/</loc>
+    <loc>https://briantward.github.io/rh-sso-openshift-quickstart/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/rh-sso-on-ocp-series/</loc>
+    <loc>https://briantward.github.io/rh-sso-on-ocp-series/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/rh-sso-on-rhel7/</loc>
+    <loc>https://briantward.github.io/rh-sso-on-rhel7/</loc>
     <lastmod>2018-05-01T12:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/split-dns-vpn-local-dnsmasq/</loc>
+    <loc>https://briantward.github.io/split-dns-vpn-local-dnsmasq/</loc>
     <lastmod>2018-05-01T10:40:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/bridge-host-vm/</loc>
+    <loc>https://briantward.github.io/bridge-host-vm/</loc>
     <lastmod>2018-05-01T08:27:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/jws-secured/</loc>
+    <loc>https://briantward.github.io/jws-secured/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/ansible/</loc>
+    <loc>https://briantward.github.io/tags/ansible/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/apache/</loc>
+    <loc>https://briantward.github.io/tags/apache/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/appdev/</loc>
+    <loc>https://briantward.github.io/tags/appdev/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/asciidoc/</loc>
+    <loc>https://briantward.github.io/tags/asciidoc/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/asciidoctor/</loc>
+    <loc>https://briantward.github.io/tags/asciidoctor/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/authentication/</loc>
+    <loc>https://briantward.github.io/tags/audio/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/authentication/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/authorization/</loc>
+    <loc>https://briantward.github.io/tags/authorization/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/backup/</loc>
+    <loc>https://briantward.github.io/tags/backup/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/bash/</loc>
-    <lastmod>2019-02-01T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/bash/</loc>
+    <lastmod>2019-03-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/benchmarking/</loc>
+    <loc>https://briantward.github.io/tags/benchmarking/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/bios/</loc>
+    <loc>https://briantward.github.io/tags/bios/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/blkid/</loc>
+    <loc>https://briantward.github.io/tags/blkid/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/blog/</loc>
+    <loc>https://briantward.github.io/tags/blog/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/bridge/</loc>
+    <loc>https://briantward.github.io/tags/bridge/</loc>
     <lastmod>2018-05-01T08:27:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/</loc>
+    <loc>https://briantward.github.io/categories/</loc>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/certificate/</loc>
+    <loc>https://briantward.github.io/tags/certificate/</loc>
     <lastmod>2018-12-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/cluster/</loc>
+    <loc>https://briantward.github.io/tags/certificates/</loc>
+    <lastmod>2019-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/cluster/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/container/</loc>
+    <loc>https://briantward.github.io/tags/container/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/crashloopbackoff/</loc>
+    <loc>https://briantward.github.io/tags/crashloopbackoff/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/data/</loc>
+    <loc>https://briantward.github.io/tags/data/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/dell/</loc>
+    <loc>https://briantward.github.io/tags/dell/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/devops/</loc>
+    <loc>https://briantward.github.io/tags/devops/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/disaster/</loc>
+    <loc>https://briantward.github.io/tags/disaster/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/dnf/</loc>
+    <loc>https://briantward.github.io/tags/dnf/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/dns/</loc>
+    <loc>https://briantward.github.io/tags/dns/</loc>
     <lastmod>2018-05-01T10:40:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/dnsmasq/</loc>
+    <loc>https://briantward.github.io/tags/dnsmasq/</loc>
     <lastmod>2018-05-01T10:40:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/error/</loc>
+    <loc>https://briantward.github.io/tags/dumps/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/eap/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/error/</loc>
     <lastmod>2018-12-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/ews/</loc>
+    <loc>https://briantward.github.io/tags/ews/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/expressions/</loc>
+    <loc>https://briantward.github.io/tags/expressions/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/extensions/</loc>
+    <loc>https://briantward.github.io/tags/extensions/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/fedora/</loc>
+    <loc>https://briantward.github.io/tags/fedora/</loc>
     <lastmod>2018-08-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/filesystems/</loc>
+    <loc>https://briantward.github.io/tags/filesystems/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/git/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/git/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/gnome/</loc>
+    <loc>https://briantward.github.io/tags/gnome/</loc>
     <lastmod>2018-08-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/go/</loc>
+    <loc>https://briantward.github.io/tags/go/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/google/</loc>
+    <loc>https://briantward.github.io/tags/google/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/heketi/</loc>
+    <loc>https://briantward.github.io/tags/heketi/</loc>
     <lastmod>2019-01-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/httpd/</loc>
+    <loc>https://briantward.github.io/tags/httpd/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/hugo/</loc>
+    <loc>https://briantward.github.io/tags/hugo/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/i915/</loc>
+    <loc>https://briantward.github.io/tags/i915/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/image/</loc>
+    <loc>https://briantward.github.io/tags/image/</loc>
     <lastmod>2018-12-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/imagestream/</loc>
+    <loc>https://briantward.github.io/tags/imagestream/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/intel/</loc>
+    <loc>https://briantward.github.io/tags/intel/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/java/</loc>
+    <loc>https://briantward.github.io/tags/java/</loc>
     <lastmod>2018-08-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/jboss/</loc>
+    <loc>https://briantward.github.io/tags/jboss/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/jpeg/</loc>
+    <loc>https://briantward.github.io/categories/jboss/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/jboss-clis.sh/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/jpeg/</loc>
     <lastmod>2018-12-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/jws/</loc>
+    <loc>https://briantward.github.io/tags/jws/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/keycloak/</loc>
+    <loc>https://briantward.github.io/tags/keycloak/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/keygen/</loc>
+    <loc>https://briantward.github.io/tags/keygen/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/kill/</loc>
+    <loc>https://briantward.github.io/tags/kill/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/kubernetes/</loc>
+    <loc>https://briantward.github.io/tags/kubernetes/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/lenovo/</loc>
+    <loc>https://briantward.github.io/tags/lenovo/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/linux/</loc>
+    <loc>https://briantward.github.io/tags/linux/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/linux/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/categories/linux/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/posts/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/posts/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/logging/</loc>
+    <loc>https://briantward.github.io/tags/log/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/logging/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/loglevel/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/loglevel/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/machine/</loc>
+    <loc>https://briantward.github.io/tags/machine/</loc>
     <lastmod>2018-05-01T08:27:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/metadata/</loc>
+    <loc>https://briantward.github.io/tags/metadata/</loc>
     <lastmod>2018-12-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/metrics/</loc>
+    <loc>https://briantward.github.io/tags/metrics/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/middleware/</loc>
+    <loc>https://briantward.github.io/categories/middleware/</loc>
     <lastmod>2018-05-01T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/migrate/</loc>
+    <loc>https://briantward.github.io/tags/migrate/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/migration/</loc>
+    <loc>https://briantward.github.io/tags/migration/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/mount/</loc>
+    <loc>https://briantward.github.io/tags/mount/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/mov/</loc>
+    <loc>https://briantward.github.io/tags/mov/</loc>
     <lastmod>2018-12-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/mp4/</loc>
+    <loc>https://briantward.github.io/categories/mp3/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/mp4/</loc>
     <lastmod>2018-12-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/networking/</loc>
+    <loc>https://briantward.github.io/tags/networking/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/networking/</loc>
+    <loc>https://briantward.github.io/categories/networking/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/node-exporter/</loc>
+    <loc>https://briantward.github.io/tags/node-exporter/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/oc/</loc>
+    <loc>https://briantward.github.io/tags/oc/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/openshift/</loc>
+    <loc>https://briantward.github.io/tags/openshift/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/openshift/</loc>
-    <lastmod>2019-01-15T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/categories/openshift/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/os/</loc>
+    <loc>https://briantward.github.io/categories/os/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/performance/</loc>
+    <loc>https://briantward.github.io/tags/performance/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/performance/</loc>
+    <loc>https://briantward.github.io/categories/performance/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/persistentvolume/</loc>
+    <loc>https://briantward.github.io/tags/persistentvolume/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/persistentvolumeclaim/</loc>
+    <loc>https://briantward.github.io/tags/persistentvolumeclaim/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/photos/</loc>
+    <loc>https://briantward.github.io/photos/</loc>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/pool/</loc>
+    <loc>https://briantward.github.io/tags/pool/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/powerconnect/</loc>
+    <loc>https://briantward.github.io/tags/powerconnect/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/projects/</loc>
+    <loc>https://briantward.github.io/projects/</loc>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/prometheus/</loc>
+    <loc>https://briantward.github.io/tags/prometheus/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/pv/</loc>
+    <loc>https://briantward.github.io/publications/</loc>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/pv/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/recovery/</loc>
+    <loc>https://briantward.github.io/tags/recovery/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/red-hat/</loc>
+    <loc>https://briantward.github.io/tags/red-hat/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/regex/</loc>
+    <loc>https://briantward.github.io/tags/regex/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/regular/</loc>
+    <loc>https://briantward.github.io/tags/regular/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/rh-sso/</loc>
+    <loc>https://briantward.github.io/tags/rh-sso/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/rhel/</loc>
+    <loc>https://briantward.github.io/tags/rhel/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/rhv/</loc>
+    <loc>https://briantward.github.io/categories/rhv/</loc>
     <lastmod>2019-01-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/router/</loc>
+    <loc>https://briantward.github.io/tags/router/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/secure/</loc>
+    <loc>https://briantward.github.io/tags/secure/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/security/</loc>
+    <loc>https://briantward.github.io/tags/security/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/service-catalog/</loc>
+    <loc>https://briantward.github.io/tags/service-catalog/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/servicebinding/</loc>
+    <loc>https://briantward.github.io/tags/servicebinding/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/serviceinstance/</loc>
+    <loc>https://briantward.github.io/tags/serviceinstance/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/servicemonitor/</loc>
+    <loc>https://briantward.github.io/tags/servicemonitor/</loc>
     <lastmod>2019-01-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/session/</loc>
+    <loc>https://briantward.github.io/tags/session/</loc>
     <lastmod>2018-08-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/ssh/</loc>
+    <loc>https://briantward.github.io/tags/ssh/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/ssh-agent/</loc>
+    <loc>https://briantward.github.io/tags/ssh-agent/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/sso/</loc>
+    <loc>https://briantward.github.io/tags/sso/</loc>
     <lastmod>2018-05-01T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/subscription-manager/</loc>
+    <loc>https://briantward.github.io/tags/subscription-manager/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/switch/</loc>
+    <loc>https://briantward.github.io/tags/switch/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/sync/</loc>
+    <loc>https://briantward.github.io/tags/sync/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/t460s/</loc>
+    <loc>https://briantward.github.io/tags/t460s/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/</loc>
+    <loc>https://briantward.github.io/tags/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/tips/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/thread/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/categories/tips/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/tips/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/tomcat/</loc>
+    <loc>https://briantward.github.io/categories/tips/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/tomcat/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/tune2fs/</loc>
+    <loc>https://briantward.github.io/tags/tune2fs/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/tunnel/</loc>
+    <loc>https://briantward.github.io/tags/tunnel/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/uefi/</loc>
+    <loc>https://briantward.github.io/tags/uefi/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/umount/</loc>
+    <loc>https://briantward.github.io/tags/umount/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/update/</loc>
+    <loc>https://briantward.github.io/tags/update/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/usb/</loc>
+    <loc>https://briantward.github.io/tags/usb/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/video/</loc>
+    <loc>https://briantward.github.io/tags/video/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/virtual/</loc>
+    <loc>https://briantward.github.io/tags/virtual/</loc>
     <lastmod>2018-05-01T08:27:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/virtualization/</loc>
+    <loc>https://briantward.github.io/tags/virtualization/</loc>
     <lastmod>2019-01-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/vpn/</loc>
+    <loc>https://briantward.github.io/tags/vpn/</loc>
     <lastmod>2018-05-01T10:40:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/wayland/</loc>
+    <loc>https://briantward.github.io/tags/wayland/</loc>
     <lastmod>2018-08-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/webconsole/</loc>
+    <loc>https://briantward.github.io/tags/webconsole/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/xorg/</loc>
+    <loc>https://briantward.github.io/categories/wma/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/xorg/</loc>
     <lastmod>2018-08-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://btw-blog.apps.opencontainer.io/tags/yum/</loc>
+    <loc>https://briantward.github.io/tags/yum/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
