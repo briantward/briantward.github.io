@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Certificate on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/certificate/</link>
+    <description>Recent content in Certificate on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/certificate/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift Reissue Certificate Manually</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-reissue-certificate-manually/</link>
+        <pubDate>Fri, 14 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-reissue-certificate-manually/</guid>
+        <description>OpenShift Reissue Certificate Manually I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps). In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Update Router Fix</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-update-router-fix/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-update-router-fix/</guid>
+        <description>OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
+ Log message on router pod attempting to spin up. If you don&amp;#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
+      </item>
+    
+  </channel>
+</rss>

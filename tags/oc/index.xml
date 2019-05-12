@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oc on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/oc/</link>
+    <description>Recent content in Oc on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/oc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>oc Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/oc-tips/</link>
+        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     </description>
+      </item>
+    
+  </channel>
+</rss>

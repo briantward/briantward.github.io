@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Install a Quickstart App on Openshift Authenticated by RH-SSO - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Install a Quickstart App on Openshift Authenticated by RH-SSO" />
+<meta property="og:description" content="Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/rh-sso-openshift-quickstart/" />
+
+
+
+<meta property="article:published_time" content="2018-05-09T12:00:00-04:00"/>
+
+<meta property="article:modified_time" content="2018-05-09T12:00:00-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Install a Quickstart App on Openshift Authenticated by RH-SSO">
+<meta itemprop="description" content="Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application.">
+
+
+<meta itemprop="datePublished" content="2018-05-09T12:00:00-04:00" />
+<meta itemprop="dateModified" content="2018-05-09T12:00:00-04:00" />
+<meta itemprop="wordCount" content="1218">
+
+
+
+<meta itemprop="keywords" content="google,rh-sso,keycloak,ansible,authentication,authorization," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Install a Quickstart App on Openshift Authenticated by RH-SSO"/>
+<meta name="twitter:description" content="Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-05-09 12:00">2018-05-09</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>Install a Quickstart App on Openshift Authenticated by RH-SSO</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/google">
+              <span class="hash">#</span>google</a>
+          
+            , 
+            <a href="/tags/rh-sso">
+              <span class="hash">#</span>rh-sso</a>
+          
+            , 
+            <a href="/tags/keycloak">
+              <span class="hash">#</span>keycloak</a>
+          
+            , 
+            <a href="/tags/ansible">
+              <span class="hash">#</span>ansible</a>
+          
+            , 
+            <a href="/tags/authentication">
+              <span class="hash">#</span>authentication</a>
+          
+            , 
+            <a href="/tags/authorization">
+              <span class="hash">#</span>authorization</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_install_a_quickstart_app_on_openshift_authenticated_by_rh_sso">Install a Quickstart App on Openshift Authenticated by RH-SSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You will need to build and run an app and configure the client in RH-SSO.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get template -n openshift | grep sso
+eap64-sso-s2i                                   An example EAP 6 Single Sign-On application. For more information about using...   44 (19 blank)     8
+eap70-sso-s2i                                   An example EAP 7 Single Sign-On application. For more information about using...   44 (19 blank)     8
+eap71-sso-s2i                                   An example EAP 7 Single Sign-On application. For more information about using...   44 (19 blank)     8
+sso71-https                                     An example SSO 7 application. For more information about using this template,...   26 (15 blank)     6
+sso71-mysql                                     An example SSO 7 application with a MySQL database. For more information abou...   36 (20 blank)     8
+sso71-mysql-persistent                          An example SSO 7 application with a MySQL database. For more information abou...   37 (20 blank)     9
+sso71-postgresql                                An example SSO 7 application with a PostgreSQL database. For more information...   33 (17 blank)     8
+sso71-postgresql-persistent                     An example SSO 7 application with a PostgreSQL database. For more information...   34 (17 blank)     9
+sso72-https                                     An example SSO 7 application. For more information about using this template,...   26 (15 blank)     6
+sso72-mysql                                     An example SSO 7 application with a MySQL database. For more information abou...   36 (20 blank)     8
+sso72-mysql-persistent                          An example SSO 7 application with a MySQL database. For more information abou...   37 (20 blank)     9
+sso72-postgresql                                An example SSO 7 application with a PostgreSQL database. For more information...   33 (17 blank)     8
+sso72-postgresql-persistent                     An example SSO 7 application with a PostgreSQL database. For more information...   34 (17 blank)     9</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s go with eap71-sso-s2i&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc export template eap71-sso-s2i -n openshift &gt; base-eap71-sso-template.yml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that the template uses the 7.0.x-ose branch of the official Red Hat RH-SSO quickstarts. The version is a little behind but it doesn&#8217;t
+affect anything on the quickstarts.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>- description: Git source URI for application
+  displayName: Git Repository URL
+  name: SOURCE_REPOSITORY_URL
+  required: true
+  value: https://github.com/redhat-developer/redhat-sso-quickstarts
+- description: Git branch/tag reference
+  displayName: Git Reference
+  name: SOURCE_REPOSITORY_REF
+  value: 7.0.x-ose</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You could just specificy one example app using CONTEXT_DIR, but this only works if you are trying out the examples that don&#8217;t need two WAR files.
+I&#8217;m leaving it blank here, which will cause all maven sub-modules to be built.  That&#8217;s fine because we&#8217;ll later tell it to only deploy the artifacts
+we want.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>- description: Path within Git project to build; empty for root project directory.
+  displayName: Context Directory
+  name: CONTEXT_DIR</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create your parameter file.  Note that we are using the default keystore names below so they are not specifically changed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cat sso-test-params
+APPLICATION_NAME=sso-test
+HOSTNAME_HTTP=sso-test-i.apps.example.com
+HOSTNAME_HTTPS=sso-test.apps.example.com
+HTTPS_NAME=sso-test
+HTTPS_PASSWORD=redacted
+JGROUPS_ENCRYPT_NAME=jgroups
+JGROUPS_ENCRYPT_PASSWORD=redacted
+JGROUPS_CLUSTER_PASSWORD=redacted
+SSO_URL=https://sso.apps.example.com/auth
+SSO_REALM=ocp
+SSO_USERNAME=eap-mgmt-user
+SSO_PASSWORD=redacted
+SSO_SERVICE_URL=https://sso.apps.example.com/auth
+ARTIFACT_DIR=app-jee-jsp/target,app-profile-jee-jsp/target</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create the EAP server keystore and jgroups keystore.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ keytool -genkeypair -alias sso-test -keyalg RSA -storetype JKS -keystore keystore.jks -storepass redacted -keypass redacted --dname "CN=sso-test.apps.example.com,OU=openshift,O=example.com,L=City,S=ST,C=US"</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ keytool -genseckey -alias jgroups -storetype JCEKS -keystore jgroups.jceks -storepass redacted -keypass redacted</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Import the SSO server&#8217;s certificate into the EAP server&#8217;s truststore. In general, it&#8217;s just a good idea. (TODO verify truststore needed for this test)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ keytool -importcert -keystore truststore.jks -storepass redacted -alias sso-test -trustcacerts -file ../sso/keystore.crt</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create the secrets from your keystores.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc secret new eap7-app-secret keystore.jks jgroups.jceks truststore.jks</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adjust the default project service account to have the role <code>view</code> (TODO found in EAP docs, verify needed)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc policy add-role-to-user view system:serviceaccount:$(oc project -q):default</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Link this service account to the secret (TODO found in EAP docs, verify needed)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc secrets link default eap7-app-secret</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we&#8217;re ready to build from the template:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc process -f sso-test.yml --param-file sso-test-params | oc apply -f-
+service "sso-test" created
+service "secure-sso-test" created
+service "sso-test-ping" created
+route "sso-test" created
+route "secure-sso-test" created
+imagestream "sso-test" created
+buildconfig "sso-test" created
+deploymentconfig "sso-test" created</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see this in the logs on the EAP server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc logs -f sso-test-1-xj76z
+INFO: Configuring JGroups discovery protocol to openshift.DNS_PING
+Using PicketBox SSL configuration.
+Obtained auth token from https://secure-sso:8443/auth for realm ocp
+/opt/eap/standalone/deployments ~
+Registered openid-connect client for module app-jsp in realm ocp on "http://sso-test-i.apps.example.com/app-jsp/*","https://sso-test.apps.example.com/app-jsp/*"
+Configured keycloak subsystem for openid-connect module app-jsp from app-jsp.war
+Registered openid-connect client for module app-profile-jsp in realm ocp on "http://sso-test-i.apps.example.com/app-profile-jsp/*","https://sso-test.apps.example.com/app-profile-jsp/*"
+Configured keycloak subsystem for openid-connect module app-profile-jsp from app-profile-jsp.war
+
+...
+
+12:37:42,608 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 75) WFLYUT0021: Registered web context: '/app-jsp' for server 'default-server'
+12:37:42,608 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 72) WFLYUT0021: Registered web context: '/app-profile-jsp' for server 'default-server'
+12:37:42,673 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed "app-profile-jsp.war" (runtime-name : "app-profile-jsp.war")
+12:37:42,675 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed "app-jsp.war" (runtime-name : "app-jsp.war")
+12:37:42,675 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed "activemq-rar.rar" (runtime-name : "activemq-rar.rar")
+12:37:42,858 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+12:37:42,868 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+12:37:42,868 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0054: Admin console is not enabled
+12:37:42,868 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: JBoss EAP 7.1.1.GA (WildFly Core 3.0.12.Final-redhat-1) started in 20048ms - Started 608 of 903 services (500 services are lazy, passive or on-demand)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This confirms that the RH-SSO client adapter was set up for your test app on both the RH-SSO server and the EAP server.</p>
+</div>
+<div class="paragraph">
+<p>You can now test the application on its exposed URL. You should be brought to a demo page to click a button which then takes you
+to the RH-SSO login page.</p>
+</div>
+<div class="paragraph">
+<p>Now you need to manually add a role and a user to test your app login.  This is not automated by the templates/s2i builder image at this time.
+This is detailed in the README here: <a href="https://github.com/redhat-developer/redhat-sso-quickstarts" class="bare">https://github.com/redhat-developer/redhat-sso-quickstarts</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go to Roles &gt; Click <code>Add Role</code> and name the role <code>user</code>, click <code>Save</code>.</p>
+</li>
+<li>
+<p>Go to Users &gt; Click <code>Add User</code> and name your user however you like, such as <code>sso-test-user</code>, click <code>Save</code>.</p>
+</li>
+<li>
+<p>Go to <code>Credentials</code> and enter a password of your choice.  Click <code>Temporary</code> button to set it <code>OFF</code> and make this password permanent.</p>
+</li>
+<li>
+<p>Go to <code>Role Mappings</code> and add the <code>user</code> role to the <code>Assigned Roles</code>.  Clicking the <code>Add Selected</code> button saves your changes immediately.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now go test your user login.</p>
+</div>
+<div class="sect2">
+<h3 id="_debug">Debug</h3>
+<div class="paragraph">
+<p>On building from OpenShift, the following Maven build error spit out for me from the logs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>Caused by: org.apache.maven.wagon.TransferFailedException: Failed to transfer file: https://maven.repository.redhat.com/ga/com/redhat/bom/rh-sso/rh-sso-eap7-bom/7.0.0.GA/rh-sso-eap7-bom-7.0.0.GA.pom. Return code is: 500 , ReasonPhrase:Internal Server Error.
+...
+[ERROR]     'dependencies.dependency.version' for org.keycloak:keycloak-core:jar is missing. @ line 58, column 21
+[ERROR]     'dependencies.dependency.version' for org.keycloak:keycloak-adapter-core:jar is missing. @ line 63, column 21
+[ERROR]     'dependencies.dependency.version' for org.keycloak:keycloak-adapter-spi:jar is missing. @ line 68, column 21
+[ERROR]     'dependencies.dependency.version' for org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:jar is missing. @ line 135, column 29</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As it turns out this day, maven.repository.redhat.com was having issues.  A rebuild later worked fine.</p>
+</div>
+<div class="paragraph">
+<p>I ran into the below error, which was resolved by ? building the app in the same project??</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>ERROR: Unable to connect to SSO/Keycloak at https://sso1.apps.example.com/auth for user eap-mgmt-user and realm ocp. SSO Clients *not* created
+Reason: Check the URL, no response from the URL above, check if it is valid or if the DNS is resolvable.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I ran into the below error, which was resolved by correctly assigning my initial realm in the SSO server build template. Or manually adding the
+expected realm.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc logs -f sso-test-1-swvxm
+INFO: Configuring JGroups discovery protocol to openshift.DNS_PING
+Using PicketBox SSL configuration.
+ERROR: Unable to connect to SSO/Keycloak at https://secure-sso:8443/auth for user eap-mgmt-user and realm ocp. SSO Clients *not* created
+Reason: Invalid user credentials</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

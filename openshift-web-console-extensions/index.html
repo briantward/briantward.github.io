@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenShift Web Console Extensions - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="OpenShift Web Console Extensions" />
+<meta property="og:description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
+Applicable Environment: OpenShift 3.9&#43;
+ As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
+ In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/openshift-web-console-extensions/" />
+
+
+
+<meta property="article:published_time" content="2018-12-04T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-12-04T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="OpenShift Web Console Extensions">
+<meta itemprop="description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
+Applicable Environment: OpenShift 3.9&#43;
+ As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
+ In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files.">
+
+
+<meta itemprop="datePublished" content="2018-12-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-04T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="544">
+
+
+
+<meta itemprop="keywords" content="sync,Red Hat,container,webconsole,extensions," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift Web Console Extensions"/>
+<meta name="twitter:description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
+Applicable Environment: OpenShift 3.9&#43;
+ As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
+ In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-12-04 12:00">2018-12-04</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>OpenShift Web Console Extensions</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/sync">
+              <span class="hash">#</span>sync</a>
+          
+            , 
+            <a href="/tags/red-hat">
+              <span class="hash">#</span>Red Hat</a>
+          
+            , 
+            <a href="/tags/container">
+              <span class="hash">#</span>container</a>
+          
+            , 
+            <a href="/tags/webconsole">
+              <span class="hash">#</span>webconsole</a>
+          
+            , 
+            <a href="/tags/extensions">
+              <span class="hash">#</span>extensions</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_openshift_web_console_extensions">OpenShift Web Console Extensions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Testing Environment: OpenShift 3.11<br>
+Applicable Environment: OpenShift 3.9+</p>
+</div>
+<div class="paragraph">
+<p>As of OpenShift 3.9, the web console requires URL references rather than static content directories.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>  Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely.  I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files.  The web console application running within the pod is a standalone executable.</p>
+</div>
+<div class="paragraph">
+<p>The openshift-ansible project does contain a variable to make settings for this, so it is aware of these URL references.  You should adjust your inventory file so that subsequent updates do not remove your custom extensions.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>openshift_web_console_extension_script_urls=['https://webconsole-extensions.apps.example.com/disable-catalog.js']</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can do this with any webserver of your choice.  Here I chose apache httpd.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new project.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc new-project webconsole-extensions
+Now using project "webconsole-extensions" on server "https://openshift.example.com:8443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
+
+to build a new example application in Ruby.</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a new app from httpd imagestream (which on my cluster points to registry.redhat.io/rhscl/httpd-24-rhel7). Check out the docs for details on building for this image, if you want to use Passthrough or ReEncrypt you&#8217;ll need to add your own certs. <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc new-app httpd~https://github.com/briantward/webconsole-extensions
+--&gt; Found image 9477422 (8 days old) in image stream "openshift/httpd" under tag "2.4" for "httpd"
+
+    Apache httpd 2.4
+    ----------------
+    Apache httpd 2.4 available as container, is a powerful, efficient, and extensible web server. Apache supports a variety of features, many implemented as compiled modules which extend the core functionality. These can range from server-side programming language support to authentication schemes. Virtual hosting allows one Apache installation to serve many different Web sites.
+
+    Tags: builder, httpd, httpd24
+
+    * A source build using source code from https://github.com/briantward/webconsole-extensions will be created
+      * The resulting image will be pushed to image stream tag "webconsole-extensions:latest"
+      * Use 'start-build' to trigger a new build
+    * This image will be deployed in deployment config "webconsole-extensions"
+    * Ports 8080/tcp, 8443/tcp will be load balanced by service "webconsole-extensions"
+      * Other containers can access this service through the hostname "webconsole-extensions"
+
+--&gt; Creating resources ...
+    imagestream.image.openshift.io "webconsole-extensions" created
+    buildconfig.build.openshift.io "webconsole-extensions" created
+    deploymentconfig.apps.openshift.io "webconsole-extensions" created
+    service "webconsole-extensions" created
+--&gt; Success
+    Build scheduled, use 'oc logs -f bc/webconsole-extensions' to track its progress.
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose svc/webconsole-extensions'
+    Run 'oc status' to view your app.</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a route, I chose Edge SSL termination but you may want to build it differently:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc create route edge --service=webconsole-extensions --hostname=webconsole-extensions.example.com --port=8080-tcp
+route.route.openshift.io/webconsole-extensions created</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Validate the resource is served:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ curl https://webconsole-extensions.apps.example.com/disable-catalog.js
+window.OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE = true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit the webconsole config to add this extension script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc edit cm webconsole-config -n openshift-web-console</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Modify and save as needed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>...
+    extensions:
+      properties: null
+      scriptURLs: ['https://webconsole-extensions.apps.example.com/disable-catalog.js']
+      stylesheetURLs: []
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see the web console pods pick up the change within 2 minutes or so.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://docs.openshift.com/container-platform/3.9/install_config/web_console_customization.html#loading-custom-scripts-and-stylesheets" class="bare">https://docs.openshift.com/container-platform/3.9/install_config/web_console_customization.html#loading-custom-scripts-and-stylesheets</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://docs.openshift.com/container-platform/3.7/install_config/web_console_customization.html#loading-custom-scripts-and-stylesheets" class="bare">https://docs.openshift.com/container-platform/3.7/install_config/web_console_customization.html#loading-custom-scripts-and-stylesheets</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://docs.openshift.com/container-platform/3.11/install_config/web_console_customization.html#ansible-config-web-console-customizations" class="bare">https://docs.openshift.com/container-platform/3.11/install_config/web_console_customization.html#ansible-config-web-console-customizations</a>
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. <a href="https://github.com/sclorg/httpd-container/" class="bare">https://github.com/sclorg/httpd-container/</a>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

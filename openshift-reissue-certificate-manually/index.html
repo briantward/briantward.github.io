@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenShift Reissue Certificate Manually - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="OpenShift Reissue Certificate Manually" />
+<meta property="og:description" content="OpenShift Reissue Certificate Manually I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps). In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/openshift-reissue-certificate-manually/" />
+
+
+
+<meta property="article:published_time" content="2018-12-14T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-12-14T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="OpenShift Reissue Certificate Manually">
+<meta itemprop="description" content="OpenShift Reissue Certificate Manually I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps). In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router.">
+
+
+<meta itemprop="datePublished" content="2018-12-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="471">
+
+
+
+<meta itemprop="keywords" content="Red Hat,container,certificate,error," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift Reissue Certificate Manually"/>
+<meta name="twitter:description" content="OpenShift Reissue Certificate Manually I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps). In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-12-14 12:00">2018-12-14</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>OpenShift Reissue Certificate Manually</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/red-hat">
+              <span class="hash">#</span>Red Hat</a>
+          
+            , 
+            <a href="/tags/container">
+              <span class="hash">#</span>container</a>
+          
+            , 
+            <a href="/tags/certificate">
+              <span class="hash">#</span>certificate</a>
+          
+            , 
+            <a href="/tags/error">
+              <span class="hash">#</span>error</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_openshift_reissue_certificate_manually">OpenShift Reissue Certificate Manually</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps).  In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.openshift.com/container-platform/3.11/install_config/redeploying_certificates.html" class="bare">https://docs.openshift.com/container-platform/3.11/install_config/redeploying_certificates.html</a></p>
+</div>
+<div class="paragraph">
+<p>To diagnose the problem, I checked the logs on the grafana app:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc logs -f grafana-5ff4bb48f5-q46ff -c grafana-proxy
+...
+2018/12/13 15:49:29 server.go:2923: http: TLS handshake error from 10.129.2.1:52306: remote error: tls: unknown certificate authority</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So I decided to check the tls certificate, which is usually mounted from a secret:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get secrets | grep tls
+alertmanager-main-tls                         kubernetes.io/tls                     2         38m
+grafana-tls                                   kubernetes.io/tls                     2         42m
+kube-state-metrics-tls                        kubernetes.io/tls                     2         38m
+node-exporter-tls                             kubernetes.io/tls                     2         38m
+prometheus-k8s-tls                            kubernetes.io/tls                     2         38m</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is far more useful to be able to actually read the certificate contents in a legible format rather than stare at either the PEM or base64 encoding.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk '{print $2}' | base64 -d - | openssl x509 -in - -text -noout</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Looking at my certificate, everything seemed to be fine.  It had not expired.  But I did recall the logs specifically stating that the certificate authority was unknown, so let&#8217;s focus on that.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk '{print $2}' | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
+       Issuer: CN = openshift-service-serving-signer@1536343562</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s compare it to one of the apps that is working correctly:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc get secret console-serving-cert -n openshift-console -o yaml | grep tls.crt | awk '{print $2}' | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
+       Issuer: CN = openshift-service-serving-signer@1544190532</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Aha! The redeploy certificates playbook didn&#8217;t update my Prometheus deployment.  That seems like a big miss.  Let&#8217;s fix it.</p>
+</div>
+<div class="paragraph">
+<p>Delete the old secret since it&#8217;s worthless now.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc delete secret grafana-tls -n openshift-monitoring</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remove the certificate signing annotations by manually editing the service responsible for the secret or using these commands.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc annotate service grafana-tls \
+  service.alpha.openshift.io/serving-cert-secret-name- \
+  service.alpha.openshift.io/serving-cert-signed-by-</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc annotate service grafana-tls \
+  service.alpha.openshift.io/serving-cert-secret-name=grafana-tls</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should be able to see a new secret just created, and you can check it for the correct CA.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk '{print $2}' | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
+       Issuer: CN = openshift-service-serving-signer@1544190532</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now delete all the pods to recreate new ones with the new certificate:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc delete pods --all -n openshift-monitoring</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Give it a few minutes and all is back up and running.</p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

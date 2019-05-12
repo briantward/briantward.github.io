@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Video Metadata - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Image Video Metadata" />
+<meta property="og:description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&#8217;t give you a lot of customization options. We couldn&#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/image-video-metadata/" />
+
+
+
+<meta property="article:published_time" content="2018-12-27T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-12-27T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Image Video Metadata">
+<meta itemprop="description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&#8217;t give you a lot of customization options. We couldn&#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.">
+
+
+<meta itemprop="datePublished" content="2018-12-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="414">
+
+
+
+<meta itemprop="keywords" content="image,jpeg,video,mov, mp4,metadata," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Image Video Metadata"/>
+<meta name="twitter:description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&#8217;t give you a lot of customization options. We couldn&#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-12-27 12:00">2018-12-27</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          </p>
+      <h1>Image Video Metadata</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/image">
+              <span class="hash">#</span>image</a>
+          
+            , 
+            <a href="/tags/jpeg">
+              <span class="hash">#</span>jpeg</a>
+          
+            , 
+            <a href="/tags/video">
+              <span class="hash">#</span>video</a>
+          
+            , 
+            <a href="/tags/mov">
+              <span class="hash">#</span>mov</a>
+          
+            , 
+            <a href="/tags/mp4">
+              <span class="hash">#</span> mp4</a>
+          
+            , 
+            <a href="/tags/metadata">
+              <span class="hash">#</span>metadata</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_image_video_metadata_tips">Image Video Metadata Tips</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6.  Apple has a nice app that compiles photos and videos with background music, but doesn&#8217;t give you a lot of customization options.  We couldn&#8217;t sort except by date.  Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</p>
+</div>
+<div class="paragraph">
+<p>Then there were the videos.  Videos imported from the Samsung onto the Apple were sorted as though they were taken the day they were imported.  I was hoping there was some metadata field I could add that Apple might use over the file create date; however, all my attempts there failed.  The only way I think I could trick it would be to update the actual create date on the iPhone.  Since I haven&#8217;t hacked much on iPhones, I gave up and just let the sort order of the videos be wrong.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://michaelkummer.com/technology/videos-imported-photos-app-wrong-date/" class="bare">https://michaelkummer.com/technology/videos-imported-photos-app-wrong-date/</a></p>
+</div>
+<div class="sect2">
+<h3 id="_editing_image_metadata">Editing Image Metadata</h3>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo dnf install perl-Image-ExifTool</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ exiftool image0264.jpg | grep -i date
+File Modification Date/Time     : 2018:12:24 11:18:52-05:00
+File Access Date/Time           : 2018:12:27 16:36:52-05:00
+File Inode Change Date/Time     : 2018:12:24 11:18:52-05:00
+Modify Date                     : 2018:10:18 14:57:57
+Date/Time Original              : 2018:10:14 16:09:17
+Create Date                     : 2018:10:14 16:09:17
+Digital Creation Date           : 2018:10:14
+Profile Date Time               : 1998:02:09 06:49:00
+Metadata Date                   : 2018:10:18 14:57:57-04:00
+Date Created                    : 2018:10:14 16:09:17.99
+Date/Time Created               : 2018:10:14 16:09:17
+Digital Creation Date/Time      : 2018:10:14 16:09:17
+Create Date                     : 2018:10:14 16:09:17.99
+Date/Time Original              : 2018:10:14 16:09:17.99</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tried this.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ exiftool -overwrite_original -EXIF:CreateDate="2018:12:31 16:09:17" image0264.jpg</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This one worked for what Apple iPhone Photo app was sorting by.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ exiftool -overwrite_original -EXIF:DateTimeOriginal="2018:12:31 16:09:17" image0264.jpg</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_editing_video_metadata">Editing Video Metadata</h3>
+<div class="paragraph">
+<p>I already had ffmpeg but found mediainfo was a nice little tool.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo dnf install mediainfo</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nothing in this example yet.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ mediainfo 20180316_202002-1920.mp4 | grep -i date</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This produced some data.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ ffmpeg -i 20180316_202002-1920.mp4 -c copy -metadata creation_time="2018-03-16 20:20:02" 20180316_202002-1920-new.mp4</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ mediainfo 20180316_202002-1920-new.mp4 | grep -i date
+Encoded date                             : UTC 2018-03-17 00:20:02
+Tagged date                              : UTC 2018-03-17 00:20:02
+Encoded date                             : UTC 2018-03-17 00:20:02
+Tagged date                              : UTC 2018-03-17 00:20:02
+Encoded date                             : UTC 2018-03-17 00:20:02
+Tagged date                              : UTC 2018-03-17 00:20:02</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This added a recoreded date.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ ffmpeg -i 20180316_202002-1920.mp4 -c copy -metadata ICRD="2018-03-16 20:20:02" 20180316_202002-1920-new-2.mp4</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ mediainfo 20180316_202002-1920-new-2.mp4 | grep -i date
+Recorded date                            : 2018-03-16 20:20:02</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, Apple iPhone Photo app appears to still ignore it, and sort rather by file create date.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

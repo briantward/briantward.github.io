@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Uefi on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/uefi/</link>
+    <description>Recent content in Uefi on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 May 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/uefi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Lenovo BIOS/UEFI update via USB from Linux</title>
+        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-bios-update/</link>
+        <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-bios-update/</guid>
+        <description>I&amp;#8217;m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.</description>
+      </item>
+    
+  </channel>
+</rss>

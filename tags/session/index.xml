@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Session on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/session/</link>
+    <description>Recent content in Session on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/session/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Gnome Session</title>
+        <link>https://btw-blog.apps.opencontainer.io/gnome-session/</link>
+        <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/gnome-session/</guid>
+        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+  Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store.</description>
+      </item>
+    
+  </channel>
+</rss>

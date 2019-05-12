@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ansible on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/ansible/</link>
+    <description>Recent content in Ansible on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Ansible Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/ansible-tips/</link>
+        <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/ansible-tips/</guid>
+        <description>Ansible Tips Print to stout and log at same time&amp;#8230;&amp;#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&amp;#8230;&amp;#8203; this one cleans up your journals&amp;#8230;&amp;#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      </description>
+      </item>
+    
+      <item>
+        <title>Authenticate Openshift Console with RH-SSO</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-authenticating-openshift-console/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-authenticating-openshift-console/</guid>
+        <description>Authenticate Openshift Console with RH-SSO Install based on OpenShift 3.7. Will probably work on other similar versions.
+ Be aware of default permissions on your platform.
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/user_role_mgmt.html#determine-default-user-roles
+   Be aware of the implications of using Google as an Identity Broker.
+ Master and Node Configuration:
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/master_node_config.htmli
+   Here is a great step-by-step example workflow in Red Hat official documentation:
+   https://access.</description>
+      </item>
+    
+      <item>
+        <title>Configure Google OIDC</title>
+        <link>https://btw-blog.apps.opencontainer.io/configure-google-oidc/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/configure-google-oidc/</guid>
+        <description>Configure Google OIDC https://console.cloud.google.com
+ Since this topic has been well handled by the Keycloak team, I&amp;#8217;m adding there documentation here.
+   https://www.keycloak.org/docs/3.4/server_admin/index.html#google
+     </description>
+      </item>
+    
+      <item>
+        <title>Configure RH-SSO to Identity Broker with Google by Hosted Domain</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-google-oidc/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-google-oidc/</guid>
+        <description>Configure RH-SSO to Identity Broker with Google by Hosted Domain In a browser, go to your RH-SSO admin console. This should be your hostname with context /auth/admin, e.g. https://sso.apps.example.com/auth/admin/
+ Login with the username and password you set in your template for fields:
+ SSO_ADMIN_USERNAME=admin SSO_ADMIN_PASSWORD=redacted   First, create a new realm for your OpenShift users. Out of the box, RH-SSO is configured with a master realm, but this should only be used for administration of the RH-SSO server itself.</description>
+      </item>
+    
+      <item>
+        <title>Install RH-SSO on Openshift</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-openshift/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-openshift/</guid>
+        <description>Install RH-SSO on Openshift First create a new project to keep RH-SSO work clean and easily delete it if necessary.
+ oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You&amp;#8217;ve got lots of other choices.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application.</description>
+      </item>
+    
+      <item>
+        <title>Install a Quickstart App on Openshift Authenticated by RH-SSO</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-openshift-quickstart/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-openshift-quickstart/</guid>
+        <description>Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application.</description>
+      </item>
+    
+      <item>
+        <title>RH-SSO Authentication on Openshift Series</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-ocp-series/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-ocp-series/</guid>
+        <description>RH-SSO Authentication on Openshift Series This is a multi-part series on RH-SSO.
+  Install RH-SSO on Openshift
+  Install a Quickstart App on Openshift Authenticated by RH-SSO
+  Configure Google OIDC
+  Configure RH-SSO to Identity Broker with Google by Hosted Domain
+  Authenticate Openshift Console with RH-SSO
+     </description>
+      </item>
+    
+  </channel>
+</rss>

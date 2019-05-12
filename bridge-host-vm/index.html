@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridged Host-VM Network - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Bridged Host-VM Network" />
+<meta property="og:description" content="Bridged Host-VM Network     Host OS:
+ Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants
+   Host Virtual Platform:
+ virt-manager, virsh, libvirt, qemu
+   Guest OS:
+ Any
+    Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
+ e.g." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/bridge-host-vm/" />
+
+
+
+<meta property="article:published_time" content="2018-05-01T08:27:00-04:00"/>
+
+<meta property="article:modified_time" content="2018-05-01T08:27:00-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Bridged Host-VM Network">
+<meta itemprop="description" content="Bridged Host-VM Network     Host OS:
+ Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants
+   Host Virtual Platform:
+ virt-manager, virsh, libvirt, qemu
+   Guest OS:
+ Any
+    Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
+ e.g.">
+
+
+<meta itemprop="datePublished" content="2018-05-01T08:27:00-04:00" />
+<meta itemprop="dateModified" content="2018-05-01T08:27:00-04:00" />
+<meta itemprop="wordCount" content="1089">
+
+
+
+<meta itemprop="keywords" content="bridge,virtual,machine," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bridged Host-VM Network"/>
+<meta name="twitter:description" content="Bridged Host-VM Network     Host OS:
+ Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants
+   Host Virtual Platform:
+ virt-manager, virsh, libvirt, qemu
+   Guest OS:
+ Any
+    Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
+ e.g."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-05-01 08:27">2018-05-01</time> &bull;
+          
+            
+            <a href="/categories/networking">NETWORKING</a>
+          </p>
+      <h1>Bridged Host-VM Network</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/bridge">
+              <span class="hash">#</span>bridge</a>
+          
+            , 
+            <a href="/tags/virtual">
+              <span class="hash">#</span>virtual</a>
+          
+            , 
+            <a href="/tags/machine">
+              <span class="hash">#</span>machine</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_bridged_host_vm_network">Bridged Host-VM Network</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host OS:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host Virtual Platform:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">virt-manager, virsh, libvirt, qemu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Guest OS:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM
+can reside on the same network as the host.</p>
+</div>
+<div class="paragraph">
+<p>e.g.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>host 192.168.1.10
+vm1 192.168.1.20
+vm2 192.168.1.21</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;
+vm1 and vm2 will use the bridge from the host to reach the DHCP server 192.168.1.1</p>
+</div>
+<div class="paragraph">
+<p>I had figured this out before on previous versions of RHEL, but after doing an update to 7.5
+my network connections got reset.  Alas, after much trial and error wasted time, I decided
+to write down the process this time.  I am not a network technician, but usually I remember enough from
+time to time when I need to set up something particular like this.  This time, I needed help.</p>
+</div>
+<div class="paragraph">
+<p>After writing up these instructions, I found a great video tutorial of similar work.  Here are two
+videos demonstrating this gist of this tutorial in fedora, from another author.  I think the GUIs
+may have changed just slightly since the 7.5 release, but otherwise this is still good stuff.
+You might find watching this first useful.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=rSxK_08LSZw" class="bare">https://www.youtube.com/watch?v=rSxK_08LSZw</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=TGXz94id-AM" class="bare">https://www.youtube.com/watch?v=TGXz94id-AM</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_before_we_begin">Before we begin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, do not use <code>network</code> to manage your network behavior.  That is the old way of things.
+A lot of old tutorials are still out there claiming you need to use <code>network</code> to make <code>virt-manager</code>
+or <code>virsh</code> or <code>libvirt</code> happy.  It&#8217;s not true anymore.  Use <code>NetworkManager</code> instead to manage
+your network behavior.  If you don&#8217;t know the difference between these two tools, go research it.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://askubuntu.com/questions/551680/how-to-do-virtual-networking-all-types-in-virt-manager" class="bare">https://askubuntu.com/questions/551680/how-to-do-virtual-networking-all-types-in-virt-manager</a></p>
+</li>
+<li>
+<p><a href="http://blog.bodhizazen.com/linux/virt-manager-bridged-networking/" class="bare">http://blog.bodhizazen.com/linux/virt-manager-bridged-networking/</a></p>
+</li>
+<li>
+<p><a href="https://www.centos.org/forums/viewtopic.php?t=8284" class="bare">https://www.centos.org/forums/viewtopic.php?t=8284</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Second, the same tutorials frequently suggest using the "Virtual Network Connections" feature of
+virt-manager.  Do NOT attempt to use this.  It simply doesn&#8217;t work with <code>NetworkManager</code>.  In
+fact, I think one of the sites I found suggested this is why <code>network</code> is required.  You&#8217;ll see
+shortly just how to configure <code>NetworkManager</code> and your virtual machines. For now, take a look
+at these screen shots under "QEMU Virtial Networks" and understand that if you have been working with this interface, and you&#8217;re
+frustrated you haven&#8217;t got the results you want, you should not be surprised.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_qemu_virtual_networks">QEMU Virtual Networks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DO NOT use the virt-manager tool for creating bridged connections.</p>
+</div>
+<div class="paragraph">
+<p>Virt-Manager &gt; Edit &gt; Connection Details</p>
+</div>
+<div class="paragraph">
+<p>"Virtual Networks" Tab is somewhat misleading.  You can create an isolated private
+network for just your VMs.  This could be advantageous if you wanted to create a whole
+separate subnet just for your vms.  All of them would be addressable through a NAT on
+your host machine.  I did not want that.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/001-qemu-virtual-networks.png" alt="001 qemu virtual networks"></span></p>
+</div>
+<div class="paragraph">
+<p>This is a suggested flow below for creating a NAT&#8217;d isolated network.  It does not bridge
+the vm to the host subnet.  The "Virtual Network Interface" settings on your vm profile
+used to suggest creating a "bridge" this way.  TODO verify this with earlier image, show example.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/002-qemu-create-virtual-networks-01.png" alt="002 qemu create virtual networks 01"></span>
+<span class="image"><img src="/images/vm-bridge/003-qemu-create-virtual-networks-02.png" alt="003 qemu create virtual networks 02"></span>
+<span class="image"><img src="/images/vm-bridge/004-qemu-create-virtual-networks-03.png" alt="004 qemu create virtual networks 03"></span>
+<span class="image"><img src="/images/vm-bridge/005-qemu-create-virtual-networks-04.png" alt="005 qemu create virtual networks 04"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview_configuration_approaches">Overview: Configuration Approaches</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Note that the GNOME GUI for managing network connections (gnome-control-center) for this version (?) of fedora is different as
+ of fedora26 and RHEL 7.5.  In the latter versions, the ability to create a bridge
+ from the User Profile Network Manager (top right of your screen) is removed.  You
+ can use any of the three other examples below instead.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>gnome-control-center (deprecated - feature removed)</p>
+</li>
+<li>
+<p>nm-connection-editor</p>
+</li>
+<li>
+<p>nmtui</p>
+</li>
+<li>
+<p>nmcli</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_gnome_control_center_gui">Using gnome-control-center GUI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You used to be able to build bridges from the gnome-control-panel.  This is the "Settings"
+feature from the top right drop-down screen or from the "Settings" control panel.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ gnome-control-center network</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>DO NOT EDIT YOUR NETWORK CONFIGURATION HERE
+<span class="image"><img src="/images/vm-bridge/006-gnome-settings-network-01.png" alt="006 gnome settings network 01"></span></p>
+</div>
+<div class="paragraph">
+<p>DO NOT EDIT YOUR NETWORK CONFIGURATION HERE
+<span class="image"><img src="/images/vm-bridge/007-gome-shortcut-screenshot-01.png" alt="007 gome shortcut screenshot 01"></span></p>
+</div>
+<div class="paragraph">
+<p>DO NOT EDIT YOUR NETWORK CONFIGURATION HERE
+<span class="image"><img src="/images/vm-bridge/008-gome-shortcut-screenshot-02.png" alt="008 gome shortcut screenshot 02"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_nm_connection_editor">Using nm-connection-editor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bring up nm-connection-editor from the terminal or any shortcut you may have.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ nm-connection-editor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The dialog below shows I have not yet configured any typical ethernet network interface.
+However, it does show the default virt setup with a vibr0 bridge for creating completely
+isolated networks for your vms.  We are not going to use it, but we will leave it in place
+for now.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/012-gnome-network-connections-01.png" alt="012 gnome network connections 01"></span></p>
+</div>
+<div class="paragraph">
+<p>Click the "+" icon and up pops this dialog.  Choose "Bridge" type. Sorry the image below
+just shows "Ethernet".  TODO show better image.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/014-connmanager-create-network-connection.png" alt="014 connmanager create network connection"></span>
+<span class="image"><img src="/images/vm-bridge/013-gnome-network-connections-02.png" alt="013 gnome network connections 02"></span></p>
+</div>
+<div class="paragraph">
+<p>Rename your connection as desired.
+Note that there is a 15 character limit for "Connection Name".
+If you go past 15 characters, it will look ok
+in the user interface but the button to Save or Activate the profile will not be available.
+Notice here I tried naming my connection "bridge-vm-enp0s25" to logically identify what
+I am bridging.  However, because it has too many characters, the "Save" button remains
+greyed-out.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/022-connmanager-edit-network-connection.png" alt="022 connmanager edit network connection"></span></p>
+</div>
+<div class="paragraph">
+<p>Here I used a shorter bridge name: "br-vm-enp0s25". Also, make your "Connection Name" and
+"Interface Name" match.  It&#8217;s funny how such trivial problems
+from poor user interface translate into enormous amounts of wasted time and effort. I
+thought I was configuring something else incorrectly.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/026-connmanager-edit-network-connection.png" alt="026 connmanager edit network connection"></span></p>
+</div>
+<div class="paragraph">
+<p>Click "Add" next to "Bridged Connections" to specific which device you want to source the
+bridge from.  That is, what physical device or ethernet port is attached to the network
+you want the VMs to bridge to. In my case, I want "enp0s25".</p>
+</div>
+<div class="paragraph">
+<p>TODO add images here</p>
+</div>
+<div class="paragraph">
+<p>Click "Ethernet" in the dialog box this time.  Name this Connection after your network
+interface, then select the same network interface in the "Device" dropdown. Click Save.</p>
+</div>
+<div class="paragraph">
+<p>TODO add images here</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/025-connmanager-edit-network-connection.png" alt="025 connmanager edit network connection"></span></p>
+</div>
+<div class="paragraph">
+<p>Now click "Save" and you should see the results similar to below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/027-connmanager-edit-network-connection.png" alt="027 connmanager edit network connection"></span></p>
+</div>
+<div class="paragraph">
+<p>Now <code>virt-manager</code> go to Edit &gt; Connection Detils &gt; Network Interfaces.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/019-qemu-network-connections.png" alt="019 qemu network connections"></span></p>
+</div>
+<div class="paragraph">
+<p>Click this "+" icon to add your bridge.  It should show up here. If it does not, you may want
+to restart services or reboot the machine. TODO identify which services need rebooting, just NetworkManager?</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/028-qemu-network-connections-add-bridge.png" alt="028 qemu network connections add bridge"></span></p>
+</div>
+<div class="paragraph">
+<p>Now go to your vm in <code>virt-manager</code>.  Double-Click on it to bring it up.  Click on the light-bulb
+icon to change its configuration.  Click on the device labeled "NIC" and change "Network Source"
+to match the bridge you just set up.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/029-qemu-device-settings.png" alt="029 qemu device settings"></span></p>
+</div>
+<div class="paragraph">
+<p>Note here that you will see a vnet0 get added as a slave interface automatically the next time
+everything starts and is working.  This is required for things to work.  See my debug note below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/vm-bridge/030-qemu-network-connections-add-bridge.png" alt="030 qemu network connections add bridge"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_nm_tui">Using nm-tui</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_nm_cli">Using nm-cli</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_debugging">Debugging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another alternative:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=8LnghnDv0LY" class="bare">https://www.youtube.com/watch?v=8LnghnDv0LY</a> (this one creates a routed private network)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I ran into this problem:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://unix.stackexchange.com/questions/362915/how-to-remove-a-vnet0-interface" class="bare">https://unix.stackexchange.com/questions/362915/how-to-remove-a-vnet0-interface</a></p>
+</div>
+<div class="paragraph">
+<p>The vnet0 interface was actually brought up by virt-manager (virsh/kvm/quemu) specifically for this bridged connection.
+I deleted all network connections, then rebuilt the bridge.  Upon restarting NetworkManager and then restarting
+libvirt (and all vms), vnet0 reappeared automatically and the bridge connection worked correctly.</p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

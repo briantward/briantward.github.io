@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Switch on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/switch/</link>
+    <description>Recent content in Switch on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/switch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Configure Dell PowerConnect PC5324</title>
+        <link>https://btw-blog.apps.opencontainer.io/configure-dell-powerconnect-pc5324/</link>
+        <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/configure-dell-powerconnect-pc5324/</guid>
+        <description>Configure Dell PowerConnect PC5324 Followed help from these sites   https://www.stevejenkins.com/blog/2011/05/dell-powerconnect-5324-setup-tasks/
+  http://ninjix.blogspot.com/2013/03/dell-powerconnect-serial-console-on.html
+    Tools to connect to console Minicom
+   can be a problem if the env variable TERM is not set correctly.
+  hit enter. then cntl-A then q then enter to exit minicom.
+   screen
+   Use the screen quit command (normally ctrl-A \).
+    Steps taken  Downloaded latest firmware</description>
+      </item>
+    
+  </channel>
+</rss>

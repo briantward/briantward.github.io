@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configuring an External Heketi Prometheus Monitor on OpenShift - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Configuring an External Heketi Prometheus Monitor on OpenShift" />
+<meta property="og:description" content="Configuring an External Heketi Prometheus Monitor on OpenShift Kudos goes to Ido Braunstain at devops.college for doing this on a raw Kubernetes cluster to monitor a GPU node. I adapted my information from his article to apply to monitoring both heketi and my external gluster nodes.
+ Install the node-exporter on the external host First install docker to run the node-exporter container. You may want to consider configuring other docker options." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/openshift-prometheus-external-heketi/" />
+
+
+
+<meta property="article:published_time" content="2019-01-15T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2019-01-15T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Configuring an External Heketi Prometheus Monitor on OpenShift">
+<meta itemprop="description" content="Configuring an External Heketi Prometheus Monitor on OpenShift Kudos goes to Ido Braunstain at devops.college for doing this on a raw Kubernetes cluster to monitor a GPU node. I adapted my information from his article to apply to monitoring both heketi and my external gluster nodes.
+ Install the node-exporter on the external host First install docker to run the node-exporter container. You may want to consider configuring other docker options.">
+
+
+<meta itemprop="datePublished" content="2019-01-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-01-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="624">
+
+
+
+<meta itemprop="keywords" content="heketi,servicemonitor," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Configuring an External Heketi Prometheus Monitor on OpenShift"/>
+<meta name="twitter:description" content="Configuring an External Heketi Prometheus Monitor on OpenShift Kudos goes to Ido Braunstain at devops.college for doing this on a raw Kubernetes cluster to monitor a GPU node. I adapted my information from his article to apply to monitoring both heketi and my external gluster nodes.
+ Install the node-exporter on the external host First install docker to run the node-exporter container. You may want to consider configuring other docker options."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-01-15 12:00">2019-01-15</time> &bull;
+          
+            
+            <a href="/categories/linux">LINUX</a>
+          
+            , 
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>Configuring an External Heketi Prometheus Monitor on OpenShift</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/heketi">
+              <span class="hash">#</span>heketi</a>
+          
+            , 
+            <a href="/tags/servicemonitor">
+              <span class="hash">#</span>servicemonitor</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_configuring_an_external_heketi_prometheus_monitor_on_openshift">Configuring an External Heketi Prometheus Monitor on OpenShift</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kudos goes to Ido Braunstain at devops.college for doing this on a raw Kubernetes cluster to monitor a GPU node. I adapted my information from <a href="https://devops.college/prometheus-operator-how-to-monitor-an-external-service-3cb6ac8d5acb">his article</a> to apply to monitoring both heketi and my external gluster nodes.</p>
+</div>
+<div class="sect2">
+<h3 id="_install_the_node_exporter_on_the_external_host">Install the node-exporter on the external host</h3>
+<div class="paragraph">
+<p>First install docker to run the node-exporter container.  You may want to consider configuring other docker options. For this demo, it should work fine from first run.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># yum install docker
+# systemctl start dockerd
+# systemctl enable dockerd</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Login to Red Hat&#8217;s container repo to stash credentials.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># docker login https://registry.redhat.io
+Username: &lt;omitted&gt;
+Password:
+Login Succeeded</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run the node-exporter container.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[root@storage-0 ~]# docker run -d -p 9100:9100 registry.redhat.io/openshift3/prometheus-node-exporter:v3.11.51</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Don&#8217;t forget your firewall or selinux.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_the_external_enpoint_service_and_servicemonitor_objects_for_the_node_exporter">Create the external Enpoint, Service, and ServiceMonitor objects for the node exporter</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>apiVersion: v1
+kind: Endpoints
+metadata:
+  name: gluster-node-metrics
+  namespace: openshift-monitoring
+  labels:
+    k8s-app: gluster-node-metrics-endpoint.yaml
+subsets:
+- addresses:
+  - iip: 192.168.1.20
+  ports:
+  - name: metrics
+    port: 9100
+    protocol: TCP</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: gluster-node-metrics
+  name: gluster-node-metrics
+  namespace: openshift-monitoring
+spec:
+  externalName: 192.168.1.20
+  ports:
+  - name: metrics
+    port: 9100
+    protocol: TCP
+    targetPort: 9100
+  sessionAffinity: None
+  type: ExternalName</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: gluster-node-metrics
+  labels:
+    k8s-app: gluster-node-metrics
+  namespace: openshift-monitoring
+spec:
+  endpoints:
+  - interval: 30s
+    port: metrics
+    honorLables: true
+  namespaceSelector:
+    matchNames:
+    - openshift-monitoring
+  selector:
+    matchLabels:
+      k8s-app: gluster-node-metrics</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_the_external_enpoint_service_and_servicemonitor_objects_for_heketi">Create the external Enpoint, Service, and ServiceMonitor objects for Heketi</h3>
+<div class="paragraph">
+<p>You need an Endpoint reference by IP.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>cat &lt;&lt;EOF | oc create -f -
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: heketi
+  namespace: openshift-monitoring
+  labels:
+    k8s-app: heketi
+subsets:
+- addresses:
+  - ip: 192.168.1.10
+  ports:
+  - name: heketi
+    port: 8080
+    protocol: TCP</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A Service by type ExternalName.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>cat &lt;&lt;EOF | oc create -f -
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: heketi
+  name: heketi
+  namespace: openshift-monitoring
+spec:
+  externalName: 192.168.1.10
+  ports:
+  - name: heketi
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  sessionAffinity: None
+  type: ExternalName</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>cat &lt;&lt;EOF | oc create -f -
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: heketi
+  labels:
+    k8s-app: heketi
+  namespace: openshift-monitoring
+spec:
+  endpoints:
+  - interval: 30s
+    port: heketi
+    honorLables: true
+  namespaceSelector:
+    matchNames:
+    - openshift-monitoring
+  selector:
+    matchLabels:
+      k8s-app: heketi</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you have trouble, check the Prometheus container to see if the servicemonitor configmap got registered.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc rsh prometheus-k8s-0 -c prometheus
+sh-4.2$ cat /etc/prometheus/config_out/prometheus.env.yaml</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_a_persistent_grafana_dashboard">Add a Persistent Grafana Dashboard</h3>
+<div class="paragraph">
+<p>Note that this is explicitly not supported by Red Hat.  If you want your Prometheus deployment to remain supported, I suggest you build a second one just for your own customizations.  You can start with what we already have and remove the fuctions that overlap with the supported deployment later.</p>
+</div>
+<div class="sect3">
+<h4 id="_disable_the_prometheus_and_cluter_monitor_operators">Disable the Prometheus and Cluter Monitor Operators</h4>
+<div class="paragraph">
+<p>These are responsible for keeping the state of your Prometheus deployment immutable.  That means, if you roll out a deployment change, it will revert it back to its known supported state.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc scale deployment.apps/cluster-monitoring-operator --replicas=0
+$ oc scale deployment.apps/prometheus-operator --replicas-0</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_a_configmap_from_the_dashboard_json_file">Create a ConfigMap From the Dashboard JSON File</h4>
+<div class="paragraph">
+<p>Assuming you have already built your own custom Grafana Dashboard, now make it persistent on pod restarts.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc create cm grafana-dashboard-heketi --from-file=storage-dashboard-cm.json</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_assign_the_configmap_to_the_deployment">Assign the ConfigMap to the Deployment</h4>
+<div class="paragraph">
+<p>You could use a nice one liner with <code>oc</code>, but it unfortunately would assign the volume to both containers inside the pod, rather than just the one you need it on.</p>
+</div>
+<div class="paragraph">
+<p>Use <code>oc edit</code> to manually edit the Deployment</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc edit deployment grafana</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add these lines referring to the heketi dashboard next to the existing entries for the k8s-resources-pod</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>        - mountPath: /grafana-dashboard-definitions/0/k8s-resources-pod
+          name: grafana-dashboard-k8s-resources-pod
+        - mountPath: /grafana-dashboard-definitions/0/heketi
+          name: grafana-dashboard-heketi
+
+...
+      - configMap:
+          defaultMode: 420
+          name: grafana-dashboard-k8s-resources-pod
+        name: grafana-dashboard-k8s-resources-pod
+      - configMap:
+          defaultMode: 420
+          name: grafana-dashboard-heketi</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your dashboard should be available, and persist restarts.</p>
+</div>
+<div class="paragraph">
+<p>Helpful docs
+<a href="https://stackoverflow.com/questions/47691479/listing-all-resources-in-a-namespace" class="bare">https://stackoverflow.com/questions/47691479/listing-all-resources-in-a-namespace</a>
+<a href="https://github.com/kubernetes/kubectl/issues/151#issuecomment-402003022" class="bare">https://github.com/kubernetes/kubectl/issues/151#issuecomment-402003022</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Note that the Service name must match the Endpoint name.
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

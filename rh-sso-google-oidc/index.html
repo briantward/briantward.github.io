@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configure RH-SSO to Identity Broker with Google by Hosted Domain - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Configure RH-SSO to Identity Broker with Google by Hosted Domain" />
+<meta property="og:description" content="Configure RH-SSO to Identity Broker with Google by Hosted Domain In a browser, go to your RH-SSO admin console. This should be your hostname with context /auth/admin, e.g. https://sso.apps.example.com/auth/admin/
+ Login with the username and password you set in your template for fields:
+ SSO_ADMIN_USERNAME=admin SSO_ADMIN_PASSWORD=redacted   First, create a new realm for your OpenShift users. Out of the box, RH-SSO is configured with a master realm, but this should only be used for administration of the RH-SSO server itself." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/rh-sso-google-oidc/" />
+
+
+
+<meta property="article:published_time" content="2018-05-09T12:00:00-04:00"/>
+
+<meta property="article:modified_time" content="2018-05-09T12:00:00-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Configure RH-SSO to Identity Broker with Google by Hosted Domain">
+<meta itemprop="description" content="Configure RH-SSO to Identity Broker with Google by Hosted Domain In a browser, go to your RH-SSO admin console. This should be your hostname with context /auth/admin, e.g. https://sso.apps.example.com/auth/admin/
+ Login with the username and password you set in your template for fields:
+ SSO_ADMIN_USERNAME=admin SSO_ADMIN_PASSWORD=redacted   First, create a new realm for your OpenShift users. Out of the box, RH-SSO is configured with a master realm, but this should only be used for administration of the RH-SSO server itself.">
+
+
+<meta itemprop="datePublished" content="2018-05-09T12:00:00-04:00" />
+<meta itemprop="dateModified" content="2018-05-09T12:00:00-04:00" />
+<meta itemprop="wordCount" content="557">
+
+
+
+<meta itemprop="keywords" content="google,rh-sso,keycloak,ansible,authentication,authorization," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Configure RH-SSO to Identity Broker with Google by Hosted Domain"/>
+<meta name="twitter:description" content="Configure RH-SSO to Identity Broker with Google by Hosted Domain In a browser, go to your RH-SSO admin console. This should be your hostname with context /auth/admin, e.g. https://sso.apps.example.com/auth/admin/
+ Login with the username and password you set in your template for fields:
+ SSO_ADMIN_USERNAME=admin SSO_ADMIN_PASSWORD=redacted   First, create a new realm for your OpenShift users. Out of the box, RH-SSO is configured with a master realm, but this should only be used for administration of the RH-SSO server itself."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-05-09 12:00">2018-05-09</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>Configure RH-SSO to Identity Broker with Google by Hosted Domain</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/google">
+              <span class="hash">#</span>google</a>
+          
+            , 
+            <a href="/tags/rh-sso">
+              <span class="hash">#</span>rh-sso</a>
+          
+            , 
+            <a href="/tags/keycloak">
+              <span class="hash">#</span>keycloak</a>
+          
+            , 
+            <a href="/tags/ansible">
+              <span class="hash">#</span>ansible</a>
+          
+            , 
+            <a href="/tags/authentication">
+              <span class="hash">#</span>authentication</a>
+          
+            , 
+            <a href="/tags/authorization">
+              <span class="hash">#</span>authorization</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_configure_rh_sso_to_identity_broker_with_google_by_hosted_domain">Configure RH-SSO to Identity Broker with Google by Hosted Domain</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In a browser, go to your RH-SSO admin console.  This should be your hostname with context <code>/auth/admin</code>, e.g.
+<a href="https://sso.apps.example.com/auth/admin/" class="bare">https://sso.apps.example.com/auth/admin/</a></p>
+</div>
+<div class="paragraph">
+<p>Login with the username and password you set in your template for fields:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SSO_ADMIN_USERNAME=admin
+SSO_ADMIN_PASSWORD=redacted</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>First, create a new realm for your OpenShift users.  Out of the box, RH-SSO is configured with a master realm,
+but this should only be used for administration of the RH-SSO server itself. Hover over the name "Master" on the left
+menu bar, then click <code>Add Realm</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-001-realms.png" alt="Realms" title="Realms"></span></p>
+</div>
+<div class="paragraph">
+<p>Name your realm something such as <code>ocp</code> and click <code>Create</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-002-add-realm.png" alt="Add Realm" title="Add Realm"></span>
+<span class="image"><img src="/images/rh-sso-ocp/setupgoidc-003-realm-fp.png" alt="Realm Front Page" title="Realm Front Page"></span></p>
+</div>
+<div class="paragraph">
+<p>Click on <code>Identity Providers</code> on the left menu bar.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-004-idp.png" alt="Identity Providers" title="Identity Providers"></span></p>
+</div>
+<div class="paragraph">
+<p>Click the dropdown <code>Add provider&#8230;&#8203;</code> and choose <code>OpenID Connect v1.0</code> from the dropdown.
+Note that there is an easy-setup for Google. Do not use this one, as it
+does not allow you to configure the hosted domain.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-005-add-idp.png" alt="Add Identity Provider" title="Add Identity Provider"></span></p>
+</div>
+<div class="paragraph">
+<p>Note your redirect URI will be needed to configure the Google OIDC client in the Google Cloud Console. Add that now if you haven&#8217;t already done so.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.keycloak.org/docs/3.4/server_admin/index.html#google" class="bare">https://www.keycloak.org/docs/3.4/server_admin/index.html#google</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-006-add-idp-2.png" alt="Add Identity Provider Details" title="Add Identity Provider Details"></span></p>
+</div>
+<div class="paragraph">
+<p>I named mine <code>google-oidc</code>. Enter the following fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alias: google-oidc</p>
+</li>
+<li>
+<p>Display Name: google-oidc</p>
+</li>
+<li>
+<p>Authorization URL: <a href="https://accounts.google.com/o/oauth2/auth?hd=example.com" class="bare">https://accounts.google.com/o/oauth2/auth?hd=example.com</a></p>
+</li>
+<li>
+<p>Token URL: <a href="https://www.googleapis.com/oauth2/v3/token" class="bare">https://www.googleapis.com/oauth2/v3/token</a></p>
+</li>
+<li>
+<p>Disable User Info: Choose ON</p>
+</li>
+<li>
+<p>User Info URL: <a href="https://www.googleapis.com/plus/v1/people/me/openIdConnect" class="bare">https://www.googleapis.com/plus/v1/people/me/openIdConnect</a></p>
+</li>
+<li>
+<p>Client ID: YOUR_GOOGLE_OIDC_CLIENT_ID</p>
+</li>
+<li>
+<p>Client Secret: YOUR_GOOGLE_OIDC_CLIENT_SECRET</p>
+</li>
+<li>
+<p>Default Scopes: openid profile email</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now you need to activate the broker profile you just setup.</p>
+</div>
+<div class="paragraph">
+<p>Click <code>Authentication</code> from the left menu bar.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-007-auth-flow.png" alt="Authentication Flow" title="Authentication Flow"></span></p>
+</div>
+<div class="paragraph">
+<p>On the <code>Flows</code> tab choose from the dropdown menu <code>Browser</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-008-auth-browser.png" alt="Browser Auth Flow" title="Browser Auth Flow"></span></p>
+</div>
+<div class="paragraph">
+<p>Click the <code>copy</code> button on the top right. Name it something like <code>Browser-GoogleIDP</code> and click <code>ok</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-009-auth-new-browser.png" alt="setupgoidc 009 auth new browser"></span></p>
+</div>
+<div class="paragraph">
+<p>You can use the default Browser flow as well, but here we made a new one to preserve the original default and give
+us some flexibility.</p>
+</div>
+<div class="paragraph">
+<p>Since we don&#8217;t want <code>Kerberos</code> or <code>Browser-GoogleIDP Forms</code>, click <code>Actions</code> &gt; <code>Delete</code> for both of them. The former
+works when federating a kerberos/ldap server, which we are not doing here.  The latter would provide a form login
+when Google IDP failed to identify a user.  In our case, all the users in our corporate directory are using Google,
+so we know that&#8217;s the only auth mechanism we want.  Leave the <code>Cookie</code> auth flow in place because that&#8217;s what is responsible
+for the SSO between other apps authenticating with the RH-SSO server that we may add later.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-010-auth-delete-exec.png" alt="setupgoidc 010 auth delete exec"></span>
+<span class="image"><img src="/images/rh-sso-ocp/setupgoidc-011-auth-browser-final.png" alt="setupgoidc 011 auth browser final"></span></p>
+</div>
+<div class="paragraph">
+<p>Now on the <code>Identity Provider Redirector</code> flow, click <code>Actions</code> &gt; <code>Config</code>.  Give it any alias but be sure <code>Default Identity Provider</code>
+matches the identity provider alias you chose in the steps above when creating the OIDC provider.  Click <code>Save</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-012-auth-oidc-config.png" alt="setupgoidc 012 auth oidc config"></span></p>
+</div>
+<div class="paragraph">
+<p>Go back to <code>Authentication Flows</code> or choose <code>Authentication</code> from the left menu bar.  Click on <code>Bindings</code>. Change <code>Browser Flow</code> to
+<code>Browser-GoogleIDP</code> or whatever you named your new flow.  Click <code>Save</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-013-auth-bindings.png" alt="setupgoidc 013 auth bindings"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-014-auth-bindings-new.png" alt="setupgoidc 014 auth bindings new"></span></p>
+</div>
+<div class="paragraph">
+<p>Your RH-SSO server is now configured for your Google authentication.</p>
+</div>
+<div class="paragraph">
+<p>TODO: add a few other good configurations, such as SSL only.</p>
+</div>
+<div class="paragraph">
+<p>Debug Notes:</p>
+</div>
+<div class="paragraph">
+<p>I ran into this issue where OpenShift did not authenticate my user, but rather gave me this "Could not create user." error.
+I came to realize that while I had been deleting the test user in RH-SSO to perform various scenario tests,
+I had failed to delete the user created in OpenShift as well.  If you are deleting and recreating your test user, be sure
+to delete it both from RH-SSO and OpenShift.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc delete user USER_NAME</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://lists.openshift.redhat.com/openshift-archives/users/2016-May/msg00130.html" class="bare">https://lists.openshift.redhat.com/openshift-archives/users/2016-May/msg00130.html</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Google Identity Platform: OpenID Connect: <a href="https://developers.google.com/identity/protocols/OpenIDConnect" class="bare">https://developers.google.com/identity/protocols/OpenIDConnect</a></p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

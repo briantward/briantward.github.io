@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Securing Red Hat JBoss Web Server 3.X - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Securing Red Hat JBoss Web Server 3.X" />
+<meta property="og:description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
+ THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
+   RPM Base Installation  Register your machine if you have not done so.
+``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/jws-secured/" />
+
+
+
+<meta property="article:published_time" content="2017-06-29T12:00:00-04:00"/>
+
+<meta property="article:modified_time" content="2017-06-29T12:00:00-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Securing Red Hat JBoss Web Server 3.X">
+<meta itemprop="description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
+ THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
+   RPM Base Installation  Register your machine if you have not done so.
+``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription">
+
+
+<meta itemprop="datePublished" content="2017-06-29T12:00:00-04:00" />
+<meta itemprop="dateModified" content="2017-06-29T12:00:00-04:00" />
+<meta itemprop="wordCount" content="1463">
+
+
+
+<meta itemprop="keywords" content="jws,ews,jboss,tomcat,apache,red hat,secure,security," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Securing Red Hat JBoss Web Server 3.X"/>
+<meta name="twitter:description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
+ THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
+   RPM Base Installation  Register your machine if you have not done so.
+``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription"/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2017-06-29 12:00">2017-06-29</time> &bull;
+          
+            
+            <a href="/categories/middleware">MIDDLEWARE</a>
+          </p>
+      <h1>Securing Red Hat JBoss Web Server 3.X</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/jws">
+              <span class="hash">#</span>jws</a>
+          
+            , 
+            <a href="/tags/ews">
+              <span class="hash">#</span>ews</a>
+          
+            , 
+            <a href="/tags/jboss">
+              <span class="hash">#</span>jboss</a>
+          
+            , 
+            <a href="/tags/tomcat">
+              <span class="hash">#</span>tomcat</a>
+          
+            , 
+            <a href="/tags/apache">
+              <span class="hash">#</span>apache</a>
+          
+            , 
+            <a href="/tags/red-hat">
+              <span class="hash">#</span>red hat</a>
+          
+            , 
+            <a href="/tags/secure">
+              <span class="hash">#</span>secure</a>
+          
+            , 
+            <a href="/tags/security">
+              <span class="hash">#</span>security</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_securing_red_hat_jboss_web_server_3_x">Securing Red Hat JBoss Web Server 3.X</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(configured on 3.0.3 but should be good for 3.1 as well)</p>
+</div>
+<div class="paragraph">
+<p>THIS CONFIGURATION HAS NOT BEEN TESTED!  THIS IS INTENDED AS A STARTING GUIDE ONLY.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rpm_base_installation">RPM Base Installation</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Register your machine if you have not done so.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# subscription-manager register
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>List the available subscriptions you have.  Look for the Pool ID of your JBoss Web Server subscription</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# subscription-manager list --available
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Attach the correct subscription.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# subscription-manager attach --pool=$POOL_ID
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verify it has been attached</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# subscription-manager list --consumed
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Enable the repo</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# subscription-manager repos --enable=jws-3-for-$RHEL_VERSION-server-rpms
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Install</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# yum groupinstall jws3
+```
+or
+```
+# yum groupinstall jws3plus
+```</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_zip_base_installation">Zip Base Installation</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download zip file from access.redhat.com for your OS.</p>
+</li>
+<li>
+<p>Unzip to secured location of your choice, such as /opt</p>
+</li>
+<li>
+<p>Run post-install script.  This should configure your apache server config files with full
+path filenames based on your choice of installation directory.  It should also configure the
+apache user with /sbin/nologin shell.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+$ sudo ./$APACHE_HOME/.postinstall
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>If the script did not correctly install the user, you've probably done something incredibly wrong.
+If you want to do this part yourself and you don't want absolute URLS in your configs:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+$ sudo groupadd -g 48 -r apache
+$ sudo useradd -c "Apache" -u 48 -g apache -s /sbin/nologin -r apache
+$ sudo chown -R apache:apache httpd
+$ sudo passwd -l apache
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Lock out the apache user.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+$ sudo passwd -l apache
+```</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_the_server_base_installation">Test the server base installation.</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a test file index.html in $WWW_ROOT:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+&lt;html&gt;
+&lt;body&gt;
+test
+&lt;/body&gt;
+&lt;/html&gt;
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the server.  It defaults on port 80, so you must use the root account to start it.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+$ sudo ./sbin/apachectl start
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Test it.  Be sure this returns the above index.html data.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+$ curl http://localhost:80
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Stop the server.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+$ sudo ./sbin/apachectl stop
+```</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_start_securing_it">Start securing it.</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Backup config files for reference.  Remove them for production use.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+$ cp -Ra config config.backup
+$ cp -Ra config.d config.d.backup
+$ cp -Ra confg.modules.d config.modules.d.backup
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change the following existing directives in httpd.conf:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# CIS 8.1 Set ServerToken to 'Prod'
+ServerTokens Prod
+```
+```
+# CIS 9.1
+Timeout 10
+```
+```
+# CIS 9.2
+KeepAlive On
+```
+```
+# CIS 5.13 Restrict Listen Directive
+Listen 127.0.0.1:8080
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+ServerName localhost:8080
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+DirectoryIndex index.html
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+&lt;Directory "ANY"&gt;
+...
+Options None
+...
+&lt;/Directory&gt;
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# CIS 8.2 Set ServerSignature to 'Off'
+ServerSignature Off
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the following directives:</p>
+<div class="literalblock">
+<div class="content">
+<pre>Near the beginning of the file, where other server-level configs are placed:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# CIS 5.8 Disable HTTP TRACE Method
+TraceEnable Off
+```
+```
+# CIS 10.1
+LimitRequestLine 512
+```
+```
+# CIS 10.2
+LimitRequestFields 100
+```
+```
+# CIS 10.3
+LimitRequestFieldsize 1024
+```
+```
+# CIS 10.4
+LimitRequestBody 102400
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Below Includeconf.modules.d/\*.conf line add the following:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+Include conf.modules.d/*.conf
+...
+# CIS 5.9 Restrict HTTP Protocol Versions
+# (currently non 1.1, but could be altered to refuse 1.0 but allow 1.1+ in
+# preparation for HTTP 2.0)
+RewriteEngine On
+RewriteCond %{THE_REQUEST} !HTTP/1\.1$
+RewriteRule .* - [F]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 5.12 Deny IP Address Based Requests
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteCond %{REQUEST_URI} !^/error [NC]
+RewriteRule ^.(.*) - [L,F]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 5.14 Restrict Browser Frames
+Header always append X-Frame-Options SAMEORIGIN
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+&lt;Directory "/opt/jws/jws-3.0/httpd/www/html"&gt;
+...
+# CIS 5.7 Limit HTTP Request Methods</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>    AllowMethods GET POST OPTIONS
+...
+&lt;/Directory&gt;
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# CIS 5.11 Restrict File Extensions
+&lt;FilesMatch "^.*\..*$"&gt;
+    Require all denied
+&lt;/FilesMatch&gt;</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;FilesMatch "^.*\.(css|html?|js|pdf|txt|xml|xsl|gif|ico|jpe?g|png)$"&gt;
+    Require all granted
+&lt;/FilesMatch&gt;
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>These directives stay the same.  You may want to comment that they are CIS specs and should not be changed.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# CIS 9.3
+MaxKeepAliveRequests 100
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# CIS 9.4
+KeepAliveTimeout 15
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# CIS 3.1 Run the Apache Web Server as a non-root user
+User apache
+Group apache
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# CIS 9.5, 9.6
+&lt;IfModule reqtimeout_module&gt;
+  RequestReadTimeout header=20-40,MinRate=500 body=20,MinRate=500
+&lt;/IfModule&gt;
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Comment out the following sections:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The settings for providing icon images, which won&#8217;t be needed because auto-indexing will be turned off.</p>
+</li>
+<li>
+<p>The WebDAV settings, which won&#8217;t be activated anyways because we will turn off the module.</p>
+</li>
+<li>
+<p>The CGI bin settings and ScriptAlias, because we won&#8217;t be using it.</p>
+</li>
+<li>
+<p>The IndexOptions, which won&#8217;t be needed because auto-indexing will be turned off.</p>
+</li>
+<li>
+<p>The settings for AddIconByEncoding, AddIconByType, AddIcon, DefaultIcon, ReadmeName, HeaderName, and IndexIgnore, which won&#8217;t be needed because auto-indexing will be turned off.</p>
+</li>
+<li>
+<p>The Alias for error and the settings for the error page by language, because this feature requires Server Side Includes which will be disabled.</p>
+</li>
+<li>
+<p>IncludeOptional directive, which disables all subconfigs. Reenable if any are needed and be sure to comment out ones you don&#8217;t want.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Comment out all the files in conf.d.  Even though we have commented out the IncludeOptional line in httpd.conf, we may want to add some features back, sometime in the future.  Doing this proactively means nothing else gets turned on by accident.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>manual.conf</p>
+</li>
+<li>
+<p>mod_cluster.conf</p>
+</li>
+<li>
+<p>proxy_ajp.conf</p>
+</li>
+<li>
+<p>ssl.conf</p>
+</li>
+<li>
+<p>userdir.conf</p>
+</li>
+<li>
+<p>welcome.conf</p>
+<div class="literalblock">
+<div class="content">
+<pre>Note that SSL is disabled here.  Configuring SSL is not in the scope of this document, at this time.  The assumption here is that SSL has been offloaded by a load balancer and this httpd host is in a secured subnet.  Also be aware that this burnt some companies in the past who had private data lines between subnets and thought their traffic was secured.</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In conf.modules.d folder, comment out all lines of the below files.  Do not delete or rename the files, as during an RPM upgrade they would simply be replaced.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>00-dav.conf</p>
+</li>
+<li>
+<p>00-proxy.conf</p>
+</li>
+<li>
+<p>00-proxyhtml.conf</p>
+</li>
+<li>
+<p>00-ssl.conf</p>
+</li>
+<li>
+<p>01-cgi.conf</p>
+</li>
+<li>
+<p>01-ldap.conf</p>
+</li>
+<li>
+<p>01-session.conf</p>
+</li>
+<li>
+<p>10-auth_kerb.conf</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>That should leave two more files in conf.modules.d:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>00-base.conf, comment out&#8230;&#8203;</p>
+<div class="literalblock">
+<div class="content">
+<pre>```
+# This provides use of Order, Allow, Deny syntax from apache 2.2.  Disable for new servers using
+# # Require syntax from mod_authz_host
+#LoadModule access_compat_module modules/mod_access_compat.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># Disable CGI Actions, unless specifically needed
+#LoadModule actions_module modules/mod_actions.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># After removing any default Alias entries, remove this module unless you specifically need it
+#LoadModule alias_module modules/mod_alias.so
+```
+```
+# These are for header based authentication, disable unless specifically needed
+#LoadModule auth_basic_module modules/mod_auth_basic.so
+#LoadModule auth_digest_module modules/mod_auth_digest.so
+#LoadModule authn_anon_module modules/mod_authn_anon.so
+#LoadModule authn_core_module modules/mod_authn_core.so
+#LoadModule authn_dbd_module modules/mod_authn_dbd.so
+#LoadModule authn_dbm_module modules/mod_authn_dbm.so
+#LoadModule authn_file_module modules/mod_authn_file.so
+#LoadModule authn_socache_module modules/mod_authn_socache.so
+```
+```
+# These are for database backed auth, disable unless specifically needed
+#LoadModule authz_dbd_module modules/mod_authz_dbd.so
+#LoadModule authz_dbm_module modules/mod_authz_dbm.so
+```
+```
+# CIS 2.5 Disable Autoindex module (after removing any specific configurations)
+#LoadModule autoindex_module modules/mod_autoindex.so
+```
+```
+# This is used for CGI Scripts
+#LoadModule env_module modules/mod_env.so
+```
+```
+# This is used for Server Side Includes
+#LoadModule include_module modules/mod_include.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 2.8 Disable Info module (after removing any specific configurations)
+#LoadModule info_module modules/mod_info.so
+```
+```
+# This is used mostly for proxy configs
+#LoadModule remoteip_module modules/mod_remoteip.so
+```
+```
+# CIS 2.4 Disable Status modules (after removing any specific configuration)
+#LoadModule status_module modules/mod_status.so
+```
+```
+# This is used for CGI Scripts
+#LoadModule suexec_module modules/mod_suexec.so
+```
+```
+# CIS 2.7 Disable User Directories module
+#LoadModule userdir_module modules/mod_userdir.so
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>00-mpm.conf
+Leave this one as-is, or comment out the MPM module you are not using.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_notes">Notes</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>This installation uses port 8080. You may change this to any non-root based port and you will never need to specify root level access on any folders, nor will you need to run apache as root.  The CIS specifications recommend root ownership of certain files, but this is not needed when apache is not run on port 80.  Using an external facing load balancer as a reverse proxy, placed in front of your apache node(s), you will not need to install apache or run apache as root.  This is safer, as the apache admin role can be separate from the system admin role.  In addition, the reverse proxy can offload SSL, speeding up the apache performance.</p>
+</li>
+<li>
+<p>This installation removes a lot of basic features, such as language-based error pages, cgi-bin, and auto-indexing.  Some of these features do not need to be turned off to meet CIS specifications, but they are done here to simplify the server as much as possible.  Add back in what you may need and be sure to review any CIS specifications for the file permissions where needed (e.g. cgi-bin location and files).  We assume that most companies would want to customize these pages anyways, and do it in some proprietary way, probably without the use of Server Side Includes.  If you want that behavior just turn it back on and note that SSI is old technology.</p>
+</li>
+<li>
+<p>CGI-BIN was disabled.  Again, we assume that most web-sites will not be implementing this older technology.</p>
+</li>
+<li>
+<p>Authenitcation modules were disabled under the assumption that some other mechanism would be responsible for handling that.  Enable them if you need them.</p>
+</li>
+<li>
+<p>Apache works great as a reverse proxy too.  That is not covered here, and all proxy modules have been disabled.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

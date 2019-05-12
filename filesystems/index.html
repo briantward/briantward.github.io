@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Helpful Filesystem Tips - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Helpful Filesystem Tips" />
+<meta property="og:description" content="Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
+# tune2fs -m 0 /dev/sdb1     print UUID of filesystems
+# blkid     remount a readonly filesystem to rewrite
+# mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/filesystems/" />
+
+
+
+<meta property="article:published_time" content="2018-05-21T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-05-21T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Helpful Filesystem Tips">
+<meta itemprop="description" content="Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
+# tune2fs -m 0 /dev/sdb1     print UUID of filesystems
+# blkid     remount a readonly filesystem to rewrite
+# mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)">
+
+
+<meta itemprop="datePublished" content="2018-05-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-05-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="116">
+
+
+
+<meta itemprop="keywords" content="tips,filesystems,tune2fs,mount,kill,umount,blkid," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Helpful Filesystem Tips"/>
+<meta name="twitter:description" content="Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
+# tune2fs -m 0 /dev/sdb1     print UUID of filesystems
+# blkid     remount a readonly filesystem to rewrite
+# mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)"/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-05-21 12:00">2018-05-21</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          </p>
+      <h1>Helpful Filesystem Tips</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/tips">
+              <span class="hash">#</span>tips</a>
+          
+            , 
+            <a href="/tags/filesystems">
+              <span class="hash">#</span>filesystems</a>
+          
+            , 
+            <a href="/tags/tune2fs">
+              <span class="hash">#</span>tune2fs</a>
+          
+            , 
+            <a href="/tags/mount">
+              <span class="hash">#</span>mount</a>
+          
+            , 
+            <a href="/tags/kill">
+              <span class="hash">#</span>kill</a>
+          
+            , 
+            <a href="/tags/umount">
+              <span class="hash">#</span>umount</a>
+          
+            , 
+            <a href="/tags/blkid">
+              <span class="hash">#</span>blkid</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_helpful_filesystem_tips">Helpful Filesystem Tips</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>change reserved space on ext4 partitions to zero.  Useful for drives specifically for data storage and no system recovery needed.</p>
+<div class="literalblock">
+<div class="content">
+<pre># tune2fs -m 0 /dev/sdb1</pre>
+</div>
+</div>
+</li>
+<li>
+<p>print UUID of filesystems</p>
+<div class="literalblock">
+<div class="content">
+<pre># blkid</pre>
+</div>
+</div>
+</li>
+<li>
+<p>remount a readonly filesystem to rewrite</p>
+<div class="literalblock">
+<div class="content">
+<pre># mount -o remount,rw /</pre>
+</div>
+</div>
+</li>
+<li>
+<p>watch the status of dd (useful on systems without "status=progress", like Mac I think)</p>
+<div class="literalblock">
+<div class="content">
+<pre># kill -USR1 $(pgrep ^dd)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>lazy unmount an NFS mount that no longer exists on the network, if it&#8217;s hung</p>
+<div class="literalblock">
+<div class="content">
+<pre># umount -l /media/bosch</pre>
+</div>
+</div>
+</li>
+<li>
+<p>fill entire disk with one partition, using optimized sector allocation</p>
+<div class="literalblock">
+<div class="content">
+<pre># parted /dev/sdb mkpart primary 0% 100%</pre>
+</div>
+</div>
+</li>
+<li>
+<p>format disk partition</p>
+<div class="literalblock">
+<div class="content">
+<pre># mkfs -t ext4 /dev/sdb1</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Links used for reference:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://thornelabs.net/2016/06/04/parted-commands-cheat-sheet.html" class="bare">https://thornelabs.net/2016/06/04/parted-commands-cheat-sheet.html</a></p>
+</li>
+<li>
+<p><a href="https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/" class="bare">https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/</a></p>
+</li>
+<li>
+<p><a href="http://people.redhat.com/msnitzer/docs/io-limits.txt" class="bare">http://people.redhat.com/msnitzer/docs/io-limits.txt</a></p>
+</li>
+<li>
+<p><a href="https://www.gnu.org/software/parted/manual/parted.html" class="bare">https://www.gnu.org/software/parted/manual/parted.html</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

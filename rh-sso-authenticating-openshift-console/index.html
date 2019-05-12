@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authenticate Openshift Console with RH-SSO - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Authenticate Openshift Console with RH-SSO" />
+<meta property="og:description" content="Authenticate Openshift Console with RH-SSO Install based on OpenShift 3.7. Will probably work on other similar versions.
+ Be aware of default permissions on your platform.
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/user_role_mgmt.html#determine-default-user-roles
+   Be aware of the implications of using Google as an Identity Broker.
+ Master and Node Configuration:
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/master_node_config.htmli
+   Here is a great step-by-step example workflow in Red Hat official documentation:
+   https://access." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/rh-sso-authenticating-openshift-console/" />
+
+
+
+<meta property="article:published_time" content="2018-05-09T12:00:00-04:00"/>
+
+<meta property="article:modified_time" content="2018-05-09T12:00:00-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Authenticate Openshift Console with RH-SSO">
+<meta itemprop="description" content="Authenticate Openshift Console with RH-SSO Install based on OpenShift 3.7. Will probably work on other similar versions.
+ Be aware of default permissions on your platform.
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/user_role_mgmt.html#determine-default-user-roles
+   Be aware of the implications of using Google as an Identity Broker.
+ Master and Node Configuration:
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/master_node_config.htmli
+   Here is a great step-by-step example workflow in Red Hat official documentation:
+   https://access.">
+
+
+<meta itemprop="datePublished" content="2018-05-09T12:00:00-04:00" />
+<meta itemprop="dateModified" content="2018-05-09T12:00:00-04:00" />
+<meta itemprop="wordCount" content="335">
+
+
+
+<meta itemprop="keywords" content="google,rh-sso,keycloak,ansible,authentication,authorization," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Authenticate Openshift Console with RH-SSO"/>
+<meta name="twitter:description" content="Authenticate Openshift Console with RH-SSO Install based on OpenShift 3.7. Will probably work on other similar versions.
+ Be aware of default permissions on your platform.
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/user_role_mgmt.html#determine-default-user-roles
+   Be aware of the implications of using Google as an Identity Broker.
+ Master and Node Configuration:
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/master_node_config.htmli
+   Here is a great step-by-step example workflow in Red Hat official documentation:
+   https://access."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-05-09 12:00">2018-05-09</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>Authenticate Openshift Console with RH-SSO</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/google">
+              <span class="hash">#</span>google</a>
+          
+            , 
+            <a href="/tags/rh-sso">
+              <span class="hash">#</span>rh-sso</a>
+          
+            , 
+            <a href="/tags/keycloak">
+              <span class="hash">#</span>keycloak</a>
+          
+            , 
+            <a href="/tags/ansible">
+              <span class="hash">#</span>ansible</a>
+          
+            , 
+            <a href="/tags/authentication">
+              <span class="hash">#</span>authentication</a>
+          
+            , 
+            <a href="/tags/authorization">
+              <span class="hash">#</span>authorization</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_authenticate_openshift_console_with_rh_sso">Authenticate Openshift Console with RH-SSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Install based on OpenShift 3.7.  Will probably work on other similar versions.</p>
+</div>
+<div class="paragraph">
+<p>Be aware of default permissions on your platform.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.openshift.com/container-platform/3.7/admin_solutions/user_role_mgmt.html#determine-default-user-roles" class="bare">https://docs.openshift.com/container-platform/3.7/admin_solutions/user_role_mgmt.html#determine-default-user-roles</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Be aware of the implications of using Google as an Identity Broker.</p>
+</div>
+<div class="paragraph">
+<p>Master and Node Configuration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.openshift.com/container-platform/3.7/admin_solutions/master_node_config.htmli" class="bare">https://docs.openshift.com/container-platform/3.7/admin_solutions/master_node_config.htmli</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is a great step-by-step example workflow in Red Hat official documentation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.2/html/red_hat_single_sign-on_for_openshift/tutorials#OSE-SSO-AUTH-TUTE" class="bare">https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.2/html/red_hat_single_sign-on_for_openshift/tutorials#OSE-SSO-AUTH-TUTE</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.2/html/red_hat_single_sign-on_for_openshift/tutorials#configuring_openshift_master_for_red_hat_single_sign_on_authentication" class="bare">https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.2/html/red_hat_single_sign-on_for_openshift/tutorials#configuring_openshift_master_for_red_hat_single_sign_on_authentication</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Edit <code>/etc/origin/master/master-config.yaml</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>identityProviders:
+- challenge: true
+  login: true
+  name: htpasswd_auth
+  provider:
+    apiVersion: v1
+    file: /etc/origin/openshift-passwd
+    kind: HTPasswdPasswordIdentityProvider
+- name: rh_sso
+  challenge: false
+  login: true
+  mappingInfo: add
+  provider:
+    apiVersion: v1
+    kind: OpenIDIdentityProvider
+    clientID: openshift-demo
+    clientSecret: 7b0384a2-b832-16c5-9d73-2957842e89h7
+    ca: xpaas.crt
+    urls:
+      authorize: https://secure-sso-sso-app-demo.openshift32.example.com/auth/realms/OpenShift/protocol/openid-connect/auth
+      token: https://secure-sso-sso-app-demo.openshift32.example.com/auth/realms/OpenShift/protocol/openid-connect/token
+      userInfo: https://secure-sso-sso-app-demo.openshift32.example.com/auth/realms/OpenShift/protocol/openid-connect/userinfo
+    claims:
+      id:
+      - sub
+      preferredUsername:
+      - preferred_username
+      name:
+      - name
+      email:
+      - email</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above link is a great resource for modifying your OpenShift cluster if you did a basic install and you want
+to manually update all your master nodes.  But that&#8217;s just silly.  I hope you performed the advanced install
+with ansible.  In that event, you will need an entry in your inventory file such as the below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># OpenID auth
+#openshift_master_identity_providers=[{"name": "openid_auth", "login": "true", "challenge": "false", "kind": "OpenIDIdentityProvider", "client_id": "my_client_id", "client_secret": "my_client_secret", "claims": {"id": ["sub"], "preferredUsername": ["preferred_username"], "name": ["name"], "email": ["email"]}, "urls": {"authorize": "https://myidp.example.com/oauth2/authorize", "token": "https://myidp.example.com/oauth2/token"}, "ca": "my-openid-ca-bundle.crt"}]
+
+# OpenID auth
+openshift_master_identity_providers=[{"name": "rh-sso", "login": "true", "challenge": "false", "kind": "OpenIDIdentityProvider", "client_id": "ocp", "client_secret": "SOME_SECRET_CODE", "claims": {"id": ["sub"], "preferredUsername": ["preferred_username"], "name": ["name"], "email": ["email"]}, "urls": {"authorize": "https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/auth", "token": "https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/token", "userInfo": "https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/userinfo"}, "ca": "ocp-sso.pem"}]
+
+#
+# Configure OpenID CA certificate
+# Specify either the ASCII contents of the certificate or the path to
+# the local file that will be copied to the remote host. CA
+# certificate contents will be copied to master systems and saved
+# within /etc/origin/master/ with a filename matching the "ca" key set
+# within the OpenIDIdentityProvider.
+#
+openshift_master_openid_ca=INSERT_CA_ONE_LINE_OR_PATH_HERE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Did you recall where you wrote out your pem file to a one-liner?  This is where it is useful.  You can use the one-liner to set a value for <code>openshift_master_openid_ca</code></p>
+</div>
+<div class="paragraph">
+<p>Now re-run your ansible playbook.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ ansible-playbook -i inventory-file playbooks/byo/openshift-master/config.yml</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

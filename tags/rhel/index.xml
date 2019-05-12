@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rhel on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/rhel/</link>
+    <description>Recent content in Rhel on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/rhel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Performance and Benchmarking</title>
+        <link>https://btw-blog.apps.opencontainer.io/performance-and-benchmarking/</link>
+        <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/performance-and-benchmarking/</guid>
+        <description>Performance and Benchmarking Are there any benchmarking and performance testing tools available in Red Hat Enterprise Linux?
+   </description>
+      </item>
+    
+      <item>
+        <title>Java on RHEL / Centos / Fedora</title>
+        <link>https://btw-blog.apps.opencontainer.io/java-on-rhel/</link>
+        <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/java-on-rhel/</guid>
+        <description>Java on RHEL / Centos / Fedora $ ls -lah /usr/lib/jvm total 20K drwxr-xr-x. 5 root root 4.0K Jul 30 09:56 . dr-xr-xr-x. 51 root root 4.0K Jul 20 12:02 .. lrwxrwxrwx. 1 root root 26 Jul 30 09:56 java -&amp;gt; /etc/alternatives/java_sdk lrwxrwxrwx. 1 root root 32 Jul 30 09:56 java-1.8.0 -&amp;gt; /etc/alternatives/java_sdk_1.8.0 lrwxrwxrwx. 1 root root 40 Jul 30 09:56 java-1.8.0-openjdk -&amp;gt; /etc/alternatives/java_sdk_1.8.0_openjdk drwxr-xr-x. 3 root root 4.0K Mar 29 10:21 java-1.</description>
+      </item>
+    
+      <item>
+        <title>Attach a Specific Subscription Pool to a RHEL Machine</title>
+        <link>https://btw-blog.apps.opencontainer.io/rhel-subscription-manager-pool-id/</link>
+        <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rhel-subscription-manager-pool-id/</guid>
+        <description>Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1)     </description>
+      </item>
+    
+  </channel>
+</rss>

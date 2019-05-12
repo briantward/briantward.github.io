@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>List of posts on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/posts/</link>
+    <description>Recent content in List of posts on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Regex Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/regex-tips/</link>
+        <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/regex-tips/</guid>
+        <description>Regex Tips Grab content across lines:
+ ((.|\n)*)   My favorite tester:
+   https://regex101.com/
+     </description>
+      </item>
+    
+      <item>
+        <title>Restore Files from rm</title>
+        <link>https://btw-blog.apps.opencontainer.io/restore-files-from-rm/</link>
+        <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/restore-files-from-rm/</guid>
+        <description>Restore files from rm I wanted to type:
+ $ rm *.retry   Instead I accidentally typed:
+ $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&amp;#8217;t more. I was lucky I didn&amp;#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.</description>
+      </item>
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/bash-tips/</link>
+        <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/bash-tips/</guid>
+        <description>Command Tips watch &#39;command | othertool | yet-another-tool&#39;
+ https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+   </description>
+      </item>
+    
+      <item>
+        <title>Red Hat Virtualization Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/rhv-tips/</link>
+        <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rhv-tips/</guid>
+        <description>Red Hat Virtualization Tips Set up a user who can run virsh list --all
+ saslpasswd2 -a libvirt username     </description>
+      </item>
+    
+      <item>
+        <title>Configuring an External Heketi Prometheus Monitor on OpenShift</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-prometheus-external-heketi/</link>
+        <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-prometheus-external-heketi/</guid>
+        <description>Configuring an External Heketi Prometheus Monitor on OpenShift Kudos goes to Ido Braunstain at devops.college for doing this on a raw Kubernetes cluster to monitor a GPU node. I adapted my information from his article to apply to monitoring both heketi and my external gluster nodes.
+ Install the node-exporter on the external host First install docker to run the node-exporter container. You may want to consider configuring other docker options.</description>
+      </item>
+    
+      <item>
+        <title>Lenovo Intel i915 Video Drivers in Linux, Part 2</title>
+        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video-part2/</link>
+        <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video-part2/</guid>
+        <description>Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &amp;#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
+      </item>
+    
+      <item>
+        <title>Image Video Metadata</title>
+        <link>https://btw-blog.apps.opencontainer.io/image-video-metadata/</link>
+        <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/image-video-metadata/</guid>
+        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&amp;#8217;t give you a lot of customization options. We couldn&amp;#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
+      </item>
+    
+      <item>
+        <title>Ansible Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/ansible-tips/</link>
+        <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/ansible-tips/</guid>
+        <description>Ansible Tips Print to stout and log at same time&amp;#8230;&amp;#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&amp;#8230;&amp;#8203; this one cleans up your journals&amp;#8230;&amp;#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      </description>
+      </item>
+    
+      <item>
+        <title>OpenShift Remove Stuck ServiceInstance</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-remove-stuck-serviceinstance/</link>
+        <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-remove-stuck-serviceinstance/</guid>
+        <description>OpenShift Remove Stuck ServiceInstance To delete a stuck serviceinstance where a project namespace no longer exists:
+ $ oc get serviceinstance --all-namespaces -o wide NAMESPACE NAME CLASS PLAN STATUS AGE test cakephp-mysql-example-vfzkq ClusterServiceClass/cakephp-mysql-example default Failed 113d test cakephp-mysql-persistent-f75gl ClusterServiceClass/cakephp-mysql-persistent default Failed 113d webconsole-extensions httpd-example-6fxx5 ClusterServiceClass/httpd-example default DeprovisionCallFailed 10d    Create the project namespace again
+$ oc new-project test     Now delete the serviceinstance
+$ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that doesn&amp;#8217;t delete it, then remove the finalizer</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Reissue Certificate Manually</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-reissue-certificate-manually/</link>
+        <pubDate>Fri, 14 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-reissue-certificate-manually/</guid>
+        <description>OpenShift Reissue Certificate Manually I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps). In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router.</description>
+      </item>
+    
+      <item>
+        <title>Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift</title>
+        <link>https://btw-blog.apps.opencontainer.io/memory-in-openshift/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/memory-in-openshift/</guid>
+        <description>Work In Progress
+   Linux top
+ VIRT RES SHR free used buff/cache avail Mem
+   cgroups Cgroups reports a bunch of memory stats:
+ &amp;lt;examples&amp;gt;
+ The cgroups kernel team still thinks the best calculation for memory usage would be RSS+CACHE(+SWAP) values in memory.stat [3]. Also note that RSS here is not the same as RES on top as explained at the bottom of section 5.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift HTTPD loglevel</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-httpd-loglevel/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-httpd-loglevel/</guid>
+        <description>OpenShift HTTPD loglevel OpenShift comes with a container image packaged from this source. To make further configuration changes check the documentation here.
+ https://github.com/sclorg/httpd-container
+  Create a configmap to mount a log.conf file that contains your apache loglevel configuration. Be sure to update &amp;lt;PROJECT_NAMESPACE&amp;gt; below before running this command.
+   echo &#39;apiVersion: v1 data: log.conf: | LogLevel debug ErrorLog /dev/stdout TransferLog /dev/stdout&#39; kind: ConfigMap metadata: name: logfile namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -    Update your deploymentConfig.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Project Backup and Migration Strategies</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</guid>
+        <description>OpenShift Project Backup and Migration Strategies Work In Progress
+ export
+ secret bc is dc service route pv pvc
+ remove (cinder) annotations for pv and pvc because it checks them
+ replicate storage backend in new snapshot
+   </description>
+      </item>
+    
+      <item>
+        <title>OpenShift Prometheus Node Exporter CrashLoop</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-prometheus-node-exporter-crashloop/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-prometheus-node-exporter-crashloop/</guid>
+        <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&amp;#8217;ve only seen it once, we just kill the process holding the port open from the node itself.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Update Router Fix</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-update-router-fix/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-update-router-fix/</guid>
+        <description>OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
+ Log message on router pod attempting to spin up. If you don&amp;#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
+      </item>
+    
+      <item>
+        <title>Terminal to File Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/terminal-to-file/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/terminal-to-file/</guid>
+        <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -     </description>
+      </item>
+    
+      <item>
+        <title>Migrate OpenShift PersistentVolumes from One Cluster to Another</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-migrate-pv/</link>
+        <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-migrate-pv/</guid>
+        <description>Migrate OpenShift PersistentVolumes from One Cluster to Another Work In Progress!
+ $ oc get pv mypvid -o yaml --export &amp;gt; mypv.yaml $ oc get pvc mypvcid -o yaml --export &amp;gt; mypvc.yaml   Remove all annotations and instance identifiers. If you leave them in place, you may get an error stating the PVC is lost.
+ Verify that all SecurityContextContstraints are the same between each cluster and project environment, otherwise you may fail to gain ownership of the volume.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Web Console Extensions</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-web-console-extensions/</link>
+        <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-web-console-extensions/</guid>
+        <description>OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
+Applicable Environment: OpenShift 3.9+
+ As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
+ In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files.</description>
+      </item>
+    
+      <item>
+        <title>Automatically Update Red Hat Container Images on OpenShift 3.11</title>
+        <link>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-311/</link>
+        <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-311/</guid>
+        <description>Automatically Update Red Hat Container Images on OpenShift 3.11 OpenShift manages container images using a registry. This is the place where it caches upstream container images and stores the images from your own builds as well. Each build or container image correlates to an ImageStream, which is an object that defines any number of related images by tags. For example, one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Image Management</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-image-management/</link>
+        <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-image-management/</guid>
+        <description>OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 + 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&amp;lt;none&amp;gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.</description>
+      </item>
+    
+      <item>
+        <title>Performance and Benchmarking</title>
+        <link>https://btw-blog.apps.opencontainer.io/performance-and-benchmarking/</link>
+        <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/performance-and-benchmarking/</guid>
+        <description>Performance and Benchmarking Are there any benchmarking and performance testing tools available in Red Hat Enterprise Linux?
+   </description>
+      </item>
+    
+      <item>
+        <title>SSH Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/ssh-tips/</link>
+        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/ssh-tips/</guid>
+        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;      </description>
+      </item>
+    
+      <item>
+        <title>oc Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/oc-tips/</link>
+        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     </description>
+      </item>
+    
+      <item>
+        <title>Java on RHEL / Centos / Fedora</title>
+        <link>https://btw-blog.apps.opencontainer.io/java-on-rhel/</link>
+        <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/java-on-rhel/</guid>
+        <description>Java on RHEL / Centos / Fedora $ ls -lah /usr/lib/jvm total 20K drwxr-xr-x. 5 root root 4.0K Jul 30 09:56 . dr-xr-xr-x. 51 root root 4.0K Jul 20 12:02 .. lrwxrwxrwx. 1 root root 26 Jul 30 09:56 java -&amp;gt; /etc/alternatives/java_sdk lrwxrwxrwx. 1 root root 32 Jul 30 09:56 java-1.8.0 -&amp;gt; /etc/alternatives/java_sdk_1.8.0 lrwxrwxrwx. 1 root root 40 Jul 30 09:56 java-1.8.0-openjdk -&amp;gt; /etc/alternatives/java_sdk_1.8.0_openjdk drwxr-xr-x. 3 root root 4.0K Mar 29 10:21 java-1.</description>
+      </item>
+    
+      <item>
+        <title>Gnome Session</title>
+        <link>https://btw-blog.apps.opencontainer.io/gnome-session/</link>
+        <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/gnome-session/</guid>
+        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+  Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store.</description>
+      </item>
+    
+      <item>
+        <title>YUM DNF Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/yum-dnf-tips/</link>
+        <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/yum-dnf-tips/</guid>
+        <description>YUM and DNF Tips Remove all cache $ rm -rf /var/cache/yum      </description>
+      </item>
+    
+      <item>
+        <title>Import Images with dockerImageRepository</title>
+        <link>https://btw-blog.apps.opencontainer.io/import-images-with-dockerimagerepository/</link>
+        <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/import-images-with-dockerimagerepository/</guid>
+        <description>Import Images with dockerImageRepository $ echo &#39;apiVersion: v1 &amp;gt; kind: ImageStream &amp;gt; metadata: &amp;gt; creationTimestamp: null &amp;gt; generation: 2 &amp;gt; labels: &amp;gt; build: is-test &amp;gt; name: jenkins-slave-base-centos7 &amp;gt; spec: &amp;gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&#39; | oc apply -f- imagestream &#34;jenkins-slave-base-centos7&#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;ImageStream&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;creationTimestamp&#34;:null,&#34;generation&#34;:2,&#34;labels&#34;:{&#34;build&#34;:&#34;is-test&#34;},&#34;name&#34;:&#34;jenkins-slave-base-centos7&#34;,&#34;namespace&#34;:&#34;sbx-esauer&#34;},&#34;spec&#34;:{&#34;dockerImageRepository&#34;:&#34;docker.io/openshift/jenkins-slave-base-centos7&#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker.</description>
+      </item>
+    
+      <item>
+        <title>Sync Red Hat Container Images on OpenShift 3.9</title>
+        <link>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-39/</link>
+        <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-39/</guid>
+        <description>Sync Red Hat Container Images on OpenShift 3.9 If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples [1] in your cluster (or using the default which is true), you will find that the ansible installer adds some nice stuff to your local registry from the openshift_examples [2] folder.
+ $ oc get is -n openshift NAME DOCKER REPO TAGS UPDATED imagestreams/eap71-openshift docker-registry.default.svc:5000/openshift/eap71-openshift latest 3 months ago imagestreams/httpd docker-registry.</description>
+      </item>
+    
+      <item>
+        <title>Attach a Specific Subscription Pool to a RHEL Machine</title>
+        <link>https://btw-blog.apps.opencontainer.io/rhel-subscription-manager-pool-id/</link>
+        <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rhel-subscription-manager-pool-id/</guid>
+        <description>Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1)     </description>
+      </item>
+    
+      <item>
+        <title>Configure Dell PowerConnect PC5324</title>
+        <link>https://btw-blog.apps.opencontainer.io/configure-dell-powerconnect-pc5324/</link>
+        <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/configure-dell-powerconnect-pc5324/</guid>
+        <description>Configure Dell PowerConnect PC5324 Followed help from these sites   https://www.stevejenkins.com/blog/2011/05/dell-powerconnect-5324-setup-tasks/
+  http://ninjix.blogspot.com/2013/03/dell-powerconnect-serial-console-on.html
+    Tools to connect to console Minicom
+   can be a problem if the env variable TERM is not set correctly.
+  hit enter. then cntl-A then q then enter to exit minicom.
+   screen
+   Use the screen quit command (normally ctrl-A \).
+    Steps taken  Downloaded latest firmware</description>
+      </item>
+    
+      <item>
+        <title>Git Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/git/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/git/</guid>
+        <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
+$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;        </description>
+      </item>
+    
+      <item>
+        <title>Helpful Filesystem Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/filesystems/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/filesystems/</guid>
+        <description>Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
+# tune2fs -m 0 /dev/sdb1     print UUID of filesystems
+# blkid     remount a readonly filesystem to rewrite
+# mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)</description>
+      </item>
+    
+      <item>
+        <title>Lenovo Linux Power Configuration T460s</title>
+        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-power/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-power/</guid>
+        <description>Lenovo Linux Power Configuration T460s /etc/UPower/UPower.conf CriticalPowerAction=Hibernate
+   </description>
+      </item>
+    
+      <item>
+        <title>Let&#39;s Encrypt on OpenShift</title>
+        <link>https://btw-blog.apps.opencontainer.io/lets-encrypt-on-openshift/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lets-encrypt-on-openshift/</guid>
+        <description>Let&amp;#8217;s Encrypt on OpenShift Updated OS on load balancer
+ # wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm # yum install epel-release-latest-7.noarch.rpm   Uses python:
+   https://www.redpill-linpro.com/sysadvent/2017/12/15/letsencrypt-on-openshift.html
+  https://certbot.eff.org/about/
+   Uses bash: - https://blog.openshift.com/lets-encrypt-acme-v2-api/ - https://github.com/Neilpang/acme.sh#currently-acmesh-supports
+   https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579
+  https://www.namecheap.com/
+   Other:
+   https://github.com/certbot/certbot/issues/5074
+  https://github.com/freeipa/freeipa-letsencrypt
+  https://github.com/antevens/letsencrypt-freeipa
+  https://certbot.eff.org/docs/using.html#dns-plugins
+     </description>
+      </item>
+    
+      <item>
+        <title>Navigating Linux</title>
+        <link>https://btw-blog.apps.opencontainer.io/navigating-linux/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/navigating-linux/</guid>
+        <description>Navigating Linux   Move a file to different extension, or change parts of a name
+$ mv /etc/yum.repos.d/redhat.{repo,disabled}     Search for all mac dot underscore files
+$ find -name ._\* $ find -name .DS_Store $ find -name .DS_Store -delete     find and replace text in files in a directory, recursively:
+$ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#39;        </description>
+      </item>
+    
+      <item>
+        <title>Networking tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/networking/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/networking/</guid>
+        <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
+-nn: Show PCI vendor and device codes as both numbers and names.
+-k: Show driver information for a device.
+-d: Filter on just the &#39;Ethernet&#39; device class (0200)
+  Check Kernel module load # dmesg | grep e1000e   (kernel module e1000e found above)</description>
+      </item>
+    
+      <item>
+        <title>VIM Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/vim/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/vim/</guid>
+        <description>VIM Tips   Set YAML filetypes to have two spaces on indent
+$ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn&amp;#8217;t opened with sudo:
+:w !sudo tee %        </description>
+      </item>
+    
+      <item>
+        <title>XML Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/xml/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/xml/</guid>
+        <description>XML Tips   Format raw xml on the cli
+echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&#34;ipsum&#34; /&amp;gt;&amp;lt;/root&amp;gt;&#39; | xmllint --format -        </description>
+      </item>
+    
+      <item>
+        <title>Lenovo BIOS/UEFI update via USB from Linux</title>
+        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-bios-update/</link>
+        <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-bios-update/</guid>
+        <description>I&amp;#8217;m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.</description>
+      </item>
+    
+      <item>
+        <title>Lenovo Intel i915 Video Drivers in Linux</title>
+        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video/</link>
+        <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video/</guid>
+        <description>Note: Out of Date and incorrect analysis.
+ I&amp;#8217;m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn&amp;#8217;t come on, sometimes one monitor came on, and sometimes things worked fine.</description>
+      </item>
+    
+      <item>
+        <title>SSH-Agent</title>
+        <link>https://btw-blog.apps.opencontainer.io/ssh-agent/</link>
+        <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/ssh-agent/</guid>
+        <description>Every now and then for some reason my ssh-agent does work by default on startup. I have to reach out to this lovely stackoverflow to remember such a simple command:
+ exec ssh-agent bash ssh-add ~/.ssh/*   alternatively
+ eval `ssh-agent -s` ssh-add ~/.ssh/*   https://stackoverflow.com/questions/17846529/could-not-open-a-connection-to-your-authentication-agent
+ </description>
+      </item>
+    
+      <item>
+        <title>Hugo Blog on OpenShift</title>
+        <link>https://btw-blog.apps.opencontainer.io/hugo-blog-on-openshift/</link>
+        <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/hugo-blog-on-openshift/</guid>
+        <description>Create a Dockerfile that adds all the dependencies your environment needs. A lot of the work is in this Dockerfile. I used asciidocs, so I needed an implementation of either asciidoc or asciidoctor, the two options that Hugo provides integration with. I chose asciidoctor.
+   $ cat Dockerfile FROM centos:centos7 COPY . /opt/blog RUN cd /opt \ &amp;amp;&amp;amp; curl -O -J -L https://github.com/gohugoio/hugo/releases/download/v0.40.3/hugo_0.40.3_Linux-64bit.tar.gz \ &amp;amp;&amp;amp; tar -xf hugo_0.</description>
+      </item>
+    
+      <item>
+        <title>Authenticate Openshift Console with RH-SSO</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-authenticating-openshift-console/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-authenticating-openshift-console/</guid>
+        <description>Authenticate Openshift Console with RH-SSO Install based on OpenShift 3.7. Will probably work on other similar versions.
+ Be aware of default permissions on your platform.
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/user_role_mgmt.html#determine-default-user-roles
+   Be aware of the implications of using Google as an Identity Broker.
+ Master and Node Configuration:
+   https://docs.openshift.com/container-platform/3.7/admin_solutions/master_node_config.htmli
+   Here is a great step-by-step example workflow in Red Hat official documentation:
+   https://access.</description>
+      </item>
+    
+      <item>
+        <title>Configure Google OIDC</title>
+        <link>https://btw-blog.apps.opencontainer.io/configure-google-oidc/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/configure-google-oidc/</guid>
+        <description>Configure Google OIDC https://console.cloud.google.com
+ Since this topic has been well handled by the Keycloak team, I&amp;#8217;m adding there documentation here.
+   https://www.keycloak.org/docs/3.4/server_admin/index.html#google
+     </description>
+      </item>
+    
+      <item>
+        <title>Configure RH-SSO to Identity Broker with Google by Hosted Domain</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-google-oidc/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-google-oidc/</guid>
+        <description>Configure RH-SSO to Identity Broker with Google by Hosted Domain In a browser, go to your RH-SSO admin console. This should be your hostname with context /auth/admin, e.g. https://sso.apps.example.com/auth/admin/
+ Login with the username and password you set in your template for fields:
+ SSO_ADMIN_USERNAME=admin SSO_ADMIN_PASSWORD=redacted   First, create a new realm for your OpenShift users. Out of the box, RH-SSO is configured with a master realm, but this should only be used for administration of the RH-SSO server itself.</description>
+      </item>
+    
+      <item>
+        <title>Install RH-SSO on Openshift</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-openshift/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-openshift/</guid>
+        <description>Install RH-SSO on Openshift First create a new project to keep RH-SSO work clean and easily delete it if necessary.
+ oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You&amp;#8217;ve got lots of other choices.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application.</description>
+      </item>
+    
+      <item>
+        <title>Install a Quickstart App on Openshift Authenticated by RH-SSO</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-openshift-quickstart/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-openshift-quickstart/</guid>
+        <description>Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application.</description>
+      </item>
+    
+      <item>
+        <title>RH-SSO Authentication on Openshift Series</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-ocp-series/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-ocp-series/</guid>
+        <description>RH-SSO Authentication on Openshift Series This is a multi-part series on RH-SSO.
+  Install RH-SSO on Openshift
+  Install a Quickstart App on Openshift Authenticated by RH-SSO
+  Configure Google OIDC
+  Configure RH-SSO to Identity Broker with Google by Hosted Domain
+  Authenticate Openshift Console with RH-SSO
+     </description>
+      </item>
+    
+      <item>
+        <title>RH-SSO 7.2 on Red Hat Enterprise Linux 7.5 integrated with Identity Management or Directory Server</title>
+        <link>https://btw-blog.apps.opencontainer.io/rh-sso-on-rhel7/</link>
+        <pubDate>Tue, 01 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/rh-sso-on-rhel7/</guid>
+        <description>RH-SSO server install. This can be done with yum/rpm or zip. Using zips allows you to leverage more middleware services on one VM/box. $ unzip rh-sso-7.2.0.GA.zip $ cd rh-sso-7.2/bin $ ./add-user-keycloak.sh -u admin -p admin     EAP server install. $ jboss-eap-7.1.0.zip $ cd jboss-eap-7.1 $ unzip rh-sso-7.2.0.GA-eap7-adapter.zip -d jboss-eap-7.1 $ unzip -o rh-sso-7.2.0.GA-saml-eap7-adapter.zip -d jboss-eap-7.1 $ cd bin $ ./standalone.sh &amp;amp; ENTER $ ./jboss-cli.sh -c --file=adapter-install.cli $ .</description>
+      </item>
+    
+      <item>
+        <title>Split DNS Resolution with VPN DNS and Local DNS</title>
+        <link>https://btw-blog.apps.opencontainer.io/split-dns-vpn-local-dnsmasq/</link>
+        <pubDate>Tue, 01 May 2018 10:40:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/split-dns-vpn-local-dnsmasq/</guid>
+        <description>Split DNS Resolution with VPN DNS and Local DNS Note: does not work as expected. Trouble with connecting to different wireless networks, as each one needs manual tweak. Need a better solution.
+ I recently installed a local identity management server with Red Hat Identity Management. This is essentially a free-ipa server that hosts some certificate management, DNS, and LDAP to track both my machines and my users on my local network.</description>
+      </item>
+    
+      <item>
+        <title>Bridged Host-VM Network</title>
+        <link>https://btw-blog.apps.opencontainer.io/bridge-host-vm/</link>
+        <pubDate>Tue, 01 May 2018 08:27:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/bridge-host-vm/</guid>
+        <description>Bridged Host-VM Network     Host OS:
+ Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants
+   Host Virtual Platform:
+ virt-manager, virsh, libvirt, qemu
+   Guest OS:
+ Any
+    Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
+ e.g.</description>
+      </item>
+    
+      <item>
+        <title>Securing Red Hat JBoss Web Server 3.X</title>
+        <link>https://btw-blog.apps.opencontainer.io/jws-secured/</link>
+        <pubDate>Thu, 29 Jun 2017 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/jws-secured/</guid>
+        <description>Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
+ THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
+   RPM Base Installation  Register your machine if you have not done so.
+``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription</description>
+      </item>
+    
+  </channel>
+</rss>

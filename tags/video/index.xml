@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Video on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/video/</link>
+    <description>Recent content in Video on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/video/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Lenovo Intel i915 Video Drivers in Linux, Part 2</title>
+        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video-part2/</link>
+        <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video-part2/</guid>
+        <description>Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &amp;#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
+      </item>
+    
+      <item>
+        <title>Image Video Metadata</title>
+        <link>https://btw-blog.apps.opencontainer.io/image-video-metadata/</link>
+        <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/image-video-metadata/</guid>
+        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&amp;#8217;t give you a lot of customization options. We couldn&amp;#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
+      </item>
+    
+      <item>
+        <title>Lenovo Intel i915 Video Drivers in Linux</title>
+        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video/</link>
+        <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video/</guid>
+        <description>Note: Out of Date and incorrect analysis.
+ I&amp;#8217;m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn&amp;#8217;t come on, sometimes one monitor came on, and sometimes things worked fine.</description>
+      </item>
+    
+  </channel>
+</rss>

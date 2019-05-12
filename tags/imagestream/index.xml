@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Imagestream on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/imagestream/</link>
+    <description>Recent content in Imagestream on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Nov 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/imagestream/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Automatically Update Red Hat Container Images on OpenShift 3.11</title>
+        <link>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-311/</link>
+        <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-311/</guid>
+        <description>Automatically Update Red Hat Container Images on OpenShift 3.11 OpenShift manages container images using a registry. This is the place where it caches upstream container images and stores the images from your own builds as well. Each build or container image correlates to an ImageStream, which is an object that defines any number of related images by tags. For example, one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Image Management</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-image-management/</link>
+        <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-image-management/</guid>
+        <description>OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 + 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&amp;lt;none&amp;gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.</description>
+      </item>
+    
+      <item>
+        <title>Import Images with dockerImageRepository</title>
+        <link>https://btw-blog.apps.opencontainer.io/import-images-with-dockerimagerepository/</link>
+        <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/import-images-with-dockerimagerepository/</guid>
+        <description>Import Images with dockerImageRepository $ echo &#39;apiVersion: v1 &amp;gt; kind: ImageStream &amp;gt; metadata: &amp;gt; creationTimestamp: null &amp;gt; generation: 2 &amp;gt; labels: &amp;gt; build: is-test &amp;gt; name: jenkins-slave-base-centos7 &amp;gt; spec: &amp;gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&#39; | oc apply -f- imagestream &#34;jenkins-slave-base-centos7&#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;ImageStream&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;creationTimestamp&#34;:null,&#34;generation&#34;:2,&#34;labels&#34;:{&#34;build&#34;:&#34;is-test&#34;},&#34;name&#34;:&#34;jenkins-slave-base-centos7&#34;,&#34;namespace&#34;:&#34;sbx-esauer&#34;},&#34;spec&#34;:{&#34;dockerImageRepository&#34;:&#34;docker.io/openshift/jenkins-slave-base-centos7&#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker.</description>
+      </item>
+    
+      <item>
+        <title>Sync Red Hat Container Images on OpenShift 3.9</title>
+        <link>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-39/</link>
+        <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-39/</guid>
+        <description>Sync Red Hat Container Images on OpenShift 3.9 If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples [1] in your cluster (or using the default which is true), you will find that the ansible installer adds some nice stuff to your local registry from the openshift_examples [2] folder.
+ $ oc get is -n openshift NAME DOCKER REPO TAGS UPDATED imagestreams/eap71-openshift docker-registry.default.svc:5000/openshift/eap71-openshift latest 3 months ago imagestreams/httpd docker-registry.</description>
+      </item>
+    
+  </channel>
+</rss>

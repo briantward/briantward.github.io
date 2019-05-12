@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Backup on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/backup/</link>
+    <description>Recent content in Backup on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/backup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift Project Backup and Migration Strategies</title>
+        <link>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/openshift-backup-migration/</guid>
+        <description>OpenShift Project Backup and Migration Strategies Work In Progress
+ export
+ secret bc is dc service route pv pvc
+ remove (cinder) annotations for pv and pvc because it checks them
+ replicate storage backend in new snapshot
+   </description>
+      </item>
+    
+  </channel>
+</rss>

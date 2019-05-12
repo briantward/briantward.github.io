@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restore Files from rm - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Restore Files from rm" />
+<meta property="og:description" content="Restore files from rm I wanted to type:
+ $ rm *.retry   Instead I accidentally typed:
+ $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&#8217;t more. I was lucky I didn&#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/restore-files-from-rm/" />
+
+
+
+<meta property="article:published_time" content="2019-02-12T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2019-02-12T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Restore Files from rm">
+<meta itemprop="description" content="Restore files from rm I wanted to type:
+ $ rm *.retry   Instead I accidentally typed:
+ $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&#8217;t more. I was lucky I didn&#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.">
+
+
+<meta itemprop="datePublished" content="2019-02-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-02-12T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="219">
+
+
+
+<meta itemprop="keywords" content="recovery,data,disaster," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Restore Files from rm"/>
+<meta name="twitter:description" content="Restore files from rm I wanted to type:
+ $ rm *.retry   Instead I accidentally typed:
+ $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&#8217;t more. I was lucky I didn&#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-02-12 12:00">2019-02-12</time> &bull;
+          
+            
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>Restore Files from rm</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/recovery">
+              <span class="hash">#</span>recovery</a>
+          
+            , 
+            <a href="/tags/data">
+              <span class="hash">#</span>data</a>
+          
+            , 
+            <a href="/tags/disaster">
+              <span class="hash">#</span>disaster</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_restore_files_from_rm">Restore files from <code>rm</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I wanted to type:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ rm *.retry</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead I accidentally typed:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ rm * .retry</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That wiped out the four or five files I had been working on the last two days.  I was lucky it wasn&#8217;t more.  I was lucky I didn&#8217;t care about the binary data I had in the folder.  It took a little time and work, but in the end, I was able to find all the documents.  I would only add to the original stack exchange post that I think it cautious to write your output to a different block device.  In my case <code>/tmp</code> has a different volume than my home directory.  You want to minimize all writes to the volume where your data was stored.  If at all possible, unmount the drive.  I&#8217;m not sure about how much gets written when you shutdown a system, but you could also either pull the power, at the risk of corrupting other data, or do a clean shutdown, at the risk of overwriting blocks you need.  From there, mounting the block device readonly from a different system would be the safest, though has the drawback of requiring you to remove the device from one machine and connect it to another.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo grep -i -a -C100 'string' /dev/fedora/home &gt; /tmp/file.txt</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://unix.stackexchange.com/questions/2677/recovering-accidentally-deleted-files" class="bare">https://unix.stackexchange.com/questions/2677/recovering-accidentally-deleted-files</a></p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

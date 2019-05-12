@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/apache/</link>
+    <description>Recent content in Apache on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 29 Jun 2017 12:00:00 -0400</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Securing Red Hat JBoss Web Server 3.X</title>
+        <link>https://btw-blog.apps.opencontainer.io/jws-secured/</link>
+        <pubDate>Thu, 29 Jun 2017 12:00:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/jws-secured/</guid>
+        <description>Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
+ THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
+   RPM Base Installation  Register your machine if you have not done so.
+``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription</description>
+      </item>
+    
+  </channel>
+</rss>

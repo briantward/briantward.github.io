@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sync Red Hat Container Images on OpenShift 3.9 - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Sync Red Hat Container Images on OpenShift 3.9" />
+<meta property="og:description" content="Sync Red Hat Container Images on OpenShift 3.9 If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples [1] in your cluster (or using the default which is true), you will find that the ansible installer adds some nice stuff to your local registry from the openshift_examples [2] folder.
+ $ oc get is -n openshift NAME DOCKER REPO TAGS UPDATED imagestreams/eap71-openshift docker-registry.default.svc:5000/openshift/eap71-openshift latest 3 months ago imagestreams/httpd docker-registry." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/sync-redhat-images-on-openshift-39/" />
+
+
+
+<meta property="article:published_time" content="2018-07-25T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-07-25T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Sync Red Hat Container Images on OpenShift 3.9">
+<meta itemprop="description" content="Sync Red Hat Container Images on OpenShift 3.9 If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples [1] in your cluster (or using the default which is true), you will find that the ansible installer adds some nice stuff to your local registry from the openshift_examples [2] folder.
+ $ oc get is -n openshift NAME DOCKER REPO TAGS UPDATED imagestreams/eap71-openshift docker-registry.default.svc:5000/openshift/eap71-openshift latest 3 months ago imagestreams/httpd docker-registry.">
+
+
+<meta itemprop="datePublished" content="2018-07-25T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-25T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1406">
+
+
+
+<meta itemprop="keywords" content="sync,Red Hat,container,imagestream," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sync Red Hat Container Images on OpenShift 3.9"/>
+<meta name="twitter:description" content="Sync Red Hat Container Images on OpenShift 3.9 If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples [1] in your cluster (or using the default which is true), you will find that the ansible installer adds some nice stuff to your local registry from the openshift_examples [2] folder.
+ $ oc get is -n openshift NAME DOCKER REPO TAGS UPDATED imagestreams/eap71-openshift docker-registry.default.svc:5000/openshift/eap71-openshift latest 3 months ago imagestreams/httpd docker-registry."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-07-25 12:00">2018-07-25</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>Sync Red Hat Container Images on OpenShift 3.9</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/sync">
+              <span class="hash">#</span>sync</a>
+          
+            , 
+            <a href="/tags/red-hat">
+              <span class="hash">#</span>Red Hat</a>
+          
+            , 
+            <a href="/tags/container">
+              <span class="hash">#</span>container</a>
+          
+            , 
+            <a href="/tags/imagestream">
+              <span class="hash">#</span>imagestream</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_sync_red_hat_container_images_on_openshift_3_9">Sync Red Hat Container Images on OpenShift 3.9</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> in your cluster (or using the default which is true), you will find that
+the ansible installer adds some nice stuff to your local registry from the openshift_examples <sup class="footnote" id="_footnote_openshift_examples_repo">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> folder.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get is -n openshift
+NAME                                               DOCKER REPO                                                                      TAGS                           UPDATED
+imagestreams/eap71-openshift                       docker-registry.default.svc:5000/openshift/eap71-openshift                       latest                         3 months ago
+imagestreams/httpd                                 docker-registry.default.svc:5000/openshift/httpd                                 2.4,latest                     4 months ago
+imagestreams/jboss-amq-62                          docker-registry.default.svc:5000/openshift/jboss-amq-62                          1.1,1.2,1.3 + 4 more...        3 months ago
+imagestreams/jboss-amq-63                          docker-registry.default.svc:5000/openshift/jboss-amq-63                          1.2,1.3,1.0 + 1 more...        3 months ago
+imagestreams/jboss-datagrid65-client-openshift     docker-registry.default.svc:5000/openshift/jboss-datagrid65-client-openshift     1.1,1.0                        3 months ago
+imagestreams/jboss-datagrid65-openshift            docker-registry.default.svc:5000/openshift/jboss-datagrid65-openshift            1.2,1.3,1.4 + 2 more...        3 months ago
+imagestreams/jboss-datagrid71-client-openshift     docker-registry.default.svc:5000/openshift/jboss-datagrid71-client-openshift     1.0                            3 months ago
+imagestreams/jboss-datagrid71-openshift            docker-registry.default.svc:5000/openshift/jboss-datagrid71-openshift            1.0,1.1,1.2                    3 months ago
+imagestreams/jboss-datavirt63-driver-openshift     docker-registry.default.svc:5000/openshift/jboss-datavirt63-driver-openshift     1.0,1.1                        3 months ago
+imagestreams/jboss-datavirt63-openshift            docker-registry.default.svc:5000/openshift/jboss-datavirt63-openshift            1.3,1.4,1.0 + 2 more...        3 months ago
+imagestreams/jboss-decisionserver62-openshift      docker-registry.default.svc:5000/openshift/jboss-decisionserver62-openshift      1.2                            3 months ago
+imagestreams/jboss-decisionserver63-openshift      docker-registry.default.svc:5000/openshift/jboss-decisionserver63-openshift      1.3,1.4                        3 months ago
+imagestreams/jboss-decisionserver64-openshift      docker-registry.default.svc:5000/openshift/jboss-decisionserver64-openshift      1.0,1.1,1.2                    3 months ago
+imagestreams/jboss-eap64-openshift                 docker-registry.default.svc:5000/openshift/jboss-eap64-openshift                 1.6,1.7,1.1 + 4 more...        3 months ago
+imagestreams/jboss-eap70-openshift                 docker-registry.default.svc:5000/openshift/jboss-eap70-openshift                 1.4,1.5,1.6 + 2 more...        3 months ago
+imagestreams/jboss-eap71-openshift                 docker-registry.default.svc:5000/openshift/jboss-eap71-openshift                 1.1,TP,1.0-TP                  3 months ago
+imagestreams/jboss-processserver63-openshift       docker-registry.default.svc:5000/openshift/jboss-processserver63-openshift       1.3,1.4                        3 months ago
+imagestreams/jboss-processserver64-openshift       docker-registry.default.svc:5000/openshift/jboss-processserver64-openshift       1.1,1.2,1.0                    3 months ago
+imagestreams/jboss-webserver30-tomcat7-openshift   docker-registry.default.svc:5000/openshift/jboss-webserver30-tomcat7-openshift   1.3,1.1,1.2                    3 months ago
+imagestreams/jboss-webserver30-tomcat8-openshift   docker-registry.default.svc:5000/openshift/jboss-webserver30-tomcat8-openshift   1.1,1.2,1.3                    3 months ago
+imagestreams/jboss-webserver31-tomcat7-openshift   docker-registry.default.svc:5000/openshift/jboss-webserver31-tomcat7-openshift   1.0,1.1                        3 months ago
+imagestreams/jboss-webserver31-tomcat8-openshift   docker-registry.default.svc:5000/openshift/jboss-webserver31-tomcat8-openshift   1.0,1.1                        3 months ago
+imagestreams/jenkins                               docker-registry.default.svc:5000/openshift/jenkins                               v3.5,v3.6,v3.7 + 2 more...     4 months ago
+imagestreams/jenkins-slave-base-rhel7              registry.access.redhat.com/openshift3/jenkins-slave-base-rhel7                   latest,v3.4,v3.5 + 2 more...   4 months ago
+imagestreams/jenkins-slave-image-mgmt              docker-registry.default.svc:5000/openshift/jenkins-slave-image-mgmt              latest                         4 months ago
+imagestreams/jenkins2-s2i                          docker-registry.default.svc:5000/openshift/jenkins2-s2i                          latest                         4 months ago
+imagestreams/mariadb                               docker-registry.default.svc:5000/openshift/mariadb                               10.1,latest                    4 months ago
+imagestreams/mongodb                               docker-registry.default.svc:5000/openshift/mongodb                               3.2,latest,2.4 + 1 more...     4 months ago
+imagestreams/mysql                                 docker-registry.default.svc:5000/openshift/mysql                                 5.5,5.6,5.7 + 1 more...        4 months ago
+imagestreams/nodejs                                docker-registry.default.svc:5000/openshift/nodejs                                0.10,4,6 + 1 more...           4 months ago
+imagestreams/perl                                  docker-registry.default.svc:5000/openshift/perl                                  5.16,5.20,5.24 + 1 more...     4 months ago
+imagestreams/php                                   docker-registry.default.svc:5000/openshift/php                                   7.0,latest,5.5 + 1 more...     18 hours ago
+imagestreams/postgresql                            docker-registry.default.svc:5000/openshift/postgresql                            latest,9.2,9.4 + 1 more...     4 months ago
+imagestreams/python                                docker-registry.default.svc:5000/openshift/python                                3.4,3.5,latest + 2 more...     19 hours ago
+imagestreams/redhat-openjdk18-openshift            docker-registry.default.svc:5000/openshift/redhat-openjdk18-openshift            1.0,1.1,1.2                    3 months ago
+imagestreams/redhat-sso70-openshift                docker-registry.default.svc:5000/openshift/redhat-sso70-openshift                1.3,1.4                        3 months ago
+imagestreams/redhat-sso71-openshift                docker-registry.default.svc:5000/openshift/redhat-sso71-openshift                1.0,1.1,1.2 + 1 more...        3 months ago
+imagestreams/redhat-sso72-openshift                docker-registry.default.svc:5000/openshift/redhat-sso72-openshift                1.0                            3 months ago
+imagestreams/redis                                 docker-registry.default.svc:5000/openshift/redis                                 3.2,latest                     21 hours ago
+imagestreams/ruby                                  docker-registry.default.svc:5000/openshift/ruby                                  latest,2.2,2.3 + 2 more...     21 hours ago</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your list may look a little different, and this list may include more than the default from openshift_examples.</p>
+</div>
+<div class="paragraph">
+<p>Along the way, you may notice that those images never update.  Months go by, and you realize that you are on old containers.
+Note on the right hand side of the output above that most of these images have
+not been updated in 3-4 months!  A couple of them have been updated manually in a more recent time frame.
+One day you ask yourself,
+why?  Well, by default we don&#8217;t want to push people into making changes they aren&#8217;t thinking about.  Ideally you have a security pipeline to push base images to
+production as quickly as possible, separate from any development pipelines.  Hopefully that&#8217;s a fully automated pipeline.  Why not?  After all that&#8217;s the whole purpose
+of the platform!</p>
+</div>
+<div class="paragraph">
+<p>Here are a few steps to get you going toward automatic updates.</p>
+</div>
+<div class="sect2">
+<h3 id="_configure_imagepolicyconfig_in_the_master_config_to_run_a_scheduled_import_process">Configure imagePolicyConfig in the Master Config to Run a Scheduled Import Process</h3>
+<div class="paragraph">
+<p>First, you need to set your ImagePolicyConfig on your masters to handle an update schedule. In your /etc/origin/master/master-config.yaml file it should look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>imagePolicyConfig:
+  MaxScheduledImageImportsPerMinute: 10
+  ScheduledImageImportMinimumIntervalSeconds: 1800
+  disableScheduledImport: false
+  maxImagesBulkImportedPerRepository: 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Be sure to restart services on each master after your update:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># systemctl restart atomic-openshift-master-api</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are setting these variables in your Advanced Installer inventory file <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup> it would look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># Configure imagePolicyConfig in the master config
+# See: https://godoc.org/github.com/openshift/origin/pkg/cmd/server/api#ImagePolicyConfig
+#openshift_master_image_policy_config={"maxImagesBulkImportedPerRepository": 3, "disableScheduledImport": true}
+openshift_master_image_policy_config={"maxImagesBulkImportedPerRepository": 3, "disableScheduledImport": false, "MaxScheduledImageImportsPerMinute": 10, "ScheduledImageImportMinimumIntervalSeconds": 1800}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then run the playbook to just update your master configs:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># ansible-playbook -i /etc/ansible/hosts /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-master/config.yml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the default setting does not have the scheduled import on!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_existing_imagestreams_to_update_automatically">Configure Existing ImageStreams to Update Automatically</h3>
+<div class="paragraph">
+<p>Second, you need to update all your imagestreams to automatically update.  Note that the openshift_examples installed
+by the Advanced Installer only install into your OpenShift environment ONCE.  They never get updated.  If new templates
+arrive in subsequent updates, they do get added, and some get removed. But they never get updated! <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> Here is how to change that.</p>
+</div>
+<div class="paragraph">
+<p>To perform this operation on all imagestreams in the <code>openshift</code> namespace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get is -n openshift &gt; openshift-is.json
+$ jq '.items[].spec.tags[]? |= if .from.kind == "DockerImage" then .importPolicy.scheduled |= true else . end' openshift-is.json &gt; openshift-is-scheduled.json
+$ oc apply -f openshift-is-scheduled.json -n openshift</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To perform this operation on just one imagestream, in this example the Redis 3.2 image:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc patch is redis -p '{"spec":{"tags":[{"name":"3.2","importPolicy":{"scheduled":true}}]}}'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the tag "name" must be of kind "DockerImage" and not "ImageStreamTag"!  Also note that once you apply the scheduled update to
+one tag, it will update all tags.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_new_imagestreams_to_update_automatically">Configure New ImageStreams to Update Automatically</h3>
+<div class="paragraph">
+<p>Third, every time a new imagestream is created, you should evaluate whether you want it to automatically update or not.  Think of the build implications.
+Many BuildConfigs trigger on image update.  This can be great in a development environment or an automated pipeline where validation tests run.  You may not,
+however, want to trigger a new build and deploy directly on production.</p>
+</div>
+<div class="paragraph">
+<p>When performing an <code>import-image</code> or <code>oc tag</code> into any namespace, be sure to specify the flag <code>--scheduled=true</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc new-project test
+Now using project "test" on server "https://openshift.opencontainer.io:8443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
+
+to build a new example application in Ruby.</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc import-image ruby --from=registry.access.redhat.com/rhscl/ruby-25-rhel7 --confirm --scheduled=true
+The import completed successfully.
+
+Name:			ruby
+Namespace:		test
+Created:		Less than a second ago
+Labels:			&lt;none&gt;
+Annotations:		openshift.io/image.dockerRepositoryCheck=2018-07-25T17:44:23Z
+Docker Pull Spec:	docker-registry.default.svc:5000/test/ruby
+Image Lookup:		local=false
+Unique Images:		1
+Tags:			1
+
+latest
+  updates automatically from registry registry.access.redhat.com/rhscl/ruby-25-rhel7
+
+  * registry.access.redhat.com/rhscl/ruby-25-rhel7@sha256:0abd18c56a95d7bd181aa9945e44ff6c99e69d9241e61fa3efc5292a64d63850
+      Less than a second ago
+
+Image Name:	ruby:latest
+Docker Image:	registry.access.redhat.com/rhscl/ruby-25-rhel7@sha256:0abd18c56a95d7bd181aa9945e44ff6c99e69d9241e61fa3efc5292a64d63850
+Name:		sha256:0abd18c56a95d7bd181aa9945e44ff6c99e69d9241e61fa3efc5292a64d63850
+Created:	Less than a second ago
+Annotations:	image.openshift.io/dockerLayersOrder=ascending
+Image Size:	179.7 MB (first layer 74.92 MB, last binary layer 13.46 MB)
+Image Created:	7 days ago
+Author:		&lt;none&gt;
+Arch:		amd64
+Entrypoint:	container-entrypoint
+Command:	/bin/sh -c $STI_SCRIPTS_PATH/usage
+Working Dir:	/opt/app-root/src
+User:		1001
+Exposes Ports:	8080/tcp
+Docker Labels:	architecture=x86_64
+		authoritative-source-url=registry.access.redhat.com
+		build-date=2018-07-17T20:14:40.471108
+		com.redhat.build-host=osbs-cpt-007.ocp.osbs.upshift.eng.rdu2.redhat.com
+		com.redhat.component=rh-ruby25-container
+		description=Ruby 2.5 available as container is a base platform for building and running various Ruby 2.5 applications and frameworks. Ruby is the interpreted scripting language for quick and easy object-oriented programming. It has many features to process text files and to do system management tasks (as in Perl). It is simple, straight-forward, and extensible.
+		distribution-scope=public
+		io.k8s.description=Ruby 2.5 available as container is a base platform for building and running various Ruby 2.5 applications and frameworks. Ruby is the interpreted scripting language for quick and easy object-oriented programming. It has many features to process text files and to do system management tasks (as in Perl). It is simple, straight-forward, and extensible.
+		io.k8s.display-name=Ruby 2.5
+		io.openshift.expose-services=8080:http
+		io.openshift.s2i.scripts-url=image:///usr/libexec/s2i
+		io.openshift.tags=builder,ruby,ruby25,rh-ruby25
+		io.s2i.scripts-url=image:///usr/libexec/s2i
+		maintainer=SoftwareCollections.org &lt;sclorg@redhat.com&gt;
+		name=rhscl/ruby-25-rhel7
+		release=13
+		summary=Platform for building and running Ruby 2.5 applications
+		url=https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/ruby-25-rhel7/images/2.5-13
+		usage=s2i build https://github.com/sclorg/s2i-ruby-container.git --context-dir=2.5/test/puma-test-app/ rhscl/ruby-25-rhel7 ruby-sample-app
+		vcs-ref=d42ce6d49fe8f63d48e5f54c3e8ca9f64f9c0516
+		vcs-type=git
+		vendor=Red Hat, Inc.
+		version=2.5
+Environment:	PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+		container=oci
+		SUMMARY=Platform for building and running Ruby 2.5 applications
+		DESCRIPTION=Ruby 2.5 available as container is a base platform for building and running various Ruby 2.5 applications and frameworks. Ruby is the interpreted scripting language for quick and easy object-oriented programming. It has many features to process text files and to do system management tasks (as in Perl). It is simple, straight-forward, and extensible.
+		STI_SCRIPTS_URL=image:///usr/libexec/s2i
+		STI_SCRIPTS_PATH=/usr/libexec/s2i
+		APP_ROOT=/opt/app-root
+		HOME=/opt/app-root/src
+		BASH_ENV=/opt/app-root/etc/scl_enable
+		ENV=/opt/app-root/etc/scl_enable
+		PROMPT_COMMAND=. /opt/app-root/etc/scl_enable
+		NODEJS_SCL=rh-nodejs8
+		RUBY_MAJOR_VERSION=2
+		RUBY_MINOR_VERSION=5
+		RUBY_VERSION=2.5
+		RUBY_SCL_NAME_VERSION=25
+		RUBY_SCL=rh-ruby25
+		IMAGE_NAME=rhscl/ruby-25-rhel7</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get is
+NAME      DOCKER REPO                                  TAGS      UPDATED
+ruby      docker-registry.default.svc:5000/test/ruby   latest    35 seconds ago</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc describe is ruby
+Name:			ruby
+Namespace:		test
+Created:		2 minutes ago
+Labels:			&lt;none&gt;
+Annotations:		openshift.io/image.dockerRepositoryCheck=2018-07-25T17:44:23Z
+Docker Pull Spec:	docker-registry.default.svc:5000/test/ruby
+Image Lookup:		local=false
+Unique Images:		1
+Tags:			1
+
+latest
+  updates automatically from registry registry.access.redhat.com/rhscl/ruby-25-rhel7
+
+  * registry.access.redhat.com/rhscl/ruby-25-rhel7@sha256:0abd18c56a95d7bd181aa9945e44ff6c99e69d9241e61fa3efc5292a64d63850
+      2 minutes ago</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get is -o yaml
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/image.dockerRepositoryCheck: 2018-07-25T17:44:23Z
+    creationTimestamp: 2018-07-25T17:44:23Z
+    generation: 1
+    name: ruby
+    namespace: test
+    resourceVersion: "37153060"
+    selfLink: /oapi/v1/namespaces/test/imagestreams/ruby
+    uid: 5e0e659f-9032-11e8-a295-001a4a160161
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: registry.access.redhat.com/rhscl/ruby-25-rhel7
+      generation: 1
+      importPolicy:
+        scheduled: true
+      name: latest
+      referencePolicy:
+        type: Source
+  status:
+    dockerImageRepository: docker-registry.default.svc:5000/test/ruby
+    tags:
+    - items:
+      - created: 2018-07-25T17:44:23Z
+        dockerImageReference: registry.access.redhat.com/rhscl/ruby-25-rhel7@sha256:0abd18c56a95d7bd181aa9945e44ff6c99e69d9241e61fa3efc5292a64d63850
+        generation: 1
+        image: sha256:0abd18c56a95d7bd181aa9945e44ff6c99e69d9241e61fa3efc5292a64d63850
+      tag: latest
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For further reading:</p>
+</div>
+<div class="paragraph">
+<p>Managing Automatic ImageStream Updates in OpenShift</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.openshift.com/container-platform/3.9/install_config/install/advanced_install.html" class="bare">https://docs.openshift.com/container-platform/3.9/install_config/install/advanced_install.html</a></p>
+</div>
+<div class="paragraph">
+<p>Image Configuration Parameters
+<a href="https://docs.openshift.com/container-platform/3.9/install_config/master_node_configuration.html#master-config-image-config" class="bare">https://docs.openshift.com/container-platform/3.9/install_config/master_node_configuration.html#master-config-image-config</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.openshift.com/container-platform/3.9/admin_guide/image_policy.html" class="bare">https://docs.openshift.com/container-platform/3.9/admin_guide/image_policy.html</a></p>
+</div>
+<div class="paragraph">
+<p>See imagePolicyConfig on
+<a href="https://docs.openshift.com/container-platform/3.9/admin_solutions/master_node_config.html" class="bare">https://docs.openshift.com/container-platform/3.9/admin_solutions/master_node_config.html</a></p>
+</div>
+<div class="paragraph">
+<p>See --scheduled=true flag on
+<a href="https://docs.openshift.com/container-platform/3.9/dev_guide/managing_images.html#adding-tag" class="bare">https://docs.openshift.com/container-platform/3.9/dev_guide/managing_images.html#adding-tag</a>
+<a href="https://docs.openshift.com/container-platform/3.9/dev_guide/managing_images.html#importing-tag-and-image-metadata" class="bare">https://docs.openshift.com/container-platform/3.9/dev_guide/managing_images.html#importing-tag-and-image-metadata</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L89" class="bare">https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L89</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_examples" class="bare">https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_examples</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L103" class="bare">https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L103</a>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

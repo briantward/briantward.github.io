@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bridge on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/bridge/</link>
+    <description>Recent content in Bridge on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 May 2018 08:27:00 -0400</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/bridge/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Bridged Host-VM Network</title>
+        <link>https://btw-blog.apps.opencontainer.io/bridge-host-vm/</link>
+        <pubDate>Tue, 01 May 2018 08:27:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/bridge-host-vm/</guid>
+        <description>Bridged Host-VM Network     Host OS:
+ Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants
+   Host Virtual Platform:
+ virt-manager, virsh, libvirt, qemu
+   Guest OS:
+ Any
+    Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
+ e.g.</description>
+      </item>
+    
+  </channel>
+</rss>

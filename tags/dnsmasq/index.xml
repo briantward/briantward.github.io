@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dnsmasq on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/dnsmasq/</link>
+    <description>Recent content in Dnsmasq on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 May 2018 10:40:00 -0400</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/dnsmasq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Split DNS Resolution with VPN DNS and Local DNS</title>
+        <link>https://btw-blog.apps.opencontainer.io/split-dns-vpn-local-dnsmasq/</link>
+        <pubDate>Tue, 01 May 2018 10:40:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/split-dns-vpn-local-dnsmasq/</guid>
+        <description>Split DNS Resolution with VPN DNS and Local DNS Note: does not work as expected. Trouble with connecting to different wireless networks, as each one needs manual tweak. Need a better solution.
+ I recently installed a local identity management server with Red Hat Identity Management. This is essentially a free-ipa server that hosts some certificate management, DNS, and LDAP to track both my machines and my users on my local network.</description>
+      </item>
+    
+  </channel>
+</rss>

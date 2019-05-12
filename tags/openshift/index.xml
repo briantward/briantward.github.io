@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Openshift on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/tags/openshift/</link>
+    <description>Recent content in Openshift on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 May 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Let&#39;s Encrypt on OpenShift</title>
+        <link>https://btw-blog.apps.opencontainer.io/lets-encrypt-on-openshift/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lets-encrypt-on-openshift/</guid>
+        <description>Let&amp;#8217;s Encrypt on OpenShift Updated OS on load balancer
+ # wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm # yum install epel-release-latest-7.noarch.rpm   Uses python:
+   https://www.redpill-linpro.com/sysadvent/2017/12/15/letsencrypt-on-openshift.html
+  https://certbot.eff.org/about/
+   Uses bash: - https://blog.openshift.com/lets-encrypt-acme-v2-api/ - https://github.com/Neilpang/acme.sh#currently-acmesh-supports
+   https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579
+  https://www.namecheap.com/
+   Other:
+   https://github.com/certbot/certbot/issues/5074
+  https://github.com/freeipa/freeipa-letsencrypt
+  https://github.com/antevens/letsencrypt-freeipa
+  https://certbot.eff.org/docs/using.html#dns-plugins
+     </description>
+      </item>
+    
+  </channel>
+</rss>

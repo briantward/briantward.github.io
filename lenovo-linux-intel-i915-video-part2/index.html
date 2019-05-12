@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lenovo Intel i915 Video Drivers in Linux, Part 2 - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Lenovo Intel i915 Video Drivers in Linux, Part 2" />
+<meta property="og:description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/lenovo-linux-intel-i915-video-part2/" />
+
+
+
+<meta property="article:published_time" content="2019-01-02T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2019-01-02T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Lenovo Intel i915 Video Drivers in Linux, Part 2">
+<meta itemprop="description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.">
+
+
+<meta itemprop="datePublished" content="2019-01-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-01-02T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1293">
+
+
+
+<meta itemprop="keywords" content="linux,intel,i915,video,T460s,Lenovo," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Lenovo Intel i915 Video Drivers in Linux, Part 2"/>
+<meta name="twitter:description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-01-02 12:00">2019-01-02</time> &bull;
+          
+            
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>Lenovo Intel i915 Video Drivers in Linux, Part 2</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/linux">
+              <span class="hash">#</span>linux</a>
+          
+            , 
+            <a href="/tags/intel">
+              <span class="hash">#</span>intel</a>
+          
+            , 
+            <a href="/tags/i915">
+              <span class="hash">#</span>i915</a>
+          
+            , 
+            <a href="/tags/video">
+              <span class="hash">#</span>video</a>
+          
+            , 
+            <a href="/tags/t460s">
+              <span class="hash">#</span>T460s</a>
+          
+            , 
+            <a href="/tags/lenovo">
+              <span class="hash">#</span>Lenovo</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_lenovo_intel_i915_video_drivers_in_linux_part_2">Lenovo Intel i915 Video Drivers in Linux, Part 2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Problem Scenario/Steps:<br>
+Lenovo T460s<br>
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+
+fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dock laptop in docking station with two connected monitors, one HDMI and one DVI.</p>
+</li>
+<li>
+<p>Undock laptop.</p>
+</li>
+<li>
+<p>Redock laptop &#8594; screen failure and system lock until undock again.  Leave it long enough and it will reboot itself.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Interestingly enough for myself, I have another docking station with two DisplayPort monitors that does not produce this problem.</p>
+</div>
+<div class="paragraph">
+<p>In Part 1, I ended up with a somewhat misdirected analysis.  So here is the new working solution I have come up with.</p>
+</div>
+<div class="paragraph">
+<p>I had still been having problems getting the video drivers to work correctly the second time I docked my laptop.  See these bugs for similar descriptions and issues.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1470960">Bug 1470960 - when docking: [drm:intel_wait_ddi_buf_idle [i915] <strong>ERROR</strong> Timeout waiting for DDI BUF C idle bit</a></p>
+</li>
+<li>
+<p><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1598819">Bug 1598819 - intel_ddi_prepare_link_retrain timeout</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freedesktop.org/show_bug.cgi?id=107546">Bug 107546 - Screen is frozen on second connection of DP MST dock</a> - This one is the closest match to my problems, and where I found that the drm developers had worked on a fix in the latest 4.20 kernel, perhaps for other specific problems that happen to resolve this one as well.</p>
+</li>
+<li>
+<p><a href="https://bugs.freedesktop.org/show_bug.cgi?id=108616">Bug 108616 - USB-C dock unplug trigger NULL pointer access</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freedesktop.org/show_bug.cgi?id=106250">Bug 106250 - Regression with Dell TB16 dock and Linux kernel 4.16.x</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I had a few options to consider for debugging this problem:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update to latest stable fedora release and kernel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Update to vanilla kernel options.</p>
+</li>
+<li>
+<p>Build custom drm module for current fedora kernel.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Update to rawhide fedora release and kernel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Build custom drm module for rawhide fedora kernel.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Since I was recently on fedora 28, I figured the best next step is to update to the latest fedora 29.  I ran my test against fedora 29 and found no change.  The next step was either to remain at fedora 29 and test with a later unsupported kernel or upgrade to fedora 30 or rawhide, both of which are in current development as I write this article.  Obviously none of this is supported.  Wait a minute, does anyone actually care about fedora support?  Nah, I didn&#8217;t think so.  Let&#8217;s just go with fedora 29 and a cutting edge kernel.  That puts the system at a stable point and the kernel at an unstable point.  Maybe that&#8217;s better than both at an unstable point, but I don&#8217;t care since I&#8217;m just testing stuff out and would like to have a stable system to revert back to.</p>
+</div>
+<div class="paragraph">
+<p>I built kernel from <a href="https://cgit.freedesktop.org/drm-tip">drm-tip</a>, where we have the latest and greatest from the development teams.  I used <a href="https://01.org/linuxgraphics/documentation/build-guide-0">documentation from intel</a>, although the steps for building a custom kernel are pretty generic.  I didn&#8217;t need to test any of the other drivers or libraries.</p>
+</div>
+<div class="paragraph">
+<p>On my first kernel boot I made no custom changes, using the default generated <code>.config</code> file (created by the <code>make defconfig</code> step).</p>
+</div>
+<div class="paragraph">
+<p>However I got an error from LUKS after entering my disk encryption password.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         Starting Cryptography Setup for luks-48ef18c-7da6-4260-942b-2a203048b76f...
+[FAILED] Failed to start Cryptography Setup for luks-48ef18c-7da6-4260-942b-2a203048b76f.
+See 'systemctl status "systemd-cryptsetup@luks\\x2d48e8f18c\\x2d7da6\\x2d4260\\x2d942b\\x2d2a203048b76f.service"' for details.
+[DEPEND] Dependency failed for Local Encrypted Volumes.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the panic did not leave me at a command prompt, nor did I figure there were any actual journals recording this event, I just popped back to the working kernel and tested output there to see what it should look like in a success.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[bward@archimedes 2018]$ systemctl status systemd-cryptsetup@luks\\x2d48e8f18c\\x2d7da6\\x2d4260\\x2d942b\\x2d2a203048b76f.service
+● systemd-cryptsetup@luks\x2d48e8f18c\x2d7da6\x2d4260\x2d942b\x2d2a203048b76f.service - Cryptography Setup for luks-48e8f18c-7da6-4260-942b-2a203&gt;
+   Loaded: loaded (/etc/crypttab; generated)
+   Active: active (exited) since Wed 2019-01-02 21:58:45 EST; 4min 12s ago
+     Docs: man:crypttab(5)
+           man:systemd-cryptsetup-generator(8)
+           man:systemd-cryptsetup@.service(8)
+ Main PID: 428 (code=exited, status=0/SUCCESS)
+    Tasks: 0 (limit: 4915)
+   Memory: 0B
+   CGroup: /system.slice/system-systemd\x2dcryptsetup.slice/systemd-cryptsetup@luks\x2d48e8f18c\x2d7da6\x2d4260\x2d942b\x2d2a203048b76f.service
+
+Jan 02 21:58:35 archimedes.home.dataxf.com systemd[1]: Starting Cryptography Setup for luks-48e8f18c-7da6-4260-942b-2a203048b76f...
+Jan 02 21:58:35 archimedes.home.dataxf.com systemd[1]: systemd-cryptsetup@luks\x2d48e8f18c\x2d7da6\x2d4260\x2d942b\x2d2a203048b76f.service: Curre&gt;
+Jan 02 21:58:43 archimedes.home.dataxf.com systemd-cryptsetup[428]: Set cipher aes, mode xts-plain64, key size 512 bits for device /dev/disk/by-u&gt;
+Jan 02 21:58:45 archimedes.home.dataxf.com systemd[1]: Started Cryptography Setup for luks-48e8f18c-7da6-4260-942b-2a203048b76f.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At this point I don&#8217;t know much about the internals of LUKS and its service, but I do know how to configure it when building a fedora system.  However, documenation for LUKS on fedora is flat-out awful.  Even worse is figuring out how to build a custom kernel with LUKS. I basically ran trial and error with some hints here and there from other people&#8217;s problems found by your favorite search engine.</p>
+</div>
+<div class="paragraph">
+<p>Kernel configuration changes are made in the <code>.config</code> file.</p>
+</div>
+<div class="paragraph">
+<p>I tried setting the following&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CONFIG_DM_CRYPT=y</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But that alone did not work.  Then I tried this&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CONFIG_CRYPTO_SHA256 is not set
+# CONFIG_CRYPTO_SHA512 is not set
+CONFIG_CRYPTO_SHA512=y</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But it corrected itself to this&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CONFIG_CRYPTO_SHA256=y
+CONFIG_CRYPTO_SHA512=y</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It still did not work.  But I got a different error this time.  It seems I got a little farther!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[   24.868618] device-mapper: table: 253:0 crypt: Error allocating crypto tfm
+[   24.869944] device-mapper: ioctl: error adding target to table</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So let&#8217;s see what other configuration settings were missing.  Maybe looking a the original crytography setup (using my good kernel) will tell me something:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@archimedes drm-tip]# cryptsetup status luks-48e8f18c-7da6-4260-942b-2a203048b76f
+/dev/mapper/luks-48e8f18c-7da6-4260-942b-2a203048b76f is active and is in use.
+  type:    LUKS1
+  cipher:  aes-xts-plain64
+  keysize: 512 bits
+  key location: dm-crypt
+  device:  /dev/sda2
+  sector size:  512
+  offset:  4096 sectors
+  size:    998111232 sectors
+  mode:    read/write</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Searching around on the internet shows some aes-xts-plain64 things&#8230;&#8203; let&#8217;s set that value&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CONFIG_CRYPTO_XTS=y</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bingo that worked!!</p>
+</div>
+<div class="paragraph">
+<p>Here are the results from the latest drm-tip build:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>first outputs of i915 in dmesg (no debug)</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[bward@archimedes 2019]$ dmesg | grep i915
+[    1.608743] i915 0000:00:02.0: vgaarb: changed VGA decodes: olddecodes=io+mem,decodes=io+mem:owns=io+mem
+[    1.609003] i915 0000:00:02.0: Direct firmware load for i915/skl_dmc_ver1_27.bin failed with error -2
+[    1.609006] i915 0000:00:02.0: Failed to load DMC firmware i915/skl_dmc_ver1_27.bin. Disabling runtime power management.
+[    1.609009] i915 0000:00:02.0: DMC firmware homepage: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915
+[    1.631612] [drm] Initialized i915 1.6.0 20181221 for 0000:00:02.0 on minor 0
+[    3.239497] i915 0000:00:02.0: fb0: inteldrmfb frame buffer device</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Docked it and searched again.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[bward@archimedes 2019]$ dmesg | grep i915
+[    1.608743] i915 0000:00:02.0: vgaarb: changed VGA decodes: olddecodes=io+mem,decodes=io+mem:owns=io+mem
+[    1.609003] i915 0000:00:02.0: Direct firmware load for i915/skl_dmc_ver1_27.bin failed with error -2
+[    1.609006] i915 0000:00:02.0: Failed to load DMC firmware i915/skl_dmc_ver1_27.bin. Disabling runtime power management.
+[    1.609009] i915 0000:00:02.0: DMC firmware homepage: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915
+[    1.631612] [drm] Initialized i915 1.6.0 20181221 for 0000:00:02.0 on minor 0
+[    3.239497] i915 0000:00:02.0: fb0: inteldrmfb frame buffer device</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Screen undocked and searched again</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[bward@archimedes 2019]$ dmesg | grep i915
+[    1.608743] i915 0000:00:02.0: vgaarb: changed VGA decodes: olddecodes=io+mem,decodes=io+mem:owns=io+mem
+[    1.609003] i915 0000:00:02.0: Direct firmware load for i915/skl_dmc_ver1_27.bin failed with error -2
+[    1.609006] i915 0000:00:02.0: Failed to load DMC firmware i915/skl_dmc_ver1_27.bin. Disabling runtime power management.
+[    1.609009] i915 0000:00:02.0: DMC firmware homepage: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915
+[    1.631612] [drm] Initialized i915 1.6.0 20181221 for 0000:00:02.0 on minor 0
+[    3.239497] i915 0000:00:02.0: fb0: inteldrmfb frame buffer device</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Screen docked a second time.  Holy shit it works. Someone already fixed my problem!!!</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[bward@archimedes 2019]$ dmesg | grep i915
+[    1.608743] i915 0000:00:02.0: vgaarb: changed VGA decodes: olddecodes=io+mem,decodes=io+mem:owns=io+mem
+[    1.609003] i915 0000:00:02.0: Direct firmware load for i915/skl_dmc_ver1_27.bin failed with error -2
+[    1.609006] i915 0000:00:02.0: Failed to load DMC firmware i915/skl_dmc_ver1_27.bin. Disabling runtime power management.
+[    1.609009] i915 0000:00:02.0: DMC firmware homepage: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915
+[    1.631612] [drm] Initialized i915 1.6.0 20181221 for 0000:00:02.0 on minor 0
+[    3.239497] i915 0000:00:02.0: fb0: inteldrmfb frame buffer device</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Just in case you don&#8217;t believe me&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[bward@archimedes 2019]$ uname -a
+Linux archimedes.home.dataxf.com 4.20.0+ #4 SMP Wed Jan 2 22:54:25 EST 2019 x86_64 x86_64 x86_64 GNU/Linux</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the commit I built from&#8230;&#8203;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>commit c6a0276a5007c01c64a8a80552b78c115e8a0dae (HEAD -&gt; drm-tip, origin/drm-tip, origin/HEAD)
+Author: Chris Wilson &lt;chris@chris-wilson.co.uk&gt;
+Date:   Wed Jan 2 12:26:48 2019 +0000
+
+    drm-tip: 2019y-01m-02d-12h-25m-13s UTC integration manifest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>TODO: patch the 4.19 and 4.18 kernels with the appropriate fixes, starting from <a href="https://patchwork.freedesktop.org/patch/261135/" class="bare">https://patchwork.freedesktop.org/patch/261135/</a>.</p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

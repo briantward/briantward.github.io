@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenShift Prometheus Node Exporter CrashLoop - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="OpenShift Prometheus Node Exporter CrashLoop" />
+<meta property="og:description" content="OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&#8217;ve only seen it once, we just kill the process holding the port open from the node itself." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/openshift-prometheus-node-exporter-crashloop/" />
+
+
+
+<meta property="article:published_time" content="2018-12-13T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-12-13T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="OpenShift Prometheus Node Exporter CrashLoop">
+<meta itemprop="description" content="OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&#8217;ve only seen it once, we just kill the process holding the port open from the node itself.">
+
+
+<meta itemprop="datePublished" content="2018-12-13T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-13T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="942">
+
+
+
+<meta itemprop="keywords" content="Red Hat,container,prometheus,node-exporter,CrashLoopBackOff," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift Prometheus Node Exporter CrashLoop"/>
+<meta name="twitter:description" content="OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&#8217;ve only seen it once, we just kill the process holding the port open from the node itself."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-12-13 12:00">2018-12-13</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>OpenShift Prometheus Node Exporter CrashLoop</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/red-hat">
+              <span class="hash">#</span>Red Hat</a>
+          
+            , 
+            <a href="/tags/container">
+              <span class="hash">#</span>container</a>
+          
+            , 
+            <a href="/tags/prometheus">
+              <span class="hash">#</span>prometheus</a>
+          
+            , 
+            <a href="/tags/node-exporter">
+              <span class="hash">#</span>node-exporter</a>
+          
+            , 
+            <a href="/tags/crashloopbackoff">
+              <span class="hash">#</span>CrashLoopBackOff</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_openshift_prometheus_node_exporter_crashloop">OpenShift Prometheus Node Exporter CrashLoop</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds).  Here, since we&#8217;ve only seen it once, we just kill the process holding the port open from the node itself.  Deleting the pod may have done the same thing.  We had to delete the pod anyways to get a new one to rollout.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/coreos/prometheus-operator/issues/1612" class="bare">https://github.com/coreos/prometheus-operator/issues/1612</a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>See the CrashLoopBackOff error on one node.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get pods -o wide
+NAME                             READY     STATUS             RESTARTS   AGE       IP               NODE                                    NOMINATED NODE
+prometheus-0                     6/6       Running            69         30d       10.129.3.192     openshift-infra-1.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-6x9dv   1/1       Running            7          97d       192.168.10.152   openshift-infra-1.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-9nn9l   1/1       Running            29         97d       192.168.10.153   openshift-master-0.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-gmttk   1/1       Running            8          97d       192.168.10.151   openshift-infra-0.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-hzpf2   0/1       CrashLoopBackOff   1973       97d       192.168.10.149   openshift-node-0.os.rhtrva.internal     &lt;none&gt;
+prometheus-node-exporter-llzjt   1/1       Running            28         97d       192.168.10.155   openshift-master-2.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-n8n9q   1/1       Running            32         97d       192.168.10.154   openshift-master-1.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-ql9kz   1/1       Running            8          97d       192.168.10.150   openshift-node-1.os.rhtrva.internal     &lt;none&gt;</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The logs show us it is attempting to bind to a port that is already bound.  Since nothing else on this node uses the same port, it must have had a bad shutdown before attempting to start again.  It appears the original shutdown is still stuck.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc logs -f pod/prometheus-node-exporter-hzpf2
+time="2018-12-13T15:50:37Z" level=info msg="Starting node_exporter (version=0.15.2, branch=, revision=)" source="node_exporter.go:43"
+time="2018-12-13T15:50:37Z" level=info msg="Build context (go=go1.9.4, user=mockbuild@x86-019.build.eng.bos.redhat.com, date=20180706-18:56:50)" source="node_exporter.go:44"
+time="2018-12-13T15:50:37Z" level=info msg="No directory specified, see --collector.textfile.directory" source="textfile.go:57"
+time="2018-12-13T15:50:37Z" level=info msg="Enabled collectors:" source="node_exporter.go:50"
+time="2018-12-13T15:50:37Z" level=info msg=" - xfs" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - filefd" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - cpu" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - zfs" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - infiniband" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - sockstat" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - entropy" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - netdev" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - uname" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - ipvs" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - edac" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - time" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - vmstat" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - timex" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - textfile" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - loadavg" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - wifi" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - hwmon" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - meminfo" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - netstat" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - mdadm" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - filesystem" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - arp" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - conntrack" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - stat" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - bcache" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg=" - diskstats" source="node_exporter.go:52"
+time="2018-12-13T15:50:37Z" level=info msg="Listening on :9100" source="node_exporter.go:76"
+time="2018-12-13T15:50:37Z" level=fatal msg="listen tcp :9100: bind: address already in use" source="node_exporter.go:79"</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Hop on the worker node running this pod and look for the process holding the port open and kill it.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@openshift-node-0 ~]# ss -tulpen | grep 9100
+tcp    LISTEN     0      128      :::9100                 :::*                   users:(("node_exporter",pid=126655,fd=3)) uid:1000110000 ino:60828330 sk:ffff9b6a9a6c6300 v6only:0 &lt;-&gt;
+[root@openshift-node-0 ~]# ps -ef | grep 126655
+root      94460  94044  0 10:56 pts/0    00:00:00 grep --color=auto 126655
+1000110+ 126655 126640  0 Dec06 ?        00:00:03 /bin/node_exporter</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@openshift-node-0 ~]# kill -9 126655
+[root@openshift-node-0 ~]# ps -ef | grep 126655
+root      94660  94044  0 10:57 pts/0    00:00:00 grep --color=auto 126655
+[root@openshift-node-0 ~]# ss -tulpen | grep 9100</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check the pods again.  We need to kick off a new pod to get it to rollout again.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get pods -o wide
+NAME                             READY     STATUS             RESTARTS   AGE       IP               NODE                                    NOMINATED NODE
+prometheus-0                     6/6       Running            69         30d       10.129.3.192     openshift-infra-1.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-6x9dv   1/1       Running            7          97d       192.168.10.152   openshift-infra-1.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-9nn9l   1/1       Running            29         97d       192.168.10.153   openshift-master-0.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-gmttk   1/1       Running            8          97d       192.168.10.151   openshift-infra-0.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-hzpf2   0/1       CrashLoopBackOff   1973       97d       192.168.10.149   openshift-node-0.os.rhtrva.internal     &lt;none&gt;
+prometheus-node-exporter-llzjt   1/1       Running            28         97d       192.168.10.155   openshift-master-2.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-n8n9q   1/1       Running            32         97d       192.168.10.154   openshift-master-1.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-ql9kz   1/1       Running            8          97d       192.168.10.150   openshift-node-1.os.rhtrva.internal     &lt;none&gt;</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete the old pod to do this.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc delete pod prometheus-node-exporter-hzpf2</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Verify it is running and has a clean start and bind to port 9100</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get pods -o wide
+NAME                             READY     STATUS    RESTARTS   AGE       IP               NODE                                    NOMINATED NODE
+prometheus-0                     6/6       Running   69         30d       10.129.3.192     openshift-infra-1.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-6x9dv   1/1       Running   7          97d       192.168.10.152   openshift-infra-1.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-9nn9l   1/1       Running   29         97d       192.168.10.153   openshift-master-0.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-gmttk   1/1       Running   8          97d       192.168.10.151   openshift-infra-0.os.rhtrva.internal    &lt;none&gt;
+prometheus-node-exporter-hr56n   1/1       Running   0          2s        192.168.10.149   openshift-node-0.os.rhtrva.internal     &lt;none&gt;
+prometheus-node-exporter-llzjt   1/1       Running   28         97d       192.168.10.155   openshift-master-2.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-n8n9q   1/1       Running   32         97d       192.168.10.154   openshift-master-1.os.rhtrva.internal   &lt;none&gt;
+prometheus-node-exporter-ql9kz   1/1       Running   8          97d       192.168.10.150   openshift-node-1.os.rhtrva.internal     &lt;none&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc logs -f prometheus-node-exporter-hr56n
+time="2018-12-13T16:00:35Z" level=info msg="Starting node_exporter (version=0.15.2, branch=, revision=)" source="node_exporter.go:43"
+time="2018-12-13T16:00:35Z" level=info msg="Build context (go=go1.9.4, user=mockbuild@x86-019.build.eng.bos.redhat.com, date=20180706-18:56:50)" source="node_exporter.go:44"
+time="2018-12-13T16:00:35Z" level=info msg="No directory specified, see --collector.textfile.directory" source="textfile.go:57"
+time="2018-12-13T16:00:35Z" level=info msg="Enabled collectors:" source="node_exporter.go:50"
+time="2018-12-13T16:00:35Z" level=info msg=" - textfile" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - bcache" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - wifi" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - edac" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - stat" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - arp" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - timex" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - uname" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - vmstat" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - conntrack" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - meminfo" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - diskstats" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - filesystem" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - filefd" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - netdev" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - time" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - entropy" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - sockstat" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - hwmon" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - cpu" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - netstat" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - infiniband" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - ipvs" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - xfs" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - loadavg" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - mdadm" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg=" - zfs" source="node_exporter.go:52"
+time="2018-12-13T16:00:35Z" level=info msg="Listening on :9100" source="node_exporter.go:76"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

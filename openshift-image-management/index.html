@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenShift Image Management - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="OpenShift Image Management" />
+<meta property="og:description" content="OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 &#43; 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&lt;none&gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/openshift-image-management/" />
+
+
+
+<meta property="article:published_time" content="2018-08-15T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-08-15T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="OpenShift Image Management">
+<meta itemprop="description" content="OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 &#43; 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&lt;none&gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.">
+
+
+<meta itemprop="datePublished" content="2018-08-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1545">
+
+
+
+<meta itemprop="keywords" content="sync,Red Hat,container,imagestream," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift Image Management"/>
+<meta name="twitter:description" content="OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 &#43; 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&lt;none&gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-08-15 12:00">2018-08-15</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>OpenShift Image Management</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/sync">
+              <span class="hash">#</span>sync</a>
+          
+            , 
+            <a href="/tags/red-hat">
+              <span class="hash">#</span>Red Hat</a>
+          
+            , 
+            <a href="/tags/container">
+              <span class="hash">#</span>container</a>
+          
+            , 
+            <a href="/tags/imagestream">
+              <span class="hash">#</span>imagestream</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_openshift_image_management">OpenShift Image Management</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc project openshift
+Now using project "openshift" on server "https://openshift.example.com:8443".
+$ oc get is | grep php
+NAME                                  DOCKER REPO                                                                      TAGS                           UPDATED
+php                                   docker-registry.default.svc:5000/openshift/php                                   7.1,latest,5.6 + 2 more...     11 days ago</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm
+The import completed successfully.
+
+Name:			php-70-rhel7
+Namespace:		openshift
+Created:		Less than a second ago
+Labels:			&lt;none&gt;
+Annotations:		openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z
+Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7
+Image Lookup:		local=false
+Unique Images:		1
+Tags:			1
+
+7.0-17
+  tagged from registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17
+
+  * registry.access.redhat.com/rhscl/php-70-rhel7@sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+      Less than a second ago
+
+Image Name:	php-70-rhel7:7.0-17
+Docker Image:	registry.access.redhat.com/rhscl/php-70-rhel7@sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+Name:		sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+Created:	Less than a second ago
+Annotations:	image.openshift.io/dockerLayersOrder=ascending
+Image Size:	211.2 MB (first layer 74.92 MB, last binary layer 44.92 MB)
+Image Created:	4 weeks ago
+Author:		&lt;none&gt;
+Arch:		amd64
+Entrypoint:	container-entrypoint
+Command:	/bin/sh -c $STI_SCRIPTS_PATH/usage
+Working Dir:	/opt/app-root/src
+User:		1001
+Exposes Ports:	8080/tcp, 8443/tcp
+Docker Labels:	architecture=x86_64
+		authoritative-source-url=registry.access.redhat.com
+		build-date=2018-07-17T20:14:38.215516
+		com.redhat.build-host=osbs-cpt-008.ocp.osbs.upshift.eng.rdu2.redhat.com
+		com.redhat.component=rh-php70-container
+		description=PHP 7.0 available as container is a base platform for building and running various PHP 7.0 applications and frameworks. PHP is an HTML-embedded scripting language. PHP attempts to make it easy for developers to write dynamically generated web pages. PHP also offers built-in database integration for several commercial and non-commercial database management systems, so writing a database-enabled webpage with PHP is fairly simple. The most common use of PHP coding is probably as a replacement for CGI scripts.
+		distribution-scope=public
+		help=For more information visit https://github.com/sclorg/s2i-php-container
+		io.k8s.description=PHP 7.0 available as container is a base platform for building and running various PHP 7.0 applications and frameworks. PHP is an HTML-embedded scripting language. PHP attempts to make it easy for developers to write dynamically generated web pages. PHP also offers built-in database integration for several commercial and non-commercial database management systems, so writing a database-enabled webpage with PHP is fairly simple. The most common use of PHP coding is probably as a replacement for CGI scripts.
+		io.k8s.display-name=Apache 2.4 with PHP 7.0
+		io.openshift.expose-services=8080:http
+		io.openshift.s2i.scripts-url=image:///usr/libexec/s2i
+		io.openshift.tags=builder,php,php70,rh-php70
+		io.s2i.scripts-url=image:///usr/libexec/s2i
+		maintainer=SoftwareCollections.org &lt;sclorg@redhat.com&gt;
+		name=rhscl/php-70-rhel7
+		release=17
+		summary=Platform for building and running PHP 7.0 applications
+		url=https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/php-70-rhel7/images/7.0-17
+		usage=s2i build https://github.com/sclorg/s2i-php-container.git --context-dir=7.0/test/test-app rhscl/php-70-rhel7 sample-server
+		vcs-ref=95cfd03bc537945ff3e8de9ea30e1e471bb1a9aa
+		vcs-type=git
+		vendor=Red Hat, Inc.
+		version=7.0
+Environment:	PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/rh/rh-php70/root/usr/bin
+		container=oci
+		SUMMARY=Platform for building and running PHP 7.0 applications
+		DESCRIPTION=PHP 7.0 available as container is a base platform for building and running various PHP 7.0 applications and frameworks. PHP is an HTML-embedded scripting language. PHP attempts to make it easy for developers to write dynamically generated web pages. PHP also offers built-in database integration for several commercial and non-commercial database management systems, so writing a database-enabled webpage with PHP is fairly simple. The most common use of PHP coding is probably as a replacement for CGI scripts.
+		STI_SCRIPTS_URL=image:///usr/libexec/s2i
+		STI_SCRIPTS_PATH=/usr/libexec/s2i
+		APP_ROOT=/opt/app-root
+		HOME=/opt/app-root/src
+		BASH_ENV=/opt/app-root/etc/scl_enable
+		ENV=/opt/app-root/etc/scl_enable
+		PROMPT_COMMAND=. /opt/app-root/etc/scl_enable
+		NODEJS_SCL=rh-nodejs8
+		PHP_VERSION=7.0
+		PHP_VER_SHORT=70
+		NAME=php
+		PHP_CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/php/
+		APP_DATA=/opt/app-root/src
+		PHP_DEFAULT_INCLUDE_PATH=/opt/rh/rh-php70/root/usr/share/pear
+		PHP_SYSCONF_PATH=/etc/opt/rh/rh-php70
+		PHP_HTTPD_CONF_FILE=rh-php70-php.conf
+		HTTPD_CONFIGURATION_PATH=/opt/app-root/etc/conf.d
+		HTTPD_MAIN_CONF_PATH=/etc/httpd/conf
+		HTTPD_MAIN_CONF_D_PATH=/etc/httpd/conf.d
+		HTTPD_VAR_RUN=/var/run/httpd
+		HTTPD_DATA_PATH=/var/www
+		HTTPD_DATA_ORIG_PATH=/opt/rh/httpd24/root/var/www
+		HTTPD_VAR_PATH=/opt/rh/httpd24/root/var
+		SCL_ENABLED=rh-php70</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get is | grep php
+NAME                                  DOCKER REPO                                                                      TAGS                           UPDATED
+php                                   docker-registry.default.svc:5000/openshift/php                                   7.1,latest,5.6 + 2 more...     11 days ago
+php-70-rhel7                          docker-registry.default.svc:5000/openshift/php-70-rhel7                          7.0-17                         6 seconds ago</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc tag is php-70-rhel7:7.0-17 php-70-rhel7:latest
+Tag php-70-rhel7:7.0-17 set to is.
+Tag php-70-rhel7:latest set to is.</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get is | grep php
+php                                   docker-registry.default.svc:5000/openshift/php                                   7.1,latest,5.6 + 2 more...     11 days ago
+php-70-rhel7                          docker-registry.default.svc:5000/openshift/php-70-rhel7                          7.0-17,latest                  About a minute ago</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-15 --confirm
+error: the tag "7.0-15" does not exist on the image stream - choose an existing tag to import or use the 'tag' command to create a new tag
+
+$ oc get is | grep php
+php                                   docker-registry.default.svc:5000/openshift/php                                   7.1,latest,5.6 + 2 more...     11 days ago
+php-70-rhel7                          docker-registry.default.svc:5000/openshift/php-70-rhel7                          7.0-17,latest                  11 minutes ago</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc import-image php-70-rhel7:7.0-15 --from=registry.access.redhat.com/rhscl/php-70-rhel7:7.0-15 --confirm
+The import completed successfully.
+
+Name:			php-70-rhel7
+Namespace:		openshift
+Created:		12 minutes ago
+Labels:			&lt;none&gt;
+Annotations:		openshift.io/image.dockerRepositoryCheck=2018-08-15T18:50:20Z
+Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7
+Image Lookup:		local=false
+Unique Images:		2
+Tags:			3
+
+latest
+  tagged from is
+
+  ! error: Import failed (Unauthorized): you may not have access to the Docker image "is:latest"
+      10 minutes ago
+
+7.0-17
+  tagged from is
+
+  ~ importing latest image ...
+  ! error: Import failed (Unauthorized): you may not have access to the Docker image "is:latest"
+      11 minutes ago
+  * registry.access.redhat.com/rhscl/php-70-rhel7@sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+      12 minutes ago
+
+7.0-15
+  tagged from registry.access.redhat.com/rhscl/php-70-rhel7:7.0-15
+
+  * registry.access.redhat.com/rhscl/php-70-rhel7@sha256:973bab52428a706e2a15557f26362e2a111781b075470435de9f68ec758664e9
+      Less than a second ago
+
+Image Name:	php-70-rhel7:7.0-15
+Docker Image:	registry.access.redhat.com/rhscl/php-70-rhel7@sha256:973bab52428a706e2a15557f26362e2a111781b075470435de9f68ec758664e9
+Name:		sha256:973bab52428a706e2a15557f26362e2a111781b075470435de9f68ec758664e9
+Created:	Less than a second ago
+Annotations:	image.openshift.io/dockerLayersOrder=ascending
+Image Size:	211.3 MB (first layer 74.93 MB, last binary layer 44.94 MB)
+Image Created:	7 weeks ago
+Author:		&lt;none&gt;
+Arch:		amd64
+Entrypoint:	container-entrypoint
+Command:	/bin/sh -c $STI_SCRIPTS_PATH/usage
+Working Dir:	/opt/app-root/src
+User:		1001
+Exposes Ports:	8080/tcp, 8443/tcp
+Docker Labels:	architecture=x86_64
+		authoritative-source-url=registry.access.redhat.com
+		build-date=2018-06-25T07:27:09.715858
+		com.redhat.build-host=osbs-cpt-009.ocp.osbs.upshift.eng.rdu2.redhat.com
+		com.redhat.component=rh-php70-container
+		description=PHP 7.0 available as container is a base platform for building and running various PHP 7.0 applications and frameworks. PHP is an HTML-embedded scripting language. PHP attempts to make it easy for developers to write dynamically generated web pages. PHP also offers built-in database integration for several commercial and non-commercial database management systems, so writing a database-enabled webpage with PHP is fairly simple. The most common use of PHP coding is probably as a replacement for CGI scripts.
+		distribution-scope=public
+		help=For more information visit https://github.com/sclorg/s2i-php-container
+		io.k8s.description=PHP 7.0 available as container is a base platform for building and running various PHP 7.0 applications and frameworks. PHP is an HTML-embedded scripting language. PHP attempts to make it easy for developers to write dynamically generated web pages. PHP also offers built-in database integration for several commercial and non-commercial database management systems, so writing a database-enabled webpage with PHP is fairly simple. The most common use of PHP coding is probably as a replacement for CGI scripts.
+		io.k8s.display-name=Apache 2.4 with PHP 7.0
+		io.openshift.expose-services=8080:http
+		io.openshift.s2i.scripts-url=image:///usr/libexec/s2i
+		io.openshift.tags=builder,php,php70,rh-php70
+		io.s2i.scripts-url=image:///usr/libexec/s2i
+		maintainer=SoftwareCollections.org &lt;sclorg@redhat.com&gt;
+		name=rhscl/php-70-rhel7
+		release=15
+		summary=Platform for building and running PHP 7.0 applications
+		url=https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/php-70-rhel7/images/7.0-15
+		usage=s2i build https://github.com/sclorg/s2i-php-container.git --context-dir=7.0/test/test-app rhscl/php-70-rhel7 sample-server
+		vcs-ref=95cfd03bc537945ff3e8de9ea30e1e471bb1a9aa
+		vcs-type=git
+		vendor=Red Hat, Inc.
+		version=7.0
+Environment:	PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/rh/rh-php70/root/usr/bin
+		container=oci
+		SUMMARY=Platform for building and running PHP 7.0 applications
+		DESCRIPTION=PHP 7.0 available as container is a base platform for building and running various PHP 7.0 applications and frameworks. PHP is an HTML-embedded scripting language. PHP attempts to make it easy for developers to write dynamically generated web pages. PHP also offers built-in database integration for several commercial and non-commercial database management systems, so writing a database-enabled webpage with PHP is fairly simple. The most common use of PHP coding is probably as a replacement for CGI scripts.
+		STI_SCRIPTS_URL=image:///usr/libexec/s2i
+		STI_SCRIPTS_PATH=/usr/libexec/s2i
+		APP_ROOT=/opt/app-root
+		HOME=/opt/app-root/src
+		BASH_ENV=/opt/app-root/etc/scl_enable
+		ENV=/opt/app-root/etc/scl_enable
+		PROMPT_COMMAND=. /opt/app-root/etc/scl_enable
+		NODEJS_SCL=rh-nodejs8
+		PHP_VERSION=7.0
+		PHP_VER_SHORT=70
+		NAME=php
+		PHP_CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/php/
+		APP_DATA=/opt/app-root/src
+		PHP_DEFAULT_INCLUDE_PATH=/opt/rh/rh-php70/root/usr/share/pear
+		PHP_SYSCONF_PATH=/etc/opt/rh/rh-php70
+		PHP_HTTPD_CONF_FILE=rh-php70-php.conf
+		HTTPD_CONFIGURATION_PATH=/opt/app-root/etc/conf.d
+		HTTPD_MAIN_CONF_PATH=/etc/httpd/conf
+		HTTPD_MAIN_CONF_D_PATH=/etc/httpd/conf.d
+		HTTPD_VAR_RUN=/var/run/httpd
+		HTTPD_DATA_PATH=/var/www
+		HTTPD_DATA_ORIG_PATH=/opt/rh/httpd24/root/var/www
+		HTTPD_VAR_PATH=/opt/rh/httpd24/root/var
+		SCL_ENABLED=rh-php70</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc get is | grep php
+php                                   docker-registry.default.svc:5000/openshift/php                                   7.1,latest,5.6 + 2 more...     11 days ago
+php-70-rhel7                          docker-registry.default.svc:5000/openshift/php-70-rhel7                          7.0-15,7.0-17,latest           11 seconds ago</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc import-image php-70-rhel7:7.0-5.21 --from=registry.access.redhat.com/rhscl/php-70-rhel7:7.0-5.21 --confirm
+output truncated...</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc export is php -o yaml &gt; php-export.yaml
+$ oc export is php-70-rhel7 -o yaml &gt; php-70-rhel7-export.yaml
+$ oc get is php -o yaml &gt; php-get.yaml
+$ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ diff php-export.yaml php-get.yaml
+7c7
+&lt;   creationTimestamp: null
+---
+&gt;   creationTimestamp: 2018-03-06T16:02:48Z
+9a10,13
+&gt;   namespace: openshift
+&gt;   resourceVersion: "39554952"
+&gt;   selfLink: /oapi/v1/namespaces/openshift/imagestreams/php
+&gt;   uid: d1142d8c-2157-11e8-97ea-001a4a16015f
+26c30
+&lt;       name: docker-registry.default.svc:5000/openshift/php:5.5
+---
+&gt;       name: registry.access.redhat.com/openshift3/php-55-rhel7:latest
+44c48
+&lt;       name: docker-registry.default.svc:5000/openshift/php:5.6
+---
+&gt;       name: registry.access.redhat.com/rhscl/php-56-rhel7:latest
+62c66
+&lt;       name: docker-registry.default.svc:5000/openshift/php:7.0
+---
+&gt;       name: registry.access.redhat.com/rhscl/php-70-rhel7:latest
+80c84
+&lt;       name: docker-registry.default.svc:5000/openshift/php:7.1
+---
+&gt;       name: registry.access.redhat.com/rhscl/php-71-rhel7:latest
+98,99c102,103
+&lt;       kind: DockerImage
+&lt;       name: docker-registry.default.svc:5000/openshift/php:latest
+---
+&gt;       kind: ImageStreamTag
+&gt;       name: "7.1"
+106c110,157
+&lt;   dockerImageRepository: ""
+---
+&gt;   dockerImageRepository: docker-registry.default.svc:5000/openshift/php
+&gt;   tags:
+&gt;   - items:
+&gt;     - created: 2018-03-06T16:02:57Z
+&gt;       dockerImageReference: registry.access.redhat.com/openshift3/php-55-rhel7@sha256:c82d399564d21b9737ac58c1c812c31c42b4afc94443a8e276cd63979dde2930
+&gt;       generation: 51
+&gt;       image: sha256:c82d399564d21b9737ac58c1c812c31c42b4afc94443a8e276cd63979dde2930
+&gt;     tag: "5.5"
+&gt;   - items:
+&gt;     - created: 2018-07-25T13:16:46Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-56-rhel7@sha256:920c2cf85b5da5d0701898f0ec9ee567473fa4b9af6f3ac5b2b3f863796bbd68
+&gt;       generation: 51
+&gt;       image: sha256:920c2cf85b5da5d0701898f0ec9ee567473fa4b9af6f3ac5b2b3f863796bbd68
+&gt;     - created: 2018-03-06T16:02:57Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-56-rhel7@sha256:2ccd499a6082be8dd931e7bf5ec4984307dcf2d029d115213cf9576eddfbf937
+&gt;       generation: 2
+&gt;       image: sha256:2ccd499a6082be8dd931e7bf5ec4984307dcf2d029d115213cf9576eddfbf937
+&gt;     tag: "5.6"
+&gt;   - items:
+&gt;     - created: 2018-07-24T19:25:27Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+&gt;       generation: 51
+&gt;       image: sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+&gt;     - created: 2018-03-06T16:02:57Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:e27b8848aeecd8fa5cb0c08e6951823375d2b944b5200c72da53a9700d4d3ddf
+&gt;       generation: 2
+&gt;       image: sha256:e27b8848aeecd8fa5cb0c08e6951823375d2b944b5200c72da53a9700d4d3ddf
+&gt;     tag: "7.0"
+&gt;   - items:
+&gt;     - created: 2018-08-03T20:46:30Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-71-rhel7@sha256:c20188e7775607c5bbb9b526a041a526c5dc0be749d2a071f73e7d81c0066bdf
+&gt;       generation: 53
+&gt;       image: sha256:c20188e7775607c5bbb9b526a041a526c5dc0be749d2a071f73e7d81c0066bdf
+&gt;     tag: "7.1"
+&gt;   - items:
+&gt;     - created: 2018-08-03T20:46:30Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-71-rhel7@sha256:c20188e7775607c5bbb9b526a041a526c5dc0be749d2a071f73e7d81c0066bdf
+&gt;       generation: 53
+&gt;       image: sha256:c20188e7775607c5bbb9b526a041a526c5dc0be749d2a071f73e7d81c0066bdf
+&gt;     - created: 2018-07-24T19:25:27Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+&gt;       generation: 51
+&gt;       image: sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+&gt;     - created: 2018-03-06T16:02:57Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:e27b8848aeecd8fa5cb0c08e6951823375d2b944b5200c72da53a9700d4d3ddf
+&gt;       generation: 2
+&gt;       image: sha256:e27b8848aeecd8fa5cb0c08e6951823375d2b944b5200c72da53a9700d4d3ddf
+&gt;     tag: latest</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ diff php-70-rhel7-export.yaml php-70-rhel7-get.yaml
+6c6
+&lt;   creationTimestamp: null
+---
+&gt;   creationTimestamp: 2018-08-15T18:38:10Z
+8a9,12
+&gt;   namespace: openshift
+&gt;   resourceVersion: "42526771"
+&gt;   selfLink: /oapi/v1/namespaces/openshift/imagestreams/php-70-rhel7
+&gt;   uid: 5c1c4189-a0ba-11e8-9280-001a4a160161
+16c20
+&lt;       name: docker-registry.default.svc:5000/openshift/php-70-rhel7:7.0-15
+---
+&gt;       name: registry.access.redhat.com/rhscl/php-70-rhel7:7.0-15
+25c29
+&lt;       name: docker-registry.default.svc:5000/openshift/php-70-rhel7:7.0-17
+---
+&gt;       name: is
+34c38
+&lt;       name: docker-registry.default.svc:5000/openshift/php-70-rhel7:7.0-5.21
+---
+&gt;       name: registry.access.redhat.com/rhscl/php-70-rhel7:7.0-5.21
+39a44,52
+&gt;   - annotations: null
+&gt;     from:
+&gt;       kind: DockerImage
+&gt;       name: is
+&gt;     generation: 6
+&gt;     importPolicy: {}
+&gt;     name: latest
+&gt;     referencePolicy:
+&gt;       type: Source
+41c54,89
+&lt;   dockerImageRepository: ""
+---
+&gt;   dockerImageRepository: docker-registry.default.svc:5000/openshift/php-70-rhel7
+&gt;   tags:
+&gt;   - items:
+&gt;     - created: 2018-08-15T18:50:20Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:973bab52428a706e2a15557f26362e2a111781b075470435de9f68ec758664e9
+&gt;       generation: 7
+&gt;       image: sha256:973bab52428a706e2a15557f26362e2a111781b075470435de9f68ec758664e9
+&gt;     tag: 7.0-15
+&gt;   - conditions:
+&gt;     - generation: 3
+&gt;       lastTransitionTime: 2018-08-15T18:39:19Z
+&gt;       message: you may not have access to the Docker image "is:latest"
+&gt;       reason: Unauthorized
+&gt;       status: "False"
+&gt;       type: ImportSuccess
+&gt;     items:
+&gt;     - created: 2018-08-15T18:38:10Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+&gt;       generation: 1
+&gt;       image: sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
+&gt;     tag: 7.0-17
+&gt;   - items:
+&gt;     - created: 2018-08-15T19:54:20Z
+&gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:1968410dd2b61684ec9a9eb32b5c9369c498afa9da48609c8d294a59913f3ef8
+&gt;       generation: 8
+&gt;       image: sha256:1968410dd2b61684ec9a9eb32b5c9369c498afa9da48609c8d294a59913f3ef8
+&gt;     tag: 7.0-5.21
+&gt;   - conditions:
+&gt;     - generation: 6
+&gt;       lastTransitionTime: 2018-08-15T18:39:35Z
+&gt;       message: you may not have access to the Docker image "is:latest"
+&gt;       reason: Unauthorized
+&gt;       status: "False"
+&gt;       type: ImportSuccess
+&gt;     items: null
+&gt;     tag: latest</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

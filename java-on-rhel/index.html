@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java on RHEL / Centos / Fedora - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Java on RHEL / Centos / Fedora" />
+<meta property="og:description" content="Java on RHEL / Centos / Fedora $ ls -lah /usr/lib/jvm total 20K drwxr-xr-x. 5 root root 4.0K Jul 30 09:56 . dr-xr-xr-x. 51 root root 4.0K Jul 20 12:02 .. lrwxrwxrwx. 1 root root 26 Jul 30 09:56 java -&gt; /etc/alternatives/java_sdk lrwxrwxrwx. 1 root root 32 Jul 30 09:56 java-1.8.0 -&gt; /etc/alternatives/java_sdk_1.8.0 lrwxrwxrwx. 1 root root 40 Jul 30 09:56 java-1.8.0-openjdk -&gt; /etc/alternatives/java_sdk_1.8.0_openjdk drwxr-xr-x. 3 root root 4.0K Mar 29 10:21 java-1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/java-on-rhel/" />
+
+
+
+<meta property="article:published_time" content="2018-08-10T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-08-10T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Java on RHEL / Centos / Fedora">
+<meta itemprop="description" content="Java on RHEL / Centos / Fedora $ ls -lah /usr/lib/jvm total 20K drwxr-xr-x. 5 root root 4.0K Jul 30 09:56 . dr-xr-xr-x. 51 root root 4.0K Jul 20 12:02 .. lrwxrwxrwx. 1 root root 26 Jul 30 09:56 java -&gt; /etc/alternatives/java_sdk lrwxrwxrwx. 1 root root 32 Jul 30 09:56 java-1.8.0 -&gt; /etc/alternatives/java_sdk_1.8.0 lrwxrwxrwx. 1 root root 40 Jul 30 09:56 java-1.8.0-openjdk -&gt; /etc/alternatives/java_sdk_1.8.0_openjdk drwxr-xr-x. 3 root root 4.0K Mar 29 10:21 java-1.">
+
+
+<meta itemprop="datePublished" content="2018-08-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="179">
+
+
+
+<meta itemprop="keywords" content="java,rhel,fedora," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java on RHEL / Centos / Fedora"/>
+<meta name="twitter:description" content="Java on RHEL / Centos / Fedora $ ls -lah /usr/lib/jvm total 20K drwxr-xr-x. 5 root root 4.0K Jul 30 09:56 . dr-xr-xr-x. 51 root root 4.0K Jul 20 12:02 .. lrwxrwxrwx. 1 root root 26 Jul 30 09:56 java -&gt; /etc/alternatives/java_sdk lrwxrwxrwx. 1 root root 32 Jul 30 09:56 java-1.8.0 -&gt; /etc/alternatives/java_sdk_1.8.0 lrwxrwxrwx. 1 root root 40 Jul 30 09:56 java-1.8.0-openjdk -&gt; /etc/alternatives/java_sdk_1.8.0_openjdk drwxr-xr-x. 3 root root 4.0K Mar 29 10:21 java-1."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-08-10 12:00">2018-08-10</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          </p>
+      <h1>Java on RHEL / Centos / Fedora</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/java">
+              <span class="hash">#</span>java</a>
+          
+            , 
+            <a href="/tags/rhel">
+              <span class="hash">#</span>rhel</a>
+          
+            , 
+            <a href="/tags/fedora">
+              <span class="hash">#</span>fedora</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_java_on_rhel_centos_fedora">Java on RHEL / Centos / Fedora</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ls -lah /usr/lib/jvm
+total 20K
+drwxr-xr-x.  5 root root 4.0K Jul 30 09:56 .
+dr-xr-xr-x. 51 root root 4.0K Jul 20 12:02 ..
+lrwxrwxrwx.  1 root root   26 Jul 30 09:56 java -&gt; /etc/alternatives/java_sdk
+lrwxrwxrwx.  1 root root   32 Jul 30 09:56 java-1.8.0 -&gt; /etc/alternatives/java_sdk_1.8.0
+lrwxrwxrwx.  1 root root   40 Jul 30 09:56 java-1.8.0-openjdk -&gt; /etc/alternatives/java_sdk_1.8.0_openjdk
+drwxr-xr-x.  3 root root 4.0K Mar 29 10:21 java-1.8.0-openjdk-1.8.0.162-3.b12.fc28.x86_64
+drwxr-xr-x.  7 root root 4.0K Jul 30 09:55 java-1.8.0-openjdk-1.8.0.181-7.b13.fc28.x86_64
+drwxr-xr-x.  7 root root 4.0K Jul 30 09:55 java-1.8.0-openjdk-1.8.0.181-7.b13.fc28.x86_64-debug
+lrwxrwxrwx.  1 root root   34 Jul 30 09:56 java-openjdk -&gt; /etc/alternatives/java_sdk_openjdk
+lrwxrwxrwx.  1 root root   21 Jul 30 09:56 jre -&gt; /etc/alternatives/jre
+lrwxrwxrwx.  1 root root   27 Jul 30 09:56 jre-1.8.0 -&gt; /etc/alternatives/jre_1.8.0
+lrwxrwxrwx.  1 root root   35 Jul 30 09:56 jre-1.8.0-openjdk -&gt; /etc/alternatives/jre_1.8.0_openjdk
+lrwxrwxrwx.  1 root root   50 Jul 23 12:19 jre-1.8.0-openjdk-1.8.0.181-7.b13.fc28.x86_64 -&gt; java-1.8.0-openjdk-1.8.0.181-7.b13.fc28.x86_64/jre
+lrwxrwxrwx.  1 root root   56 Jul 23 12:20 jre-1.8.0-openjdk-1.8.0.181-7.b13.fc28.x86_64-debug -&gt; java-1.8.0-openjdk-1.8.0.181-7.b13.fc28.x86_64-debug/jre</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ sudo alternatives --config java
+
+There are 2 programs which provide 'java'.
+
+  Selection    Command
+ -----------------------------------------------
+   1           java-1.8.0-openjdk.x86_64 (/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.fc28.x86_64-debug/jre/bin/java)
+*+ 2           java-1.8.0-openjdk.x86_64 (/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.fc28.x86_64/jre/bin/java)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

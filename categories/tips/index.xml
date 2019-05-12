@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tips on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/categories/tips/</link>
+    <description>Recent content in Tips on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/categories/tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Regex Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/regex-tips/</link>
+        <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/regex-tips/</guid>
+        <description>Regex Tips Grab content across lines:
+ ((.|\n)*)   My favorite tester:
+   https://regex101.com/
+     </description>
+      </item>
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/bash-tips/</link>
+        <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/bash-tips/</guid>
+        <description>Command Tips watch &#39;command | othertool | yet-another-tool&#39;
+ https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+   </description>
+      </item>
+    
+      <item>
+        <title>Image Video Metadata</title>
+        <link>https://btw-blog.apps.opencontainer.io/image-video-metadata/</link>
+        <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/image-video-metadata/</guid>
+        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&amp;#8217;t give you a lot of customization options. We couldn&amp;#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
+      </item>
+    
+      <item>
+        <title>Ansible Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/ansible-tips/</link>
+        <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/ansible-tips/</guid>
+        <description>Ansible Tips Print to stout and log at same time&amp;#8230;&amp;#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&amp;#8230;&amp;#8203; this one cleans up your journals&amp;#8230;&amp;#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      </description>
+      </item>
+    
+      <item>
+        <title>Terminal to File Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/terminal-to-file/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/terminal-to-file/</guid>
+        <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -     </description>
+      </item>
+    
+      <item>
+        <title>SSH Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/ssh-tips/</link>
+        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/ssh-tips/</guid>
+        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;      </description>
+      </item>
+    
+      <item>
+        <title>oc Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/oc-tips/</link>
+        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     </description>
+      </item>
+    
+      <item>
+        <title>Java on RHEL / Centos / Fedora</title>
+        <link>https://btw-blog.apps.opencontainer.io/java-on-rhel/</link>
+        <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/java-on-rhel/</guid>
+        <description>Java on RHEL / Centos / Fedora $ ls -lah /usr/lib/jvm total 20K drwxr-xr-x. 5 root root 4.0K Jul 30 09:56 . dr-xr-xr-x. 51 root root 4.0K Jul 20 12:02 .. lrwxrwxrwx. 1 root root 26 Jul 30 09:56 java -&amp;gt; /etc/alternatives/java_sdk lrwxrwxrwx. 1 root root 32 Jul 30 09:56 java-1.8.0 -&amp;gt; /etc/alternatives/java_sdk_1.8.0 lrwxrwxrwx. 1 root root 40 Jul 30 09:56 java-1.8.0-openjdk -&amp;gt; /etc/alternatives/java_sdk_1.8.0_openjdk drwxr-xr-x. 3 root root 4.0K Mar 29 10:21 java-1.</description>
+      </item>
+    
+      <item>
+        <title>Gnome Session</title>
+        <link>https://btw-blog.apps.opencontainer.io/gnome-session/</link>
+        <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/gnome-session/</guid>
+        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+  Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store.</description>
+      </item>
+    
+      <item>
+        <title>YUM DNF Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/yum-dnf-tips/</link>
+        <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/yum-dnf-tips/</guid>
+        <description>YUM and DNF Tips Remove all cache $ rm -rf /var/cache/yum      </description>
+      </item>
+    
+      <item>
+        <title>Git Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/git/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/git/</guid>
+        <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
+$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;        </description>
+      </item>
+    
+      <item>
+        <title>Helpful Filesystem Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/filesystems/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/filesystems/</guid>
+        <description>Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
+# tune2fs -m 0 /dev/sdb1     print UUID of filesystems
+# blkid     remount a readonly filesystem to rewrite
+# mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)</description>
+      </item>
+    
+      <item>
+        <title>Lenovo Linux Power Configuration T460s</title>
+        <link>https://btw-blog.apps.opencontainer.io/lenovo-linux-power/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/lenovo-linux-power/</guid>
+        <description>Lenovo Linux Power Configuration T460s /etc/UPower/UPower.conf CriticalPowerAction=Hibernate
+   </description>
+      </item>
+    
+      <item>
+        <title>Navigating Linux</title>
+        <link>https://btw-blog.apps.opencontainer.io/navigating-linux/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/navigating-linux/</guid>
+        <description>Navigating Linux   Move a file to different extension, or change parts of a name
+$ mv /etc/yum.repos.d/redhat.{repo,disabled}     Search for all mac dot underscore files
+$ find -name ._\* $ find -name .DS_Store $ find -name .DS_Store -delete     find and replace text in files in a directory, recursively:
+$ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#39;        </description>
+      </item>
+    
+      <item>
+        <title>Networking tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/networking/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/networking/</guid>
+        <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
+-nn: Show PCI vendor and device codes as both numbers and names.
+-k: Show driver information for a device.
+-d: Filter on just the &#39;Ethernet&#39; device class (0200)
+  Check Kernel module load # dmesg | grep e1000e   (kernel module e1000e found above)</description>
+      </item>
+    
+      <item>
+        <title>VIM Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/vim/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/vim/</guid>
+        <description>VIM Tips   Set YAML filetypes to have two spaces on indent
+$ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn&amp;#8217;t opened with sudo:
+:w !sudo tee %        </description>
+      </item>
+    
+      <item>
+        <title>XML Tips</title>
+        <link>https://btw-blog.apps.opencontainer.io/xml/</link>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/xml/</guid>
+        <description>XML Tips   Format raw xml on the cli
+echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&#34;ipsum&#34; /&amp;gt;&amp;lt;/root&amp;gt;&#39; | xmllint --format -        </description>
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gnome Session - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Gnome Session" />
+<meta property="og:description" content="Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl &#43; alt &#43; f1    Restart You can restart the gnome-shell by pressing Alt&#43;F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+  Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://btw-blog.apps.opencontainer.io/gnome-session/" />
+
+
+
+<meta property="article:published_time" content="2018-08-05T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-08-05T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Gnome Session">
+<meta itemprop="description" content="Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl &#43; alt &#43; f1    Restart You can restart the gnome-shell by pressing Alt&#43;F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+  Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store.">
+
+
+<meta itemprop="datePublished" content="2018-08-05T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-05T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="250">
+
+
+
+<meta itemprop="keywords" content="gnome,session,wayland,xorg," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gnome Session"/>
+<meta name="twitter:description" content="Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl &#43; alt &#43; f1    Restart You can restart the gnome-shell by pressing Alt&#43;F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+  Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2018-08-05 12:00">2018-08-05</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          </p>
+      <h1>Gnome Session</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/gnome">
+              <span class="hash">#</span>gnome</a>
+          
+            , 
+            <a href="/tags/session">
+              <span class="hash">#</span>session</a>
+          
+            , 
+            <a href="/tags/wayland">
+              <span class="hash">#</span>wayland</a>
+          
+            , 
+            <a href="/tags/xorg">
+              <span class="hash">#</span>xorg</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_gnome_session">Gnome Session</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_show_whether_you_are_on_wayland_or_x11">Show whether you are on wayland or x11:</h3>
+<div class="literalblock">
+<div class="content">
+<pre>$ loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ echo $XDG_SESSION_TYPE</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_switch_gui_terminal">Switch gui terminal</h3>
+<div class="literalblock">
+<div class="content">
+<pre>ctrl + alt + f1</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_restart">Restart</h3>
+<div class="paragraph">
+<p>You can restart the gnome-shell by pressing Alt+F2 and then typing in either "restart" or just "r" and pressing enter.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_software_center_history">Software Center History</h3>
+<div class="paragraph">
+<p>This app, <code>gnome-software</code>  is sorta nice in its GUI flashiness and reminds me of Apple app store.  Wouldn&#8217;t it be nice to see my history of installations through this tool?  In the backend it apparently uses PackageKit.  What is odd though is that it doesn&#8217;t record history through the dnf tool.  So all my command line history is captured but none of the GUI installs are captured.  If you need to see packages by installation you need to run through some RPM commands.  You might also have this problem when installing RPMs directly, without DNF.</p>
+</div>
+<div class="paragraph">
+<p>Show DNF history:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># dnf history</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Show last install date:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ rpm -qa --last</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Show packages installed, with installation repository:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># dnf list installed</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Find packages installed by command line, without DNF:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ dnf list installed | grep commandline</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Find all packages installed by user, whether through DNF or <code>gnome-software</code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># dnf history userinstalled</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this bug is tracking the fact that <code>gnome-software</code> and <code>PackageKit</code> are not using the DNF history database:
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=1277115" class="bare">https://bugzilla.redhat.com/show_bug.cgi?id=1277115</a>.  Though it is marked as a duplicate and closed, I suspect it is a different issue that still needs to be resolved.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networking on Everyday Linux</title>
+    <link>https://btw-blog.apps.opencontainer.io/categories/networking/</link>
+    <description>Recent content in Networking on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://btw-blog.apps.opencontainer.io/categories/networking/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Configure Dell PowerConnect PC5324</title>
+        <link>https://btw-blog.apps.opencontainer.io/configure-dell-powerconnect-pc5324/</link>
+        <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/configure-dell-powerconnect-pc5324/</guid>
+        <description>Configure Dell PowerConnect PC5324 Followed help from these sites   https://www.stevejenkins.com/blog/2011/05/dell-powerconnect-5324-setup-tasks/
+  http://ninjix.blogspot.com/2013/03/dell-powerconnect-serial-console-on.html
+    Tools to connect to console Minicom
+   can be a problem if the env variable TERM is not set correctly.
+  hit enter. then cntl-A then q then enter to exit minicom.
+   screen
+   Use the screen quit command (normally ctrl-A \).
+    Steps taken  Downloaded latest firmware</description>
+      </item>
+    
+      <item>
+        <title>Split DNS Resolution with VPN DNS and Local DNS</title>
+        <link>https://btw-blog.apps.opencontainer.io/split-dns-vpn-local-dnsmasq/</link>
+        <pubDate>Tue, 01 May 2018 10:40:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/split-dns-vpn-local-dnsmasq/</guid>
+        <description>Split DNS Resolution with VPN DNS and Local DNS Note: does not work as expected. Trouble with connecting to different wireless networks, as each one needs manual tweak. Need a better solution.
+ I recently installed a local identity management server with Red Hat Identity Management. This is essentially a free-ipa server that hosts some certificate management, DNS, and LDAP to track both my machines and my users on my local network.</description>
+      </item>
+    
+      <item>
+        <title>Bridged Host-VM Network</title>
+        <link>https://btw-blog.apps.opencontainer.io/bridge-host-vm/</link>
+        <pubDate>Tue, 01 May 2018 08:27:00 -0400</pubDate>
+        <guid>https://btw-blog.apps.opencontainer.io/bridge-host-vm/</guid>
+        <description>Bridged Host-VM Network     Host OS:
+ Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants
+   Host Virtual Platform:
+ virt-manager, virsh, libvirt, qemu
+   Guest OS:
+ Any
+    Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
+ e.g.</description>
+      </item>
+    
+  </channel>
+</rss>
