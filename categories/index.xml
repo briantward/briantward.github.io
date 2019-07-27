@@ -1,0 +1,102 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/</link>
+    <description>Recent content in Categories on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>tips</title>
+        <link>https://briantward.github.io/categories/tips/</link>
+        <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/tips/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>linux</title>
+        <link>https://briantward.github.io/categories/linux/</link>
+        <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/linux/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>openshift</title>
+        <link>https://briantward.github.io/categories/openshift/</link>
+        <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/openshift/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>mp3</title>
+        <link>https://briantward.github.io/categories/mp3/</link>
+        <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/mp3/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>wma</title>
+        <link>https://briantward.github.io/categories/wma/</link>
+        <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/wma/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>jboss</title>
+        <link>https://briantward.github.io/categories/jboss/</link>
+        <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/jboss/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>rhv</title>
+        <link>https://briantward.github.io/categories/rhv/</link>
+        <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/rhv/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>performance</title>
+        <link>https://briantward.github.io/categories/performance/</link>
+        <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/performance/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>networking</title>
+        <link>https://briantward.github.io/categories/networking/</link>
+        <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/networking/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>os</title>
+        <link>https://briantward.github.io/categories/os/</link>
+        <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/os/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>middleware</title>
+        <link>https://briantward.github.io/categories/middleware/</link>
+        <pubDate>Tue, 01 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://briantward.github.io/categories/middleware/</guid>
+        <description></description>
+      </item>
+    
+  </channel>
+</rss>

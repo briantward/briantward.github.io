@@ -3,6 +3,131 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://briantward.github.io/categories/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/idm/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/posts/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/rhidm-missing-dns-record/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/dns/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/freeipa/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/ipa/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/named/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/rhel/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/tips/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/openshift-auth-all-namespaces-to-a-secured-registry/</loc>
+    <lastmod>2019-05-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/linux/</loc>
+    <lastmod>2019-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/openshift/</loc>
+    <lastmod>2019-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/redhat/</loc>
+    <lastmod>2019-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/registry/</loc>
+    <lastmod>2019-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/convert-windows-to-kvm/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/bash/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/kvm/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/tips/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/windows/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/convert-wma-to-mp3/</loc>
     <lastmod>2019-05-11T00:00:00+00:00</lastmod>
   </url>
@@ -13,13 +138,85 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/audio/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/git/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/mp3/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/wma/</loc>
+    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/eap/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/openshift-jboss-eap/</loc>
     <lastmod>2019-04-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/dumps/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/jboss/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/jboss-clis.sh/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/log/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/logging/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/thread/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/cert-tips/</loc>
     <lastmod>2019-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/certificates/</loc>
+    <lastmod>2019-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -33,6 +230,42 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/data/</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/disaster/</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/expressions/</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/recovery/</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/regex/</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/regular/</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/bash-tips/</loc>
     <lastmod>2019-02-01T00:00:00+00:00</lastmod>
   </url>
@@ -43,8 +276,38 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/categories/rhv/</loc>
+    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/virtualization/</loc>
+    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/openshift-prometheus-external-heketi/</loc>
     <lastmod>2019-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/heketi/</loc>
+    <lastmod>2019-01-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/servicemonitor/</loc>
+    <lastmod>2019-01-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/lenovo/</loc>
+    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -53,8 +316,68 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/t460s/</loc>
+    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/i915/</loc>
+    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/intel/</loc>
+    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/linux/</loc>
+    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/video/</loc>
+    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/mp4/</loc>
+    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/image-video-metadata/</loc>
     <lastmod>2018-12-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/image/</loc>
+    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/jpeg/</loc>
+    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/metadata/</loc>
+    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/mov/</loc>
+    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -68,13 +391,73 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/red-hat/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/ansible/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/container/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/kubernetes/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/service-catalog/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/servicebinding/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/serviceinstance/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/openshift-reissue-certificate-manually/</loc>
     <lastmod>2018-12-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/certificate/</loc>
+    <lastmod>2018-12-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/error/</loc>
+    <lastmod>2018-12-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/memory-in-openshift/</loc>
     <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/crashloopbackoff/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -103,6 +486,60 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/backup/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/httpd/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/loglevel/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/metrics/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/migration/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/node-exporter/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/prometheus/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/router/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/sync/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/openshift-migrate-pv/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
   </url>
@@ -113,8 +550,56 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/cluster/</loc>
+    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/extensions/</loc>
+    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/migrate/</loc>
+    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/persistentvolume/</loc>
+    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/persistentvolumeclaim/</loc>
+    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/pv/</loc>
+    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/webconsole/</loc>
+    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/sync-redhat-images-on-openshift-311/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/imagestream/</loc>
+    <lastmod>2018-11-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -128,8 +613,50 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/appdev/</loc>
+    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/benchmarking/</loc>
+    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/devops/</loc>
+    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/performance/</loc>
+    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/performance/</loc>
+    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/ssh-tips/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/keygen/</loc>
+    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/oc/</loc>
+    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -138,8 +665,32 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/ssh/</loc>
+    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/tunnel/</loc>
+    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/java-on-rhel/</loc>
     <lastmod>2018-08-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/fedora/</loc>
+    <lastmod>2018-08-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/java/</loc>
+    <lastmod>2018-08-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -148,8 +699,44 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/gnome/</loc>
+    <lastmod>2018-08-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/session/</loc>
+    <lastmod>2018-08-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/wayland/</loc>
+    <lastmod>2018-08-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/xorg/</loc>
+    <lastmod>2018-08-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/yum-dnf-tips/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/dnf/</loc>
+    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/yum/</loc>
+    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -170,6 +757,54 @@
   <url>
     <loc>https://briantward.github.io/configure-dell-powerconnect-pc5324/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/dell/</loc>
+    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/networking/</loc>
+    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/networking/</loc>
+    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/os/</loc>
+    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/pool/</loc>
+    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/powerconnect/</loc>
+    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/subscription-manager/</loc>
+    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/switch/</loc>
+    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -208,6 +843,48 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/blkid/</loc>
+    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/filesystems/</loc>
+    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/kill/</loc>
+    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/mount/</loc>
+    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/openshift/</loc>
+    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/tune2fs/</loc>
+    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/umount/</loc>
+    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/lenovo-linux-bios-update/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
   </url>
@@ -223,8 +900,68 @@
   </url>
   
   <url>
+    <loc>https://briantward.github.io/tags/usb/</loc>
+    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/bios/</loc>
+    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/ssh-agent/</loc>
+    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/uefi/</loc>
+    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/update/</loc>
+    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/hugo-blog-on-openshift/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/asciidoc/</loc>
+    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/asciidoctor/</loc>
+    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/blog/</loc>
+    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/go/</loc>
+    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/hugo/</loc>
+    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -258,62 +995,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/rh-sso-on-rhel7/</loc>
-    <lastmod>2018-05-01T12:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/split-dns-vpn-local-dnsmasq/</loc>
-    <lastmod>2018-05-01T10:40:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/bridge-host-vm/</loc>
-    <lastmod>2018-05-01T08:27:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/jws-secured/</loc>
-    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/ansible/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/apache/</loc>
-    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/appdev/</loc>
-    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/asciidoc/</loc>
-    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/asciidoctor/</loc>
-    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/audio/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/authentication/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
     <priority>0</priority>
@@ -326,275 +1007,8 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/backup/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/bash/</loc>
-    <lastmod>2019-03-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/benchmarking/</loc>
-    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/bios/</loc>
-    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/blkid/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/blog/</loc>
-    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/bridge/</loc>
-    <lastmod>2018-05-01T08:27:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/certificate/</loc>
-    <lastmod>2018-12-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/certificates/</loc>
-    <lastmod>2019-03-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/cluster/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/container/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/crashloopbackoff/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/data/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/dell/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/devops/</loc>
-    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/disaster/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/dnf/</loc>
-    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/dns/</loc>
-    <lastmod>2018-05-01T10:40:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/dnsmasq/</loc>
-    <lastmod>2018-05-01T10:40:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/dumps/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/eap/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/error/</loc>
-    <lastmod>2018-12-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/ews/</loc>
-    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/expressions/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/extensions/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/fedora/</loc>
-    <lastmod>2018-08-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/filesystems/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/git/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/gnome/</loc>
-    <lastmod>2018-08-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/go/</loc>
-    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/google/</loc>
     <lastmod>2018-05-09T12:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/heketi/</loc>
-    <lastmod>2019-01-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/httpd/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/hugo/</loc>
-    <lastmod>2018-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/i915/</loc>
-    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/image/</loc>
-    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/imagestream/</loc>
-    <lastmod>2018-11-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/intel/</loc>
-    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/java/</loc>
-    <lastmod>2018-08-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/jboss/</loc>
-    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/jboss/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/jboss-clis.sh/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/jpeg/</loc>
-    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/jws/</loc>
-    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -605,61 +1019,53 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/keygen/</loc>
-    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/rh-sso/</loc>
+    <lastmod>2018-05-09T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/kill/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/rh-sso-on-rhel7/</loc>
+    <lastmod>2018-05-01T12:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/middleware/</loc>
+    <lastmod>2018-05-01T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/kubernetes/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/sso/</loc>
+    <lastmod>2018-05-01T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/lenovo/</loc>
-    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/split-dns-vpn-local-dnsmasq/</loc>
+    <lastmod>2018-05-01T10:40:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/dnsmasq/</loc>
+    <lastmod>2018-05-01T10:40:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/linux/</loc>
-    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/vpn/</loc>
+    <lastmod>2018-05-01T10:40:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/categories/linux/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://briantward.github.io/bridge-host-vm/</loc>
+    <lastmod>2018-05-01T08:27:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/posts/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/log/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/logging/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/loglevel/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/bridge/</loc>
+    <lastmod>2018-05-01T08:27:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -670,206 +1076,37 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/metadata/</loc>
-    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/virtual/</loc>
+    <lastmod>2018-05-01T08:27:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/metrics/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/jws-secured/</loc>
+    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/apache/</loc>
+    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/categories/middleware/</loc>
-    <lastmod>2018-05-01T12:00:00-04:00</lastmod>
+    <loc>https://briantward.github.io/tags/ews/</loc>
+    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/migrate/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/jboss/</loc>
+    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/migration/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/mount/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/mov/</loc>
-    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/mp3/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/mp4/</loc>
-    <lastmod>2018-12-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/networking/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/networking/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/node-exporter/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/oc/</loc>
-    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/openshift/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/openshift/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/os/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/performance/</loc>
-    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/performance/</loc>
-    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/persistentvolume/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/persistentvolumeclaim/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/photos/</loc>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/pool/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/powerconnect/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/projects/</loc>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/prometheus/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/publications/</loc>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/pv/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/recovery/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/red-hat/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/regex/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/regular/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/rh-sso/</loc>
-    <lastmod>2018-05-09T12:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/rhel/</loc>
-    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/rhv/</loc>
-    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/router/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
+    <loc>https://briantward.github.io/tags/jws/</loc>
+    <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -886,194 +1123,21 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/service-catalog/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/servicebinding/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/serviceinstance/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/servicemonitor/</loc>
-    <lastmod>2019-01-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/session/</loc>
-    <lastmod>2018-08-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/ssh/</loc>
-    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/ssh-agent/</loc>
-    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/sso/</loc>
-    <lastmod>2018-05-01T12:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/subscription-manager/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/switch/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/sync/</loc>
-    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/t460s/</loc>
-    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/thread/</loc>
-    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/tips/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/tips/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/tomcat/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/tune2fs/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://briantward.github.io/photos/</loc>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/tunnel/</loc>
-    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://briantward.github.io/projects/</loc>
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/uefi/</loc>
-    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/umount/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/update/</loc>
-    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/usb/</loc>
-    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/video/</loc>
-    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/virtual/</loc>
-    <lastmod>2018-05-01T08:27:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/virtualization/</loc>
-    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/vpn/</loc>
-    <lastmod>2018-05-01T10:40:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/wayland/</loc>
-    <lastmod>2018-08-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/webconsole/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/wma/</loc>
-    <lastmod>2019-05-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/xorg/</loc>
-    <lastmod>2018-08-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/yum/</loc>
-    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://briantward.github.io/publications/</loc>
   </url>
   
 </urlset>

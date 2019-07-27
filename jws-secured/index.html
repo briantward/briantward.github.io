@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.55.6" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -25,25 +25,11 @@
 <meta property="og:description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
    RPM Base Installation  Register your machine if you have not done so.
-``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription" />
+# subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/jws-secured/" />
-
-
-
 <meta property="article:published_time" content="2017-06-29T12:00:00-04:00"/>
-
 <meta property="article:modified_time" content="2017-06-29T12:00:00-04:00"/>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -51,12 +37,12 @@
 <meta itemprop="description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
    RPM Base Installation  Register your machine if you have not done so.
-``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription">
+# subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription">
 
 
 <meta itemprop="datePublished" content="2017-06-29T12:00:00-04:00" />
 <meta itemprop="dateModified" content="2017-06-29T12:00:00-04:00" />
-<meta itemprop="wordCount" content="1463">
+<meta itemprop="wordCount" content="1373">
 
 
 
@@ -67,7 +53,7 @@
 <meta name="twitter:description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
    RPM Base Installation  Register your machine if you have not done so.
-``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription"/>
+# subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription"/>
 
 
   </head>
@@ -191,9 +177,7 @@
 <p>Register your machine if you have not done so.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# subscription-manager register
-```</pre>
+<pre># subscription-manager register</pre>
 </div>
 </div>
 </li>
@@ -201,9 +185,7 @@
 <p>List the available subscriptions you have.  Look for the Pool ID of your JBoss Web Server subscription</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# subscription-manager list --available
-```</pre>
+<pre># subscription-manager list --available</pre>
 </div>
 </div>
 </li>
@@ -211,9 +193,7 @@
 <p>Attach the correct subscription.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# subscription-manager attach --pool=$POOL_ID
-```</pre>
+<pre># subscription-manager attach --pool=$POOL_ID</pre>
 </div>
 </div>
 </li>
@@ -221,9 +201,7 @@
 <p>Verify it has been attached</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# subscription-manager list --consumed
-```</pre>
+<pre># subscription-manager list --consumed</pre>
 </div>
 </div>
 </li>
@@ -231,9 +209,7 @@
 <p>Enable the repo</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# subscription-manager repos --enable=jws-3-for-$RHEL_VERSION-server-rpms
-```</pre>
+<pre># subscription-manager repos --enable=jws-3-for-$RHEL_VERSION-server-rpms</pre>
 </div>
 </div>
 </li>
@@ -241,17 +217,19 @@
 <p>Install</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# yum groupinstall jws3
-```
-or
-```
-# yum groupinstall jws3plus
-```</pre>
+<pre># yum groupinstall jws3</pre>
 </div>
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># yum groupinstall jws3plus</pre>
+</div>
 </div>
 </div>
 </div>
@@ -272,35 +250,31 @@ path filenames based on your choice of installation directory.  It should also c
 apache user with /sbin/nologin shell.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-$ sudo ./$APACHE_HOME/.postinstall
-```</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>If the script did not correctly install the user, you've probably done something incredibly wrong.
-If you want to do this part yourself and you don't want absolute URLS in your configs:</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>```
-$ sudo groupadd -g 48 -r apache
-$ sudo useradd -c "Apache" -u 48 -g apache -s /sbin/nologin -r apache
-$ sudo chown -R apache:apache httpd
-$ sudo passwd -l apache
-```</pre>
+<pre>$ sudo ./$APACHE_HOME/.postinstall</pre>
 </div>
 </div>
 </li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If the script did not correctly install the user, you&#8217;ve probably done something incredibly wrong.
+If you want to do this part yourself and you don&#8217;t want absolute URLS in your configs:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo groupadd -g 48 -r apache
+$ sudo useradd -c "Apache" -u 48 -g apache -s /sbin/nologin -r apache
+$ sudo chown -R apache:apache httpd
+$ sudo passwd -l apache</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Lock out the apache user.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-$ sudo passwd -l apache
-```</pre>
+<pre>$ sudo passwd -l apache</pre>
 </div>
 </div>
 </li>
@@ -317,13 +291,11 @@ $ sudo passwd -l apache
 <p>Create a test file index.html in $WWW_ROOT:</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-&lt;html&gt;
+<pre>&lt;html&gt;
 &lt;body&gt;
 test
 &lt;/body&gt;
-&lt;/html&gt;
-```</pre>
+&lt;/html&gt;</pre>
 </div>
 </div>
 </li>
@@ -331,9 +303,7 @@ test
 <p>Start the server.  It defaults on port 80, so you must use the root account to start it.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-$ sudo ./sbin/apachectl start
-```</pre>
+<pre>$ sudo ./sbin/apachectl start</pre>
 </div>
 </div>
 </li>
@@ -341,9 +311,7 @@ $ sudo ./sbin/apachectl start
 <p>Test it.  Be sure this returns the above index.html data.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-$ curl http://localhost:80
-```</pre>
+<pre>$ curl http://localhost:80</pre>
 </div>
 </div>
 </li>
@@ -351,9 +319,7 @@ $ curl http://localhost:80
 <p>Stop the server.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-$ sudo ./sbin/apachectl stop
-```</pre>
+<pre>$ sudo ./sbin/apachectl stop</pre>
 </div>
 </div>
 </li>
@@ -370,11 +336,9 @@ $ sudo ./sbin/apachectl stop
 <p>Backup config files for reference.  Remove them for production use.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-$ cp -Ra config config.backup
+<pre>$ cp -Ra config config.backup
 $ cp -Ra config.d config.d.backup
-$ cp -Ra confg.modules.d config.modules.d.backup
-```</pre>
+$ cp -Ra confg.modules.d config.modules.d.backup</pre>
 </div>
 </div>
 </li>
@@ -382,55 +346,51 @@ $ cp -Ra confg.modules.d config.modules.d.backup
 <p>Change the following existing directives in httpd.conf:</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# CIS 8.1 Set ServerToken to 'Prod'
-ServerTokens Prod
-```
-```
-# CIS 9.1
-Timeout 10
-```
-```
-# CIS 9.2
-KeepAlive On
-```
-```
-# CIS 5.13 Restrict Listen Directive
-Listen 127.0.0.1:8080
-```</pre>
+<pre># CIS 8.1 Set ServerToken to 'Prod'
+ServerTokens Prod</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-ServerName localhost:8080
-```</pre>
+<pre># CIS 9.1
+Timeout 10</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-DirectoryIndex index.html
-```</pre>
+<pre># CIS 9.2
+KeepAlive On</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-&lt;Directory "ANY"&gt;
+<pre># CIS 5.13 Restrict Listen Directive
+Listen 127.0.0.1:8080</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ServerName localhost:8080</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>DirectoryIndex index.html</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;Directory "ANY"&gt;
 ...
 Options None
 ...
-&lt;/Directory&gt;
-```</pre>
+&lt;/Directory&gt;</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# CIS 8.2 Set ServerSignature to 'Off'
-ServerSignature Off
-```</pre>
+<pre># CIS 8.2 Set ServerSignature to 'Off'
+ServerSignature Off</pre>
 </div>
 </div>
 </li>
@@ -443,26 +403,32 @@ ServerSignature Off
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# CIS 5.8 Disable HTTP TRACE Method
-TraceEnable Off
-```
-```
-# CIS 10.1
-LimitRequestLine 512
-```
-```
-# CIS 10.2
-LimitRequestFields 100
-```
-```
-# CIS 10.3
-LimitRequestFieldsize 1024
-```
-```
-# CIS 10.4
-LimitRequestBody 102400
-```</pre>
+<pre># CIS 5.8 Disable HTTP TRACE Method
+TraceEnable Off</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 10.1
+LimitRequestLine 512</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 10.2
+LimitRequestFields 100</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 10.3
+LimitRequestFieldsize 1024</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 10.4
+LimitRequestBody 102400</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -472,8 +438,7 @@ LimitRequestBody 102400
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-Include conf.modules.d/*.conf
+<pre>Include conf.modules.d/*.conf
 ...
 # CIS 5.9 Restrict HTTP Protocol Versions
 # (currently non 1.1, but could be altered to refuse 1.0 but allow 1.1+ in
@@ -494,30 +459,22 @@ RewriteRule ^.(.*) - [L,F]</pre>
 <div class="literalblock">
 <div class="content">
 <pre># CIS 5.14 Restrict Browser Frames
-Header always append X-Frame-Options SAMEORIGIN
-```</pre>
+Header always append X-Frame-Options SAMEORIGIN</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-&lt;Directory "/opt/jws/jws-3.0/httpd/www/html"&gt;
+<pre>&lt;Directory "/opt/jws/jws-3.0/httpd/www/html"&gt;
 ...
-# CIS 5.7 Limit HTTP Request Methods</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>    AllowMethods GET POST OPTIONS
+# CIS 5.7 Limit HTTP Request Methods
+    AllowMethods GET POST OPTIONS
 ...
-&lt;/Directory&gt;
-```</pre>
+&lt;/Directory&gt;</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# CIS 5.11 Restrict File Extensions
+<pre># CIS 5.11 Restrict File Extensions
 &lt;FilesMatch "^.*\..*$"&gt;
     Require all denied
 &lt;/FilesMatch&gt;</pre>
@@ -527,8 +484,7 @@ Header always append X-Frame-Options SAMEORIGIN
 <div class="content">
 <pre>&lt;FilesMatch "^.*\.(css|html?|js|pdf|txt|xml|xsl|gif|ico|jpe?g|png)$"&gt;
     Require all granted
-&lt;/FilesMatch&gt;
-```</pre>
+&lt;/FilesMatch&gt;</pre>
 </div>
 </div>
 </li>
@@ -536,37 +492,29 @@ Header always append X-Frame-Options SAMEORIGIN
 <p>These directives stay the same.  You may want to comment that they are CIS specs and should not be changed.</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# CIS 9.3
-MaxKeepAliveRequests 100
-```</pre>
+<pre># CIS 9.3
+MaxKeepAliveRequests 100</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# CIS 9.4
-KeepAliveTimeout 15
-```</pre>
+<pre># CIS 9.4
+KeepAliveTimeout 15</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# CIS 3.1 Run the Apache Web Server as a non-root user
+<pre># CIS 3.1 Run the Apache Web Server as a non-root user
 User apache
-Group apache
-```</pre>
+Group apache</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# CIS 9.5, 9.6
+<pre># CIS 9.5, 9.6
 &lt;IfModule reqtimeout_module&gt;
   RequestReadTimeout header=20-40,MinRate=500 body=20,MinRate=500
-&lt;/IfModule&gt;
-```</pre>
+&lt;/IfModule&gt;</pre>
 </div>
 </div>
 </li>
@@ -667,8 +615,7 @@ Group apache
 <p>00-base.conf, comment out&#8230;&#8203;</p>
 <div class="literalblock">
 <div class="content">
-<pre>```
-# This provides use of Order, Allow, Deny syntax from apache 2.2.  Disable for new servers using
+<pre># This provides use of Order, Allow, Deny syntax from apache 2.2.  Disable for new servers using
 # # Require syntax from mod_authz_host
 #LoadModule access_compat_module modules/mod_access_compat.so</pre>
 </div>
@@ -682,10 +629,12 @@ Group apache
 <div class="literalblock">
 <div class="content">
 <pre># After removing any default Alias entries, remove this module unless you specifically need it
-#LoadModule alias_module modules/mod_alias.so
-```
-```
-# These are for header based authentication, disable unless specifically needed
+#LoadModule alias_module modules/mod_alias.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># These are for header based authentication, disable unless specifically needed
 #LoadModule auth_basic_module modules/mod_auth_basic.so
 #LoadModule auth_digest_module modules/mod_auth_digest.so
 #LoadModule authn_anon_module modules/mod_authn_anon.so
@@ -693,47 +642,62 @@ Group apache
 #LoadModule authn_dbd_module modules/mod_authn_dbd.so
 #LoadModule authn_dbm_module modules/mod_authn_dbm.so
 #LoadModule authn_file_module modules/mod_authn_file.so
-#LoadModule authn_socache_module modules/mod_authn_socache.so
-```
-```
-# These are for database backed auth, disable unless specifically needed
+#LoadModule authn_socache_module modules/mod_authn_socache.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># These are for database backed auth, disable unless specifically needed
 #LoadModule authz_dbd_module modules/mod_authz_dbd.so
-#LoadModule authz_dbm_module modules/mod_authz_dbm.so
-```
-```
-# CIS 2.5 Disable Autoindex module (after removing any specific configurations)
-#LoadModule autoindex_module modules/mod_autoindex.so
-```
-```
-# This is used for CGI Scripts
-#LoadModule env_module modules/mod_env.so
-```
-```
-# This is used for Server Side Includes
+#LoadModule authz_dbm_module modules/mod_authz_dbm.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 2.5 Disable Autoindex module (after removing any specific configurations)
+#LoadModule autoindex_module modules/mod_autoindex.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># This is used for CGI Scripts
+#LoadModule env_module modules/mod_env.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># This is used for Server Side Includes
 #LoadModule include_module modules/mod_include.so</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre># CIS 2.8 Disable Info module (after removing any specific configurations)
-#LoadModule info_module modules/mod_info.so
-```
-```
-# This is used mostly for proxy configs
-#LoadModule remoteip_module modules/mod_remoteip.so
-```
-```
-# CIS 2.4 Disable Status modules (after removing any specific configuration)
-#LoadModule status_module modules/mod_status.so
-```
-```
-# This is used for CGI Scripts
-#LoadModule suexec_module modules/mod_suexec.so
-```
-```
-# CIS 2.7 Disable User Directories module
-#LoadModule userdir_module modules/mod_userdir.so
-```</pre>
+#LoadModule info_module modules/mod_info.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># This is used mostly for proxy configs
+#LoadModule remoteip_module modules/mod_remoteip.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 2.4 Disable Status modules (after removing any specific configuration)
+#LoadModule status_module modules/mod_status.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># This is used for CGI Scripts
+#LoadModule suexec_module modules/mod_suexec.so</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># CIS 2.7 Disable User Directories module
+#LoadModule userdir_module modules/mod_userdir.so</pre>
 </div>
 </div>
 </li>

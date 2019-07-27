@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>List of posts on Everyday Linux</title>
@@ -6,10 +5,44 @@
     <description>Recent content in List of posts on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Red Hat Identity Management Server - Missing DNS Record</title>
+        <link>https://briantward.github.io/rhidm-missing-dns-record/</link>
+        <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rhidm-missing-dns-record/</guid>
+        <description>Red Hat Identity Management Server - Missing DNS Record Recently my server lab lost power. Stuff did not come back cleanly, and I needed to get my house back in order.
+ My Red Hat Identity Management Server, aka freeipa, running on a RHEL7 machine, restarted along with all the other physicals and vms. When the IdM server came back up, I noticed after some time that it had missing DNS records for some of my machines.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Authenticate all Namespaces to a Secured Registry</title>
+        <link>https://briantward.github.io/openshift-auth-all-namespaces-to-a-secured-registry/</link>
+        <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-auth-all-namespaces-to-a-secured-registry/</guid>
+        <description>OpenShift Authenticate all Namespaces to a Secured Registry If your organization maintains or uses a third-party container registry requiring authentication, this article will help you setup one set of credentials in OpenShift for all your users.
+ Implication: all users have access to these credentials. They should be read-only.
+ Recently Red Hat launched a new Container Registry at registry.redhat.io requiring authenticated logins. When you install an OpenShift 3.10 or greater cluster, your default pull registry for the images and templates in the OpenShift namespace will use this registry.</description>
+      </item>
+    
+      <item>
+        <title>Convert Windows Machine to Windows VM in KVM</title>
+        <link>https://briantward.github.io/convert-windows-to-kvm/</link>
+        <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/convert-windows-to-kvm/</guid>
+        <description>Convert Windows Machine to Windows VM in KVM Export to windows VM
+   Disk2vhd v2.01
+   Convert to QEMU KVM
+   Converting between image formats
+  Converting Virtual Machines from Other Hypervisors to KVM with virt-v2v in RHEL 7
+   Keyboard was not working initially
+   use oskb - on screen keyboard - to enter password or such
+  go to control panel &amp;gt; programs</description>
+      </item>
     
       <item>
         <title>Convert WMA to MP3</title>
@@ -543,7 +576,9 @@ echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo
         <link>https://briantward.github.io/split-dns-vpn-local-dnsmasq/</link>
         <pubDate>Tue, 01 May 2018 10:40:00 -0400</pubDate>
         <guid>https://briantward.github.io/split-dns-vpn-local-dnsmasq/</guid>
-        <description>Split DNS Resolution with VPN DNS and Local DNS Note: does not work as expected. Trouble with connecting to different wireless networks, as each one needs manual tweak. Need a better solution.
+        <description>Split DNS Resolution with VPN DNS and Local DNS Edit 2019-05-16: This work is superceded by this wonderful feature in NetworkManager now:
+   https://fedoramagazine.org/using-the-networkmanagers-dnsmasq-plugin/
+   Note: does not work as expected. Trouble with connecting to different wireless networks, as each one needs manual tweak. Need a better solution.
  I recently installed a local identity management server with Red Hat Identity Management. This is essentially a free-ipa server that hosts some certificate management, DNS, and LDAP to track both my machines and my users on my local network.</description>
       </item>
     
@@ -570,7 +605,7 @@ echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo
         <description>Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
    RPM Base Installation  Register your machine if you have not done so.
-``` # subscription-manager register ```     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription</description>
+# subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription</description>
       </item>
     
   </channel>

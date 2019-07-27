@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vpn on Everyday Linux</title>
+    <title>vpn on Everyday Linux</title>
     <link>https://briantward.github.io/tags/vpn/</link>
-    <description>Recent content in Vpn on Everyday Linux</description>
+    <description>Recent content in vpn on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 01 May 2018 10:40:00 -0400</lastBuildDate>
@@ -16,7 +15,9 @@
         <link>https://briantward.github.io/split-dns-vpn-local-dnsmasq/</link>
         <pubDate>Tue, 01 May 2018 10:40:00 -0400</pubDate>
         <guid>https://briantward.github.io/split-dns-vpn-local-dnsmasq/</guid>
-        <description>Split DNS Resolution with VPN DNS and Local DNS Note: does not work as expected. Trouble with connecting to different wireless networks, as each one needs manual tweak. Need a better solution.
+        <description>Split DNS Resolution with VPN DNS and Local DNS Edit 2019-05-16: This work is superceded by this wonderful feature in NetworkManager now:
+   https://fedoramagazine.org/using-the-networkmanagers-dnsmasq-plugin/
+   Note: does not work as expected. Trouble with connecting to different wireless networks, as each one needs manual tweak. Need a better solution.
  I recently installed a local identity management server with Red Hat Identity Management. This is essentially a free-ipa server that hosts some certificate management, DNS, and LDAP to track both my machines and my users on my local network.</description>
       </item>
     

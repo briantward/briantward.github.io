@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>registry on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/registry/</link>
+    <description>Recent content in registry on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/registry/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift Authenticate all Namespaces to a Secured Registry</title>
+        <link>https://briantward.github.io/openshift-auth-all-namespaces-to-a-secured-registry/</link>
+        <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-auth-all-namespaces-to-a-secured-registry/</guid>
+        <description>OpenShift Authenticate all Namespaces to a Secured Registry If your organization maintains or uses a third-party container registry requiring authentication, this article will help you setup one set of credentials in OpenShift for all your users.
+ Implication: all users have access to these credentials. They should be read-only.
+ Recently Red Hat launched a new Container Registry at registry.redhat.io requiring authenticated logins. When you install an OpenShift 3.10 or greater cluster, your default pull registry for the images and templates in the OpenShift namespace will use this registry.</description>
+      </item>
+    
+  </channel>
+</rss>

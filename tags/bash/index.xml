@@ -1,15 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bash on Everyday Linux</title>
+    <title>bash on Everyday Linux</title>
     <link>https://briantward.github.io/tags/bash/</link>
-    <description>Recent content in Bash on Everyday Linux</description>
+    <description>Recent content in bash on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Convert Windows Machine to Windows VM in KVM</title>
+        <link>https://briantward.github.io/convert-windows-to-kvm/</link>
+        <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/convert-windows-to-kvm/</guid>
+        <description>Convert Windows Machine to Windows VM in KVM Export to windows VM
+   Disk2vhd v2.01
+   Convert to QEMU KVM
+   Converting between image formats
+  Converting Virtual Machines from Other Hypervisors to KVM with virt-v2v in RHEL 7
+   Keyboard was not working initially
+   use oskb - on screen keyboard - to enter password or such
+  go to control panel &amp;gt; programs</description>
+      </item>
     
       <item>
         <title>Managing Certificates</title>

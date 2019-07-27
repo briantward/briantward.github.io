@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenShift Authenticate all Namespaces to a Secured Registry - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="OpenShift Authenticate all Namespaces to a Secured Registry" />
+<meta property="og:description" content="OpenShift Authenticate all Namespaces to a Secured Registry If your organization maintains or uses a third-party container registry requiring authentication, this article will help you setup one set of credentials in OpenShift for all your users.
+ Implication: all users have access to these credentials. They should be read-only.
+ Recently Red Hat launched a new Container Registry at registry.redhat.io requiring authenticated logins. When you install an OpenShift 3.10 or greater cluster, your default pull registry for the images and templates in the OpenShift namespace will use this registry." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/openshift-auth-all-namespaces-to-a-secured-registry/" />
+<meta property="article:published_time" content="2019-05-24T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-05-24T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="OpenShift Authenticate all Namespaces to a Secured Registry">
+<meta itemprop="description" content="OpenShift Authenticate all Namespaces to a Secured Registry If your organization maintains or uses a third-party container registry requiring authentication, this article will help you setup one set of credentials in OpenShift for all your users.
+ Implication: all users have access to these credentials. They should be read-only.
+ Recently Red Hat launched a new Container Registry at registry.redhat.io requiring authenticated logins. When you install an OpenShift 3.10 or greater cluster, your default pull registry for the images and templates in the OpenShift namespace will use this registry.">
+
+
+<meta itemprop="datePublished" content="2019-05-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-24T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="680">
+
+
+
+<meta itemprop="keywords" content="registry,redhat," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift Authenticate all Namespaces to a Secured Registry"/>
+<meta name="twitter:description" content="OpenShift Authenticate all Namespaces to a Secured Registry If your organization maintains or uses a third-party container registry requiring authentication, this article will help you setup one set of credentials in OpenShift for all your users.
+ Implication: all users have access to these credentials. They should be read-only.
+ Recently Red Hat launched a new Container Registry at registry.redhat.io requiring authenticated logins. When you install an OpenShift 3.10 or greater cluster, your default pull registry for the images and templates in the OpenShift namespace will use this registry."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-05-24 12:00">2019-05-24</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          
+            , 
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>OpenShift Authenticate all Namespaces to a Secured Registry</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/registry">
+              <span class="hash">#</span>registry</a>
+          
+            , 
+            <a href="/tags/redhat">
+              <span class="hash">#</span>redhat</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_openshift_authenticate_all_namespaces_to_a_secured_registry">OpenShift Authenticate all Namespaces to a Secured Registry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If your organization maintains or uses a third-party container registry requiring authentication, this article will help you setup one set of credentials in OpenShift for all your users.</p>
+</div>
+<div class="paragraph">
+<p>Implication: all users have access to these credentials.  They should be read-only.</p>
+</div>
+<div class="paragraph">
+<p>Recently Red Hat launched a new Container Registry at <code>registry.redhat.io</code> requiring authenticated logins.  When you install an OpenShift 3.10 or greater cluster, your default pull registry for the images and templates in the OpenShift namespace will use this registry.  If you tried to run the OpenShift installer without adding the credentials for <code>oreg_auth_user</code> and <code>oreg_auth_password</code>, you would have found that installation will fail.</p>
+</div>
+<div class="paragraph">
+<p>TODO: can you set the credentials inside the docker engine itself on all hosts?  Users would not have access to the credentials this way.</p>
+</div>
+<div class="paragraph">
+<p>TODO: what is the upgrade process like? Does it fail? Does it swap out the registry.</p>
+</div>
+<div class="paragraph">
+<p>TODO: image pullthrough and reference policy</p>
+</div>
+<div class="paragraph">
+<p>The <code>openshift-ansible</code> installer playbooks will add your specified credentials to a secret named <code>imagestreamsecret</code> in the <code>openshift</code> namespace.  This means that any <code>import-images</code> into that namespace will use those credentials.  However, due to security and permission policies being isolated between namespaces, when you try to perform an <code>import-image</code> from a container image at <code>registry.redhat.io</code> in another namespace, you will find it fails with an error showing you have not provided authentication credentials for the registry.  If you execute <code>oc get secrets</code> in this other namespace, you will see your common dockerconfig secrets for your internal registry, but not the <code>imagestreamsecret</code> for <code>registry.redhat.io</code>.  These secrets are created when the namespace is built, and you may notice that every namespace has its own secrets. However, by default your credentials for the <code>registry.redhat.io</code> container registry are not copied to other namespaces.  You may like this behavior if you want full control over what images are allowed within your platform, requiring all users to pull only those images available in the <code>openshift</code> namespace.  However, you may want to provide your users the freedom to pull any images from approved external catalogs using preset credentials.  Keep in mind that your users are not restricted, in this case, from using the registry with their own provided credentials, unless you have explicity set rules in your local container engine to allow only particular registries and/or deny others.  In other words, if your user has their own credentials, they can create a dockerconfig secret with those credentials in their namespace and successfully pull images from that registry.  If you would like to have the authentication work without further intervention from users, by default during namespace creation, then proceed with the following steps.</p>
+</div>
+<div class="paragraph">
+<p>The documentation explains how to modify the default template for new namespaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#modifying-the-template-for-new-projects" class="bare">https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#modifying-the-template-for-new-projects</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We will provide the same documenation steps here, with a few additional details particular to this use case.</p>
+</div>
+<div class="paragraph">
+<p>To create your own custom project template:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start with the current default project template:</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc adm create-bootstrap-project-template -o yaml &gt; template.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use a text editor to modify the <code>template.yaml</code> file by adding objects or modifying existing objects.</p>
+<div class="paragraph">
+<p>If you installed your cluster with <code>oreg_url</code> set to the default value of <code>registry.redhat.io</code>, then you can export the <code>imagestream</code> dockerconfig from the <code>openshift</code> namespace.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>oc get secret imagestreamsecret -n openshift -o yaml --export &gt; is-secret.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you do not have this secret available, you need to create a Red Hat Registry Service Account through the Customer Portal here:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/terms-based-registry/" class="bare">https://access.redhat.com/terms-based-registry/</a></p>
+</div>
+<div class="paragraph">
+<p>Once you create your credentials, you can navigate to the tab that allows you to download the YAML file.  This object will be named differently from <code>imagestreamsecret</code>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/RegistryAuthentication" class="bare">https://access.redhat.com/RegistryAuthentication</a></p>
+</div>
+<div class="paragraph">
+<p>If you would like to authenticate to some other registry, follow these steps to create a dockerconfig secret:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.openshift.com/container-platform/3.11/dev_guide/managing_images.html#allowing-pods-to-reference-images-from-other-secured-registries" class="bare">https://docs.openshift.com/container-platform/3.11/dev_guide/managing_images.html#allowing-pods-to-reference-images-from-other-secured-registries</a></p>
+</div>
+<div class="paragraph">
+<p>Example secret object to add to the bottom of your <code>template.yaml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>- apiVersion: v1
+  data:
+    .dockerconfigjson: &lt;ENCODED_VALUE&gt;
+  kind: Secret
+  metadata:
+    name: imagestreamsecret
+  type: kubernetes.io/dockerconfigjson</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Load the template:</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc create -f template.yaml -n default</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Modify the master-config.yaml file to reference the loaded template (on each master):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>    ...
+    projectConfig:
+      projectRequestTemplate: "default/project-request"
+      ...</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Restart the api services (on each master):</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ master-restart api api</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

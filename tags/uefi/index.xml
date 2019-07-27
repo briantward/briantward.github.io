@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Uefi on Everyday Linux</title>
+    <title>uefi on Everyday Linux</title>
     <link>https://briantward.github.io/tags/uefi/</link>
-    <description>Recent content in Uefi on Everyday Linux</description>
+    <description>Recent content in uefi on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 May 2018 00:00:00 +0000</lastBuildDate>

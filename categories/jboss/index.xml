@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jboss on Everyday Linux</title>
+    <title>jboss on Everyday Linux</title>
     <link>https://briantward.github.io/categories/jboss/</link>
-    <description>Recent content in Jboss on Everyday Linux</description>
+    <description>Recent content in jboss on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Apr 2019 00:00:00 +0000</lastBuildDate>
