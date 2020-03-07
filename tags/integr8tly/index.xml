@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>integr8tly on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/integr8tly/</link>
+    <description>Recent content in integr8tly on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/integr8tly/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Installing Integr8tly</title>
+        <link>https://briantward.github.io/integr8tly-installation/</link>
+        <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/integr8tly-installation/</guid>
+        <description>Installing Integr8tly TODO: clean up and sort out steps, using container installer
+ git clone -b fix-verify-launcher https://github.com/briantward/installation.git oc login ${OCP_MASTER_URL} ansible.cfg id_rsa inventories/hosts ansible -m ping all ansible-playbook -i inventories/hosts playbooks/install.yml pip install jsonpointer     </description>
+      </item>
+    
+  </channel>
+</rss>

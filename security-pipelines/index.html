@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Pipelines in OpenShift Container Platform - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Security Pipelines in OpenShift Container Platform" />
+<meta property="og:description" content="Security Pipelines in OpenShift Container Platform These are random notes for work in progress coded at https://github.com/briantward/container-pipelines/tree/parallel-spring-boot
+ - two OCP clusters: nonprod (dev, test, etc) and prod (prod, stage) - allow nonprod cluster to continue pulling image updates automatically to registry - have separate registries between nonprod and prod - new builds only happen in nonprod, never in prod - existing dev pipeline must be aware of possible update to deployed container by alternative parallel pipeline route and keep base image in sync - new security pipeline, parallel to existing dev pipeline: -- poll for updates to images in nonprod cluster --- polling will check similar to what happens when the nonprod cluster syncs from RH Registry --- can we capture a log of the updates from RH registry and just act on them?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/security-pipelines/" />
+<meta property="article:published_time" content="2019-10-19T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-10-19T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="Security Pipelines in OpenShift Container Platform">
+<meta itemprop="description" content="Security Pipelines in OpenShift Container Platform These are random notes for work in progress coded at https://github.com/briantward/container-pipelines/tree/parallel-spring-boot
+ - two OCP clusters: nonprod (dev, test, etc) and prod (prod, stage) - allow nonprod cluster to continue pulling image updates automatically to registry - have separate registries between nonprod and prod - new builds only happen in nonprod, never in prod - existing dev pipeline must be aware of possible update to deployed container by alternative parallel pipeline route and keep base image in sync - new security pipeline, parallel to existing dev pipeline: -- poll for updates to images in nonprod cluster --- polling will check similar to what happens when the nonprod cluster syncs from RH Registry --- can we capture a log of the updates from RH registry and just act on them?">
+
+
+<meta itemprop="datePublished" content="2019-10-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-10-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="904">
+
+
+
+<meta itemprop="keywords" content="security,platform,containers," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Security Pipelines in OpenShift Container Platform"/>
+<meta name="twitter:description" content="Security Pipelines in OpenShift Container Platform These are random notes for work in progress coded at https://github.com/briantward/container-pipelines/tree/parallel-spring-boot
+ - two OCP clusters: nonprod (dev, test, etc) and prod (prod, stage) - allow nonprod cluster to continue pulling image updates automatically to registry - have separate registries between nonprod and prod - new builds only happen in nonprod, never in prod - existing dev pipeline must be aware of possible update to deployed container by alternative parallel pipeline route and keep base image in sync - new security pipeline, parallel to existing dev pipeline: -- poll for updates to images in nonprod cluster --- polling will check similar to what happens when the nonprod cluster syncs from RH Registry --- can we capture a log of the updates from RH registry and just act on them?"/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-10-19 12:00">2019-10-19</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>Security Pipelines in OpenShift Container Platform</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/security">
+              <span class="hash">#</span>security</a>
+          
+            , 
+            <a href="/tags/platform">
+              <span class="hash">#</span>platform</a>
+          
+            , 
+            <a href="/tags/containers">
+              <span class="hash">#</span>containers</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_security_pipelines_in_openshift_container_platform">Security Pipelines in OpenShift Container Platform</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These are random notes for work in progress coded at <a href="https://github.com/briantward/container-pipelines/tree/parallel-spring-boot" class="bare">https://github.com/briantward/container-pipelines/tree/parallel-spring-boot</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- two OCP clusters: nonprod (dev, test, etc) and prod (prod, stage)
+- allow nonprod cluster to continue pulling image updates automatically to registry
+- have separate registries between nonprod and prod
+- new builds only happen in nonprod, never in prod
+- existing dev pipeline must be aware of possible update to deployed container by alternative parallel pipeline route and keep base image in sync
+
+- new security pipeline, parallel to existing dev pipeline:
+-- poll for updates to images in nonprod cluster
+--- polling will check similar to what happens when the nonprod cluster syncs from RH Registry
+--- can we capture a log of the updates from RH registry and just act on them? - prob not a good idea
+--- or perform a diff between nonprod and prod registries?
+--- "I am app A, need access to container X, Y, Z latest builds"
+--- Define: latest build
+-- run any application specific tests (?), i.e. smoke tests
+--- this requires the process to be built independently for EVERY application, and effectively must be a CI pipeline
+-- queue for manual verification by users before pushing to production cluster
+--- this would allow scheduling of the final push to the prod cluster (scheduling could be automatic based on programmed times/behaviors, send an email to notify admins what is happening)
+--- the prod cluster would have DC set to update/rollout on ImageChange, or would have to change the tag in the DC.  If going to a stage env inside prod cluster first, may need to change tags instead of rely on ImageChange (which would kick off both stage and prod at same time).
+--- users will want to know what running containers are affected
+--- users schedule a time the push to prod cluster happens
+--- or alternatively, users push immediately
+--- users will want a status update (email?) by each image update
+
+
+- new security pipeline, parallel to existing dev pipeline:
+-- poll for updates to core images from RHCC (--scheduled=true)
+--- Application with tag "app-v1.2.3" updates to "app-v1.2.3" (no change in tag) based on seeing a change in underlying image, kicks off build trigger, then kicks off deploy trigger
+-- poll for updates to images in nonprod cluster (check existing image sha256 in dev registry "app-v1.2.3" and compares it to prod registry "app-v1.2.3-0001"
+--- Define: latest build. Application with tag "app-v1.2.3-0001" updates to "app-v1.2.3-0002" based on dev environment change to sha256 and
+-- run any application specific tests (?), i.e. smoke tests
+--- this requires the process to be built independently for EVERY application, and effectively must be a CI pipeline
+-- queue for manual verification by users before pushing to production cluster
+--- this would allow manual scheduling of the final push to the prod cluster
+--- change the dc to match with latest build tag, or keep same build tag and just do a rollout?
+--- users will want to know what running containers are affected
+--- users schedule a time the push to prod cluster happens
+--- or alternatively, users push immediately
+--- users will want a status update (email?) by each image update
+
+
+app-dev
+- dc app-v1.0.0-indev
+- dc app-v1.0.1-secup
+app-stage
+- dc app-v1.0.0-indev
+- dc app-v1.0.1-secup
+- dc app-v1.0.0-live
+app-prod
+- dc app-v1.0.0-live
+- dc app-v1.0.1-secup
+
+app-dev
+- bc app-indev (v1.1.0)
+- bc app-secup (v1.0.1) (BC updated with latest dev @ end of Dev Pipeline, after Dev Image pushed to Prod)
+- dc app-indev (v1.1.0) (No Build/Deploy Triggers, relies on Jenkins Pipelines)
+- dc app-secup (v1.0.1) (Build/Deploy Trigger)
+- route http://app-indev.dev.example.com
+- route http://app-secup.dev.example.com
+app-stage
+- dc app-indev (v1.1.0)
+- dc app-secup (v1.0.1) (Build/Deploy Trigger)
+- dc app-live (v1.0.0)
+- route http://app-indev.stage.example.com
+- route http://app-secup.stage.example.com
+- route http://app-live.stage.example.com
+app-prod
+- dc app-live (v1.0.0)
+- dc app-secup (v1.0.1)
+- route http://app.example.com
+- switch using Blue/Green or A/B deployment strategy, controlled manually or by Pipelines</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>oc run -i -t tool-box-test --image=quay.io/redhat-cop/tool-box --rm bash
+git clone -b ab-secup https://github.com/briantward/container-pipelines
+cd container-pipelines/basic-spring-boot/
+ansible-galaxy install -r requirements.yml --roles-path=galaxy
+oc login -u developer -p any https://192.168.42.56:8443
+ansible-playbook -i ./.applier/ galaxy/openshift-applier/playbooks/openshift-cluster-seed.yml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>if security updates are critical or important, move forward, otherwise, do not update
+if dev work not current, then kick off on schedule</p>
+</div>
+<div class="paragraph">
+<p>kick off security pipeline
+- something notices a new container from RHCC (automatic sync is in progress)
+- comparing the base image from BuildConfig of original project to results from RHCC automation
+- send email to team with review and manual approval gate (to make them aware), optional remove this is easy</p>
+</div>
+<div class="paragraph">
+<p>install a buildconfig with a trigger of image change on whatever is the base buildconfig</p>
+</div>
+<div class="paragraph">
+<p>swap A/B in pipeline (either original or secup)
+- checks to see which service name is currently present
+- deploys to prod immediately, with the not-current service name used
+- waits on switching the route from service current to not-current</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>def currentState = 'green'
+def newState = 'blue'
+
+
+openshift.withCluster() {
+            openshift.withProject(PROD) {
+              def activeService = openshift.selector("route/${APP_NAME}").object().spec.to.name
+              if (activeService == "${APP_NAME}-blue") {
+                newState = 'green'
+                currentState = 'blue'
+              }
+              def dc = openshift.selector("dc/${APP_NAME}-${newState}").object()
+              def trigger_patch =  [
+                ["type":"ImageChange",
+                 "imageChangeParams":[
+                   "automatic": true,
+                   "containerNames": ["${APP_NAME}-${newState}"],
+                   "from":[
+                     "kind":"ImageStreamTag",
+                     "namespace":PROD,
+                     "name":"${APP_NAME}-${newState}:${version}"
+                   ]
+                 ]
+                ],
+                ["type":"ConfigChange"]
+              ]
+              dc.spec.triggers = trigger_patch
+              openshift.apply(dc)
+            }
+          }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>security gate is one time switch need it to be many
+make regular service-A on start
+Pipeline must always check service to deploy to and update DC.</p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

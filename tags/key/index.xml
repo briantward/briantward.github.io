@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>key on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/key/</link>
+    <description>Recent content in key on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/key/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Add SSH key to OpenShift 4</title>
+        <link>https://briantward.github.io/add-sshkey-to-ocp4/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/add-sshkey-to-ocp4/</guid>
+        <description>Add SSH key to OpenShift 4 To add an SSH key if one was not provided during installation, perform the following from an admin account such as system:admin:
+ --- # oc debug node/&amp;lt;NODE_NAME&amp;gt; $ chroot /host $ mkdir /home/core/.ssh $ vi /home/core/.ssh/authorized_keys $ chown core:core -R /home/core/.ssh/ $ chmod 644 /home/core/.ssh/authorized_keys ---   Borrowed from Ryan Howe.
+   </description>
+      </item>
+    
+  </channel>
+</rss>

@@ -17,8 +17,8 @@
         <guid>https://briantward.github.io/git/</guid>
         <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
 $ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
-$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;      https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
-   </description>
+$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+      </description>
       </item>
     
   </channel>

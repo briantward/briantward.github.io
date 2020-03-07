@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenShift Application Core Dumps - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="OpenShift Application Core Dumps" />
+<meta property="og:description" content="OpenShift Application Core Dumps When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system. This is not something we want to do on a regular basis in production. Ideally such problems are discovered during application performance and load testing in lower environments. In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/openshift-application-coredumps/" />
+<meta property="article:published_time" content="2019-12-09T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-12-09T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="OpenShift Application Core Dumps">
+<meta itemprop="description" content="OpenShift Application Core Dumps When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system. This is not something we want to do on a regular basis in production. Ideally such problems are discovered during application performance and load testing in lower environments. In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover.">
+
+
+<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="852">
+
+
+
+<meta itemprop="keywords" content="containers,applications,developers,core,dumps," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift Application Core Dumps"/>
+<meta name="twitter:description" content="OpenShift Application Core Dumps When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system. This is not something we want to do on a regular basis in production. Ideally such problems are discovered during application performance and load testing in lower environments. In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-12-09 12:00">2019-12-09</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>OpenShift Application Core Dumps</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/containers">
+              <span class="hash">#</span>containers</a>
+          
+            , 
+            <a href="/tags/applications">
+              <span class="hash">#</span>applications</a>
+          
+            , 
+            <a href="/tags/developers">
+              <span class="hash">#</span>developers</a>
+          
+            , 
+            <a href="/tags/core">
+              <span class="hash">#</span>core</a>
+          
+            , 
+            <a href="/tags/dumps">
+              <span class="hash">#</span>dumps</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_openshift_application_core_dumps">OpenShift Application Core Dumps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system.  This is not something we want to do on a regular basis in production.  Ideally such problems are discovered during application performance and load testing in lower environments.  In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover.  However, it is also a great practice to do regular analysis of core dumps of your application during its testing phases.</p>
+</div>
+<div class="paragraph">
+<p>One of the awesome features of kubernetes and OpenShift in general is the ability to control deployment scenarios.  Unfortunately we don&#8217;t have a specific feature yet to allow us to capture core dumps only on specific application pods.  However, we can control core dumps by the nodes on which the applications are deployed.  And since we are running kubernetes, we have very simple but powerful control over our application placement.  We can schedule our pods to be deployed on nodes that are ready to capture core dumps while preventing other pods that do not need core dumps to be prevented from running on these same nodes.</p>
+</div>
+<div class="sect2">
+<h3 id="_configuring_a_node_to_capture_core_dumps">Configuring a Node to Capture Core Dumps</h3>
+<div class="paragraph">
+<p>These notes are for OpenShift 3.x where you have control over changing the node directly.  I&#8217;ll share OpenShift 4.x configurations later.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change the core dump pattern to be written straight to temp file</p>
+<div class="literalblock">
+<div class="content">
+<pre>echo "/tmp/cores/core.%e.%p.%h.%t" &gt; /proc/sys/kernel/core_pattern</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change the limits on the node, which should permit all users to capture an unlimited size core dump.  If you know your application well, you may be able to set this with a more logical numeric restriction.  CAUTION!  You should be aware of the risk of capturing large core dumps.  It would behoove you to have a separate partition for storing them.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code> ulimit -c unlimited
+ vi /etc/security/limits.conf
+
+ * hard core unlimited</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Ensure these values, to allow full daemon process dumping</p>
+<div class="literalblock">
+<div class="content">
+<pre>sysctl -w fs.suid_dumpable=1
+sysctl -p</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Make a temp folder, that matches the folder you specified in your <code>core_pattern</code> file</p>
+<div class="literalblock">
+<div class="content">
+<pre>mkdir -p /tmp/cores
+chmod a+rwx /tmp/cores</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can, however, use systemd-coredump to manage this, and configure the MaxUse or KeepFree parameters as explained in the documentation<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change the core dump pattern to be processed by systemd</p>
+<div class="literalblock">
+<div class="content">
+<pre>echo '|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %e' &gt; /proc/sys/kernel/core_pattern</pre>
+</div>
+</div>
+</li>
+<li>
+<p>If processing with systemd, your files will show up here:</p>
+<div class="literalblock">
+<div class="content">
+<pre>/var/lib/systemd/coredump/</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You could also write a custom filter script and specifying that in the core_pattern, for example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># cat /proc/sys/kernel/core_pattern
+|/usr/libexec/my-custom-core-filter %P %u %g %s %t %c %e</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You could then filter the coredumps you want to keep based on patterns or app names.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>Acquired from Robert Bost.</p>
+</div>
+<div class="paragraph">
+<p>Here is the <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1379470">RFE for core dumps</a> at pod or container level.  Note that all RFEs are now in JIRA so this may be elsewhere now.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_core_dumps">Testing Core Dumps</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Build and deploy your application.  Here we will use a test application from OpenShift.</p>
+<div class="literalblock">
+<div class="content">
+<pre>oc new-project test-cores
+oc new-app ruby~https://github.com/openshift/ruby-ex.git</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Schedule a test pod to your node</p>
+</li>
+<li>
+<p>RSH to your pod, find the main application PID</p>
+<div class="literalblock">
+<div class="content">
+<pre>$oc rsh POD_NAME`
+-$ ps aux</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Kill your application to test the core dump was generated</p>
+<div class="literalblock">
+<div class="content">
+<pre>-$ kill -11 &lt;PID&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-$ kill -s SIGSEGV $$</pre>
+</div>
+</div>
+</li>
+<li>
+<p>On the node, check the location the core dump was written, or if using systemd, run the following:</p>
+<div class="literalblock">
+<div class="content">
+<pre>coredumpctl list</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_core_dumps_on_apache_httpd">Testing Core Dumps on Apache HTTPD</h3>
+<div class="paragraph">
+<p>Apache Web Server handles SIGSEGV itself in a special way.  You must also configure how apache handles this, by setting <code>CoreDumpDirectory</code> and pointing that directive to a persistent storage location within the pod itself.  You could configure a HostPath to go to the same location as other core dumps, but this is an unnecessary security concern, and it is easier and safer to add and remove a PersistentVolume specifically for capturing the core dump.</p>
+</div>
+<div class="paragraph">
+<p>See the following repo for an example configuration in an s2i build.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/briantward/cakephp-ex/blob/master/httpd-cfg/coredumps.conf" class="bare">https://github.com/briantward/cakephp-ex/blob/master/httpd-cfg/coredumps.conf</a></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ cat httpd-cfg/coredumps.conf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also achieve this by using a posthook execution</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_core_dumps_on_mysql">Testing Core Dumps on Mysql</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/using-system-variables.html" class="bare">https://dev.mysql.com/doc/refman/5.7/en/using-system-variables.html</a></p>
+</li>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_core_file" class="bare">https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_core_file</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_core_dumps_on_java">Testing Core Dumps on Java</h3>
+<div class="paragraph">
+<p>Add flag to java startup.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-XX:OnError</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_additional_documentation">Additional Documentation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/solutions/4896">How to enable core file dumps when an application crashes or segmentation faults</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/solutions/649193">How to enable coredumps for daemon process (services) in RHEL?</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/solutions/56021">How to collect core dump file of a crashing program that is shipped in Red Hat Enterprise Linux 6/7?</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/solutions/2587">How to set sysctl variables on Red Hat Enterprise Linux</a></p>
+</li>
+<li>
+<p><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1596284">Bug 1596284 - [RFE</a>[GSS] Stop creating core dumps inside gluster pod root directory]</p>
+</li>
+<li>
+<p><a href="https://github.com/moby/moby/issues/11740">Documentation: Make clear instructions for getting a core file, when container crashes #11740</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Add "default-ulimits": {"core": {"Name": "core", "Hard": -1, "Soft": -1}} to /etc/docker/daemon.json</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_software_collections/3/html-single/using_red_hat_software_collections_container_images/">Using Red Hat Software Collections Container Images</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/articles/2379991">How to Extend the rhscl/mariadb-101-rhel7 Container Image</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sclorg/mysql-container/blob/master/5.7/Dockerfile.rhel7" class="bare">https://github.com/sclorg/mysql-container/blob/master/5.7/Dockerfile.rhel7</a></p>
+</li>
+<li>
+<p><a href="http://man7.org/linux/man-pages/man5/core.5.html" class="bare">http://man7.org/linux/man-pages/man5/core.5.html</a></p>
+</li>
+<li>
+<p><a href="https://linux.die.net/man/5/limits.conf" class="bare">https://linux.die.net/man/5/limits.conf</a></p>
+</li>
+<li>
+<p><a href="https://www.freedesktop.org/software/systemd/man/systemd-coredump.html" class="bare">https://www.freedesktop.org/software/systemd/man/systemd-coredump.html</a></p>
+</li>
+<li>
+<p><a href="https://www.freedesktop.org/software/systemd/man/coredump.conf.html" class="bare">https://www.freedesktop.org/software/systemd/man/coredump.conf.html</a></p>
+</li>
+<li>
+<p><a href="https://www.freedesktop.org/software/systemd/man/coredumpctl.html" class="bare">https://www.freedesktop.org/software/systemd/man/coredumpctl.html</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/articles/1469">Apache httpd core file analysis on Red Hat Enterprise Linux</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/solutions/1465">Apache httpd crash on Red Hat Enterprise Linux</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sclorg/s2i-php-container" class="bare">https://github.com/sclorg/s2i-php-container</a></p>
+</li>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/using-system-variables.html" class="bare">https://dev.mysql.com/doc/refman/5.7/en/using-system-variables.html</a></p>
+</li>
+<li>
+<p><a href="https://www.percona.com/blog/2011/08/26/getting-mysql-core-file-on-linux/" class="bare">https://www.percona.com/blog/2011/08/26/getting-mysql-core-file-on-linux/</a></p>
+</li>
+<li>
+<p><a href="http://fromdual.com/hunting-the-core" class="bare">http://fromdual.com/hunting-the-core</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/solutions/3194462">How to use oc debug (Solution in edit)</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_developer_toolset/7/html-single/user_guide/" class="bare">https://access.redhat.com/documentation/en-us/red_hat_developer_toolset/7/html-single/user_guide/</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_software_collections/3/html/using_red_hat_software_collections_container_images/devtoolset-images" class="bare">https://access.redhat.com/documentation/en-us/red_hat_software_collections/3/html/using_red_hat_software_collections_container_images/devtoolset-images</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sclorg/devtoolset-container/tree/master/7-toolchain" class="bare">https://github.com/sclorg/devtoolset-container/tree/master/7-toolchain</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/solutions/2168181" class="bare">https://access.redhat.com/solutions/2168181</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Signal_(IPC)#List_of_signals">List of *NIX signals</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://www.freedesktop.org/software/systemd/man/coredump.conf.html" class="bare">https://www.freedesktop.org/software/systemd/man/coredump.conf.html</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="http://man7.org/linux/man-pages/man5/core.5.html" class="bare">http://man7.org/linux/man-pages/man5/core.5.html</a>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

@@ -40,7 +40,7 @@
 
 <meta itemprop="datePublished" content="2019-05-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-05-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="680">
+<meta itemprop="wordCount" content="634">
 
 
 
@@ -144,15 +144,6 @@
 </div>
 <div class="paragraph">
 <p>Recently Red Hat launched a new Container Registry at <code>registry.redhat.io</code> requiring authenticated logins.  When you install an OpenShift 3.10 or greater cluster, your default pull registry for the images and templates in the OpenShift namespace will use this registry.  If you tried to run the OpenShift installer without adding the credentials for <code>oreg_auth_user</code> and <code>oreg_auth_password</code>, you would have found that installation will fail.</p>
-</div>
-<div class="paragraph">
-<p>TODO: can you set the credentials inside the docker engine itself on all hosts?  Users would not have access to the credentials this way.</p>
-</div>
-<div class="paragraph">
-<p>TODO: what is the upgrade process like? Does it fail? Does it swap out the registry.</p>
-</div>
-<div class="paragraph">
-<p>TODO: image pullthrough and reference policy</p>
 </div>
 <div class="paragraph">
 <p>The <code>openshift-ansible</code> installer playbooks will add your specified credentials to a secret named <code>imagestreamsecret</code> in the <code>openshift</code> namespace.  This means that any <code>import-images</code> into that namespace will use those credentials.  However, due to security and permission policies being isolated between namespaces, when you try to perform an <code>import-image</code> from a container image at <code>registry.redhat.io</code> in another namespace, you will find it fails with an error showing you have not provided authentication credentials for the registry.  If you execute <code>oc get secrets</code> in this other namespace, you will see your common dockerconfig secrets for your internal registry, but not the <code>imagestreamsecret</code> for <code>registry.redhat.io</code>.  These secrets are created when the namespace is built, and you may notice that every namespace has its own secrets. However, by default your credentials for the <code>registry.redhat.io</code> container registry are not copied to other namespaces.  You may like this behavior if you want full control over what images are allowed within your platform, requiring all users to pull only those images available in the <code>openshift</code> namespace.  However, you may want to provide your users the freedom to pull any images from approved external catalogs using preset credentials.  Keep in mind that your users are not restricted, in this case, from using the registry with their own provided credentials, unless you have explicity set rules in your local container engine to allow only particular registries and/or deny others.  In other words, if your user has their own credentials, they can create a dockerconfig secret with those credentials in their namespace and successfully pull images from that registry.  If you would like to have the authentication work without further intervention from users, by default during namespace creation, then proceed with the following steps.</p>
@@ -270,7 +261,7 @@
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

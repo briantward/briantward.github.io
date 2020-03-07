@@ -22,25 +22,29 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="bash Tips" />
-<meta property="og:description" content="Command Tips watch &#39;command | othertool | yet-another-tool&#39;
- https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+<meta property="og:description" content="Command Tips String the watch command with several commands at once
+ watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don&#8217;t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &lt;username&gt; [&lt;umask&gt; [&lt;skeldir&gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
    " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/bash-tips/" />
-<meta property="article:published_time" content="2019-02-01T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-02-01T00:00:00&#43;00:00"/>
+<meta property="article:published_time" content="2020-02-01T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-02-01T00:00:00&#43;00:00"/>
 
 
 
 <meta itemprop="name" content="bash Tips">
-<meta itemprop="description" content="Command Tips watch &#39;command | othertool | yet-another-tool&#39;
- https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+<meta itemprop="description" content="Command Tips String the watch command with several commands at once
+ watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don&#8217;t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &lt;username&gt; [&lt;umask&gt; [&lt;skeldir&gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
    ">
 
 
-<meta itemprop="datePublished" content="2019-02-01T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-02-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="9">
+<meta itemprop="datePublished" content="2020-02-01T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-02-01T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="38">
 
 
 
@@ -48,8 +52,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="bash Tips"/>
-<meta name="twitter:description" content="Command Tips watch &#39;command | othertool | yet-another-tool&#39;
- https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+<meta name="twitter:description" content="Command Tips String the watch command with several commands at once
+ watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don&#8217;t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &lt;username&gt; [&lt;umask&gt; [&lt;skeldir&gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
    "/>
 
 
@@ -108,7 +114,7 @@
   <article>
     <header>
       <p>
-        <time datetime="2019-02-01 12:00">2019-02-01</time> &bull;
+        <time datetime="2020-02-01 12:00">2020-02-01</time> &bull;
           
             
             <a href="/categories/tips">TIPS</a>
@@ -133,10 +139,26 @@
 <h2 id="_command_tips">Command Tips</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>watch 'command | othertool | yet-another-tool'</p>
+<p>String the watch command with several commands at once</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>watch 'command | othertool | yet-another-tool'</pre>
+</div>
 </div>
 <div class="paragraph">
 <p><a href="https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs" class="bare">https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs</a></p>
+</div>
+<div class="paragraph">
+<p>This one is useful when you don&#8217;t have a user directory on the system yet.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>/sbin/mkhomedir_helper &lt;username&gt; [&lt;umask&gt; [&lt;skeldir&gt;]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://serverfault.com/questions/63764/create-home-directories-after-create-users" class="bare">https://serverfault.com/questions/63764/create-home-directories-after-create-users</a></p>
 </div>
 </div>
 </div>
@@ -153,7 +175,7 @@
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>platform on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/platform/</link>
+    <description>Recent content in platform on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/platform/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Security Pipelines in OpenShift Container Platform</title>
+        <link>https://briantward.github.io/security-pipelines/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/security-pipelines/</guid>
+        <description>Security Pipelines in OpenShift Container Platform These are random notes for work in progress coded at https://github.com/briantward/container-pipelines/tree/parallel-spring-boot
+ - two OCP clusters: nonprod (dev, test, etc) and prod (prod, stage) - allow nonprod cluster to continue pulling image updates automatically to registry - have separate registries between nonprod and prod - new builds only happen in nonprod, never in prod - existing dev pipeline must be aware of possible update to deployed container by alternative parallel pipeline route and keep base image in sync - new security pipeline, parallel to existing dev pipeline: -- poll for updates to images in nonprod cluster --- polling will check similar to what happens when the nonprod cluster syncs from RH Registry --- can we capture a log of the updates from RH registry and just act on them?</description>
+      </item>
+    
+  </channel>
+</rss>

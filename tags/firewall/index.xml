@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>firewall on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/firewall/</link>
+    <description>Recent content in firewall on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/firewall/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift Firewall</title>
+        <link>https://briantward.github.io/openshift-firewall/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-firewall/</guid>
+        <description>OpenShift Firewall To add a firewall entry on 3.x, where the firewall installed was iptables rather than firewalld
+ iptables -A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT     </description>
+      </item>
+    
+  </channel>
+</rss>

@@ -5,10 +5,121 @@
     <description>Recent content in openshift on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/openshift/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>An Introduction to Running Java on Kubernetes</title>
+        <link>https://briantward.github.io/running-java-on-kubernetes/</link>
+        <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/running-java-on-kubernetes/</guid>
+        <description>An Introduction to Running Java on Kubernetes You will need access to a container build tool, a container runtime environment, and a kubernetes environment. There will be suggestions along the way for acquiring these. You will need a virtualization technology to run the minikube or minishift VMs for your kubernetes development environment.
+   Build a Demo Spring Boot App  Build an app
+$ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</description>
+      </item>
+    
+      <item>
+        <title>Create Root Access from any Build in OpenShift</title>
+        <link>https://briantward.github.io/openshift-root-access-on-build/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-root-access-on-build/</guid>
+        <description>Create Root Access from any Build in OpenShift TODO: split examples, show DC options
+ This example adds an SCC permission to run root on the default service account, allowing you to run root containers. This is not recommended for normal practice and should only be done during troubleshooting, on an isolated nonprod worker node. You could also choose to create a service account specific to this one application and configure the DeploymentConfig to use that (this is not shown here).</description>
+      </item>
+    
+      <item>
+        <title>Docker Core Dumps</title>
+        <link>https://briantward.github.io/docker-core-dump/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/docker-core-dump/</guid>
+        <description>Docker Core Dumps  Get the container id (CID) of the pod to be checked. From the node running the pod. You will need to be able to identify your container ID.
+# docker ps # CID=xxx     Check if docker is logging
+# docker logs &amp;lt;CID&amp;gt;     Check node&amp;#8217;s journal
+# journalctl CONTAINER_ID=&amp;lt;CID&amp;gt;     Grab lsof and gcore for each process: dockerd-current, docker-containerd-current, and docker-containerd-shim-current.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Application Core Dumps</title>
+        <link>https://briantward.github.io/openshift-application-coredumps/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-application-coredumps/</guid>
+        <description>OpenShift Application Core Dumps When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system. This is not something we want to do on a regular basis in production. Ideally such problems are discovered during application performance and load testing in lower environments. In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Firewall</title>
+        <link>https://briantward.github.io/openshift-firewall/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-firewall/</guid>
+        <description>OpenShift Firewall To add a firewall entry on 3.x, where the firewall installed was iptables rather than firewalld
+ iptables -A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT     </description>
+      </item>
+    
+      <item>
+        <title>OpenShift Router Quick Links</title>
+        <link>https://briantward.github.io/openshift-router/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-router/</guid>
+        <description>OpenShift Router quick links router balancing
+ router environment variables
+   https://docs.openshift.com/container-platform/3.7/architecture/networking/routes.html#env-variables
+  https://docs.openshift.com/container-platform/3.6/architecture/networking/routes.html#load-balancing
+  https://docs.openshift.com/container-platform/3.11/architecture/networking/routes.html#route-specific-annotations
+  https://docs.openshift.com/container-platform/3.7/architecture/networking/routes.html#routes-sticky-sessions
+  https://docs.openshift.com/container-platform/3.7/dev_guide/routes.html#dev-guide-routes-allowing-endpoints-to-control-cookies
+   passthrough
+   https://github.com/openshift/origin/commit/a4815c6314f9df1d2ce8060216d0924181c48b6c
+Changed the router default to roundrobin if non-zero weights are used
+https://bugzilla.redhat.com/show_bug.cgi?id=1416869
+   stick sessions in haproxy
+   https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/
+  http://www.haproxy.org/download/1.8/doc/configuration.txt (3.11)
+   kubernetes service
+   https://kubernetes.io/docs/concepts/services-networking/service/</description>
+      </item>
+    
+      <item>
+        <title>Installing Integr8tly</title>
+        <link>https://briantward.github.io/integr8tly-installation/</link>
+        <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/integr8tly-installation/</guid>
+        <description>Installing Integr8tly TODO: clean up and sort out steps, using container installer
+ git clone -b fix-verify-launcher https://github.com/briantward/installation.git oc login ${OCP_MASTER_URL} ansible.cfg id_rsa inventories/hosts ansible -m ping all ansible-playbook -i inventories/hosts playbooks/install.yml pip install jsonpointer     </description>
+      </item>
+    
+      <item>
+        <title>ElasticSearch on OpenShift</title>
+        <link>https://briantward.github.io/elasticsearch/</link>
+        <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/elasticsearch/</guid>
+        <description>ElasticSearch on OpenShift   Node Tuning
+$ sysctl -w vm.max_map_count=262144 $ echo &#34;vm.max_map_count=262144&#34; &amp;gt; /etc/sysctl.d/90-logging.conf   https://github.com/openshift/openshift-ansible/blob/release-3.11/playbooks/openshift-logging/private/config.yml#L94-L116
+ https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
+   Get indices, run from inside container
+curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s     Delete red indices, run from inside container
+for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container</description>
+      </item>
+    
+      <item>
+        <title>Add SSH key to OpenShift 4</title>
+        <link>https://briantward.github.io/add-sshkey-to-ocp4/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/add-sshkey-to-ocp4/</guid>
+        <description>Add SSH key to OpenShift 4 To add an SSH key if one was not provided during installation, perform the following from an admin account such as system:admin:
+ --- # oc debug node/&amp;lt;NODE_NAME&amp;gt; $ chroot /host $ mkdir /home/core/.ssh $ vi /home/core/.ssh/authorized_keys $ chown core:core -R /home/core/.ssh/ $ chmod 644 /home/core/.ssh/authorized_keys ---   Borrowed from Ryan Howe.
+   </description>
+      </item>
+    
+      <item>
+        <title>Security Pipelines in OpenShift Container Platform</title>
+        <link>https://briantward.github.io/security-pipelines/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/security-pipelines/</guid>
+        <description>Security Pipelines in OpenShift Container Platform These are random notes for work in progress coded at https://github.com/briantward/container-pipelines/tree/parallel-spring-boot
+ - two OCP clusters: nonprod (dev, test, etc) and prod (prod, stage) - allow nonprod cluster to continue pulling image updates automatically to registry - have separate registries between nonprod and prod - new builds only happen in nonprod, never in prod - existing dev pipeline must be aware of possible update to deployed container by alternative parallel pipeline route and keep base image in sync - new security pipeline, parallel to existing dev pipeline: -- poll for updates to images in nonprod cluster --- polling will check similar to what happens when the nonprod cluster syncs from RH Registry --- can we capture a log of the updates from RH registry and just act on them?</description>
+      </item>
     
       <item>
         <title>OpenShift Authenticate all Namespaces to a Secured Registry</title>
@@ -63,12 +174,9 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <link>https://briantward.github.io/memory-in-openshift/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/memory-in-openshift/</guid>
-        <description>Work In Progress
-   Linux top
- VIRT RES SHR free used buff/cache avail Mem
-   cgroups Cgroups reports a bunch of memory stats:
- &amp;lt;examples&amp;gt;
- The cgroups kernel team still thinks the best calculation for memory usage would be RSS+CACHE(+SWAP) values in memory.stat [3]. Also note that RSS here is not the same as RES on top as explained at the bottom of section 5.</description>
+        <description>Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift Work In Progress
+ memory.usage_in_bytes # show current usage for memory (See 5.5 for details) memory.memsw.usage_in_bytes # show current usage for memory+Swap (See 5.5 for details)   memory.stat file includes following statistics
+   per-memory cgroup local status cache - # of bytes of page cache memory. rss - # of bytes of anonymous and swap cache memory (includes transparent hugepages).</description>
       </item>
     
       <item>

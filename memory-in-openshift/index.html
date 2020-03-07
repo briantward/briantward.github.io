@@ -22,12 +22,9 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift" />
-<meta property="og:description" content="Work In Progress
-   Linux top
- VIRT RES SHR free used buff/cache avail Mem
-   cgroups Cgroups reports a bunch of memory stats:
- &lt;examples&gt;
- The cgroups kernel team still thinks the best calculation for memory usage would be RSS&#43;CACHE(&#43;SWAP) values in memory.stat [3]. Also note that RSS here is not the same as RES on top as explained at the bottom of section 5." />
+<meta property="og:description" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift Work In Progress
+ memory.usage_in_bytes # show current usage for memory (See 5.5 for details) memory.memsw.usage_in_bytes # show current usage for memory&#43;Swap (See 5.5 for details)   memory.stat file includes following statistics
+   per-memory cgroup local status cache - # of bytes of page cache memory. rss - # of bytes of anonymous and swap cache memory (includes transparent hugepages)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/memory-in-openshift/" />
 <meta property="article:published_time" content="2018-12-13T00:00:00&#43;00:00"/>
@@ -36,17 +33,14 @@
 
 
 <meta itemprop="name" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift">
-<meta itemprop="description" content="Work In Progress
-   Linux top
- VIRT RES SHR free used buff/cache avail Mem
-   cgroups Cgroups reports a bunch of memory stats:
- &lt;examples&gt;
- The cgroups kernel team still thinks the best calculation for memory usage would be RSS&#43;CACHE(&#43;SWAP) values in memory.stat [3]. Also note that RSS here is not the same as RES on top as explained at the bottom of section 5.">
+<meta itemprop="description" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift Work In Progress
+ memory.usage_in_bytes # show current usage for memory (See 5.5 for details) memory.memsw.usage_in_bytes # show current usage for memory&#43;Swap (See 5.5 for details)   memory.stat file includes following statistics
+   per-memory cgroup local status cache - # of bytes of page cache memory. rss - # of bytes of anonymous and swap cache memory (includes transparent hugepages).">
 
 
 <meta itemprop="datePublished" content="2018-12-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-12-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="894">
+<meta itemprop="wordCount" content="1544">
 
 
 
@@ -54,12 +48,9 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift"/>
-<meta name="twitter:description" content="Work In Progress
-   Linux top
- VIRT RES SHR free used buff/cache avail Mem
-   cgroups Cgroups reports a bunch of memory stats:
- &lt;examples&gt;
- The cgroups kernel team still thinks the best calculation for memory usage would be RSS&#43;CACHE(&#43;SWAP) values in memory.stat [3]. Also note that RSS here is not the same as RES on top as explained at the bottom of section 5."/>
+<meta name="twitter:description" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift Work In Progress
+ memory.usage_in_bytes # show current usage for memory (See 5.5 for details) memory.memsw.usage_in_bytes # show current usage for memory&#43;Swap (See 5.5 for details)   memory.stat file includes following statistics
+   per-memory cgroup local status cache - # of bytes of page cache memory. rss - # of bytes of anonymous and swap cache memory (includes transparent hugepages)."/>
 
 
   </head>
@@ -139,12 +130,38 @@
     </header>
     <section>
       
-<div id="preamble">
+<div class="sect1">
+<h2 id="_cgroups_cadvisor_heapster_hawkular_and_docker_memory_statistics_in_openshift">Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Work In Progress</p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>memory.usage_in_bytes      # show current usage for memory
+                (See 5.5 for details)
+memory.memsw.usage_in_bytes     # show current usage for memory+Swap
+                (See 5.5 for details)</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>memory.stat file includes following statistics</p>
+</div>
+</div>
+</div>
+<h1 id="_per_memory_cgroup_local_status" class="sect0">per-memory cgroup local status</h1>
+<div class="paragraph">
+<p>cache       - # of bytes of page cache memory.
+rss     - # of bytes of anonymous and swap cache memory (includes
+        transparent hugepages).
+rss_huge    - # of bytes of anonymous transparent hugepages.
+mapped_file - # of bytes of mapped file (includes tmpfs/shmem)
+pgpgin      - # of charging events to the memory cgroup. The charging
+        event happens each time a page is accounted as either mapped
+        anon page(RSS) or cache page(Page Cache) to the cgroup.
+pgpgout     - # of uncharging events to the memory cgroup. The uncharging
+        event happens each time a page is unaccounted from the cgroup.
+swap        - # of bytes of swap usage</p>
 </div>
 <div class="sect1">
 <h2 id="_linux">Linux</h2>
@@ -201,6 +218,35 @@ avail Mem</p>
 <div class="paragraph">
 <p>The difficult part of that comment is that one might read that&#8217;s the way they continue to do it today.  However, this PR [1] shows that they did bend to the will of those who opened that issue, and they changed the memory report to remove cache.</p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>memory.usage_in_bytes and subtracts "cache"</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cli/command/container/stats_helpers.go</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As of docker 1.18:
+<a href="https://github.com/docker/cli/blob/master/cli/command/container/stats_helpers.go#L230" class="bare">https://github.com/docker/cli/blob/master/cli/command/container/stats_helpers.go#L230</a></p>
+</div>
+<div class="paragraph">
+<p>Docker 1.13.x:
+mem = float64(v.MemoryStats.Usage)
+<a href="https://github.com/moby/moby/blob/1.13.x/cli/command/container/stats_helpers.go#L116" class="bare">https://github.com/moby/moby/blob/1.13.x/cli/command/container/stats_helpers.go#L116</a>
+<a href="https://github.com/moby/moby/blob/1.13.x/vendor/github.com/opencontainers/runc/libcontainer/cgroups/stats.go" class="bare">https://github.com/moby/moby/blob/1.13.x/vendor/github.com/opencontainers/runc/libcontainer/cgroups/stats.go</a></p>
+</div>
+<div class="paragraph">
+<p>Docker 1.12.x:
+s.Memory = float64(v.MemoryStats.Usage)
+<a href="https://github.com/moby/moby/blob/1.12.x/api/client/container/stats_helpers.go#L122" class="bare">https://github.com/moby/moby/blob/1.12.x/api/client/container/stats_helpers.go#L122</a>
+<a href="https://github.com/moby/moby/blob/1.12.x/vendor/src/github.com/opencontainers/runc/libcontainer/cgroups/stats.go" class="bare">https://github.com/moby/moby/blob/1.12.x/vendor/src/github.com/opencontainers/runc/libcontainer/cgroups/stats.go</a>
+<a href="https://github.com/moby/moby/blob/1.12.x/docs/admin/runmetrics.md" class="bare">https://github.com/moby/moby/blob/1.12.x/docs/admin/runmetrics.md</a>
+<a href="https://github.com/moby/moby/blob/1.12.x/docs/reference/commandline/stats.md" class="bare">https://github.com/moby/moby/blob/1.12.x/docs/reference/commandline/stats.md</a>
+<a href="https://github.com/moby/moby/blob/1.12.x/vendor/src/github.com/docker/engine-api/types/stats.go" class="bare">https://github.com/moby/moby/blob/1.12.x/vendor/src/github.com/docker/engine-api/types/stats.go</a></p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -208,6 +254,35 @@ avail Mem</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>cAdvisor reports a full set of comparable metrics read from the kernel cgroups <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>only reports memory.usage_in_bytes (VERIFY in code)</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Every 10-30 seconds, the the cAdvisor compiled in to the node collects new metrics from the system by inspecting cgroups, among other things.  These metrics are kept around for exposing via the Kubernetes stats summary API, and Kubernetes stats legacy API.</p>
+</li>
+<li>
+<p>Every <code>metrics_resolution</code>, Heapster will query each node via one of the two aforementioned APIs.  I believe the default for OpenShift 3.5 uses the stats summary API (you can confirm by looking at the Heapster RC, and seeing if it uses <code>--source=kubernetes.summary_api:&lt;some stuff&gt;</code> (summary) or <code>--source=kubernetes:&lt;some stuff&gt;</code> legacy.</p>
+<div class="literalblock">
+<div class="content">
+<pre>For the summary API, this looks more or less like `curl -H "Authorization: Bearer &lt;Heapster service account token&gt;" https://$NODE_IP:10250/stats/summary`</pre>
+</div>
+</div>
+</li>
+<li>
+<p>For CPU, Heapster takes the most recent data point of cumulative CPU time and combines it with the new data point to form the CPU usage rate.  Importantly, duplicate batches of metrics, or metrics whose pod start time does not match the previous batch&#8217;s start time, will cause missing data points here.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>4a. kubectl top then queries Heapster at the <code>/apis/metrics/v1alpha1/namespaces/&lt;somens&gt;/pods</code> to get metrics for the given pod.</p>
+</div>
+<div class="paragraph">
+<p>4b. For the dashboard, Heapster pushes each new data batch to Hawkular.  The dashboard the queries Hawkular for metrics.</p>
 </div>
 </div>
 </div>
@@ -334,6 +409,43 @@ avail Mem</p>
 [4] <a href="https://github.com/moby/moby/issues/10824" class="bare">https://github.com/moby/moby/issues/10824</a>
 <a href="https://github.com/google/cadvisor/blob/master/info/v1/container.go#L338-L373" class="bare">https://github.com/google/cadvisor/blob/master/info/v1/container.go#L338-L373</a></p>
 </div>
+<div class="paragraph">
+<p>With regards to <code>docker stats</code>:</p>
+</div>
+<div class="paragraph">
+<p>It actually calculates using memory.usage_in_bytes and subtracts "cache" from the memory.stats output [1,2]. Docker made this change to more closely reflect memory usage that sysadmins were used to seeing when using the <code>top</code> command [4].</p>
+</div>
+<div class="paragraph">
+<p>Here we see the comment from BEFORE docker made the change, as docker was showing memory usage_in_bytes back then:</p>
+</div>
+<div class="paragraph">
+<p>&gt;&gt; The statistics of RES and memory cgroup are different, the RES does not take caches into account, but the memory cgroup does, that&#8217;s why MEM USAGE in docker stats is much more than RES in top [4]</p>
+</div>
+<div class="paragraph">
+<p>The difficult part of that comment is that one might read that&#8217;s the way they continue to do it today.  However, this PR [1] shows that they did bend to the will of those who opened that issue, and they changed the memory report to remove cache.</p>
+</div>
+<div class="paragraph">
+<p>cAdvisor only reports memory.usage_in_bytes (VERIFY in code)</p>
+</div>
+<div class="paragraph">
+<p>However, the cgroups kernel team still thinks the best calculation for memory usage would be RSS+CACHE(+SWAP)
+values in memory.stat [3]. Also note that RSS here is not the same as RES on <code>top</code> as explained at the bottom of section 5.2 of cgroups memory documentation [3].</p>
+</div>
+<div class="paragraph">
+<p>&gt;&gt; Only anonymous and swap cache memory is listed as part of 'rss' stat.
+	This should not be confused with the true 'resident set size' or the
+	amount of physical memory used by the cgroup.
+	'rss + mapped_file" will give you resident set size of cgroup.
+	(Note: file and shmem may be shared among other cgroups. In that case,
+	 mapped_file is accounted only when the memory cgroup is owner of page
+	 cache.)</p>
+</div>
+<div class="paragraph">
+<p>[1] <a href="https://github.com/docker/cli/pull/80/files#diff-6461907ebcb6301af53f701fc953b949R229" class="bare">https://github.com/docker/cli/pull/80/files#diff-6461907ebcb6301af53f701fc953b949R229</a>
+[2] <a href="https://github.com/moby/moby/issues/35530" class="bare">https://github.com/moby/moby/issues/35530</a>
+[3] <a href="https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt" class="bare">https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt</a>
+[4] <a href="https://github.com/moby/moby/issues/10824" class="bare">https://github.com/moby/moby/issues/10824</a></p>
+</div>
 </div>
 </div>
 <div id="footnotes">
@@ -355,7 +467,7 @@ avail Mem</p>
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dump on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/dump/</link>
+    <description>Recent content in dump on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/dump/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Docker Core Dumps</title>
+        <link>https://briantward.github.io/docker-core-dump/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/docker-core-dump/</guid>
+        <description>Docker Core Dumps  Get the container id (CID) of the pod to be checked. From the node running the pod. You will need to be able to identify your container ID.
+# docker ps # CID=xxx     Check if docker is logging
+# docker logs &amp;lt;CID&amp;gt;     Check node&amp;#8217;s journal
+# journalctl CONTAINER_ID=&amp;lt;CID&amp;gt;     Grab lsof and gcore for each process: dockerd-current, docker-containerd-current, and docker-containerd-shim-current.</description>
+      </item>
+    
+  </channel>
+</rss>

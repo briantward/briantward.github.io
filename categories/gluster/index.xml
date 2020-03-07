@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gluster on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/gluster/</link>
+    <description>Recent content in gluster on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/gluster/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Gluster Tips</title>
+        <link>https://briantward.github.io/gluster-tips/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/gluster-tips/</guid>
+        <description>Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&amp;#8217;s all down.</description>
+      </item>
+    
+  </channel>
+</rss>

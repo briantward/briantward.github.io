@@ -1,0 +1,22 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rysnc on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/rysnc/</link>
+    <description>Recent content in rysnc on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/rysnc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Rsync Tips</title>
+        <link>https://briantward.github.io/rsync-tips/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rsync-tips/</guid>
+        <description>Rsync Tips   Be careful with trailing slashes with rsync. Always test behavior first. Excluded directories are relative to the second-to-last folder of the copy-from arg. Here I am copying the some folder. But in order to exclude folders directly beneath some, I must still reference some in the exclusion. Note the trailing slash at the remote location, which means the some folder is copied into /bk/ rather than replacing the contents of /bk with the contents of some.</description>
+      </item>
+    
+  </channel>
+</rss>

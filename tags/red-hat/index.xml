@@ -5,10 +5,20 @@
     <description>Recent content in Red Hat on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Nov 2019 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/red-hat/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Red Hat Certified Developer Containers</title>
+        <link>https://briantward.github.io/dev-containers/</link>
+        <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/dev-containers/</guid>
+        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7
+https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7
+Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
+      </item>
     
       <item>
         <title>OpenShift Remove Stuck ServiceInstance</title>
@@ -34,12 +44,9 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <link>https://briantward.github.io/memory-in-openshift/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/memory-in-openshift/</guid>
-        <description>Work In Progress
-   Linux top
- VIRT RES SHR free used buff/cache avail Mem
-   cgroups Cgroups reports a bunch of memory stats:
- &amp;lt;examples&amp;gt;
- The cgroups kernel team still thinks the best calculation for memory usage would be RSS+CACHE(+SWAP) values in memory.stat [3]. Also note that RSS here is not the same as RES on top as explained at the bottom of section 5.</description>
+        <description>Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift Work In Progress
+ memory.usage_in_bytes # show current usage for memory (See 5.5 for details) memory.memsw.usage_in_bytes # show current usage for memory+Swap (See 5.5 for details)   memory.stat file includes following statistics
+   per-memory cgroup local status cache - # of bytes of page cache memory. rss - # of bytes of anonymous and swap cache memory (includes transparent hugepages).</description>
       </item>
     
       <item>
@@ -144,7 +151,7 @@ Applicable Environment: OpenShift 3.9+
         <guid>https://briantward.github.io/jws-secured/</guid>
         <description>Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
-   RPM Base Installation  Register your machine if you have not done so.
+ RPM Base Installation  Register your machine if you have not done so.
 # subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription</description>
       </item>
     

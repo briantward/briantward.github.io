@@ -1,0 +1,26 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>minishift on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/minishift/</link>
+    <description>Recent content in minishift on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/minishift/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>MiniShift Tips</title>
+        <link>https://briantward.github.io/minishift-tips/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/minishift-tips/</guid>
+        <description>MiniShift Tips hard cleanup minishift environment For example, for errors such as
+ domain &#39;minishift&#39; already exists with uuid    Check if the VM is still running
+$ sudo virsh list --all     If it is running, stop the minishift VM
+$ sudo virsh destroy minishift     Delete the VM
+$ sudo virsh undefine minishift     Delete the .minishift/machines dir</description>
+      </item>
+    
+  </channel>
+</rss>

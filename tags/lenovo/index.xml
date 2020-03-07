@@ -5,10 +5,23 @@
     <description>Recent content in Lenovo on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Nov 2019 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/lenovo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Lenovo Intel i915 Video Drivers in Linux, Part 3</title>
+        <link>https://briantward.github.io/lenovo-linux-intel-i915-video-part3/</link>
+        <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/lenovo-linux-intel-i915-video-part3/</guid>
+        <description>Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &amp;#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
+      </item>
     
       <item>
         <title>Lenovo Intel i915 Video Drivers in Linux, Part 2</title>

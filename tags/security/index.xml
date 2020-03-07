@@ -5,10 +5,19 @@
     <description>Recent content in security on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Jun 2017 12:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Security Pipelines in OpenShift Container Platform</title>
+        <link>https://briantward.github.io/security-pipelines/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/security-pipelines/</guid>
+        <description>Security Pipelines in OpenShift Container Platform These are random notes for work in progress coded at https://github.com/briantward/container-pipelines/tree/parallel-spring-boot
+ - two OCP clusters: nonprod (dev, test, etc) and prod (prod, stage) - allow nonprod cluster to continue pulling image updates automatically to registry - have separate registries between nonprod and prod - new builds only happen in nonprod, never in prod - existing dev pipeline must be aware of possible update to deployed container by alternative parallel pipeline route and keep base image in sync - new security pipeline, parallel to existing dev pipeline: -- poll for updates to images in nonprod cluster --- polling will check similar to what happens when the nonprod cluster syncs from RH Registry --- can we capture a log of the updates from RH registry and just act on them?</description>
+      </item>
     
       <item>
         <title>Securing Red Hat JBoss Web Server 3.X</title>
@@ -17,7 +26,7 @@
         <guid>https://briantward.github.io/jws-secured/</guid>
         <description>Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
-   RPM Base Installation  Register your machine if you have not done so.
+ RPM Base Installation  Register your machine if you have not done so.
 # subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription</description>
       </item>
     

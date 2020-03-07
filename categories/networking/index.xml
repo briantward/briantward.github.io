@@ -5,10 +5,25 @@
     <description>Recent content in networking on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/networking/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Bridged Host-VM Network</title>
+        <link>https://briantward.github.io/bridge-host-vm/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/bridge-host-vm/</guid>
+        <description>Bridged Host-VM Network     Host OS:
+ Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants
+   Host Virtual Platform:
+ virt-manager, virsh, libvirt, qemu
+   Guest OS:
+ Any
+    Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
+ e.g.</description>
+      </item>
     
       <item>
         <title>Configure Dell PowerConnect PC5324</title>
@@ -34,21 +49,6 @@
    https://fedoramagazine.org/using-the-networkmanagers-dnsmasq-plugin/
    Note: does not work as expected. Trouble with connecting to different wireless networks, as each one needs manual tweak. Need a better solution.
  I recently installed a local identity management server with Red Hat Identity Management. This is essentially a free-ipa server that hosts some certificate management, DNS, and LDAP to track both my machines and my users on my local network.</description>
-      </item>
-    
-      <item>
-        <title>Bridged Host-VM Network</title>
-        <link>https://briantward.github.io/bridge-host-vm/</link>
-        <pubDate>Tue, 01 May 2018 08:27:00 -0400</pubDate>
-        <guid>https://briantward.github.io/bridge-host-vm/</guid>
-        <description>Bridged Host-VM Network     Host OS:
- Red Hat Enterprise Linux 7.5, may also work on other RHEL-based variants
-   Host Virtual Platform:
- virt-manager, virsh, libvirt, qemu
-   Guest OS:
- Any
-    Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
- e.g.</description>
       </item>
     
   </channel>

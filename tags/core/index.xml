@@ -1,0 +1,33 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>core on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/core/</link>
+    <description>Recent content in core on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Docker Core Dumps</title>
+        <link>https://briantward.github.io/docker-core-dump/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/docker-core-dump/</guid>
+        <description>Docker Core Dumps  Get the container id (CID) of the pod to be checked. From the node running the pod. You will need to be able to identify your container ID.
+# docker ps # CID=xxx     Check if docker is logging
+# docker logs &amp;lt;CID&amp;gt;     Check node&amp;#8217;s journal
+# journalctl CONTAINER_ID=&amp;lt;CID&amp;gt;     Grab lsof and gcore for each process: dockerd-current, docker-containerd-current, and docker-containerd-shim-current.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Application Core Dumps</title>
+        <link>https://briantward.github.io/openshift-application-coredumps/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-application-coredumps/</guid>
+        <description>OpenShift Application Core Dumps When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system. This is not something we want to do on a regular basis in production. Ideally such problems are discovered during application performance and load testing in lower environments. In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover.</description>
+      </item>
+    
+  </channel>
+</rss>

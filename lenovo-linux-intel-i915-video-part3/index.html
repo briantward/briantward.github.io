@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lenovo Intel i915 Video Drivers in Linux, Part 3 - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Lenovo Intel i915 Video Drivers in Linux, Part 3" />
+<meta property="og:description" content="Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/lenovo-linux-intel-i915-video-part3/" />
+<meta property="article:published_time" content="2019-11-18T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-11-18T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="Lenovo Intel i915 Video Drivers in Linux, Part 3">
+<meta itemprop="description" content="Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.">
+
+
+<meta itemprop="datePublished" content="2019-11-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-18T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="79">
+
+
+
+<meta itemprop="keywords" content="linux,intel,i915,video,T460s,Lenovo," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Lenovo Intel i915 Video Drivers in Linux, Part 3"/>
+<meta name="twitter:description" content="Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-11-18 12:00">2019-11-18</time> &bull;
+          
+            
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>Lenovo Intel i915 Video Drivers in Linux, Part 3</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/linux">
+              <span class="hash">#</span>linux</a>
+          
+            , 
+            <a href="/tags/intel">
+              <span class="hash">#</span>intel</a>
+          
+            , 
+            <a href="/tags/i915">
+              <span class="hash">#</span>i915</a>
+          
+            , 
+            <a href="/tags/video">
+              <span class="hash">#</span>video</a>
+          
+            , 
+            <a href="/tags/t460s">
+              <span class="hash">#</span>T460s</a>
+          
+            , 
+            <a href="/tags/lenovo">
+              <span class="hash">#</span>Lenovo</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_lenovo_intel_i915_video_drivers_in_linux_part_3">Lenovo Intel i915 Video Drivers in Linux, Part 3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Problem Scenario/Steps:<br>
+Lenovo T460s<br>
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+
+fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dock laptop in docking station with two connected monitors, one HDMI and one DVI.</p>
+</li>
+<li>
+<p>Undock laptop.</p>
+</li>
+<li>
+<p>Redock laptop &#8594; screen failure and system lock until undock again.  Leave it long enough and it will reboot itself.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This issue was resolved by work in the 4.20 kernel!</p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

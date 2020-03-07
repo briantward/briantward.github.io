@@ -5,10 +5,112 @@
     <description>Recent content in linux on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>An Introduction to Running Java on Kubernetes</title>
+        <link>https://briantward.github.io/running-java-on-kubernetes/</link>
+        <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/running-java-on-kubernetes/</guid>
+        <description>An Introduction to Running Java on Kubernetes You will need access to a container build tool, a container runtime environment, and a kubernetes environment. There will be suggestions along the way for acquiring these. You will need a virtualization technology to run the minikube or minishift VMs for your kubernetes development environment.
+   Build a Demo Spring Boot App  Build an app
+$ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</description>
+      </item>
+    
+      <item>
+        <title>RHVH Ovirt</title>
+        <link>https://briantward.github.io/rhvh-ovirt/</link>
+        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rhvh-ovirt/</guid>
+        <description>RHVH Ovirt I&amp;#8217;m not an infra dedicated person. So I don&amp;#8217;t have a ton of experience in using multipath. But Red Hat documentation is pretty thorough on the subject.[1][2]
+ There is even this KCS that discusses the matter a little more: Internal disk device is being detected as multipath device
+ In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.</description>
+      </item>
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://briantward.github.io/bash-tips/</link>
+        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/bash-tips/</guid>
+        <description>Command Tips String the watch command with several commands at once
+ watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don&amp;#8217;t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
+   </description>
+      </item>
+    
+      <item>
+        <title>Installing Integr8tly</title>
+        <link>https://briantward.github.io/integr8tly-installation/</link>
+        <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/integr8tly-installation/</guid>
+        <description>Installing Integr8tly TODO: clean up and sort out steps, using container installer
+ git clone -b fix-verify-launcher https://github.com/briantward/installation.git oc login ${OCP_MASTER_URL} ansible.cfg id_rsa inventories/hosts ansible -m ping all ansible-playbook -i inventories/hosts playbooks/install.yml pip install jsonpointer     </description>
+      </item>
+    
+      <item>
+        <title>Lenovo Intel i915 Video Drivers in Linux, Part 3</title>
+        <link>https://briantward.github.io/lenovo-linux-intel-i915-video-part3/</link>
+        <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/lenovo-linux-intel-i915-video-part3/</guid>
+        <description>Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps:
+Lenovo T460s
+thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+  Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
+  Undock laptop.
+  Redock laptop &amp;#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
+      </item>
+    
+      <item>
+        <title>ElasticSearch on OpenShift</title>
+        <link>https://briantward.github.io/elasticsearch/</link>
+        <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/elasticsearch/</guid>
+        <description>ElasticSearch on OpenShift   Node Tuning
+$ sysctl -w vm.max_map_count=262144 $ echo &#34;vm.max_map_count=262144&#34; &amp;gt; /etc/sysctl.d/90-logging.conf   https://github.com/openshift/openshift-ansible/blob/release-3.11/playbooks/openshift-logging/private/config.yml#L94-L116
+ https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
+   Get indices, run from inside container
+curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s     Delete red indices, run from inside container
+for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container</description>
+      </item>
+    
+      <item>
+        <title>Red Hat Certified Developer Containers</title>
+        <link>https://briantward.github.io/dev-containers/</link>
+        <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/dev-containers/</guid>
+        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7
+https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7
+Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
+      </item>
+    
+      <item>
+        <title>Antivirus on Red Hat Enterprise Linux</title>
+        <link>https://briantward.github.io/anti-virus-on-rhel/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/anti-virus-on-rhel/</guid>
+        <description>Antivirus on Red Hat Enterprise Linux   Search for Anti-Virus certified on RHEL ecosystem:
+https://access.redhat.com/ecosystem/search/#/category/Software?sort=sortTitle%20asc&amp;amp;query=virus&amp;amp;ecosystem=Red%20Hat%20Enterprise%20Linux
+  Is any virus protection software needed for Red Hat Enterprise Linux?
+https://access.redhat.com/solutions/9203
+  Is fanotify supported in Red Hat Enterprise Linux?
+https://access.redhat.com/solutions/458193
+  Systems become unresponsive due to an issue in the implementation of Fanotify in Red Hat and CentOS 7.x kernels
+https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;actp=null&amp;amp;viewlocale=en_US&amp;amp;showDraft=false&amp;amp;platinum_status=false&amp;amp;locale=en_US
+  System hang due to blocked tasks in fanotify code</description>
+      </item>
+    
+      <item>
+        <title>Gluster Tips</title>
+        <link>https://briantward.github.io/gluster-tips/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/gluster-tips/</guid>
+        <description>Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&amp;#8217;s all down.</description>
+      </item>
     
       <item>
         <title>OpenShift Authenticate all Namespaces to a Secured Registry</title>
@@ -76,16 +178,6 @@
         <description>Restore files from rm I wanted to type:
  $ rm *.retry   Instead I accidentally typed:
  $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&amp;#8217;t more. I was lucky I didn&amp;#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.</description>
-      </item>
-    
-      <item>
-        <title>bash Tips</title>
-        <link>https://briantward.github.io/bash-tips/</link>
-        <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/bash-tips/</guid>
-        <description>Command Tips watch &#39;command | othertool | yet-another-tool&#39;
- https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
-   </description>
       </item>
     
       <item>

@@ -5,10 +5,22 @@
     <description>Recent content in bash on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://briantward.github.io/bash-tips/</link>
+        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/bash-tips/</guid>
+        <description>Command Tips String the watch command with several commands at once
+ watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don&amp;#8217;t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
+   </description>
+      </item>
     
       <item>
         <title>Convert Windows Machine to Windows VM in KVM</title>
@@ -34,16 +46,6 @@
  https://www.sslshopper.com/article-most-common-openssl-commands.html
  Checking certificates on OpenShift You could just as easily modify this for other applications.
  # cat &amp;lt;&amp;lt; &#39;EOF&#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;</description>
-      </item>
-    
-      <item>
-        <title>bash Tips</title>
-        <link>https://briantward.github.io/bash-tips/</link>
-        <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/bash-tips/</guid>
-        <description>Command Tips watch &#39;command | othertool | yet-another-tool&#39;
- https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
-   </description>
       </item>
     
   </channel>

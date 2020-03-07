@@ -5,10 +5,41 @@
     <description>Recent content in router on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Dec 2019 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/router/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Build A Router</title>
+        <link>https://briantward.github.io/build-a-router/</link>
+        <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/build-a-router/</guid>
+        <description>Build A Router on Red Hat Enterprise Linux 7 This provided a nice resource for reference.[1] I will elaborate a litte more here. I wanted to set up a custom router to the internet, to provide advanced firewall and logging features. Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that. Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Router Quick Links</title>
+        <link>https://briantward.github.io/openshift-router/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-router/</guid>
+        <description>OpenShift Router quick links router balancing
+ router environment variables
+   https://docs.openshift.com/container-platform/3.7/architecture/networking/routes.html#env-variables
+  https://docs.openshift.com/container-platform/3.6/architecture/networking/routes.html#load-balancing
+  https://docs.openshift.com/container-platform/3.11/architecture/networking/routes.html#route-specific-annotations
+  https://docs.openshift.com/container-platform/3.7/architecture/networking/routes.html#routes-sticky-sessions
+  https://docs.openshift.com/container-platform/3.7/dev_guide/routes.html#dev-guide-routes-allowing-endpoints-to-control-cookies
+   passthrough
+   https://github.com/openshift/origin/commit/a4815c6314f9df1d2ce8060216d0924181c48b6c
+Changed the router default to roundrobin if non-zero weights are used
+https://bugzilla.redhat.com/show_bug.cgi?id=1416869
+   stick sessions in haproxy
+   https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/
+  http://www.haproxy.org/download/1.8/doc/configuration.txt (3.11)
+   kubernetes service
+   https://kubernetes.io/docs/concepts/services-networking/service/</description>
+      </item>
     
       <item>
         <title>OpenShift Update Router Fix</title>

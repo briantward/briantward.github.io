@@ -1,0 +1,27 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>expand on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/expand/</link>
+    <description>Recent content in expand on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 31 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/expand/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Expand a Qemu Disk</title>
+        <link>https://briantward.github.io/expand-qemu-disk/</link>
+        <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/expand-qemu-disk/</guid>
+        <description>Expand a Qemu Disk I exhausted the disk space on my Windows VM and found I needed more room. This is one of those lovely tasks that actually has simple and good documentation and works easily enough.
+ I followed these instructions using qemu-resize:
+ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-using_qemu_img-re_sizing_the_disk_image
+ But you might find this just as helpful:
+ https://maunium.net/blog/resizing-qcow2-images/
+ Here is another read on using virt-resize instead of qemu-resize but a little more to it:</description>
+      </item>
+    
+  </channel>
+</rss>

@@ -5,10 +5,27 @@
     <description>Recent content in tips on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Rsync Tips</title>
+        <link>https://briantward.github.io/rsync-tips/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rsync-tips/</guid>
+        <description>Rsync Tips   Be careful with trailing slashes with rsync. Always test behavior first. Excluded directories are relative to the second-to-last folder of the copy-from arg. Here I am copying the some folder. But in order to exclude folders directly beneath some, I must still reference some in the exclusion. Note the trailing slash at the remote location, which means the some folder is copied into /bk/ rather than replacing the contents of /bk with the contents of some.</description>
+      </item>
+    
+      <item>
+        <title>Gluster Tips</title>
+        <link>https://briantward.github.io/gluster-tips/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/gluster-tips/</guid>
+        <description>Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&amp;#8217;s all down.</description>
+      </item>
     
       <item>
         <title>Convert Windows Machine to Windows VM in KVM</title>
@@ -32,8 +49,8 @@
         <guid>https://briantward.github.io/git/</guid>
         <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
 $ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
-$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;      https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
-   </description>
+$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+      </description>
       </item>
     
       <item>

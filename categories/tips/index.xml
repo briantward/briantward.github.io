@@ -5,10 +5,63 @@
     <description>Recent content in tips on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://briantward.github.io/bash-tips/</link>
+        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/bash-tips/</guid>
+        <description>Command Tips String the watch command with several commands at once
+ watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don&amp;#8217;t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
+   </description>
+      </item>
+    
+      <item>
+        <title>SSH Tips</title>
+        <link>https://briantward.github.io/ssh-tips/</link>
+        <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/ssh-tips/</guid>
+        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;    SSH-Forwarding Like this guy&amp;#8217;s example. After using nc for years, ProxyJump is now very useful!
+ Host forum HostName www.nixcraft.com ProxyJump vivek@jumhost.nixcraft.com:22 User vivek   https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/
+  ForwardAgent I&amp;#8217;m not truly certain about the security implications of using ForwardAgent, but this article does suggest there are some issues.</description>
+      </item>
+    
+      <item>
+        <title>Create Root Access from any Build in OpenShift</title>
+        <link>https://briantward.github.io/openshift-root-access-on-build/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-root-access-on-build/</guid>
+        <description>Create Root Access from any Build in OpenShift TODO: split examples, show DC options
+ This example adds an SCC permission to run root on the default service account, allowing you to run root containers. This is not recommended for normal practice and should only be done during troubleshooting, on an isolated nonprod worker node. You could also choose to create a service account specific to this one application and configure the DeploymentConfig to use that (this is not shown here).</description>
+      </item>
+    
+      <item>
+        <title>MiniShift Tips</title>
+        <link>https://briantward.github.io/minishift-tips/</link>
+        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/minishift-tips/</guid>
+        <description>MiniShift Tips hard cleanup minishift environment For example, for errors such as
+ domain &#39;minishift&#39; already exists with uuid    Check if the VM is still running
+$ sudo virsh list --all     If it is running, stop the minishift VM
+$ sudo virsh destroy minishift     Delete the VM
+$ sudo virsh undefine minishift     Delete the .minishift/machines dir</description>
+      </item>
+    
+      <item>
+        <title>Red Hat Certified Developer Containers</title>
+        <link>https://briantward.github.io/dev-containers/</link>
+        <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/dev-containers/</guid>
+        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7
+https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7
+Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
+      </item>
     
       <item>
         <title>Red Hat Identity Management Server - Missing DNS Record</title>
@@ -52,8 +105,8 @@
         <guid>https://briantward.github.io/git/</guid>
         <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
 $ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
-$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;      https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
-   </description>
+$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+      </description>
       </item>
     
       <item>
@@ -76,16 +129,6 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
  ((.|\n)*)   My favorite tester:
    https://regex101.com/
      </description>
-      </item>
-    
-      <item>
-        <title>bash Tips</title>
-        <link>https://briantward.github.io/bash-tips/</link>
-        <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/bash-tips/</guid>
-        <description>Command Tips watch &#39;command | othertool | yet-another-tool&#39;
- https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
-   </description>
       </item>
     
       <item>
@@ -113,11 +156,12 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
       </item>
     
       <item>
-        <title>SSH Tips</title>
-        <link>https://briantward.github.io/ssh-tips/</link>
+        <title>oc Tips</title>
+        <link>https://briantward.github.io/oc-tips/</link>
         <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/ssh-tips/</guid>
-        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;      </description>
+        <guid>https://briantward.github.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     </description>
       </item>
     
       <item>
@@ -126,7 +170,8 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/oc-tips/</guid>
         <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     </description>
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
+ $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;</description>
       </item>
     
       <item>

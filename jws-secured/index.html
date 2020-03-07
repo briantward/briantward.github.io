@@ -24,7 +24,7 @@
 <meta property="og:title" content="Securing Red Hat JBoss Web Server 3.X" />
 <meta property="og:description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
-   RPM Base Installation  Register your machine if you have not done so.
+ RPM Base Installation  Register your machine if you have not done so.
 # subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/jws-secured/" />
@@ -36,7 +36,7 @@
 <meta itemprop="name" content="Securing Red Hat JBoss Web Server 3.X">
 <meta itemprop="description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
-   RPM Base Installation  Register your machine if you have not done so.
+ RPM Base Installation  Register your machine if you have not done so.
 # subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription">
 
 
@@ -52,7 +52,7 @@
 <meta name="twitter:title" content="Securing Red Hat JBoss Web Server 3.X"/>
 <meta name="twitter:description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
-   RPM Base Installation  Register your machine if you have not done so.
+ RPM Base Installation  Register your machine if you have not done so.
 # subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription"/>
 
 
@@ -166,11 +166,8 @@
 <div class="paragraph">
 <p>THIS CONFIGURATION HAS NOT BEEN TESTED!  THIS IS INTENDED AS A STARTING GUIDE ONLY.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_rpm_base_installation">RPM Base Installation</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rpm_base_installation">RPM Base Installation</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -232,10 +229,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_zip_base_installation">Zip Base Installation</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_zip_base_installation">Zip Base Installation</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -253,12 +248,9 @@ apache user with /sbin/nologin shell.</p>
 <pre>$ sudo ./$APACHE_HOME/.postinstall</pre>
 </div>
 </div>
-</li>
-</ol>
-</div>
 <div class="paragraph">
-<p>If the script did not correctly install the user, you&#8217;ve probably done something incredibly wrong.
-If you want to do this part yourself and you don&#8217;t want absolute URLS in your configs:</p>
+<p>If the script did not correctly install the user, you&#8217;ve probably done something incredibly wrong.<br>
+If you want to do this part yourself and you don&#8217;t want absolute URLS in your configs:<br></p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -268,8 +260,7 @@ $ sudo chown -R apache:apache httpd
 $ sudo passwd -l apache</pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Lock out the apache user.</p>
 <div class="literalblock">
@@ -281,10 +272,8 @@ $ sudo passwd -l apache</pre>
 </ol>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_test_the_server_base_installation">Test the server base installation.</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_test_the_server_base_installation">Test the server base installation.</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -326,10 +315,8 @@ test
 </ol>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_start_securing_it">Start securing it.</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_start_securing_it">Start securing it.</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -519,7 +506,7 @@ Group apache</pre>
 </div>
 </li>
 <li>
-<p>Comment out the following sections:</p>
+<p>Comment out the following sections:<br></p>
 <div class="ulist">
 <ul>
 <li>
@@ -547,7 +534,7 @@ Group apache</pre>
 </div>
 </li>
 <li>
-<p>Comment out all the files in conf.d.  Even though we have commented out the IncludeOptional line in httpd.conf, we may want to add some features back, sometime in the future.  Doing this proactively means nothing else gets turned on by accident.</p>
+<p>Comment out all the files in conf.d.  Even though we have commented out the IncludeOptional line in httpd.conf, we may want to add some features back, sometime in the future.  Doing this proactively means nothing else gets turned on by accident.<br></p>
 <div class="ulist">
 <ul>
 <li>
@@ -567,17 +554,15 @@ Group apache</pre>
 </li>
 <li>
 <p>welcome.conf</p>
-<div class="literalblock">
-<div class="content">
-<pre>Note that SSL is disabled here.  Configuring SSL is not in the scope of this document, at this time.  The assumption here is that SSL has been offloaded by a load balancer and this httpd host is in a secured subnet.  Also be aware that this burnt some companies in the past who had private data lines between subnets and thought their traffic was secured.</pre>
-</div>
+<div class="paragraph">
+<p>Note that SSL is disabled here.  Configuring SSL is not in the scope of this document, at this time.  The assumption here is that SSL has been offloaded by a load balancer and this httpd host is in a secured subnet.  Also be aware that this burnt some companies in the past who had private data lines between subnets and thought their traffic was secured.</p>
 </div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>In conf.modules.d folder, comment out all lines of the below files.  Do not delete or rename the files, as during an RPM upgrade they would simply be replaced.</p>
+<p>In conf.modules.d folder, comment out all lines of the below files.  Do not delete or rename the files, as during an RPM upgrade they would simply be replaced.<br></p>
 <div class="ulist">
 <ul>
 <li>
@@ -608,7 +593,7 @@ Group apache</pre>
 </div>
 </li>
 <li>
-<p>That should leave two more files in conf.modules.d:</p>
+<p>That should leave two more files in conf.modules.d:<br></p>
 <div class="ulist">
 <ul>
 <li>
@@ -711,10 +696,8 @@ Leave this one as-is, or comment out the MPM module you are not using.</p>
 </ol>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_notes">Notes</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_notes">Notes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -736,6 +719,7 @@ Leave this one as-is, or comment out the MPM module you are not using.</p>
 </div>
 </div>
 </div>
+</div>
 </section>
     <footer>
       
@@ -749,7 +733,7 @@ Leave this one as-is, or comment out the MPM module you are not using.</p>
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

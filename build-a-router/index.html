@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build A Router - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Build A Router" />
+<meta property="og:description" content="Build A Router on Red Hat Enterprise Linux 7 This provided a nice resource for reference.[1] I will elaborate a litte more here. I wanted to set up a custom router to the internet, to provide advanced firewall and logging features. Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that. Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/build-a-router/" />
+<meta property="article:published_time" content="2019-12-27T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-12-27T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="Build A Router">
+<meta itemprop="description" content="Build A Router on Red Hat Enterprise Linux 7 This provided a nice resource for reference.[1] I will elaborate a litte more here. I wanted to set up a custom router to the internet, to provide advanced firewall and logging features. Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that. Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own.">
+
+
+<meta itemprop="datePublished" content="2019-12-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1124">
+
+
+
+<meta itemprop="keywords" content="router," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Build A Router"/>
+<meta name="twitter:description" content="Build A Router on Red Hat Enterprise Linux 7 This provided a nice resource for reference.[1] I will elaborate a litte more here. I wanted to set up a custom router to the internet, to provide advanced firewall and logging features. Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that. Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2019-12-27 12:00">2019-12-27</time> &bull;
+          
+            
+            <a href="/categories/rhel">RHEL</a>
+          </p>
+      <h1>Build A Router</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/router">
+              <span class="hash">#</span>router</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_build_a_router_on_red_hat_enterprise_linux_7">Build A Router on Red Hat Enterprise Linux 7</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This provided a nice resource for reference.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>  I will elaborate a litte more here.  I wanted to set up a custom router to the internet, to provide advanced firewall and logging features.  Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that.  Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own.  Another good option, and perhaps simpler, would be to flash the OTS router with a good firmware alternative such as DD-WRT.  I&#8217;ve done that successfully years ago, but decided I wanted real control over everything by building from scratch.  This may be overkill, but it&#8217;s an interesting project.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set your interface that will be connected to the public internet to use DHCP provided by your ISP.  This may be ready out of the box on a fresh install, in which case you would just need to plug in the ethernet cable. If you don&#8217;t know which physical port maps to which interface id, take a moment to figure it out by testing with your internet cable.  If you are wondering why your interface is something like <code>enp0s25</code> instead of <code>eth0</code> thank the nice engineers who thought this new naming scheme would help identify the exact physical location on your box.  Theoretically this is great if you have a lot of interfaces on one box.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+<div class="literalblock">
+<div class="content">
+<pre># nmcli con add type ethernet autoconnect yes ifname enp0s25 con-name enp0s25 connection.zone external</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>FYI <code>con</code> is short for <code>connection</code>.  The one thing I dislike about <code>nmcli</code> is its failure to adhere to any decent cli command trends, such as <code>COMMAND VERB OBJECT ARGS</code>, or even just using POSIX syntax.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> So the word of advice here is to look at sets of things, such as <code>con add</code>, <code>type ethernet</code>, <code>autoconnect yes</code>, <code>ifname enp0s25</code>, and <code>con-name enp0s25</code>.  Note that <code>con-name</code> can be something prettier, but by default during installation, it is set to the same as <code>ifname</code>. I like to follow the KISS principle and keep it the same.</p>
+</div>
+<div class="paragraph">
+<p>This last little tidbit is important, <code>connection.zone external</code> as it sets your <code>firewalld</code> zone and will be used for routing traffic correctly. You can see the default setting for your external zone has masquerade enabled, which handles NAT routing. You can check it set correctly:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># nmcli -f connection.zone con show enp0s25
+connection.zone:                        external
+# firewall-cmd --list-all --zone=external | grep masquerade
+  masquerade: yes</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you do not see <code>masquerade: yes</code> or would like it set on another zone: <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># firewall-cmd --permanent --zone=public --add-masquerade</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Set your interface for your local network. Make sure you have the right cable attached to the right interface.  Here I am using a <code>modify</code> rather than an <code>add</code> just to give an example of changing an interface added during OS installation.  I want a static IP here, and I&#8217;m going to borrow Google&#8217;s DNS server, and make sure it always comes up at boot.</p>
+<div class="literalblock">
+<div class="content">
+<pre># nmcli con modify enp1s0f1 ipv4.addresses 192.168.1.1/24 ipv4.dns 8.8.8.8 autoconnect yes connection.zone internal</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This last little tidbit is important, <code>connection.zone internal</code> as it sets your <code>firewalld</code> zone correctly. You can check it set correctly:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># nmcli -f connection.zone con show enp1s0f1
+connection.zone:                        internal</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can verify your routes by running <code>ip route</code>.  This would be equivalent to the older <code>route</code> command, which is no longer available on a RHEL 7 minimal install.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ip route
+default via XXX.XXX.XXX.1 dev enp0s25 proto dhcp metric 100
+default via 192.168.1.1 dev enp1s0f1 proto static metric 102
+XXX.XXX.XXX.0/24 dev enp0s25 proto kernel scope link src XXX.XXX.XXX.154 metric 100
+192.168.1.0/24 dev enp1s0f1 proto kernel scope link src 192.168.1.1 metric 102</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Make sure you have adjusted the kernel settings to permit IP forwarding traffic.</p>
+<div class="literalblock">
+<div class="content">
+<pre># sysctl -w net.ipv4.ip_forward=1</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Make that setting is persistent across reboots</p>
+<div class="literalblock">
+<div class="content">
+<pre># echo net.ipv4.ip_forward = 1 &gt;&gt; /etc/sysctl.conf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Configure detailed logging.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup></p>
+<div class="literalblock">
+<div class="content">
+<pre># firewall-cmd --get-log-denied
+# firewall-cmd --set-log-denied=all</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Lockout any other applications from modifying the firewall.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup></p>
+<div class="literalblock">
+<div class="content">
+<pre># firewall-cmd --lockdown-on</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_reset_your_interface_to_the_original_install_defaults">Reset your interface to the original install defaults</h3>
+<div class="paragraph">
+<p>In the event you do damage to your configuration.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># nmcli con del enp0s25</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># nmcli con add type ethernet autoconnect yes ifname enp0s25 con-name enp0s25</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other_tips">Other tips</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Introduction to FirewallD on CentOS
+<a href="https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos" class="bare">https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos</a></p>
+</li>
+<li>
+<p>How to configure Linux as router for sharing internet in RHEL?<br>
+<a href="https://access.redhat.com/solutions/648473" class="bare">https://access.redhat.com/solutions/648473</a></p>
+</li>
+<li>
+<p>How to configure RHEL as a router in the middle of a network?<br>
+<a href="https://access.redhat.com/solutions/2854141" class="bare">https://access.redhat.com/solutions/2854141</a></p>
+</li>
+<li>
+<p>NetworkManager and the Network Scripts<br>
+<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-using_networkmanager_with_network_scripts" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-using_networkmanager_with_network_scripts</a><br>
+For old school lovers of the network scripts.  Once you learn the ease of <code>nmcli</code> you may never go back.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_warning_guidance">Warning Guidance</h3>
+<div class="paragraph">
+<p>Please do not follow any recommendations or instructions from this particular guide for RHEL 7:<br>
+<a href="https://linuxtechlab.com/turning-centosrhel-6-7-machine-router/" class="bare">https://linuxtechlab.com/turning-centosrhel-6-7-machine-router/</a></p>
+</div>
+<div class="paragraph">
+<p>I started here because it was one of the first hits with what appeared to be fairly decent information.  Also, I was aware of the
+implications of using firewalld direct passthrough, which I&#8217;ll address in a moment.</p>
+</div>
+<div class="paragraph">
+<p>The command used for their RHEL 7 example is both poorly formatted and bad guidance, for at least four reasons:</p>
+</div>
+<div class="paragraph">
+<p>Copy and paste command from the example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ firewall-cmd –permanent –direct –passthrough ipv4 -t nat -I POSTROUTING -o XXXX -j MASQUERADE -s 192.168.1.0/24</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, the character formatting is incorrect.  You will copy and past an elongated single <code>em dash</code> rather than two regular dashes
+which will not parse correctly on the command line.</p>
+<div class="literalblock">
+<div class="content">
+<pre>–permanent</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Second, the character font display on the <code>I</code> character on their site is hard to read and discern.  It could be an <code>l</code> or maybe even a <code>1</code>.  The font character display here, on my site, should be able to help you see exactly which letter is presented. I originally had this problem as I was researching from my phone while my internet service was obviously not working.</p>
+<div class="literalblock">
+<div class="content">
+<pre>-I POSTROUTING</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Third, using the direct passthrough feature on <code>firewalld</code> is discouraged for such simple routing purposes.  There may be a place
+for using it in complex routing scenarios, but that is not here.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup></p>
+</li>
+<li>
+<p>Fourth, there is no explanation for any of the configuration.  I am thankful for code snippets shared in open source nature but generally despise lack of explanations.  This is usually a result of monkey-see-monkey-do behavior without being intelligent enough to actually understand what you are doing.  Beware of doing this.  It is important that you not only succeed in doing something right, but you understand why it is right.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Should you need this command in a good copy paste format, assuming you substitue the device XXXX for your device providing the outbout
+internet service, this would be it.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o XXXX -j MASQUERADE -s 192.168.1.0/24</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://unix.stackexchange.com/questions/217872/centos-7-firewalld-passthrough-traffic-with-firewall-cmd" class="bare">https://unix.stackexchange.com/questions/217872/centos-7-firewalld-passthrough-traffic-with-firewall-cmd</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/" class="bare">https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/ch-consistent_network_device_naming" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/ch-consistent_network_device_naming</a>
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. <a href="https://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html" class="bare">https://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html</a>
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-configuring_ip_address_masquerading" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-configuring_ip_address_masquerading</a>
+</div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/configuring_logging_for_denied_packets" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/configuring_logging_for_denied_packets</a>
+</div>
+<div class="footnote" id="_footnotedef_7">
+<a href="#_footnoteref_7">7</a>. <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/configuring_firewall_lockdown" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/configuring_firewall_lockdown</a>
+</div>
+<div class="footnote" id="_footnotedef_8">
+<a href="#_footnoteref_8">8</a>. <a href="https://firewalld.org/documentation/direct/options.html" class="bare">https://firewalld.org/documentation/direct/options.html</a>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

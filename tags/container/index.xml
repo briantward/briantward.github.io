@@ -34,12 +34,9 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <link>https://briantward.github.io/memory-in-openshift/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/memory-in-openshift/</guid>
-        <description>Work In Progress
-   Linux top
- VIRT RES SHR free used buff/cache avail Mem
-   cgroups Cgroups reports a bunch of memory stats:
- &amp;lt;examples&amp;gt;
- The cgroups kernel team still thinks the best calculation for memory usage would be RSS+CACHE(+SWAP) values in memory.stat [3]. Also note that RSS here is not the same as RES on top as explained at the bottom of section 5.</description>
+        <description>Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift Work In Progress
+ memory.usage_in_bytes # show current usage for memory (See 5.5 for details) memory.memsw.usage_in_bytes # show current usage for memory+Swap (See 5.5 for details)   memory.stat file includes following statistics
+   per-memory cgroup local status cache - # of bytes of page cache memory. rss - # of bytes of anonymous and swap cache memory (includes transparent hugepages).</description>
       </item>
     
       <item>

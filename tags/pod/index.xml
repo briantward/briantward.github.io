@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pod on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/pod/</link>
+    <description>Recent content in pod on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/pod/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>An Introduction to Running Java on Kubernetes</title>
+        <link>https://briantward.github.io/running-java-on-kubernetes/</link>
+        <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/running-java-on-kubernetes/</guid>
+        <description>An Introduction to Running Java on Kubernetes You will need access to a container build tool, a container runtime environment, and a kubernetes environment. There will be suggestions along the way for acquiring these. You will need a virtualization technology to run the minikube or minishift VMs for your kubernetes development environment.
+   Build a Demo Spring Boot App  Build an app
+$ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</description>
+      </item>
+    
+  </channel>
+</rss>

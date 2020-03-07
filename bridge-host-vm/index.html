@@ -32,8 +32,8 @@
  e.g." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/bridge-host-vm/" />
-<meta property="article:published_time" content="2018-05-01T08:27:00-04:00"/>
-<meta property="article:modified_time" content="2018-05-01T08:27:00-04:00"/>
+<meta property="article:published_time" content="2019-12-09T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-12-09T00:00:00&#43;00:00"/>
 
 
 
@@ -48,9 +48,9 @@
  e.g.">
 
 
-<meta itemprop="datePublished" content="2018-05-01T08:27:00-04:00" />
-<meta itemprop="dateModified" content="2018-05-01T08:27:00-04:00" />
-<meta itemprop="wordCount" content="1089">
+<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1216">
 
 
 
@@ -123,7 +123,7 @@
   <article>
     <header>
       <p>
-        <time datetime="2018-05-01 08:27">2018-05-01</time> &bull;
+        <time datetime="2019-12-09 12:00">2019-12-09</time> &bull;
           
             
             <a href="/categories/networking">NETWORKING</a>
@@ -267,7 +267,7 @@ your host machine.  I did not want that.</p>
 <div class="paragraph">
 <p>This is a suggested flow below for creating a NAT&#8217;d isolated network.  It does not bridge
 the vm to the host subnet.  The "Virtual Network Interface" settings on your vm profile
-used to suggest creating a "bridge" this way.  TODO verify this with earlier image, show example.</p>
+used to suggest creating a "bridge" this way.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="/images/vm-bridge/002-qemu-create-virtual-networks-01.png" alt="002 qemu create virtual networks 01"></span>
@@ -352,7 +352,7 @@ for now.</p>
 </div>
 <div class="paragraph">
 <p>Click the "+" icon and up pops this dialog.  Choose "Bridge" type. Sorry the image below
-just shows "Ethernet".  TODO show better image.</p>
+just shows "Ethernet".</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="/images/vm-bridge/014-connmanager-create-network-connection.png" alt="014 connmanager create network connection"></span>
@@ -385,14 +385,8 @@ bridge from.  That is, what physical device or ethernet port is attached to the 
 you want the VMs to bridge to. In my case, I want "enp0s25".</p>
 </div>
 <div class="paragraph">
-<p>TODO add images here</p>
-</div>
-<div class="paragraph">
 <p>Click "Ethernet" in the dialog box this time.  Name this Connection after your network
 interface, then select the same network interface in the "Device" dropdown. Click Save.</p>
-</div>
-<div class="paragraph">
-<p>TODO add images here</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="/images/vm-bridge/025-connmanager-edit-network-connection.png" alt="025 connmanager edit network connection"></span></p>
@@ -411,7 +405,7 @@ interface, then select the same network interface in the "Device" dropdown. Clic
 </div>
 <div class="paragraph">
 <p>Click this "+" icon to add your bridge.  It should show up here. If it does not, you may want
-to restart services or reboot the machine. TODO identify which services need rebooting, just NetworkManager?</p>
+to restart services or reboot the machine.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="/images/vm-bridge/028-qemu-network-connections-add-bridge.png" alt="028 qemu network connections add bridge"></span></p>
@@ -436,13 +430,69 @@ everything starts and is working.  This is required for things to work.  See my 
 <div class="sect1">
 <h2 id="_using_nm_tui">Using nm-tui</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>This is intuitively the same as the GUI.  If I have a chance to do screen shots one day I may update this.  But as you see below the CLI option is very clean and simple.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_using_nm_cli">Using nm-cli</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Doing this on CLI is quite nice and clean.  Bridge 192.168.1.2 on interface em1:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nmcli con add type bridge ifname br0 ip4 192.168.1.2/24 gw4 192.168.1.1 ipv4.dns 192.168.1.1 autoconnect yes ipv4.dns-search example.com
+nmcli con modify em1 master bridge-br0 slave-type bridge
+nmcli connection up em1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To see the details of the bridge:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nmcli con show bridge-br0</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>virsh iface-list --all</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I migrated a kvm image from one host to another, following these instructions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>virsh dumpxml VMNAME &gt; domxml.xml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://serverfault.com/questions/434064/correct-way-to-move-kvm-vm" class="bare">https://serverfault.com/questions/434064/correct-way-to-move-kvm-vm</a></p>
+</div>
+<div class="paragraph">
+<p>And made sure the bridge was named correctly for the new host:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;interface type='bridge'&gt;
+  &lt;mac address='52:54:00:8e:3c:67'/&gt;
+  &lt;source bridge='br0'/&gt;
+  &lt;model type='virtio'/&gt;
+  &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
+&lt;/interface&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then installed the copied image on the new host with the new bridge:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>virsh define domxml.xml</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -484,7 +534,7 @@ libvirt (and all vms), vnet0 reappeared automatically and the bridge connection 
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2019 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

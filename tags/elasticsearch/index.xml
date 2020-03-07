@@ -1,0 +1,27 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>elasticsearch on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/elasticsearch/</link>
+    <description>Recent content in elasticsearch on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>ElasticSearch on OpenShift</title>
+        <link>https://briantward.github.io/elasticsearch/</link>
+        <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/elasticsearch/</guid>
+        <description>ElasticSearch on OpenShift   Node Tuning
+$ sysctl -w vm.max_map_count=262144 $ echo &#34;vm.max_map_count=262144&#34; &amp;gt; /etc/sysctl.d/90-logging.conf   https://github.com/openshift/openshift-ansible/blob/release-3.11/playbooks/openshift-logging/private/config.yml#L94-L116
+ https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
+   Get indices, run from inside container
+curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s     Delete red indices, run from inside container
+for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container</description>
+      </item>
+    
+  </channel>
+</rss>

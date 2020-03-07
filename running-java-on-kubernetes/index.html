@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An Introduction to Running Java on Kubernetes - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="An Introduction to Running Java on Kubernetes" />
+<meta property="og:description" content="An Introduction to Running Java on Kubernetes You will need access to a container build tool, a container runtime environment, and a kubernetes environment. There will be suggestions along the way for acquiring these. You will need a virtualization technology to run the minikube or minishift VMs for your kubernetes development environment.
+   Build a Demo Spring Boot App  Build an app
+$ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/running-java-on-kubernetes/" />
+<meta property="article:published_time" content="2020-02-12T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-02-12T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="An Introduction to Running Java on Kubernetes">
+<meta itemprop="description" content="An Introduction to Running Java on Kubernetes You will need access to a container build tool, a container runtime environment, and a kubernetes environment. There will be suggestions along the way for acquiring these. You will need a virtualization technology to run the minikube or minishift VMs for your kubernetes development environment.
+   Build a Demo Spring Boot App  Build an app
+$ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.">
+
+
+<meta itemprop="datePublished" content="2020-02-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-02-12T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1326">
+
+
+
+<meta itemprop="keywords" content="kubectl,pod,deployment," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="An Introduction to Running Java on Kubernetes"/>
+<meta name="twitter:description" content="An Introduction to Running Java on Kubernetes You will need access to a container build tool, a container runtime environment, and a kubernetes environment. There will be suggestions along the way for acquiring these. You will need a virtualization technology to run the minikube or minishift VMs for your kubernetes development environment.
+   Build a Demo Spring Boot App  Build an app
+$ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2020-02-12 12:00">2020-02-12</time> &bull;
+          
+            
+            <a href="/categories/kubernetes">KUBERNETES</a>
+          
+            , 
+            <a href="/categories/java">JAVA</a>
+          
+            , 
+            <a href="/categories/linux">LINUX</a>
+          
+            , 
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>An Introduction to Running Java on Kubernetes</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/kubectl">
+              <span class="hash">#</span>kubectl</a>
+          
+            , 
+            <a href="/tags/pod">
+              <span class="hash">#</span>pod</a>
+          
+            , 
+            <a href="/tags/deployment">
+              <span class="hash">#</span>deployment</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_an_introduction_to_running_java_on_kubernetes">An Introduction to Running Java on Kubernetes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You will need access to a container build tool, a container runtime environment, and a kubernetes environment.  There will be suggestions along the way for acquiring these.  You will need a virtualization technology to run the <code>minikube</code> or <code>minishift</code> VMs for your kubernetes development environment.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_build_a_demo_spring_boot_app">Build a Demo Spring Boot App</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build an app</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ mkdir -p my-java-app/container
+$ cd my-java-app
+$ git clone https://github.com/spring-guides/gs-spring-boot.git
+$ cd gs-spring-boot/complete
+$ ./mvn package
+$ cd ../../
+$ mv gs-spring-boot/complete/target/spring-boot-0.0.1-SNAPSHOT.jar container/spring-boot-0.0.1-SNAPSHOT.jar</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Test the app locally to make sure it built right and works!</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ java -jar container/spring-boot-0.0.1-SNAPSHOT.jar
+$ curl http://localhost:8080</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><a href="https://spring.io/guides/gs/spring-boot/" class="bare">https://spring.io/guides/gs/spring-boot/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_openshift">OpenShift</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_build_an_openshift_development_environment">Build an OpenShift Development Environment</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ minishift start</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or CodeReady Containers</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ crc setup
+$ crc start</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ oc new-project java-fun
+$ oc new-build --name myapp .
+$ oc start-build myapp --from-dir=. --follow
+$ oc new-app myapp
+$ oc logs -f myapp-1-kbqsf
+$ oc create service clusterip myapp --tcp=8080:8080
+$ oc expose service myapp
+$ oc get pod/myapp-1-kbqsf -o yaml | less</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kubernetes">Kubernetes</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the components of your container image</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ls
+container  gs-spring-boot-master
+
+$ cd container
+
+$ echo 'FROM openjdk:11
+
+COPY spring-boot-0.0.1-SNAPSHOT.jar /spring-boot-0.0.1-SNAPSHOT.jar
+
+CMD java -jar /spring-boot-0.0.1-SNAPSHOT.jar' &gt; Dockerfile
+
+$ ls
+Dockerfile spring-boot-0.0.1-SNAPSHOT.jar</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build the container image</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ docker build . --tag myapp
+Sending build context to Docker daemon 19.29 MB
+Step 1/4 : FROM openjdk:11
+ ---&gt; a548e8a50190
+Step 2/4 : COPY spring-boot-0.0.1-SNAPSHOT.jar /spring-boot-0.0.1-SNAPSHOT.jar
+ ---&gt; 512817bf40b1
+Removing intermediate container ca9e8a40576b
+Step 3/4 : CMD java -jar /spring-boot-0.0.1-SNAPSHOT.jar
+ ---&gt; Running in 8c978eb3bfc3
+ ---&gt; 4dd65bb22f39
+Removing intermediate container 8c978eb3bfc3
+Step 4/4 : LABEL "myapp" ''
+ ---&gt; Running in ed2ed797b412
+ ---&gt; e2a1859a0bb8
+Removing intermediate container ed2ed797b412
+Successfully built e2a1859a0bb8</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Tag the image to a registry you have access to pull from</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ docker images | grep myapp
+myapp                                                               latest              e2a1859a0bb8        About a minute ago   646 MB
+$ docker tag myapp quay.io/bward/myapp:latest
+$ docker images | grep myapp
+myapp                                                               latest              e2a1859a0bb8        3 minutes ago       646 MB
+quay.io/bward/myapp                                                 latest              e2a1859a0bb8        3 minutes ago       646 MB</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Push the image to the remote repository from which your image will pull.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ docker login quay.io
+Username: bward
+Password:
+Login Succeeded
+
+$ docker push quay.io/bward/myapp
+The push refers to a repository [quay.io/bward/myapp]
+86fdd08f4977: Pushed
+3fb986725e60: Pushed
+a6170c7cf572: Pushed
+33783834b288: Pushed
+5c813a85f7f0: Pushed
+bdca38f94ff0: Pushed
+faac394a1ad3: Pushed
+ce8168f12337: Pushed
+latest: digest: sha256:268ee7f59472b1a34d374cbdaa3176f73986f404a3771d0a5a5cc84ac4a5e789 size: 2006</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a Kubernetes dev environment.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+&gt;   &amp;&amp; chmod +x minikube
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 46.7M  100 46.7M    0     0  7054k      0  0:00:06  0:00:06 --:--:-- 6249k
+
+$ install minikube ~/bin/
+
+$ minikube start --vm-driver=kvm2
+😄  minikube v1.7.2 on Fedora 30
+✨  Using the kvm2 driver based on user configuration
+💾  Downloading driver docker-machine-driver-kvm2:
+    &gt; docker-machine-driver-kvm2.sha256: 65 B / 65 B [-------] 100.00% ? p/s 0s
+    &gt; docker-machine-driver-kvm2: 13.82 MiB / 13.82 MiB  100.00% 8.36 MiB p/s 2
+💿  Downloading VM boot image ...
+    &gt; minikube-v1.7.0.iso.sha256: 65 B / 65 B [--------------] 100.00% ? p/s 0s
+    &gt; minikube-v1.7.0.iso: 166.68 MiB / 166.68 MiB [-] 100.00% 9.22 MiB p/s 19s
+🔥  Creating kvm2 VM (CPUs=2, Memory=2000MB, Disk=20000MB) ...
+🐳  Preparing Kubernetes v1.17.2 on Docker 19.03.5 ...
+💾  Downloading kubelet v1.17.2
+💾  Downloading kubeadm v1.17.2
+💾  Downloading kubectl v1.17.2
+🚀  Launching Kubernetes ...
+🌟  Enabling addons: default-storageclass, storage-provisioner
+⌛  Waiting for cluster to come online ...
+🏄  Done! kubectl is now configured to use "minikube"
+
+$ minikube status
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+$ kubectl version
+Client Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.2", GitCommit:"59603c6e503c87169aea6106f57b9f242f64df89", GitTreeState:"clean", BuildDate:"2020-01-18T23:30:10Z", GoVersion:"go1.13.5", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.2", GitCommit:"59603c6e503c87169aea6106f57b9f242f64df89", GitTreeState:"clean", BuildDate:"2020-01-18T23:22:30Z", GoVersion:"go1.13.5", Compiler:"gc", Platform:"linux/amd64"}
+
+$ kubectl get namespaces
+NAME              STATUS   AGE
+default           Active   3m26s
+kube-node-lease   Active   3m28s
+kube-public       Active   3m28s
+kube-system       Active   3m28s
+
+$ kubectl create namespace java-fun-k8s
+namespace/java-fun created
+
+$ kubectl get ns
+NAME              STATUS   AGE
+default           Active   3m49s
+java-fun-k8s      Active   8s
+kube-node-lease   Active   3m51s
+kube-public       Active   3m51s
+kube-system       Active   3m51s
+
+$ kubectl config set-context --current --namespace=java-fun-k8s</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a pod from a pod spec.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ echo 'apiVersion: v1
+kind: Pod
+metadata:
+  generateName: myapp-
+  labels:
+    app: myapp
+  namespace: java-fun-k8s
+spec:
+  containers:
+  - image: quay.io/bward/myapp
+    imagePullPolicy: Always
+    name: myapp' | kubectl create -f -</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$  echo 'apiVersion: v1
+&gt; kind: Pod
+&gt; metadata:
+&gt;   generateName: myapp-
+&gt;   labels:
+&gt;     app: myapp
+&gt;   namespace: java-fun-k8s
+&gt; spec:
+&gt;   containers:
+&gt;   - image: quay.io/bward/myapp
+&gt;     imagePullPolicy: Always
+&gt;     name: myapp' | kubectl create -f -
+pod/myapp-wc7b9 created
+
+$ kubectl get pods
+NAME          READY   STATUS    RESTARTS   AGE
+myapp-wc7b9   1/1     Running   0          63s
+
+$ kubectl logs myapp-wc7b9 | tail -3
+webServerFactoryCustomizerBeanPostProcessor
+websocketServletWebServerCustomizer
+welcomePageHandlerMapping</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a set of pods from a deployment spec.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ echo 'apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: myapp
+  name: myapp
+  namespace: java-fun-k8s
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      deployment: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+        deployment: myapp
+    spec:
+      containers:
+      - image: quay.io/bward/myapp
+        imagePullPolicy: Always
+        name: myapp' | kubectl create -f -</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In Execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ echo 'apiVersion: apps/v1
+&gt; kind: Deployment
+&gt; metadata:
+&gt;   labels:
+&gt;     app: myapp
+&gt;   name: myapp
+&gt;   namespace: java-fun-k8s
+&gt; spec:
+&gt;   replicas: 3
+&gt;   selector:
+&gt;     matchLabels:
+&gt;       app: myapp
+&gt;       deployment: myapp
+&gt;   template:
+&gt;     metadata:
+&gt;       labels:
+&gt;         app: myapp
+&gt;         deployment: myapp
+&gt;     spec:
+&gt;       containers:
+&gt;       - image: quay.io/bward/myapp
+&gt;         imagePullPolicy: Always
+&gt;         name: myapp' | kubectl create -f -
+deployment.apps/myapp created
+
+$ kubectl get pods
+NAME                   READY   STATUS    RESTARTS   AGE
+myapp-5b9dbdbb-fpqtl   1/1     Running   0          40s
+myapp-5b9dbdbb-gcvlg   1/1     Running   0          40s
+myapp-5b9dbdbb-zgtcj   1/1     Running   0          40s
+myapp-wc7b9            1/1     Running   0          63m
+
+$ kubectl get all
+NAME                       READY   STATUS    RESTARTS   AGE
+pod/myapp-5b9dbdbb-fpqtl   1/1     Running   0          46s
+pod/myapp-5b9dbdbb-gcvlg   1/1     Running   0          46s
+pod/myapp-5b9dbdbb-zgtcj   1/1     Running   0          46s
+pod/myapp-wc7b9            1/1     Running   0          63m
+
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/myapp   3/3     3            3           46s
+
+NAME                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/myapp-5b9dbdbb   3         3         3       46s
+
+$ kubectl get replicaset.apps/myapp-5b9dbdbb -o yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "3"
+    deployment.kubernetes.io/max-replicas: "4"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2020-02-12T19:14:18Z"
+  generation: 1
+  labels:
+    app: myapp
+    deployment: myapp
+    pod-template-hash: 5b9dbdbb
+  name: myapp-5b9dbdbb
+  namespace: java-fun-k8s
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: myapp
+    uid: 072d3369-17d5-4006-a186-2758263ca17d
+  resourceVersion: "10392"
+  selfLink: /apis/apps/v1/namespaces/java-fun-k8s/replicasets/myapp-5b9dbdbb
+  uid: 28978f77-201a-4ee6-bb81-580e23ba2ca0
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      deployment: myapp
+      pod-template-hash: 5b9dbdbb
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myapp
+        deployment: myapp
+        pod-template-hash: 5b9dbdbb
+    spec:
+      containers:
+      - image: quay.io/bward/myapp
+        imagePullPolicy: Always
+        name: myapp
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  fullyLabeledReplicas: 3
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a Service to load balance the pods</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ kubectl create service clusterip myapp --tcp=8080:8080
+service/myapp created
+
+$ kubectl get all
+NAME                       READY   STATUS    RESTARTS   AGE
+pod/myapp-5b9dbdbb-fpqtl   1/1     Running   0          79m
+pod/myapp-5b9dbdbb-gcvlg   1/1     Running   0          79m
+pod/myapp-5b9dbdbb-zgtcj   1/1     Running   0          79m
+pod/myapp-wc7b9            1/1     Running   0          142m
+
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/myapp   ClusterIP   10.104.138.14   &lt;none&gt;        8080/TCP   5s
+
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/myapp   3/3     3            3           79m
+
+NAME                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/myapp-5b9dbdbb   3         3         3       79m</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how the service IP 10.104.138.14 maps to endpoints created for each pod.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ kubectl describe endpoints
+Name:         myapp
+Namespace:    java-fun-k8s
+Labels:       app=myapp
+Annotations:  endpoints.kubernetes.io/last-change-trigger-time: 2020-02-12T20:33:58Z
+Subsets:
+  Addresses:          172.17.0.4,172.17.0.5,172.17.0.6,172.17.0.7
+  NotReadyAddresses:  &lt;none&gt;
+  Ports:
+    Name       Port  Protocol
+    ----       ----  --------
+    8080-8080  8080  TCP
+
+Events:  &lt;none&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now tunnel into the cluster to check the load balancer URL for your app.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ curl https://10.104.138.14:8080
+&lt;NO RESPONSE, SINCE YOUR ARE NOT INSIDE THE KUBERNETES NETWORK&gt;
+
+$ minikube ssh
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+/' _ ` _ `\| |/' _ `\| || , &lt;  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+$ curl http://10.104.138.14:8080
+Greetings from Spring Boot!$</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Note that we still do not have ingress setup to reach this service.  OpenShift handles this using Routes and an HAProxy ingress router.  This can be achieved several different ways using native Kubernetes ingress object, and is not covered here.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/" class="bare">https://kubernetes.io/docs/tasks/tools/install-minikube/</a>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

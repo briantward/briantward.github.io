@@ -5,7 +5,7 @@
     <description>Recent content in ssh on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,9 +13,21 @@
       <item>
         <title>SSH Tips</title>
         <link>https://briantward.github.io/ssh-tips/</link>
-        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/ssh-tips/</guid>
-        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;      </description>
+        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;    SSH-Forwarding Like this guy&amp;#8217;s example. After using nc for years, ProxyJump is now very useful!
+ Host forum HostName www.nixcraft.com ProxyJump vivek@jumhost.nixcraft.com:22 User vivek   https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/
+  ForwardAgent I&amp;#8217;m not truly certain about the security implications of using ForwardAgent, but this article does suggest there are some issues.</description>
+      </item>
+    
+      <item>
+        <title>Add SSH key to OpenShift 4</title>
+        <link>https://briantward.github.io/add-sshkey-to-ocp4/</link>
+        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/add-sshkey-to-ocp4/</guid>
+        <description>Add SSH key to OpenShift 4 To add an SSH key if one was not provided during installation, perform the following from an admin account such as system:admin:
+ --- # oc debug node/&amp;lt;NODE_NAME&amp;gt; $ chroot /host $ mkdir /home/core/.ssh $ vi /home/core/.ssh/authorized_keys $ chown core:core -R /home/core/.ssh/ $ chmod 644 /home/core/.ssh/authorized_keys ---   Borrowed from Ryan Howe.
+   </description>
       </item>
     
       <item>
