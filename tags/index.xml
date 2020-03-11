@@ -5,7 +5,7 @@
     <description>Recent content in Tags on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,8 +13,40 @@
       <item>
         <title></title>
         <link>https://briantward.github.io/tags/</link>
-        <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/tags/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>core</title>
+        <link>https://briantward.github.io/tags/core/</link>
+        <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/core/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>coredns</title>
+        <link>https://briantward.github.io/tags/coredns/</link>
+        <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/coredns/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>rhel</title>
+        <link>https://briantward.github.io/tags/rhel/</link>
+        <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/rhel/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>zone</title>
+        <link>https://briantward.github.io/tags/zone/</link>
+        <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/zone/</guid>
         <description></description>
       </item>
     
@@ -143,14 +175,6 @@
         <link>https://briantward.github.io/tags/containers/</link>
         <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/tags/containers/</guid>
-        <description></description>
-      </item>
-    
-      <item>
-        <title>core</title>
-        <link>https://briantward.github.io/tags/core/</link>
-        <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/tags/core/</guid>
         <description></description>
       </item>
     
@@ -359,14 +383,6 @@
         <link>https://briantward.github.io/tags/platform/</link>
         <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/tags/platform/</guid>
-        <description></description>
-      </item>
-    
-      <item>
-        <title>rhel</title>
-        <link>https://briantward.github.io/tags/rhel/</link>
-        <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/tags/rhel/</guid>
         <description></description>
       </item>
     

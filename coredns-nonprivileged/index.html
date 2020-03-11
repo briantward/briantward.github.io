@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoreDNS Custom DNS Running on OpenShift - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="CoreDNS Custom DNS Running on OpenShift" />
+<meta property="og:description" content="CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
+ You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
+ $ echo &#39;apiVersion: v1 data: Corefile: | example." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/coredns-nonprivileged/" />
+<meta property="article:published_time" content="2020-03-11T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-03-11T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="CoreDNS Custom DNS Running on OpenShift">
+<meta itemprop="description" content="CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
+ You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
+ $ echo &#39;apiVersion: v1 data: Corefile: | example.">
+
+
+<meta itemprop="datePublished" content="2020-03-11T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-11T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="675">
+
+
+
+<meta itemprop="keywords" content="rhel,coredns,core,zone," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CoreDNS Custom DNS Running on OpenShift"/>
+<meta name="twitter:description" content="CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
+ You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
+ $ echo &#39;apiVersion: v1 data: Corefile: | example."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2020-03-11 12:00">2020-03-11</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          
+            , 
+            <a href="/categories/dns">DNS</a>
+          </p>
+      <h1>CoreDNS Custom DNS Running on OpenShift</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/rhel">
+              <span class="hash">#</span>rhel</a>
+          
+            , 
+            <a href="/tags/coredns">
+              <span class="hash">#</span>coredns</a>
+          
+            , 
+            <a href="/tags/core">
+              <span class="hash">#</span>core</a>
+          
+            , 
+            <a href="/tags/zone">
+              <span class="hash">#</span>zone</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_coredns_custom_dns_running_on_openshift">CoreDNS Custom DNS Running on OpenShift</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default <code>restricted</code> SCC profile, which means that the pod is run without privileges as a nonroot user.  This should work fine on both OpenShift 3.11 and 4.x.</p>
+</div>
+<div class="paragraph">
+<p>You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ echo 'apiVersion: v1
+data:
+  Corefile: |
+    example.com:8053 {
+        log stdout
+        file /etc/coredns/example.com
+    }
+  example.com: |
+    $TTL    1800
+    $ORIGIN example.com.
+
+    @ IN SOA dns domains (
+        2012062701   ; serial
+        300          ; refresh
+        1800         ; retry
+        14400        ; expire
+        300 )        ; minimum
+
+    infra        IN  A  192.168.1.5
+kind: ConfigMap
+metadata:
+  name: dns-config' | oc create -f -</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deploy from the OpenShift CoreDNS base image, overriding the config file location to point to your configmap and passing the correct parameters to the startup command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ echo 'apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns
+  labels:
+    app: dns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dns
+      deployment: dns
+  template:
+    metadata:
+      labels:
+        app: dns
+        deployment: dns
+    spec:
+      containers:
+      - name: coredns-openshift
+        image: quay.io/openshift/origin-coredns:4.5
+        command: ["/usr/bin/coredns"]
+        args: ["-dns.port","8053","-conf","/etc/coredns/Corefile"]
+        volumeMounts:
+        - mountPath: /etc/coredns
+          name: dns-config
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: dns-config
+        name: dns-config' | oc create -f -</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can create and test the service URL doing the following, assuming you are somewhere within your kubernetes cluster (you could run a tool-box, see below):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ echo 'apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: dns
+  name: dns
+spec:
+  ports:
+  - name: 8053-tcp
+    port: 8053
+    protocol: TCP
+    targetPort: 8053
+  - name: 8053-udp
+    port: 8053
+    protocol: UDP
+    targetPort: 8053
+  selector:
+    app: dns
+    deployment: dns' | oc create -f -</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Test from somewhere accessible to this service URL, replacing the PROJECT_NAME with your equivalent.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ dig @dns.PROJECT_NAME.svc.cluster.local -p 8053 infra.example.com</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can test the DNS externally from you cluster with a NodePort, assuming you know a hostname or IP of one of your nodes.  Here I am testing from a minishift server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ echo 'apiVersion: v1
+kind: Service
+metadata:
+  name: dns-np
+  labels:
+    name: dns-np
+spec:
+  type: NodePort
+  ports:
+    - port: 8053
+      nodePort: 30053
+      name: dns
+      protocol: TCP
+    - port: 8053
+      nodePort: 30053
+      name: dns-udp
+      protocol: UDP
+  selector:
+    app: dns
+    deployment: dns' | oc create -f -
+$ oc get nodes -o wide
+NAME        STATUS    ROLES     AGE       VERSION           INTERNAL-IP      EXTERNAL-IP   OS-IMAGE                                      KERNEL-VERSION               CONTAINER-RUNTIME
+localhost   Ready     &lt;none&gt;    13d       v1.11.0+d4cacc0   192.168.122.37   &lt;none&gt;        Red Hat Enterprise Linux Server 7.6 (Maipo)   3.10.0-957.21.3.el7.x86_64   docker://1.13.1
+
+$ dig @192.168.122.37 -p 30053 infra.example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.11.14-RedHat-9.11.14-2.fc30 &lt;&lt;&gt;&gt; @192.168.122.37 -p 30053 infra.example.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 58385
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 2bd314a819029d1f (echoed)
+;; QUESTION SECTION:
+;infra.example.com.		IN	A
+
+;; ANSWER SECTION:
+infra.example.com.	1800	IN	A	192.168.1.5
+
+;; Query time: 8 msec
+;; SERVER: 192.168.122.37#30053(192.168.122.37)
+;; WHEN: Wed Mar 11 11:10:06 EDT 2020
+;; MSG SIZE  rcvd: 91</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Should you want to test changes to your configmap, you need to restart the container to pickup changes.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl rollout restart deployment/dns</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deploy_a_dns_toolbox_test_pod">Deploy a DNS toolbox test pod</h3>
+<div class="paragraph">
+<p>You can build this container from your own host or within OpenShift. It is an extension of the redhat-cop tool-box at <a href="https://quay.io/repository/redhat-cop/tool-box" class="bare">https://quay.io/repository/redhat-cop/tool-box</a> and <a href="https://github.com/redhat-cop/containers-quickstarts/tree/master/tool-box" class="bare">https://github.com/redhat-cop/containers-quickstarts/tree/master/tool-box</a></p>
+</div>
+<div class="paragraph">
+<p>This example was built from v1.16 for a 3.11 cluster. If you build from your own host, you will need to push to a registry that OpenShift can pull from.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ mkdir dns-tools &amp;&amp; cd dns-tools
+$ echo 'FROM quay.io/redhat-cop/tool-box:v1.16
+
+USER 0
+
+RUN dnf install bind-utils -y
+
+USER 1001' &gt; Dockerfile
+$ oc new-build . --name dns-tools
+$ oc start-build dns-tools --from-dir=.
+$ oc get is | grep dns-tools
+dns-tools   172.30.1.1:5000/myproject/dns-tools   latest    15 minutes ago
+$ oc run -i -t dns-tools-test --image=172.30.1.1:5000/myproject/dns-tools --rm bash</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This should be run within the same namespace/project. If you are using the network-policy plugin with default configuration, you will not need to create any special rules for accessing the service URL.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

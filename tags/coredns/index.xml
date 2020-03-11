@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>coredns on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/coredns/</link>
+    <description>Recent content in coredns on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/coredns/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>CoreDNS Custom DNS Running on OpenShift</title>
+        <link>https://briantward.github.io/coredns-nonprivileged/</link>
+        <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/coredns-nonprivileged/</guid>
+        <description>CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
+ You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
+ $ echo &#39;apiVersion: v1 data: Corefile: | example.</description>
+      </item>
+    
+  </channel>
+</rss>
