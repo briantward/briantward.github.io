@@ -5,10 +5,22 @@
     <description>Recent content in zone on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/zone/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Installing GlusterFS on OpenShift</title>
+        <link>https://briantward.github.io/installing-glusterfs-on-openshift/</link>
+        <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/installing-glusterfs-on-openshift/</guid>
+        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170
+OpenShift Container Storage 3.11.5
+ Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)
+ On my first run, I hit this for some odd reason:
+ TASK [cockpit : Install cockpit-ws] ************************************************************************************************************** FAILED - RETRYING: Install cockpit-ws (3 retries left). FAILED - RETRYING: Install cockpit-ws (2 retries left). FAILED - RETRYING: Install cockpit-ws (1 retries left).</description>
+      </item>
     
       <item>
         <title>CoreDNS Custom DNS Running on OpenShift</title>

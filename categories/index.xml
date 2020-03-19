@@ -5,24 +5,56 @@
     <description>Recent content in Categories on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
-        <title>dns</title>
-        <link>https://briantward.github.io/categories/dns/</link>
-        <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/categories/dns/</guid>
+        <title>container</title>
+        <link>https://briantward.github.io/categories/container/</link>
+        <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/container/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>fedora</title>
+        <link>https://briantward.github.io/categories/fedora/</link>
+        <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/fedora/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>rhel</title>
+        <link>https://briantward.github.io/categories/rhel/</link>
+        <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/rhel/</guid>
         <description></description>
       </item>
     
       <item>
         <title>openshift</title>
         <link>https://briantward.github.io/categories/openshift/</link>
-        <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/categories/openshift/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>rhmi</title>
+        <link>https://briantward.github.io/categories/rhmi/</link>
+        <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/rhmi/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>dns</title>
+        <link>https://briantward.github.io/categories/dns/</link>
+        <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/dns/</guid>
         <description></description>
       </item>
     
@@ -71,14 +103,6 @@
         <link>https://briantward.github.io/categories/tips/</link>
         <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/categories/tips/</guid>
-        <description></description>
-      </item>
-    
-      <item>
-        <title>rhel</title>
-        <link>https://briantward.github.io/categories/rhel/</link>
-        <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/categories/rhel/</guid>
         <description></description>
       </item>
     

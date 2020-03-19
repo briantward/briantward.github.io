@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running Secure Containers on Fedora 31 and RHEL 8 - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Running Secure Containers on Fedora 31 and RHEL 8" />
+<meta property="og:description" content="Running Secure Containers on Fedora 31 and RHEL 8 The first thing to note here, is that &#34;secured&#34; means running the container with SELinux enforcing. If you don&#8217;t care about SELinux or have other alternatives in place, move along here, as you won&#8217;t find this useful. I will not be discussing application security or platform security.
+ The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat&#8217;s Container platform built on Kubernetes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/running-secure-containers-on-fedora/" />
+<meta property="article:published_time" content="2020-03-17T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-03-17T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="Running Secure Containers on Fedora 31 and RHEL 8">
+<meta itemprop="description" content="Running Secure Containers on Fedora 31 and RHEL 8 The first thing to note here, is that &#34;secured&#34; means running the container with SELinux enforcing. If you don&#8217;t care about SELinux or have other alternatives in place, move along here, as you won&#8217;t find this useful. I will not be discussing application security or platform security.
+ The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat&#8217;s Container platform built on Kubernetes.">
+
+
+<meta itemprop="datePublished" content="2020-03-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-17T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3149">
+
+
+
+<meta itemprop="keywords" content="8,rhel8,fedora31,podman,security,selinux," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Running Secure Containers on Fedora 31 and RHEL 8"/>
+<meta name="twitter:description" content="Running Secure Containers on Fedora 31 and RHEL 8 The first thing to note here, is that &#34;secured&#34; means running the container with SELinux enforcing. If you don&#8217;t care about SELinux or have other alternatives in place, move along here, as you won&#8217;t find this useful. I will not be discussing application security or platform security.
+ The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat&#8217;s Container platform built on Kubernetes."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2020-03-17 12:00">2020-03-17</time> &bull;
+          
+            
+            <a href="/categories/container">CONTAINER</a>
+          
+            , 
+            <a href="/categories/fedora">FEDORA</a>
+          
+            , 
+            <a href="/categories/rhel">RHEL</a>
+          </p>
+      <h1>Running Secure Containers on Fedora 31 and RHEL 8</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/8">
+              <span class="hash">#</span>8</a>
+          
+            , 
+            <a href="/tags/rhel8">
+              <span class="hash">#</span>rhel8</a>
+          
+            , 
+            <a href="/tags/fedora31">
+              <span class="hash">#</span>fedora31</a>
+          
+            , 
+            <a href="/tags/podman">
+              <span class="hash">#</span>podman</a>
+          
+            , 
+            <a href="/tags/security">
+              <span class="hash">#</span>security</a>
+          
+            , 
+            <a href="/tags/selinux">
+              <span class="hash">#</span>selinux</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_running_secure_containers_on_fedora_31_and_rhel_8">Running Secure Containers on Fedora 31 and RHEL 8</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first thing to note here, is that "secured" means running the container with SELinux enforcing. If you don&#8217;t care about SELinux or have other alternatives in place, move along here, as you won&#8217;t find this useful. I will not be discussing application security or platform security.</p>
+</div>
+<div class="paragraph">
+<p>The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat&#8217;s Container platform built on Kubernetes.  The reason for this lies with the fact that containers run secured by default in OpenShift, and require each container to wholy own its persistent storage, in what is called a PersistentVolume.  Each PV is mounted into the container with appropriate SELinux policies applied.</p>
+</div>
+<div class="sect2">
+<h3 id="_example_application_emby_media_server">Example Application: Emby Media Server</h3>
+<div class="paragraph">
+<p>I wanted to run a headless Emby Media server on my network, for sharing on my local network all the DVDs and music that I have purchased over the years.</p>
+</div>
+<div class="paragraph">
+<p>The upstream Docker container can be found here:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://hub.docker.com/r/emby/embyserver/" class="bare">https://hub.docker.com/r/emby/embyserver/</a></p>
+</div>
+<div class="paragraph">
+<p>But we need to be able to run this using Podman so there are a few different considerations here.  My default install on Fedora Server included both <code>podman</code> and <code>slirp4netns</code>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker pull emby/embyserver</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Becomes</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ podman pull emby/embyserver</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But we have an immediate error on even trying to pull this image, because we are not root, and we have not yet set our system to handle user namespaces for containers.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>&lt;insert error output here from reproducer&gt;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>ERRO[0005] Error pulling image ref //testimg:latest: Error committing the finished image: error adding layer with blob "sha256:caed8f108bf6721dc2709407ecad964c83a31c8008a6a21826aa4ab995df5502": Error processing tar file(exit status 1): there might not be enough IDs available in the namespace (requested 4000000:4000000 for /testfile): lchown /testfile: invalid argument</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.redhat.com/sysadmin/rootless-podman">Why can’t rootless Podman pull my image?</a></p>
+</div>
+<div class="paragraph">
+<p>Essentially we need to check or set some sysctl values for enabling user namespaces.</p>
+</div>
+<div class="paragraph">
+<p>You can check</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ sysctl user.max_user_namespaces
+user.max_user_namespaces = 15000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, it appears to be enabled by default on my Fedora 31 Server (fresh install).  Depending on how you built your server or upraded it, you may need to set this manually.</p>
+</div>
+<div class="paragraph">
+<p>You can do this for your current session:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo sysctl user.max_user_namespaces=15000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or, as Red Hat Documentation suggests<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>, you can also make this permanent:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># echo "user.max_user_namespaces=15000" &gt; /etc/sysctl.d/userns.conf
+# sysctl -p /etc/sysctl.d/userns.conf</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is this particular comment in the referenced blog that is important to understand [1]:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Note: The /etc/subuid and /etc/subgid files are for adjusting users that already exist. Defaults for new users are adjusted elsewhere.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Since my user was created by IdM (free-ipa), I needed to add these values manually to <code>/etc/subuid</code> and <code>/etc/subgid</code>.  You may not need to do this by default.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo echo "bward:100000:65536" &gt;&gt; /etc/subuid
+$ sudo echo "bward:100000:65536" &gt;&gt; /etc/subuid</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now I can pull the image correctly.</p>
+</div>
+<div class="paragraph">
+<p>Luckily this container was not built with any hard requirement for root access, so we can get going with trying to run this container easily as a nonroot user.  In fact, the author of the container let&#8217;s you set it up so that you can pick any user, so this could be your own account or a custom system account you might make.  I chose to just run it under my user account to get things rolling, but it would make sense to have a system account in production for best process isolation.</p>
+</div>
+<div class="paragraph">
+<p>The Emby documentation tells us to start with the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>docker run -d \
+    --volume /path/to/programdata:/config \ # This is mandatory
+    --volume /path/to/share1:/mnt/share1 \ # To mount a first share
+    --volume /path/to/share2:/mnt/share2 \ # To mount a second share
+    --device /dev/dri:/dev/dri \ # To mount all render nodes for VAAPI/NVDEC/NVENC
+    --runtime=nvidia \ # To expose your NVIDIA GPU
+    --publish 8096:8096 \ # To expose the HTTP port
+    --publish 8920:8920 \ # To expose the HTTPS port
+    --env UID=1000 \ # The UID to run emby as (default: 2)
+    --env GID=100 \ # The GID to run emby as (default 2)
+    --env GIDLIST=100 \ # A comma-separated list of additional GIDs to run emby as (default: 2)
+    emby/embyserver:latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So I used the above with my own volume mappings and removing the nvidia stuff (my server is headless and as far as I can tell it doesn&#8217;t need the GPU but maybe that is something I need to revisit later).  But I immediate got some errors as the container crashed seconds into launching it.  Startup logs show that it cannot chown the files it needs.  Well, this is certainly a permissions nightmare as figuring out who should have access to this container is confusing with all this UID/GID mapping stuff.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>podman run -d \
+--network=host \
+--volume /home/bward/emby/config:/config \
+--volume /media:/media \
+--publish 8096:8096 \
+--publish 8920:8920 \
+--env UID=1000 \
+--env GID=100 \
+--env GIDLIST=100 \
+emby/embyserver:latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, my config folder is in my home directory and my media content is mounted by root at system boot at <code>/media</code>.  I made this media location read/writable by everyone for simplicity here.  So the first thing was getting the folder mapping correct for the config folder since that was where the first error ocurred.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.redhat.com/sysadmin/rootless-podman-makes-sense">Running rootless Podman as a non-root user</a></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ podman unshare ls -lah /home/bward/emby/config</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That shows us that my UID/GID is not correct, so let&#8217;s set it to the mappings we expect</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ podman unshare chown -R 1001:1001 /home/bward/emby/config</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively you can run</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo chown -R 101000:101000 /home/bward/emby/config</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is because our UID is run as 1001 in the container.  Oddly enough it does not become 101001, so the start is one off.  Even though our mapping file starts at 100000 and extends to 165536 ("bward:100000:65536").  This is because the first UID assigned to me is actually started at 0.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ podman unshare cat /proc/self/uid_map
+         0 1959800003          1
+         1     100000      65536</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we had started at 100001 instead of 100000 this would line up a little more cleanly.  Oh well, maybe next time.</p>
+</div>
+<div class="paragraph">
+<p>Ok so now that we have directory ownership correct, we try again but still run into startup errors.</p>
+</div>
+<div class="paragraph">
+<p>&lt;show example&gt;</p>
+</div>
+<div class="paragraph">
+<p>Well now that normal permissions are taken care of, we can think of selinux permissions, and sure enough it was Enforcing by default.  Setting it to Permissive for debugging gets it to start up cleanly.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># setenforce 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now the question becomes, how do I identify what SELinux policy I need to apply to this container? Luckily we have a tool to get started, udica.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup><sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>Now that we have the pod running fine with SELinux in Permissive, let&#8217;s generate the base SELinux module for this container.  It will be a block of SELinux policies particular to this container.  Notice that we do need root permissions to run <code>udica</code> and <code>semodule</code>.  This should be obvious as we are authorizing a set of activities on the host.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ sudo dnf install -y udica
+$ podman inspect &lt;MYCONTAINERID&gt; &gt; emby.json
+$ sudo udica -j emby.json emby
+
+Policy emby created!
+
+Please load these modules using:
+# semodule -i emby.cil /usr/share/udica/templates/base_container.cil
+
+Restart the container with: "--security-opt label=type:emby.process" parameter
+
+$ sudo semodule -i emby.cil /usr/share/udica/templates/base_container.cil</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So now that we have the policy loaded, let&#8217;s turn SELlinux back on to Enforcing and run this container with the security-opt flag as described above.</p>
+</div>
+<div class="paragraph">
+<p>What??? No dice!? Ok so this is somewhat aggravating.  It turns out, <code>udica</code> cannot magically guess all container interactions from the inspect JSON!  That&#8217;s actually not a huge surprise, but it is somewhat misleading without further documentation.  Unfortunately for me it took several hours and dozens of trial and error runs to get this right.  Knowing a bit more about the application would have helped, but I figured I could get this working before needing to go poking at the author for Emby.</p>
+</div>
+<div class="paragraph">
+<p>The first thing I found complicating things was my network setup.  I had run with <code>--network=host</code> as a result of finding it a simple solution, and on my machine I did not plan to build out complex networking solutions.  Unfortunately <code>udica</code> reads the networking configuration from the Inspection JSON output, ignoring the startup command altogether.  While it could have read my startup command and determined the container needed access to these ports, it did not do so.  Since the host networking setup does not record those values in the configuration, <code>udica</code> skipped adding the appropriate SELinux policies.  I figured this out by checking out the base policies in that command, <code>/usr/share/udica/templates/base_container.cil</code>, and realizing they did not include any network details.</p>
+</div>
+<div class="paragraph">
+<p>I originally ran this on a RHEL 7 box with podman installed, but it did not have <code>slirp4netns</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ podman run -d --volume /home/bward/emby/config:/config --volume /media/bosch/pub/movies/iso:/media --publish 8096:8096 --publish 8920:8920 --env UID=1000 --env GID=100 --env GIDLIST=100 emby/embyserver:latest
+ERRO[0002] could not find slirp4netns, the network namespace won't be configured: exec: "slirp4netns": executable file not found in $PATH
+f60ae88bece8ac396a8b4b01434b1a3d77e3a5dbe30ec35d46fb5d43eff01638
+
+$ which slirp4netns
+/usr/bin/which: no slirp4netns in (/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/bward/.local/bin:/home/bward/bin)
+$ cat /etc/*release*
+NAME="Red Hat Enterprise Linux Server"
+VERSION="7.7 (Maipo)"
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Inspect shows that it is missing network settings, in spite of them clearly being in the start command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ podman inspect c87977333cae
+...
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": [],
+            "SandboxKey": "",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": ""
+        },
+...</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>            "CreateCommand": [
+                "podman",
+                "run",
+                "-d",
+                "--volume",
+                "/home/bward/emby/config:/config",
+                "--volume",
+                "/home/bward/emby/media:/media",
+                "-p",
+                "8096:8096",
+                "-p",
+                "8096:8096/udp",
+                "-p",
+                "8920:8920",
+                "-p",
+                "8920:8290/udp",
+                "-p",
+                "1900:1900/udp",
+                "-e",
+                "UID=1001",
+                "-e",
+                "GID=1001",
+                "emby/embyserver:latest"
+            ]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I originally chose to run <code>--network=host</code> due to early complications of running podman containers on RHEL 7, I believe, where I did not already have <code>slirp4netns</code> installed.  Since this package is installed by default on Fedora 31 with <code>podman</code>, I found removing <code>--network=host</code> worked fine.  It had previously run on my other machine noting that networking was broken as a result of missing <code>slirp4netns</code>.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup> Running with <code>--network=host</code> had just been a workaround at the time, so I removed it on rerun and found that the inspect command showed more networking details.  It became apparent that <code>udica</code> reads thatnetwork object in the inspect output to generate the appropriate network policies for SELinux.</p>
+</div>
+<div class="paragraph">
+<p>The second thing that I found complicating things was the need for UDP socket access, specifically on all ports, even though I had already opened my TCP ports on my firewall and was not permitting any UDP traffic across the network.  I guess this was a particular quirk of the application. Apparently it is creating UDP listeners, but when operating on my network it doesn&#8217;t seem to <em>need</em> them as I&#8217;ve never opened the firewall ports.  Maybe that&#8217;s a discussion for the Emby developers.</p>
+</div>
+<div class="paragraph">
+<p>The third thing was also application related, as apparently it also listens on UDP port 1900 during startup, though subsequent <code>ss</code> listings did not show it continued to use this port.  I found port 1900 as a suggestion from earlier posts on problems with Emby when run on the docker bridge network rather than the host network.</p>
+</div>
+<div class="paragraph">
+<p>The run command and the inspect JSON then looked something more like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ podman run -d \
+--security-opt label=type:emby.process \
+--volume /home/bward/emby/config:/config \
+--volume /home/bward/emby/media:/media \
+-p 8096:8096 \
+-p 8096:8096/udp \
+-p 8920:8920 \
+-p 8920:8290/udp \
+-p 1900:1900/udp \
+-e UID=1001 \
+-e GID=1001 \
+emby/embyserver:latest
+
+$ podman inspect c87977333cae
+...
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": [
+                {
+                    "hostPort": 8920,
+                    "containerPort": 8920,
+                    "protocol": "tcp",
+                    "hostIP": ""
+                },
+                {
+                    "hostPort": 8920,
+                    "containerPort": 8290,
+                    "protocol": "udp",
+                    "hostIP": ""
+                },
+                {
+                    "hostPort": 1900,
+                    "containerPort": 1900,
+                    "protocol": "udp",
+                    "hostIP": ""
+                },
+                {
+                    "hostPort": 8096,
+                    "containerPort": 8096,
+                    "protocol": "tcp",
+                    "hostIP": ""
+                },
+                {
+                    "hostPort": 8096,
+                    "containerPort": 8096,
+                    "protocol": "udp",
+                    "hostIP": ""
+                }
+            ],
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even still, I got the application to launch cleanly, but there were still AVC denials being logged, preventing the application from working correctly from remote machines (the web interface worked, but streaming movies did not). So on further detailed investigation of the SEModule generated by <code>udica</code> and comparing to the AVC denials in <code>/var/log/audit/audit.log</code>, I found the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cat emby.cil
+(block emby
+    (blockinherit container)
+    (blockinherit restricted_net_container)
+    (allow process process ( capability ( chown dac_override fsetid fowner mknod net_raw setgid setuid setfcap setpcap net_bind_service sys_chroot kill audit_write )))
+
+    (allow process unreserved_port_t ( tcp_socket (  name_bind )))
+    (allow process unreserved_port_t ( udp_socket (  name_bind )))
+    (allow process ssdp_port_t ( udp_socket (  name_bind )))
+    (allow process unreserved_port_t ( tcp_socket (  name_bind )))
+    (allow process unreserved_port_t ( udp_socket (  name_bind )))
+    (allow process user_home_t ( dir ( open read getattr lock search ioctl add_name remove_name write )))
+    (allow process user_home_t ( file ( getattr read write append ioctl lock map open create  )))
+    (allow process user_home_t ( sock_file ( getattr read write append open  )))
+    (allow process user_home_t ( dir ( open read getattr lock search ioctl add_name remove_name write )))
+    (allow process user_home_t ( file ( getattr read write append ioctl lock map open create  )))
+    (allow process user_home_t ( sock_file ( getattr read write append open  )))
+)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>type=AVC msg=audit(1584409148.449:6830): avc:  denied  { rename } for  pid=30491 comm="ffmpeg" name="efb3d448b3d239bb5d35b5c3e50f5b95.m3u8.tmp" dev="dm-3" ino=211919424 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=1
+...
+type=AVC msg=audit(1584409148.449:6831): avc:  denied  { unlink } for  pid=30491 comm="ffmpeg" name="efb3d448b3d239bb5d35b5c3e50f5b95.m3u8" dev="dm-3" ino=211919422 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=1
+...
+type=AVC msg=audit(1584421297.913:6858): avc:  denied  { setattr } for  pid=26360 comm="EmbyServer" name="f7e583d30c3b499d84bbcaef2e27785f.png" dev="dm-3" ino=402760194 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=1
+...
+type=AVC msg=audit(1584489609.398:7126): avc:  denied  { link } for  pid=26360 comm="EmbyServer" name="embyserver.txt" dev="dm-3" ino=268987196 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=0
+...
+type=AVC msg=audit(1584490531.808:7141): avc:  denied  { rmdir } for  pid=26360 comm="EmbyServer" name="c9497bf0c838321b8aedfe6ec0bcea18" dev="dm-3" ino=212388327 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=dir permissive=0
+...
+type=AVC msg=audit(1584490610.269:7151): avc:  denied  { create } for  pid=26360 comm="EmbyServer" name="97630" scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=dir permissive=0
+...
+type=AVC msg=audit(1584490610.832:7153): avc:  denied  { setattr } for  pid=26360 comm="EmbyServer" name="dc89056c78e844de986c007f5394db8e.jpg" dev="dm-3" ino=402794756 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I&#8217;ve included ellipses above for readability, but we can echo this out and pipe it to <code>audit2allow</code> to get our missing policies.  If you&#8217;re looking closely, you can see this was through multiple runs/tests/sets of Enforcing/Permissive.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># echo "type=AVC msg=audit(1584409148.449:6830): avc:  denied  { rename } for  pid=30491 comm="ffmpeg" name="efb3d448b3d239bb5d35b5c3e50f5b95.m3u8.tmp" dev="dm-3" ino=211919424 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=1
+&gt; type=AVC msg=audit(1584409148.449:6831): avc:  denied  { unlink } for  pid=30491 comm="ffmpeg" name="efb3d448b3d239bb5d35b5c3e50f5b95.m3u8" dev="dm-3" ino=211919422 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=1
+&gt; type=AVC msg=audit(1584421297.913:6858): avc:  denied  { setattr } for  pid=26360 comm="EmbyServer" name="f7e583d30c3b499d84bbcaef2e27785f.png" dev="dm-3" ino=402760194 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=1
+&gt; type=AVC msg=audit(1584489609.398:7126): avc:  denied  { link } for  pid=26360 comm="EmbyServer" name="embyserver.txt" dev="dm-3" ino=268987196 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=0
+&gt; type=AVC msg=audit(1584490531.808:7141): avc:  denied  { rmdir } for  pid=26360 comm="EmbyServer" name="c9497bf0c838321b8aedfe6ec0bcea18" dev="dm-3" ino=212388327 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=dir permissive=0
+&gt; type=AVC msg=audit(1584490610.269:7151): avc:  denied  { create } for  pid=26360 comm="EmbyServer" name="97630" scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=dir permissive=0
+&gt; type=AVC msg=audit(1584490610.832:7153): avc:  denied  { setattr } for  pid=26360 comm="EmbyServer" name="dc89056c78e844de986c007f5394db8e.jpg" dev="dm-3" ino=402794756 scontext=system_u:system_r:emby.process:s0:c151,c900 tcontext=system_u:object_r:user_home_t:s0 tclass=file permissive=0" | audit2allow
+
+
+#============= emby.process ==============
+allow emby.process user_home_t:dir { create rmdir };
+
+#!!!! This avc is allowed in the current policy
+allow emby.process user_home_t:file { rename unlink };
+allow emby.process user_home_t:file { link setattr };</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wow we are missing a lot from that <code>udica</code> output.  Let&#8217;s add it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cat emby.cil
+(block emby
+    (blockinherit container)
+    (blockinherit restricted_net_container)
+    (allow process process ( capability ( chown dac_override fsetid fowner mknod net_raw setgid setuid setfcap setpcap net_bind_service sys_chroot kill audit_write )))
+
+    (allow process unreserved_port_t ( tcp_socket (  name_bind )))
+    (allow process unreserved_port_t ( udp_socket (  name_bind )))
+    (allow process ssdp_port_t ( udp_socket (  name_bind )))
+    (allow process unreserved_port_t ( tcp_socket (  name_bind )))
+    (allow process unreserved_port_t ( udp_socket (  name_bind )))
+    (allow process user_home_t ( dir ( open read getattr lock search ioctl add_name remove_name write )))
+    (allow process user_home_t ( file ( getattr read write append ioctl lock map open create  )))
+    (allow process user_home_t ( sock_file ( getattr read write append open  )))
+    (allow process user_home_t ( dir ( open read getattr lock search ioctl add_name remove_name write create rmdir )))
+    (allow process user_home_t ( file ( getattr read write append ioctl lock map open create rename unlink link setattr )))
+    (allow process user_home_t ( sock_file ( getattr read write append open  )))
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I&#8217;m certainly not an SELinux expert, but I would venture to say there is some duplication in rules in the above block, but since <code>udica</code> put them there, I&#8217;ll leave them there for now.</p>
+</div>
+<div class="paragraph">
+<p>A quick diff from the udica output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ diff emby.cil{,.orig}
+6c6
+&lt;     (allow process unreserved_port_t ( tcp_socket (  name_bind name_connect )))
+---
+&gt;     (allow process unreserved_port_t ( tcp_socket (  name_bind )))
+8c8
+&lt;     (allow process ssdp_port_t ( udp_socket (  name_bind )))
+---
+&gt;     (allow process ssdp_port_t ( udp_socket (  name_bind )))
+14,15c14,15
+&lt;     (allow process user_home_t ( dir ( open read getattr lock search ioctl add_name remove_name write create rmdir )))
+&lt;     (allow process user_home_t ( file ( getattr read write append ioctl lock map open create rename unlink setattr link )))
+---
+&gt;     (allow process user_home_t ( dir ( open read getattr lock search ioctl add_name remove_name write )))
+&gt;     (allow process user_home_t ( file ( getattr read write append ioctl lock map open create  )))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Boom! Start up and application running and streaming correctly across my network devices!!!</p>
+</div>
+<div class="paragraph">
+<p>Changing this to my needs, the startup finally becomes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>podman run -d \
+--volume /home/bward/emby/config:/config \
+--volume /media-content:/media \
+-p 8096:8096 \
+-p 8920:8920 \
+-e UID=1001 \
+-e GID=1001 \
+emby/embyserver:latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Actually, I don&#8217;t really need a listener published on port 1900.  I just found that there was an SELlinux denial on attempting to bind to 1900 during startup, but watching the application at work shows that it doesn&#8217;t continually use that port, nor does service seem to be affected by limiting that port from being published or unblocked by the firewall. A little testing shows I don&#8217;t really need the UDP ports published.  It was just convenient to have them in the <code>podman</code> command to generate the needed SELinux policies by <code>udica</code>.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively from using <code>udica</code>, I could have just monitored the AVC denials in the audit log and captured from there.  As it turns out, I personally think monitoring the audit logs should be the way to go, at least until we have better ways of capturing policies from <code>udica</code>.  This is probably what application developers, who are concerned about creating valid SELinux policies, have already been doing for years.</p>
+</div>
+<div class="paragraph">
+<p>I should also note the required firewall changes.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo firewall-cmd --add-port=8096/tcp
+$ sudo firewall-cmd --add-port=8096/tcp --permanent</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The final part of this bit on securing this application will be getting a certificate to match my hostname and enabling HTTPS, so that I can appropriately externalize this service.  That&#8217;s the easy part.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_further_documentation">Further Documentation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developers.redhat.com/blog/2019/08/14/best-practices-for-running-buildah-in-a-container/">Best practices for running Buildah in a container</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/using_selinux/index">RHEL 8: Using SELinux</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/selinux_users_and_administrators_guide/index">RHEL 7: SELinux User&#8217;s and Administrator&#8217;s Guide</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html-single/security-enhanced_linux/index">RHEL 6: Security-Enhanced Linux</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/building_running_and_managing_containers/index">RHEL 8: Building, running, and managing containers</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://www.redhat.com/sysadmin/rootless-podman">Why can’t rootless Podman pull my image?</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/building_running_and_managing_containers/index#set_up_for_rootless_containers" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/building_running_and_managing_containers/index#set_up_for_rootless_containers</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://www.redhat.com/en/blog/generate-selinux-policies-containers-with-udica">Generate SELinux policies for containers with Udica</a>
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. <a href="https://github.com/containers/udica">udica - Generate SELinux policies for containers!</a>
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/using_selinux/index#creating-selinux-policies-for-containers_using-selinux">RHEL 8: Creating SELinux policies for containers</a>
+</div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. <a href="https://www.redhat.com/sysadmin/container-networking-podman">Configuring container networking with Podman</a>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

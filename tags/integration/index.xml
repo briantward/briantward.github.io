@@ -5,10 +5,18 @@
     <description>Recent content in integration on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/integration/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Installing RHMI on OpenShift</title>
+        <link>https://briantward.github.io/installing-rhmi-on-openshift/</link>
+        <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/installing-rhmi-on-openshift/</guid>
+        <description>Installing RHMI on OpenShift   </description>
+      </item>
     
       <item>
         <title>Installing Integr8tly</title>

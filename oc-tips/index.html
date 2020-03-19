@@ -23,7 +23,8 @@
 
 <meta property="og:title" content="oc Tips" />
 <meta property="og:description" content="OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&#8230;&#8203; and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     " />
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
+ $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/oc-tips/" />
 <meta property="article:published_time" content="2018-08-11T00:00:00&#43;00:00"/>
@@ -33,12 +34,13 @@
 
 <meta itemprop="name" content="oc Tips">
 <meta itemprop="description" content="OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&#8230;&#8203; and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     ">
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
+ $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;">
 
 
 <meta itemprop="datePublished" content="2018-08-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-08-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="36">
+<meta itemprop="wordCount" content="69">
 
 
 
@@ -47,7 +49,8 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="oc Tips"/>
 <meta name="twitter:description" content="OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&#8230;&#8203; and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     "/>
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
+ $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;"/>
 
 
   </head>
@@ -142,6 +145,14 @@
 <div class="literalblock">
 <div class="content">
 <pre>$ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Show docker images on node for each node found in pods listing. (Thanks Todd Penn)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ for node in $(oc get pods -o jsonpath='{range .items[*].spec}{.nodeName}{" "}{end}'); do echo $node; ssh $node "docker images";done</pre>
 </div>
 </div>
 </div>

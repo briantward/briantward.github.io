@@ -4,32 +4,143 @@
   
   <url>
     <loc>https://briantward.github.io/tags/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/8/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://briantward.github.io/categories/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/coredns-nonprivileged/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://briantward.github.io/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://briantward.github.io/posts/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/running-secure-containers-on-fedora/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://briantward.github.io/tags/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/container/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/fedora/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/fedora31/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/podman/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/rhel/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/rhel8/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/security/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/selinux/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/installing-rhmi-on-openshift/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/integration/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/openshift/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/rhmi/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/installing-glusterfs-on-openshift/</loc>
+    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/dns/</loc>
+    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/glusterfs/</loc>
+    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/rhel/</loc>
+    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/zone/</loc>
+    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/coredns-nonprivileged/</loc>
     <lastmod>2020-03-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -41,30 +152,6 @@
   
   <url>
     <loc>https://briantward.github.io/tags/coredns/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/dns/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/openshift/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/rhel/</loc>
-    <lastmod>2020-03-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/zone/</loc>
     <lastmod>2020-03-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -192,12 +279,6 @@
   
   <url>
     <loc>https://briantward.github.io/tags/qemu/</loc>
-    <lastmod>2019-12-31T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/rhel/</loc>
     <lastmod>2019-12-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -413,12 +494,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/integration/</loc>
-    <lastmod>2019-11-18T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/integreatly/</loc>
     <lastmod>2019-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -510,12 +585,6 @@
   
   <url>
     <loc>https://briantward.github.io/tags/platform/</loc>
-    <lastmod>2019-10-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/security/</loc>
     <lastmod>2019-10-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

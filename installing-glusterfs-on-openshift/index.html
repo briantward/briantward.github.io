@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Installing GlusterFS on OpenShift - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Installing GlusterFS on OpenShift" />
+<meta property="og:description" content="Installing GlusterFS on OpenShift OpenShift 3.11.170
+OpenShift Container Storage 3.11.5
+ Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)
+ On my first run, I hit this for some odd reason:
+ TASK [cockpit : Install cockpit-ws] ************************************************************************************************************** FAILED - RETRYING: Install cockpit-ws (3 retries left). FAILED - RETRYING: Install cockpit-ws (2 retries left). FAILED - RETRYING: Install cockpit-ws (1 retries left)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/installing-glusterfs-on-openshift/" />
+<meta property="article:published_time" content="2020-03-14T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-03-14T00:00:00&#43;00:00"/>
+
+
+
+<meta itemprop="name" content="Installing GlusterFS on OpenShift">
+<meta itemprop="description" content="Installing GlusterFS on OpenShift OpenShift 3.11.170
+OpenShift Container Storage 3.11.5
+ Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)
+ On my first run, I hit this for some odd reason:
+ TASK [cockpit : Install cockpit-ws] ************************************************************************************************************** FAILED - RETRYING: Install cockpit-ws (3 retries left). FAILED - RETRYING: Install cockpit-ws (2 retries left). FAILED - RETRYING: Install cockpit-ws (1 retries left).">
+
+
+<meta itemprop="datePublished" content="2020-03-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="6144">
+
+
+
+<meta itemprop="keywords" content="rhel,glusterfs,zone," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Installing GlusterFS on OpenShift"/>
+<meta name="twitter:description" content="Installing GlusterFS on OpenShift OpenShift 3.11.170
+OpenShift Container Storage 3.11.5
+ Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)
+ On my first run, I hit this for some odd reason:
+ TASK [cockpit : Install cockpit-ws] ************************************************************************************************************** FAILED - RETRYING: Install cockpit-ws (3 retries left). FAILED - RETRYING: Install cockpit-ws (2 retries left). FAILED - RETRYING: Install cockpit-ws (1 retries left)."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2020-03-14 12:00">2020-03-14</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          
+            , 
+            <a href="/categories/dns">DNS</a>
+          </p>
+      <h1>Installing GlusterFS on OpenShift</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/rhel">
+              <span class="hash">#</span>rhel</a>
+          
+            , 
+            <a href="/tags/glusterfs">
+              <span class="hash">#</span>glusterfs</a>
+          
+            , 
+            <a href="/tags/zone">
+              <span class="hash">#</span>zone</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_installing_glusterfs_on_openshift">Installing GlusterFS on OpenShift</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenShift 3.11.170<br>
+OpenShift Container Storage 3.11.5</p>
+</div>
+<div class="paragraph">
+<p>Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)</p>
+</div>
+<div class="paragraph">
+<p>On my first run, I hit this for some odd reason:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>TASK [cockpit : Install cockpit-ws] **************************************************************************************************************
+FAILED - RETRYING: Install cockpit-ws (3 retries left).
+FAILED - RETRYING: Install cockpit-ws (2 retries left).
+FAILED - RETRYING: Install cockpit-ws (1 retries left).
+fatal: [master0.ocp.example.com]: FAILED! =&gt; {"attempts": 3, "changed": false, "msg": "https://cdn.redhat.com/content/dist/rhel/server/7/7Server/x86_64/os/Packages/g/gsettings-desktop-schemas-3.28.0-2.el7.x86_64.rpm: [Errno 14] HTTPS Error 403 - Forbidden\nTrying other mirror.\nTo address this issue please refer to the below knowledge base article\n\nhttps://access.redhat.com/solutions/69319\n\nIf above article doesn't help to resolve this issue please open a ticket with Red Hat Support.\n\nhttps://cdn.redhat.com/content/dist/rhel/server/7/7Server/x86_64/extras/os/Packages/c/cockpit-docker-195-1.el7.x86_64.rpm: [Errno 14] HTTPS Error 403 - Forbidden\nTrying other mirror.\nhttps://cdn.redhat.com/content/dist/rhel/server/7/7Server/x86_64/os/Packages/c/cockpit-bridge-195.1-1.el7.x86_64.rpm: [Errno 14] HTTPS Error 403 - Forbidden\nTrying other mirror.\nhttps://cdn.redhat.com/content/dist/rhel/server/7/7Server/x86_64/os/Packages/l/libmodman-2.0.1-8.el7.x86_64.rpm: [Errno 14] HTTPS Error 403 - Forbidden\nTrying other mirror.\nhttps://cdn.redhat.com/content/dist/rhel/server/7/7Server/x86_64/os/Packages/t/trousers-0.3.14-2.el7.x86_64.rpm: [Errno 14] HTTPS Error 403 - Forbidden\nTrying other mirror.\n\n\nError downloading packages:\n  cockpit-docker-195-1.el7.x86_64: [Errno 256] No more mirrors to try.\n  cockpit-bridge-195.1-1.el7.x86_64: [Errno 256] No more mirrors to try.\n  trousers-0.3.14-2.el7.x86_64: [Errno 256] No more mirrors to try.\n  gsettings-desktop-schemas-3.28.0-2.el7.x86_64: [Errno 256] No more mirrors to try.\n  libmodman-2.0.1-8.el7.x86_64: [Errno 256] No more mirrors to try.\n\n", "rc": 1, "results": ["Loaded plugins: product-id, search-disabled-repos, subscription-manager\nResolving Dependencies\n--&gt; Running transaction check\n---&gt; Package cockpit-bridge.x86_64 0:195.1-1.el7 will be installed\n--&gt; Processing Dependency: glib-networking for package: cockpit-bridge-195.1-1.el7.x86_64\n--&gt; Processing Dependency: libjson-glib-1.0.so.0()(64bit) for package: cockpit-bridge-195.1-1.el7.x86_64\n---&gt; Package cockpit-docker.x86_64 0:195-1.el7 will be installed\n---&gt; Package cockpit-kubernetes.x86_64 0:195-2.rhaos.el7 will be installed\n---&gt; Package cockpit-system.noarch 0:195.1-1.el7 will be installed\n---&gt; Package cockpit-ws.x86_64 0:195.1-1.el7 will be installed\n--&gt; Running transaction check\n---&gt; Package glib-networking.x86_64 0:2.56.1-1.el7 will be installed\n--&gt; Processing Dependency: gsettings-desktop-schemas for package: glib-networking-2.56.1-1.el7.x86_64\n--&gt; Processing Dependency: libgnutls.so.28(GNUTLS_1_4)(64bit) for package: glib-networking-2.56.1-1.el7.x86_64\n--&gt; Processing Dependency: libgnutls.so.28(GNUTLS_2_12)(64bit) for package: glib-networking-2.56.1-1.el7.x86_64\n--&gt; Processing Dependency: libgnutls.so.28(GNUTLS_3_0_0)(64bit) for package: glib-networking-2.56.1-1.el7.x86_64\n--&gt; Processing Dependency: libgnutls.so.28(GNUTLS_3_1_0)(64bit) for package: glib-networking-2.56.1-1.el7.x86_64\n--&gt; Processing Dependency: libgnutls.so.28()(64bit) for package: glib-networking-2.56.1-1.el7.x86_64\n--&gt; Processing Dependency: libproxy.so.1()(64bit) for package: glib-networking-2.56.1-1.el7.x86_64\n---&gt; Package json-glib.x86_64 0:1.4.2-2.el7 will be installed\n--&gt; Running transaction check\n---&gt; Package gnutls.x86_64 0:3.3.29-9.el7_6 will be installed\n--&gt; Processing Dependency: trousers &gt;= 0.3.11.2 for package: gnutls-3.3.29-9.el7_6.x86_64\n--&gt; Processing Dependency: libhogweed.so.2()(64bit) for package: gnutls-3.3.29-9.el7_6.x86_64\n--&gt; Processing Dependency: libnettle.so.4()(64bit) for package: gnutls-3.3.29-9.el7_6.x86_64\n---&gt; Package gsettings-desktop-schemas.x86_64 0:3.28.0-2.el7 will be installed\n---&gt; Package libproxy.x86_64 0:0.4.11-11.el7 will be installed\n--&gt; Processing Dependency: libmodman.so.1()(64bit) for package: libproxy-0.4.11-11.el7.x86_64\n--&gt; Running transaction check\n---&gt; Package libmodman.x86_64 0:2.0.1-8.el7 will be installed\n---&gt; Package nettle.x86_64 0:2.7.1-8.el7 will be installed\n---&gt; Package trousers.x86_64 0:0.3.14-2.el7 will be installed\n--&gt; Finished Dependency Resolution\n\nDependencies Resolved\n\n================================================================================\n Package               Arch   Version         Repository                   Size\n================================================================================\nInstalling:\n cockpit-bridge        x86_64 195.1-1.el7     rhel-7-server-rpms          552 k\n cockpit-docker        x86_64 195-1.el7       rhel-7-server-extras-rpms   371 k\n cockpit-kubernetes    x86_64 195-2.rhaos.el7 rhel-7-server-ose-3.11-rpms 3.7 M\n cockpit-system        noarch 195.1-1.el7     rhel-7-server-rpms          1.6 M\n cockpit-ws            x86_64 195.1-1.el7     rhel-7-server-rpms          805 k\nInstalling for dependencies:\n glib-networking       x86_64 2.56.1-1.el7    rhel-7-server-rpms          145 k\n gnutls                x86_64 3.3.29-9.el7_6  rhel-7-server-rpms          681 k\n gsettings-desktop-schemas\n                       x86_64 3.28.0-2.el7    rhel-7-server-rpms          605 k\n json-glib             x86_64 1.4.2-2.el7     rhel-7-server-rpms          134 k\n libmodman             x86_64 2.0.1-8.el7     rhel-7-server-rpms           28 k\n libproxy              x86_64 0.4.11-11.el7   rhel-7-server-rpms           65 k\n nettle                x86_64 2.7.1-8.el7     rhel-7-server-rpms          327 k\n trousers              x86_64 0.3.14-2.el7    rhel-7-server-rpms          289 k\n\nTransaction Summary\n================================================================================\nInstall  5 Packages (+8 Dependent packages)\n\nTotal size: 9.2 M\nTotal download size: 1.8 M\nInstalled size: 23 M\nDownloading packages:\nDelta RPMs disabled because /usr/bin/applydeltarpm not installed.\n"]}
+	to retry, use: --limit @/usr/share/ansible/openshift-ansible/playbooks/deploy_cluster-mid.retry</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a fairly easy one to resolve.  Something awkward must have happened during the intial node subscription process.  These nodes were brand new and should not have had any problem.  Luckily the error above pointed me <a href="https://access.redhat.com/solutions/69319">here</a>.  I simply needed to refresh the subscription.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@master0 ~]# subscription-manager refresh
+1 local certificate has been deleted.
+All local data refreshed</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then I went ahead and finished the install of the packages in that step, to validate it worked:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@master0 ~]# yum install cockpit-docker cockpit-kubernetes cockpit-bridge cockpit-ws cockpit-system
+
+Installed:
+  cockpit-bridge.x86_64 0:195.1-1.el7           cockpit-docker.x86_64 0:195-1.el7           cockpit-kubernetes.x86_64 0:195-2.rhaos.el7
+  cockpit-system.noarch 0:195.1-1.el7           cockpit-ws.x86_64 0:195.1-1.el7
+
+Dependency Installed:
+  glib-networking.x86_64 0:2.56.1-1.el7          gnutls.x86_64 0:3.3.29-9.el7_6          gsettings-desktop-schemas.x86_64 0:3.28.0-2.el7
+  json-glib.x86_64 0:1.4.2-2.el7                 libmodman.x86_64 0:2.0.1-8.el7          libproxy.x86_64 0:0.4.11-11.el7
+  nettle.x86_64 0:2.7.1-8.el7                    trousers.x86_64 0:0.3.14-2.el7
+
+Complete!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There was no way I wanted to restart the playbook from the beginning, so I found this task was the last one of the control plane.  A little experience tells me that I still need to keep the first playbook included to get all my variables set correctly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@bastion ~]# cat /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
+---
+- import_playbook: init/main.yml
+  vars:
+    l_prereq_check_hosts: "oo_nodes_to_config"
+
+- import_playbook: openshift-checks/private/install.yml
+
+- import_playbook: openshift-node/private/bootstrap.yml
+
+- import_playbook: common/private/control_plane.yml
+
+- import_playbook: openshift-node/private/join.yml
+
+- import_playbook: common/private/components.yml
+[root@bastion ~]# tail -1 /usr/share/ansible/openshift-ansible/playbooks/common/private/control_plane.yml
+- import_playbook: ../../openshift-master/private/additional_config.yml
+[root@bastion ~]# cat /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster-mid.yml
+---
+- import_playbook: init/main.yml
+  vars:
+    l_prereq_check_hosts: "oo_nodes_to_config"
+
+- import_playbook: ../../openshift-master/private/additional_config.yml
+
+- import_playbook: common/private/components.yml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So I ran my custom <code>deploy_cluster-mid.yml</code> playbook above. On this run I actually did hit a Gluster related error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>TASK [openshift_storage_glusterfs : Load heketi topology] ****************************************************************************************
+fatal: [master0.ocp.example.com]: FAILED! =&gt; {"changed": true, "cmd": ["oc", "--config=/tmp/openshift-glusterfs-ansible-yto9HG/admin.kubeconfig", "rsh", "--namespace=glusterfs", "deploy-heketi-storage-1-4n2hk", "heketi-cli", "-s", "http://localhost:8080", "--user", "admin", "--secret", "adminkey", "topology", "load", "--json=/tmp/openshift-glusterfs-ansible-yto9HG/topology.json", "2&gt;&amp;1"], "delta": "0:00:09.280402", "end": "2020-03-14 14:53:48.828321", "failed_when_result": true, "rc": 0, "start": "2020-03-14 14:53:39.547919", "stderr": "", "stderr_lines": [], "stdout": "Creating cluster ... ID: 9ba496323150424c4a94d922b8019e9d\n\tAllowing file volumes on cluster.\n\tAllowing block volumes on cluster.\n\tCreating node infra0.ocp.example.com ... Unable to create node: validation failed: zone: cannot be blank.\n\tCreating node infra1.ocp.example.com ... ID: 6bbcaf294d1eaf1dbb9fdb44bcb13fb1\n\t\tAdding device /dev/vdd ... OK\n\tCreating node infra2.ocp.example.com ... ID: fc9ed9233248e0be1078d4f1c4037f31\n\t\tAdding device /dev/vdd ... OK\n\tCreating node infra3.ocp.example.com ... ID: 364ca51878e0d974475e495a563e4cb0\n\t\tAdding device /dev/vdd ... OK", "stdout_lines": ["Creating cluster ... ID: 9ba496323150424c4a94d922b8019e9d", "\tAllowing file volumes on cluster.", "\tAllowing block volumes on cluster.", "\tCreating node infra0.ocp.example.com ... Unable to create node: validation failed: zone: cannot be blank.", "\tCreating node infra1.ocp.example.com ... ID: 6bbcaf294d1eaf1dbb9fdb44bcb13fb1", "\t\tAdding device /dev/vdd ... OK", "\tCreating node infra2.ocp.example.com ... ID: fc9ed9233248e0be1078d4f1c4037f31", "\t\tAdding device /dev/vdd ... OK", "\tCreating node infra3.ocp.example.com ... ID: 364ca51878e0d974475e495a563e4cb0", "\t\tAdding device /dev/vdd ... OK"]}
+	to retry, use: --limit @/usr/share/ansible/openshift-ansible/playbooks/deploy_cluster-mid.retry</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I started my research on this part:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Creating node infra0.ocp.example.com ... Unable to create node: validation failed: zone: cannot be blank.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nothing good shows up in a quick internet search.  I decided to take a look at the pod hosted on this node.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@master0 ~]# oc get pods
+NAME                            READY     STATUS    RESTARTS   AGE
+deploy-heketi-storage-1-4n2hk   1/1       Running   0          3h
+glusterfs-storage-22c82         1/1       Running   0          3h
+glusterfs-storage-frqnr         1/1       Running   0          3h
+glusterfs-storage-g9p2h         1/1       Running   0          3h
+glusterfs-storage-v4lj7         1/1       Running   0          52m</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Looking at the logs for this pod, I can see this error close to the top of the logs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@master0 ~]# oc logs -f deploy-heketi-storage-1-4n2hk
+Setting up heketi database
+No database file found
+failed to dump db: Could not construct dump from DB: Could not construct dump from DB: Unable to access list
+error: Unable to export db. DB contents may not be valid
+HEKETI_PRE_REQUEST_VOLUME_OPTIONS is
+modified HEKETI_PRE_REQUEST_VOLUME_OPTIONS is server.tcp-user-timeout 42
+Heketi 9.0.0-9.el7rhgs
+[heketi] INFO 2020/03/14 18:53:17 Loaded kubernetes executor
+[heketi] INFO 2020/03/14 18:53:17 Pre Request Volume Options: server.tcp-user-timeout 42
+[heketi] INFO 2020/03/14 18:53:17 Volumes per cluster limit is set to default value of 1000
+[heketi] INFO 2020/03/14 18:53:17 Block: Auto Create Block Hosting Volume set to true
+[heketi] INFO 2020/03/14 18:53:17 Block: New Block Hosting Volume size 5 GB
+[heketi] INFO 2020/03/14 18:53:17 GlusterFS Application Loaded
+[heketi] INFO 2020/03/14 18:53:17 Started Node Health Cache Monitor
+[heketi] INFO 2020/03/14 18:53:17 Started background pending operations cleaner
+Listening on port 8080
+[heketi] INFO 2020/03/14 18:53:27 Starting Node Health Status refresh
+[heketi] INFO 2020/03/14 18:53:27 Cleaned 0 nodes from health cache
+[negroni] 2020-03-14T18:53:32Z | 200 | 	 614.248µs | localhost:8080 | GET /clusters
+[negroni] 2020-03-14T18:53:40Z | 200 | 	 212.532µs | localhost:8080 | GET /clusters
+[negroni] 2020-03-14T18:53:40Z | 201 | 	 9.019659ms | localhost:8080 | POST /clusters
+[negroni] 2020-03-14T18:53:40Z | 400 | 	 868.709µs | localhost:8080 | POST /nodes
+[heketi] ERROR 2020/03/14 18:53:40 heketi/apps/glusterfs/app_node.go:35:glusterfs.(*App).NodeAdd: validation failed: zone: cannot be blank.
+[cmdexec] INFO 2020/03/14 18:53:40 Check Glusterd service status in node infra1.ocp.example.com
+[kubeexec] DEBUG 2020/03/14 18:53:40 heketi/pkg/remoteexec/log/commandlog.go:34:log.(*CommandLogger).Before: Will run command [systemctl status glusterd] on [pod:glusterfs-storage-g9p2h c:glusterfs ns:glusterfs (from host:infra1.ocp.example.com selector:glusterfs-node)]
+[kubeexec] DEBUG 2020/03/14 18:53:40 heketi/pkg/remoteexec/kube/exec.go:72:kube.ExecCommands: Current kube connection count: 0
+[kubeexec] DEBUG 2020/03/14 18:53:40 heketi/pkg/remoteexec/log/commandlog.go:41:log.(*CommandLogger).Success: Ran command [systemctl status glusterd] on [pod:glusterfs-storage-g9p2h c:glusterfs ns:glusterfs (from host:infra1.ocp.example.com selector:glusterfs-node)]: Stdout filtered, Stderr filtered</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There were some other errors in those logs that led me astray but were actually benign (I think).  So I took a look at the gluster status on this and other pods. Then when I saw that no other nodes were joined to this one, I tried probing another node to join it, but this did not work.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@master0 ~]# oc rsh glusterfs-storage-v4lj7
+sh-4.2# gluster peer status
+Number of Peers: 0
+sh-4.2# gluster peer probe infra1.ocp.example.com
+peer probe: failed: infra1.ocp.example.com is either already part of another cluster or having volumes configured</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However I could see other pods/nodes were grouped together already.  This was likely from heketi getting some of the volumes set up correctly but not infra0.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@master0 ~]# oc rsh glusterfs-storage-frqnr
+sh-4.2# gluster peer probe infra0.ocp.example.com
+peer probe: success.
+sh-4.2# gluster peer status
+Number of Peers: 3
+
+Hostname: infra1.ocp.example.com
+Uuid: 9a3bfaf8-2f46-460b-9d13-f33787c60a51
+State: Peer in Cluster (Connected)
+
+Hostname: 192.168.1.112
+Uuid: 4338f436-49cb-4694-8340-9573842c6bb0
+State: Peer in Cluster (Connected)
+
+Hostname: infra0.ocp.example.com
+Uuid: e91bbb22-f11b-4298-8550-b98e9d6ecbde
+State: Peer in Cluster (Connected)
+sh-4.2# exit
+exit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There were these other errors in the gluster logs that led me astray but did not seem to be part of this particular problem.  I&#8217;m not sure if this is an issue for something else.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[2020-03-14 18:50:59.198609] E [rpc-transport.c:302:rpc_transport_load] 0-rpc-transport: /usr/lib64/glusterfs/6.0/rpc-transport/rdma.so: cannot open shared object file: No such file or directory
+[2020-03-14 18:50:59.198637] W [rpc-transport.c:306:rpc_transport_load] 0-rpc-transport: volume 'rdma.management': transport-type 'rdma' is not valid or not found on this machine
+[2020-03-14 18:50:59.198657] W [rpcsvc.c:1991:rpcsvc_create_listener] 0-rpc-service: cannot create listener, initing the transport failed
+[2020-03-14 18:50:59.198673] E [MSGID: 106244] [glusterd.c:1789:init] 0-management: creation of 1 listeners failed, continuing with succeeded transport</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So I tried deleting this gluster pod to see if it would come back without an errors.  No luck there.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@master0 ~]# oc get pods -o wide
+NAME                            READY     STATUS    RESTARTS   AGE       IP               NODE                          NOMINATED NODE
+deploy-heketi-storage-1-4n2hk   1/1       Running   0          2h        10.128.0.2       master1.ocp.example.com   &lt;none&gt;
+glusterfs-storage-22c82         1/1       Running   0          3h        192.168.1.112   infra2.ocp.example.com    &lt;none&gt;
+glusterfs-storage-frqnr         1/1       Running   0          3h        192.168.1.113   infra3.ocp.example.com    &lt;none&gt;
+glusterfs-storage-g9p2h         1/1       Running   0          3h        192.168.1.111   infra1.ocp.example.com    &lt;none&gt;
+glusterfs-storage-v4lj7         1/1       Running   0          43m       192.168.1.110   infra0.ocp.example.com    &lt;none&gt;
+[root@master0 ~]# oc exec glusterfs-storage-22c82 -- gluster peer status
+Number of Peers: 3
+
+Hostname: infra1.ocp.example.com
+Uuid: 9a3bfaf8-2f46-460b-9d13-f33787c60a51
+State: Peer in Cluster (Connected)
+
+Hostname: 192.168.1.113
+Uuid: 0316a317-9d88-4be4-8d2e-e3e5f853abad
+State: Peer in Cluster (Connected)
+Other names:
+infra3.ocp.example.com
+
+Hostname: infra0.ocp.example.com
+Uuid: e91bbb22-f11b-4298-8550-b98e9d6ecbde
+State: Peer in Cluster (Connected)
+[root@master0 ~]# oc exec glusterfs-storage-frqnr -- gluster peer status
+Number of Peers: 3
+
+Hostname: infra1.ocp.example.com
+Uuid: 9a3bfaf8-2f46-460b-9d13-f33787c60a51
+State: Peer in Cluster (Connected)
+
+Hostname: 192.168.1.112
+Uuid: 4338f436-49cb-4694-8340-9573842c6bb0
+State: Peer in Cluster (Connected)
+
+Hostname: infra0.ocp.example.com
+Uuid: e91bbb22-f11b-4298-8550-b98e9d6ecbde
+State: Peer in Cluster (Connected)
+[root@master0 ~]# oc exec glusterfs-storage-g9p2h -- gluster peer status
+Number of Peers: 3
+
+Hostname: 192.168.1.112
+Uuid: 4338f436-49cb-4694-8340-9573842c6bb0
+State: Peer in Cluster (Connected)
+
+Hostname: 192.168.1.113
+Uuid: 0316a317-9d88-4be4-8d2e-e3e5f853abad
+State: Peer in Cluster (Connected)
+Other names:
+infra3.ocp.example.com
+
+Hostname: infra0.ocp.example.com
+Uuid: e91bbb22-f11b-4298-8550-b98e9d6ecbde
+State: Peer in Cluster (Connected)
+[root@master0 ~]# oc exec glusterfs-storage-v4lj7 -- gluster peer status
+Number of Peers: 3
+
+Hostname: 192.168.1.113
+Uuid: 0316a317-9d88-4be4-8d2e-e3e5f853abad
+State: Peer in Cluster (Connected)
+Other names:
+192.168.1.113
+
+Hostname: infra1.ocp.example.com
+Uuid: 9a3bfaf8-2f46-460b-9d13-f33787c60a51
+State: Peer in Cluster (Connected)
+
+Hostname: 192.168.1.112
+Uuid: 4338f436-49cb-4694-8340-9573842c6bb0
+State: Peer in Cluster (Connected)
+[root@master0 ~]# exit
+logout
+Connection to master0.ocp.example.com closed.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Everything looked healthy, so I reran the playbook, but it stalled at exactly the same error.  This time I decided to run the actual same command and see if the full output gave me any clues.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@master0 ~]# oc rsh deploy-heketi-storage-1-4n2hk
+sh-4.2$ heketi-cli -s http://localhost:8080 --user admin --secret adminkey topology load --json=/tmp/openshift-glusterfs-ansible-v54fr1/topology.json
+Creating cluster ... ID: 3df301367683ce8fa3aa9d16bc1ae295
+	Allowing file volumes on cluster.
+	Allowing block volumes on cluster.
+	Creating node infra0.ocp.example.com ... Unable to create node: validation failed: zone: cannot be blank.
+	Found node infra1.ocp.example.com on cluster 9ba496323150424c4a94d922b8019e9d
+		Found device /dev/vdd
+	Found node infra2.ocp.example.com on cluster 9ba496323150424c4a94d922b8019e9d
+		Found device /dev/vdd
+	Found node infra3.ocp.example.com on cluster 9ba496323150424c4a94d922b8019e9d
+		Found device /dev/vdd</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So I decided to take a look at that <code>topology.json</code> being loaded.  It does show <code>zone: 0</code> for this node.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>sh-4.2$ cat /tmp/openshift-glusterfs-ansible-v54fr1/topology.json
+{
+  "clusters": [{
+      "nodes": [{
+          "node": {
+            "hostnames": {
+              "manage": ["infra0.ocp.example.com"],
+              "storage": ["192.168.1.110"]
+            },
+            "zone": 0
+          },
+          "devices": ["/dev/vdd"]
+        },{
+          "node": {
+            "hostnames": {
+              "manage": ["infra1.ocp.example.com"],
+              "storage": ["192.168.1.111"]
+            },
+            "zone": 1
+          },
+          "devices": ["/dev/vdd"]
+        },{
+          "node": {
+            "hostnames": {
+              "manage": ["infra2.ocp.example.com"],
+              "storage": ["192.168.1.112"]
+            },
+            "zone": 2
+          },
+          "devices": ["/dev/vdd"]
+        },{
+          "node": {
+            "hostnames": {
+              "manage": ["infra3.ocp.example.com"],
+              "storage": ["192.168.1.113"]
+            },
+            "zone": 3
+          },
+          "devices": ["/dev/vdd"]
+        }]
+    }]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I saw that I could add this node manually with the cli and tried that and got the same error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>sh-4.2$ heketi-cli node add --zone=0 --management-host-name=infra0.ocp.example.com --storage-host-name=192.168.1.110
+Error: Missing zone
+sh-4.2$ heketi-cli node add --zone=4 --management-host-name=infra0.ocp.example.com --storage-host-name=192.168.1.110
+Error: Missing cluster id</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Poking around at the heketi code and examples of inventory files basically shows that zone has to be greater than or equal to <code>1</code>.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>Sure enough, taking a look at my inventory I can see I decided to start counting at zero.  Seemed logical to me at the time.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[glusterfs]
+infra0.ocp.example.com glusterfs_zone=0 glusterfs_devices='["/dev/vdd"]'
+infra1.ocp.example.com glusterfs_zone=1 glusterfs_devices='["/dev/vdd"]'
+infra2.ocp.example.com glusterfs_zone=2 glusterfs_devices='["/dev/vdd"]'
+infra3.ocp.example.com glusterfs_zone=3 glusterfs_devices='["/dev/vdd"]'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So I changed that to&#8230;&#8203;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[glusterfs]
+infra0.ocp.example.com glusterfs_zone=1 glusterfs_devices='["/dev/vdd"]'
+infra1.ocp.example.com glusterfs_zone=2 glusterfs_devices='["/dev/vdd"]'
+infra2.ocp.example.com glusterfs_zone=3 glusterfs_devices='["/dev/vdd"]'
+infra3.ocp.example.com glusterfs_zone=4 glusterfs_devices='["/dev/vdd"]'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To be safe, I run the uninstaller for glusterfs, cause I&#8217;m pretty sure getting the zones mixed up will require a fresh start.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@bastion ~]# ansible-playbook -e @passwords.yaml -e @firewall-lb_vars.yaml /usr/share/ansible/openshift-ansible/playbooks/openshift-glusterfs/uninstall.yml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now for the fun part.  There is no way I am going to run that whole stinking playbook again from the start.  Let&#8217;s take a look at that error, noting where it gets run. I&#8217;m going to start there, since I&#8217;ve already past the node join phases.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@bastion ~]# cat /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
+---
+- import_playbook: init/main.yml
+  vars:
+    l_prereq_check_hosts: "oo_nodes_to_config"
+
+- import_playbook: openshift-checks/private/install.yml
+
+- import_playbook: openshift-node/private/bootstrap.yml
+
+- import_playbook: common/private/control_plane.yml
+
+- import_playbook: openshift-node/private/join.yml
+
+- import_playbook: common/private/components.yml
+[root@bastion ~]# cat /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster-mid.yml
+---
+- import_playbook: init/main.yml
+  vars:
+    l_prereq_check_hosts: "oo_nodes_to_config"
+
+- import_playbook: common/private/components.yml
+[root@bastion ~]# ansible-playbook -e @passwords.yaml -e @firewall-lb_vars.yaml /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster-mid.yml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>How lovely, I hit another error on the same task!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>TASK [openshift_storage_glusterfs : Load heketi topology] ****************************************************************************************
+fatal: [master0.ocp.example.com]: FAILED! =&gt; {"changed": true, "cmd": ["oc", "--config=/tmp/openshift-glusterfs-ansible-zNmlaJ/admin.kubeconfig", "rsh", "--namespace=glusterfs", "deploy-heketi-storage-1-c4s4s", "heketi-cli", "-s", "http://localhost:8080", "--user", "admin", "--secret", "adminkey", "topology", "load", "--json=/tmp/openshift-glusterfs-ansible-zNmlaJ/topology.json", "2&gt;&amp;1"], "delta": "0:00:10.473353", "end": "2020-03-14 18:31:14.281746", "failed_when_result": true, "rc": 0, "start": "2020-03-14 18:31:03.808393", "stderr": "", "stderr_lines": [], "stdout": "Creating cluster ... ID: 24b8307be372ef117e6b49fe888253ad\n\tAllowing file volumes on cluster.\n\tAllowing block volumes on cluster.\n\tCreating node infra0.ocp.example.com ... ID: 439b6098591eebe22fc6a0d85cb22d48\n\t\tAdding device /dev/vdd ... OK\n\tCreating node infra1.ocp.example.com ... ID: 5561846579586e375303b3354c204e78\n\t\tAdding device /dev/vdd ... Unable to add device: Initializing device /dev/vdd failed (aleady contains Physical Volume 31f24p-It7N-fSXN-KpAB-NtkH-YMru-GfN7Ob): Running command on the host: /usr/sbin/lvm\n  /run/lock/lvm: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/V_vg_c0a8b39ed56697eb9d0dd8fecde25b38: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/V_docker_vg: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  Can't initialize physical volume \"/dev/vdd\" of volume group \"vg_c0a8b39ed56697eb9d0dd8fecde25b38\" without -ff\n  /dev/vdd: physical volume not initialized.\n\tCreating node infra2.ocp.example.com ... ID: 7dc4babf6b7348400fe3fd2ff258115c\n\t\tAdding device /dev/vdd ... Unable to add device: Initializing device /dev/vdd failed (aleady contains Physical Volume H9E57w-uRLX-c3zl-OK73-boF3-ZQzG-x3n7JZ): Running command on the host: /usr/sbin/lvm\n  /run/lock/lvm: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/V_docker_vg: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/V_vg_2a9a40cec578321b4dcb5a2347d2711b: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  Can't initialize physical volume \"/dev/vdd\" of volume group \"vg_2a9a40cec578321b4dcb5a2347d2711b\" without -ff\n  /dev/vdd: physical volume not initialized.\n\tCreating node infra3.ocp.example.com ... ID: e12357d2988172f437ed38fbfe1e3014\n\t\tAdding device /dev/vdd ... Unable to add device: Initializing device /dev/vdd failed (aleady contains Physical Volume EOF1Oj-sfbd-0Fbt-mYAP-Z3du-eCk6-vS0u0E): Running command on the host: /usr/sbin/lvm\n  /run/lock/lvm: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/V_vg_b5c3215ceaddfd5b41fe5cc0e8762043: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/V_docker_vg: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory\n  SELinux context reset: setfscreatecon failed: No such file or directory\n  Can't initialize physical volume \"/dev/vdd\" of volume group \"vg_b5c3215ceaddfd5b41fe5cc0e8762043\" without -ff\n  /dev/vdd: physical volume not initialized.", "stdout_lines": ["Creating cluster ... ID: 24b8307be372ef117e6b49fe888253ad", "\tAllowing file volumes on cluster.", "\tAllowing block volumes on cluster.", "\tCreating node infra0.ocp.example.com ... ID: 439b6098591eebe22fc6a0d85cb22d48", "\t\tAdding device /dev/vdd ... OK", "\tCreating node infra1.ocp.example.com ... ID: 5561846579586e375303b3354c204e78", "\t\tAdding device /dev/vdd ... Unable to add device: Initializing device /dev/vdd failed (aleady contains Physical Volume 31f24p-It7N-fSXN-KpAB-NtkH-YMru-GfN7Ob): Running command on the host: /usr/sbin/lvm", "  /run/lock/lvm: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/V_vg_c0a8b39ed56697eb9d0dd8fecde25b38: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/V_docker_vg: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  Can't initialize physical volume \"/dev/vdd\" of volume group \"vg_c0a8b39ed56697eb9d0dd8fecde25b38\" without -ff", "  /dev/vdd: physical volume not initialized.", "\tCreating node infra2.ocp.example.com ... ID: 7dc4babf6b7348400fe3fd2ff258115c", "\t\tAdding device /dev/vdd ... Unable to add device: Initializing device /dev/vdd failed (aleady contains Physical Volume H9E57w-uRLX-c3zl-OK73-boF3-ZQzG-x3n7JZ): Running command on the host: /usr/sbin/lvm", "  /run/lock/lvm: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/V_docker_vg: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/V_vg_2a9a40cec578321b4dcb5a2347d2711b: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  Can't initialize physical volume \"/dev/vdd\" of volume group \"vg_2a9a40cec578321b4dcb5a2347d2711b\" without -ff", "  /dev/vdd: physical volume not initialized.", "\tCreating node infra3.ocp.example.com ... ID: e12357d2988172f437ed38fbfe1e3014", "\t\tAdding device /dev/vdd ... Unable to add device: Initializing device /dev/vdd failed (aleady contains Physical Volume EOF1Oj-sfbd-0Fbt-mYAP-Z3du-eCk6-vS0u0E): Running command on the host: /usr/sbin/lvm", "  /run/lock/lvm: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/V_vg_b5c3215ceaddfd5b41fe5cc0e8762043: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/V_docker_vg: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  /run/lock/lvm/P_orphans: setfscreatecon failed: No such file or directory", "  SELinux context reset: setfscreatecon failed: No such file or directory", "  Can't initialize physical volume \"/dev/vdd\" of volume group \"vg_b5c3215ceaddfd5b41fe5cc0e8762043\" without -ff", "  /dev/vdd: physical volume not initialized."]}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s really peculiar. I think I would have been caught up on the SELinux errors if I had not actually seen them before.  But taking a better look highlights this one:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Unable to add device: Initializing device /dev/vdd failed (aleady contains Physical Volume 31f24p-It7N-fSXN-KpAB-NtkH-YMru-GfN7Ob)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Searching for that typo <code>aleady</code> shows this on all volumes.  So apparently the gluster uninstall did not remove the VG or PV. Let&#8217;s clean up that mess.  Let&#8217;s also file a bug for that cause we really shouldn&#8217;t have to do this.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[root@bastion ~]# ssh infra0.ocp.example.com
+[root@infra0 ~]# lvs
+  LV             VG        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  docker-root-lv docker_vg -wi-ao---- &lt;60.00g
+[root@infra0 ~]# vgs
+  VG                                  #PV #LV #SN Attr   VSize   VFree
+  docker_vg                             1   1   0 wz--n- &lt;60.00g     0
+  vg_b053c53756aaf00baf664d11b3bd8e93   1   0   0 wz--n-  59.87g 59.87g
+[root@infra0 ~]# vgremove vg_b053c53756aaf00baf664d11b3bd8e93
+  Volume group "vg_b053c53756aaf00baf664d11b3bd8e93" successfully removed
+[root@infra0 ~]# pvs
+  PV         VG        Fmt  Attr PSize   PFree
+  /dev/vdb1  docker_vg lvm2 a--  &lt;60.00g     0
+  /dev/vdd             lvm2 ---   60.00g 60.00g
+[root@infra0 ~]# pvremove /dev/vdd
+  Labels on physical volume "/dev/vdd" successfully wiped.
+[root@infra0 ~]# exit
+logout
+Connection to infra0.ocp.example.com closed.
+[root@bastion ~]# ssh infra1.ocp.example.com
+[root@infra1 ~]# vgremove vg_c0a8b39ed56697eb9d0dd8fecde25b38
+  Volume group "vg_c0a8b39ed56697eb9d0dd8fecde25b38" successfully removed
+[root@infra1 ~]# pvremove /dev/vdd
+  Labels on physical volume "/dev/vdd" successfully wiped.
+[root@infra1 ~]# exit
+logout
+Connection to infra1.ocp.example.com closed.
+[root@bastion ~]# ssh infra2.ocp.example.com
+[root@infra2 ~]# vgremove vg_2a9a40cec578321b4dcb5a2347d2711b
+  Volume group "vg_2a9a40cec578321b4dcb5a2347d2711b" successfully removed
+[root@infra2 ~]# pvremove /dev/vdd
+  Labels on physical volume "/dev/vdd" successfully wiped.
+[root@infra2 ~]# exit
+logout
+Connection to infra2.ocp.example.com closed.
+[root@bastion ~]# ssh infra3.ocp.example.com
+[root@infra3 ~]# vgremove vg_b5c3215ceaddfd5b41fe5cc0e8762043
+  Volume group "vg_b5c3215ceaddfd5b41fe5cc0e8762043" successfully removed
+[root@infra3 ~]# pvremove /dev/vdd
+  Labels on physical volume "/dev/vdd" successfully wiped.
+[root@infra3 ~]# exit
+logout
+Connection to infra3.ocp.example.com closed.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I suppose I could have written an ad-hoc ansible command, but getting it to pick the right VG would have taken some thought, and doing this manually on four nodes is faster.</p>
+</div>
+<div class="paragraph">
+<p>One more run of the installer, and thankfully it&#8217;s done this time, successfully.</p>
+</div>
+<div class="paragraph">
+<p>I went on to installing my application suite on top of OpenShift, but ran into further problems with gluster volumes.  Here is one of the errors and behavior I hit.</p>
+</div>
+<div class="paragraph">
+<p>This app was trying to deploy and check the progress of its database and main application pods.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>fatal: [127.0.0.1]: FAILED! =&gt; {
+    "attempts": 50,
+    "changed": false,
+    "cmd": "sleep 5; oc get pods --namespace openshift-launcher | grep \"deploy\"",
+    "delta": "0:00:05.375602",
+    "end": "2020-03-15 16:38:43.465237",
+    "failed_when_result": true,
+    "invocation": {
+        "module_args": {
+            "_raw_params": "sleep 5; oc get pods --namespace openshift-launcher | grep \"deploy\"",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2020-03-15 16:38:38.089635",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "launcher-sso-1-deploy              0/1       Error     0          14m\nlauncher-sso-postgresql-1-deploy   0/1       Error     0          14m",
+    "stdout_lines": [
+        "launcher-sso-1-deploy              0/1       Error     0          14m",
+        "launcher-sso-postgresql-1-deploy   0/1       Error     0          14m"
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since it failed with an Error, let&#8217;s check the events.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc get events
+LAST SEEN   FIRST SEEN   COUNT     NAME                                                KIND                    SUBOBJECT                                  TYPE      REASON                  SOURCE                                  MESSAGE
+21m         21m          1         launcher-sso-postgresql-1-deploy.15fc86e143dc7f08   Pod                                                                Normal    Scheduled               default-scheduler                       Successfully assigned openshift-launcher/launcher-sso-postgresql-1-deploy to compute1.ocp.home.dataxf.com
+21m         21m          1         launcher-sso-postgresql.15fc86e13b735183            DeploymentConfig                                                   Normal    DeploymentCreated       deploymentconfig-controller             Created new replication controller "launcher-sso-postgresql-1" for version 1
+21m         21m          1         launcher-sso.15fc86e173c8ab8b                       DeploymentConfig                                                   Normal    DeploymentCreated       deploymentconfig-controller             Created new replication controller "launcher-sso-1" for version 1
+21m         21m          1         launcher-sso-1-deploy.15fc86e178cdd201              Pod                                                                Normal    Scheduled               default-scheduler                       Successfully assigned openshift-launcher/launcher-sso-1-deploy to compute0.ocp.home.dataxf.com
+21m         21m          1         launcher-sso-postgresql-1-deploy.15fc86e1f347f3e4   Pod                     spec.containers{deployment}                Normal    Pulled                  kubelet, compute1.ocp.home.dataxf.com   Container image "registry.redhat.io/openshift3/ose-deployer:v3.11.170" already present on machine
+21m         21m          1         launcher-sso-postgresql-1-deploy.15fc86e2655afe15   Pod                     spec.containers{deployment}                Normal    Started                 kubelet, compute1.ocp.home.dataxf.com   Started container
+21m         21m          1         launcher-sso-postgresql-1-deploy.15fc86e25448fdd8   Pod                     spec.containers{deployment}                Normal    Created                 kubelet, compute1.ocp.home.dataxf.com   Created container
+21m         21m          1         launcher-sso-postgresql-1.15fc86e2cf356be7          ReplicationController                                              Normal    SuccessfulCreate        replication-controller                  Created pod: launcher-sso-postgresql-1-m9gnf
+21m         21m          1         launcher-sso-1-deploy.15fc86e3075ae97a              Pod                     spec.containers{deployment}                Normal    Pulling                 kubelet, compute0.ocp.home.dataxf.com   pulling image "registry.redhat.io/openshift3/ose-deployer:v3.11.170"
+21m         21m          1         launcher-sso-1-deploy.15fc86e378276e33              Pod                     spec.containers{deployment}                Normal    Pulled                  kubelet, compute0.ocp.home.dataxf.com   Successfully pulled image "registry.redhat.io/openshift3/ose-deployer:v3.11.170"
+21m         21m          1         launcher-sso-1-deploy.15fc86e384e6acef              Pod                     spec.containers{deployment}                Normal    Created                 kubelet, compute0.ocp.home.dataxf.com   Created container
+21m         21m          1         launcher-sso-1-deploy.15fc86e3955e4723              Pod                     spec.containers{deployment}                Normal    Started                 kubelet, compute0.ocp.home.dataxf.com   Started container
+21m         21m          1         launcher-sso-1.15fc86e3b35d3311                     ReplicationController                                              Normal    SuccessfulCreate        replication-controller                  Created pod: launcher-sso-1-j8r8g
+21m         21m          1         launcher-sso-1-j8r8g.15fc86e3b4a87e1f               Pod                                                                Normal    Scheduled               default-scheduler                       Successfully assigned openshift-launcher/launcher-sso-1-j8r8g to compute1.ocp.home.dataxf.com
+21m         21m          1         launcher-sso-postgresql-1-m9gnf.15fc86e5a53086c3    Pod                                                                Normal    Scheduled               default-scheduler                       Successfully assigned openshift-launcher/launcher-sso-postgresql-1-m9gnf to compute1.ocp.home.dataxf.com
+21m         21m          1         launcher-sso-postgresql-claim.15fc86e5900f700d      PersistentVolumeClaim                                              Normal    ProvisioningSucceeded   persistentvolume-controller             Successfully provisioned volume pvc-72b78e87-66d9-11ea-8c12-566f4d920014 using kubernetes.io/glusterfs
+21m         21m          21        launcher-sso-postgresql-1-m9gnf.15fc86e2cf29794c    Pod                                                                Warning   FailedScheduling        default-scheduler                       pod has unbound PersistentVolumeClaims (repeated 2 times)
+18m         18m          1         launcher-sso-1-j8r8g.15fc87113872b609               Pod                                                                Normal    SandboxChanged          kubelet, compute1.ocp.home.dataxf.com   Pod sandbox changed, it will be killed and re-created.
+18m         21m          2         launcher-sso-1-j8r8g.15fc86e472027237               Pod                     spec.containers{launcher-sso}              Normal    Pulling                 kubelet, compute1.ocp.home.dataxf.com   pulling image "registry.redhat.io/redhat-sso-7/sso73-openshift@sha256:89f0f6a1e6e71cda169774da5512656b79cc73f85d87bababec031676750bd54"
+16m         16m          1         launcher-sso-postgresql-1-m9gnf.15fc873192f2e7d6    Pod                     spec.containers{launcher-sso-postgresql}   Normal    Started                 kubelet, compute1.ocp.home.dataxf.com   Started container
+15m         15m          3         launcher-sso-postgresql-1-m9gnf.15fc8739cfde93e6    Pod                     spec.containers{launcher-sso-postgresql}   Warning   Unhealthy               kubelet, compute1.ocp.home.dataxf.com   Liveness probe failed: dial tcp 10.129.2.7:5432: connect: connection refused
+14m         15m          12        launcher-sso-postgresql-1-m9gnf.15fc8732a1145d61    Pod                     spec.containers{launcher-sso-postgresql}   Warning   Unhealthy               kubelet, compute1.ocp.home.dataxf.com   Readiness probe failed: sh: cannot set terminal process group (-1): Inappropriate ioctl for device
+sh: no job control in this shell
+psql: could not connect to server: Connection refused
+          Is the server running on host "127.0.0.1" and accepting
+          TCP/IP connections on port 5432?
+
+13m       13m       1         launcher-sso-postgresql-1-m9gnf.15fc875a7a74911e   Pod                     spec.containers{launcher-sso-postgresql}   Normal    Killing                       kubelet, compute1.ocp.home.dataxf.com   Killing container with id docker://launcher-sso-postgresql:Container failed liveness probe.. Container will be killed and recreated.
+12m       18m       2         launcher-sso-1-j8r8g.15fc8710b0fb8fd7              Pod                     spec.containers{launcher-sso}              Warning   Failed                        kubelet, compute1.ocp.home.dataxf.com   Failed to pull image "registry.redhat.io/redhat-sso-7/sso73-openshift@sha256:89f0f6a1e6e71cda169774da5512656b79cc73f85d87bababec031676750bd54": rpc error: code = Canceled desc = context canceled
+12m       18m       2         launcher-sso-1-j8r8g.15fc8710b0fd2624              Pod                     spec.containers{launcher-sso}              Warning   Failed                        kubelet, compute1.ocp.home.dataxf.com   Error: ErrImagePull
+11m       11m       1         launcher-sso.15fc8773f1136718                      DeploymentConfig                                                   Normal    ReplicationControllerScaled   deploymentconfig-controller             Scaled replication controller "launcher-sso-1" from 1 to 0
+11m       11m       1         launcher-sso-1.15fc877543a5bc68                    ReplicationController                                              Normal    SuccessfulDelete              replication-controller                  Deleted pod: launcher-sso-1-j8r8g
+10m       10m       1         launcher-sso-postgresql-1.15fc877ac1758de8         ReplicationController                                              Normal    SuccessfulDelete              replication-controller                  Deleted pod: launcher-sso-postgresql-1-m9gnf
+10m       21m       2         launcher-sso-postgresql-1-m9gnf.15fc86e694c5b616   Pod                     spec.containers{launcher-sso-postgresql}   Normal    Pulling                       kubelet, compute1.ocp.home.dataxf.com   pulling image "docker-registry.default.svc:5000/openshift/postgresql@sha256:0cf19c73fb1ed0784a5092edd42ce662d7328dac529f56b6bfc3d85b24552ed4"
+10m       10m       1         launcher-sso-postgresql.15fc877abd754a97           DeploymentConfig                                                   Normal    ReplicationControllerScaled   deploymentconfig-controller             Scaled replication controller "launcher-sso-postgresql-1" from 1 to 0
+10m       10m       1         launcher-sso-postgresql-1-m9gnf.15fc877b0adf956c   Pod                     spec.containers{launcher-sso-postgresql}   Warning   Failed                        kubelet, compute1.ocp.home.dataxf.com   Error: failed to start container "launcher-sso-postgresql": Error response from daemon: oci runtime error: container_linux.go:235: starting container process caused "process_linux.go:245: running exec setns process for init caused \"exit status 15\""
+10m       16m       2         launcher-sso-postgresql-1-m9gnf.15fc872f6875de7a   Pod                     spec.containers{launcher-sso-postgresql}   Normal    Pulled                        kubelet, compute1.ocp.home.dataxf.com   Successfully pulled image "docker-registry.default.svc:5000/openshift/postgresql@sha256:0cf19c73fb1ed0784a5092edd42ce662d7328dac529f56b6bfc3d85b24552ed4"
+10m       16m       2         launcher-sso-postgresql-1-m9gnf.15fc87317ce10773   Pod                     spec.containers{launcher-sso-postgresql}   Normal    Created                       kubelet, compute1.ocp.home.dataxf.com   Created container
+8m        8m        1         launcher-sso-1-j8r8g.15fc879771b486f9              Pod                                                                Warning   FailedMount                   kubelet, compute1.ocp.home.dataxf.com   Unable to mount volumes for pod "launcher-sso-1-j8r8g_openshift-launcher(791ec264-66d9-11ea-8c12-566f4d920014)": timeout expired waiting for volumes to attach or mount for pod "openshift-launcher"/"launcher-sso-1-j8r8g". list of unmounted volumes=[sso-x509-https-volume sso-x509-jgroups-volume default-token-pcwhz]. list of unattached volumes=[sso-x509-https-volume sso-x509-jgroups-volume default-token-pcwhz]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are a few different failures in those events, and sometimes events are hard to dissect because some errors are expected while the pods deploy and get running.  For example, some errors come up as a result of the app pod waiting on the presence of the database pod.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at some other things.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc get pvc
+NAME                            STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS        AGE
+launcher-sso-postgresql-claim   Bound     pvc-72b78e87-66d9-11ea-8c12-566f4d920014   1Gi        RWO            glusterfs-storage   21m
+
+
+bash-5.0$ oc get all
+NAME                                   READY     STATUS    RESTARTS   AGE
+pod/launcher-sso-1-deploy              0/1       Error     0          23m
+pod/launcher-sso-postgresql-1-deploy   0/1       Error     0          23m
+
+NAME                                              DESIRED   CURRENT   READY     AGE
+replicationcontroller/launcher-sso-1              0         0         0         23m
+replicationcontroller/launcher-sso-postgresql-1   0         0         0         23m
+
+NAME                                                             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/glusterfs-dynamic-72b78e87-66d9-11ea-8c12-566f4d920014   ClusterIP   172.30.97.7      &lt;none&gt;        1/TCP      23m
+service/launcher-sso                                             ClusterIP   172.30.157.193   &lt;none&gt;        8443/TCP   23m
+service/launcher-sso-ping                                        ClusterIP   None             &lt;none&gt;        8888/TCP   23m
+service/launcher-sso-postgresql                                  ClusterIP   172.30.24.67     &lt;none&gt;        5432/TCP   23m
+
+NAME                                                         REVISION   DESIRED   CURRENT   TRIGGERED BY
+deploymentconfig.apps.openshift.io/launcher-sso              1          1         0         config,image(redhat-sso73-openshift:1.0)
+deploymentconfig.apps.openshift.io/launcher-sso-postgresql   1          1         0         config,image(postgresql:9.5)
+
+NAME                                    HOST/PORT                                                  PATH      SERVICES       PORT      TERMINATION   WILDCARD
+route.route.openshift.io/launcher-sso   launcher-sso-openshift-launcher.apps.ocp.home.dataxf.com             launcher-sso   &lt;all&gt;     reencrypt     None
+
+
+bash-5.0$ oc get pvc --all-namespaces
+NAMESPACE                         NAME                                                                       STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS        AGE
+default                           registry-claim                                                             Bound     registry-volume                            20Gi       RWX            glusterfs-storage   17h
+openshift-launcher                launcher-sso-postgresql-claim                                              Bound     pvc-72b78e87-66d9-11ea-8c12-566f4d920014   1Gi        RWO            glusterfs-storage   24m
+openshift-middleware-monitoring   prometheus-application-monitoring-db-prometheus-application-monitoring-0   Bound     pvc-7fff0ee0-66d9-11ea-8c12-566f4d920014   10Gi       RWO            glusterfs-storage   24m</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So what comes to mind is tailing the logs of the deploy pod, or even the pod that it failed to deploy.  Unfortunately I waited too long and the pod it attempted to deploy is now gone, so I am left with nothing to check there.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc logs -f pod/launcher-sso-postgresql-1-deploy
+--&gt; Scaling launcher-sso-postgresql-1 to 1
+error: update acceptor rejected launcher-sso-postgresql-1: pods for rc 'openshift-launcher/launcher-sso-postgresql-1' took longer than 600 seconds to become available
+bash-5.0$ oc debug launcher-sso-postgresql-1-m9gnf
+Error from server (NotFound): pods "launcher-sso-postgresql-1-m9gnf" not found
+bash-5.0$ oc logs -f launcher-sso-postgresql-1-m9gnf
+Error from server (NotFound): pods "launcher-sso-postgresql-1-m9gnf" not found</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s rollout a new deployment to get another pod.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc rollout latest dc/launcher-sso-postgresql
+deploymentconfig.apps.openshift.io/launcher-sso-postgresql rolled out
+bash-5.0$ oc get pods
+NAME                               READY     STATUS              RESTARTS   AGE
+launcher-sso-1-deploy              0/1       Error               0          27m
+launcher-sso-postgresql-1-deploy   0/1       Error               0          27m
+launcher-sso-postgresql-2-deploy   1/1       Running             0          13s
+launcher-sso-postgresql-2-s45vx    0/1       ContainerCreating   0          9s
+
+
+bash-5.0$ oc get events
+LAST SEEN   FIRST SEEN   COUNT     NAME                                                KIND                    SUBOBJECT                                  TYPE      REASON                  SOURCE                                  MESSAGE
+35s       35s       1         launcher-sso-postgresql-2-deploy.15fc885c85151b87   Pod                                                                Normal    Scheduled                     default-scheduler                       Successfully assigned openshift-launcher/launcher-sso-postgresql-2-deploy to compute0.ocp.home.dataxf.com
+35s       35s       1         launcher-sso-postgresql.15fc885c80a512ef            DeploymentConfig                                                   Normal    DeploymentCreated             deploymentconfig-controller             Created new replication controller "launcher-sso-postgresql-2" for version 2
+32s       32s       1         launcher-sso-postgresql-2-deploy.15fc885d284d4724   Pod                     spec.containers{deployment}                Normal    Created                       kubelet, compute0.ocp.home.dataxf.com   Created container
+32s       32s       1         launcher-sso-postgresql-2-deploy.15fc885d170cff0b   Pod                     spec.containers{deployment}                Normal    Pulled                        kubelet, compute0.ocp.home.dataxf.com   Container image "registry.redhat.io/openshift3/ose-deployer:v3.11.170" already present on machine
+32s       32s       1         launcher-sso-postgresql-2-deploy.15fc885d36524b4b   Pod                     spec.containers{deployment}                Normal    Started                       kubelet, compute0.ocp.home.dataxf.com   Started container
+31s       31s       1         launcher-sso-postgresql-2.15fc885d545e47c9          ReplicationController                                              Normal    SuccessfulCreate              replication-controller                  Created pod: launcher-sso-postgresql-2-s45vx
+31s       31s       1         launcher-sso-postgresql-2-s45vx.15fc885d5576bab8    Pod                                                                Normal    Scheduled                     default-scheduler                       Successfully assigned openshift-launcher/launcher-sso-postgresql-2-s45vx to compute0.ocp.home.dataxf.com
+28s       28s       1         launcher-sso-postgresql-2-s45vx.15fc885dfa3d78d5    Pod                     spec.containers{launcher-sso-postgresql}   Normal    Pulling                       kubelet, compute0.ocp.home.dataxf.com   pulling image "docker-registry.default.svc:5000/openshift/postgresql@sha256:0cf19c73fb1ed0784a5092edd42ce662d7328dac529f56b6bfc3d85b24552ed4"
+9s        9s        1         launcher-sso-postgresql-2-s45vx.15fc88627eabf475    Pod                     spec.containers{launcher-sso-postgresql}   Normal    Pulled                        kubelet, compute0.ocp.home.dataxf.com   Successfully pulled image "docker-registry.default.svc:5000/openshift/postgresql@sha256:0cf19c73fb1ed0784a5092edd42ce662d7328dac529f56b6bfc3d85b24552ed4"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After waiting some time, I can see the pod actually did start and then fail.  Note that I am on very slow disks, 7200rpm SATA, with SDS (software defined storage) on top of another layer of SDS, so this isn&#8217;t expected to be fast.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc get pods
+NAME                               READY     STATUS             RESTARTS   AGE
+launcher-sso-1-deploy              0/1       Error              0          31m
+launcher-sso-postgresql-1-deploy   0/1       Error              0          31m
+launcher-sso-postgresql-2-deploy   1/1       Running            0          4m
+launcher-sso-postgresql-2-s45vx    0/1       CrashLoopBackOff   2          4m
+bash-5.0$ oc logs -f launcher-sso-postgresql-2-s45vx
+pg_ctl: another server might be running; trying to start server anyway
+waiting for server to start....LOG:  redirecting log output to logging collector process
+HINT:  Future log output will appear in directory "pg_log".
+.................. done
+server started
+/var/run/postgresql:5432 - accepting connections
+=&gt; sourcing /usr/share/container-scripts/postgresql/start/set_passwords.sh ...
+ERROR:  role "useruqY" does not exist
+bash-5.0$ oc logs -f launcher-sso-postgresql-2-s45vx
+pg_ctl: another server might be running; trying to start server anyway
+waiting for server to start....LOG:  redirecting log output to logging collector process
+HINT:  Future log output will appear in directory "pg_log".
+.................. done
+server started
+/var/run/postgresql:5432 - accepting connections
+=&gt; sourcing /usr/share/container-scripts/postgresql/start/set_passwords.sh ...
+ERROR:  role "useruqY" does not exist</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ok so it is peculiar that the user is missing.  This generally tells me that the init scrip that sets up the database failed on the first deploy attempt. This also means that something else is my actual problem and I need to start the whole project deploy over rather than just rollout this one pod. Next time I will have to monitor the deployment to watch for its failure and capture the pod logs.  Since there is usually ten minutes or more of time for this, it isn&#8217;t a problem, but I can&#8217;t walk away from it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc delete all --all
+replicationcontroller "launcher-sso-1" deleted
+replicationcontroller "launcher-sso-postgresql-1" deleted
+replicationcontroller "launcher-sso-postgresql-2" deleted
+service "glusterfs-dynamic-72b78e87-66d9-11ea-8c12-566f4d920014" deleted
+service "launcher-sso" deleted
+service "launcher-sso-ping" deleted
+service "launcher-sso-postgresql" deleted
+deploymentconfig.apps.openshift.io "launcher-sso" deleted
+deploymentconfig.apps.openshift.io "launcher-sso-postgresql" deleted
+route.route.openshift.io "launcher-sso" deleted</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On the next deploy:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>child process exited with exit code 1
+initdb: removing contents of data directory "/var/lib/pgsql/data/userdata"
+creating information schema ... bash-5.0$ oc get pods
+NAME                               READY     STATUS         RESTARTS   AGE
+launcher-sso-1-deploy              1/1       Running        0          6m
+launcher-sso-1-z8wtr               0/1       ErrImagePull   0          6m
+launcher-sso-postgresql-1-deploy   1/1       Running        0          6m
+launcher-sso-postgresql-1-wpkfh    0/1       Error          0          6m
+bash-5.0$ oc logs -f launcher-sso-postgresql-1-wpkfh
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data/userdata ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+creating template1 database in /var/lib/pgsql/data/userdata/base/1 ... ok
+initializing pg_authid ... ok
+initializing dependencies ... ok
+creating system views ... ok
+loading system objects' descriptions ... ok
+creating collations ... ok
+creating conversions ... ok
+creating dictionaries ... ok
+setting privileges on built-in objects ... ok
+FATAL:  unexpected data beyond EOF in block 32 of relation base/1/2673
+HINT:  This has been seen to occur with buggy kernels; consider updating your system.
+STATEMENT:  /*
+	 * SQL Information Schema
+........(truncated)..........</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now this is revealing: <code>FATAL:  unexpected data beyond EOF in block 32 of relation base/1/2673</code>.  I&#8217;ve actually seen this before, and from experience know that GlusterFS doesn&#8217;t work well on databases without some tuning.  I know that we can also switch to Gluster-Block as well.  But switching to gluster-block means searching for my storageclass references to the deploy project, which I am less familiar with.  I could also switch my default storageclass to gluster-block, but I don&#8217;t need it for other applications.  This is really only a test cluster, so I&#8217;m going to go with the path of least resistance here and update my existing glusterfs storageclass with the performance options needed.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc get sc
+NAME                          PROVISIONER                          AGE
+glusterfs-storage (default)   kubernetes.io/glusterfs              19h
+glusterfs-storage-block       gluster.org/glusterblock-glusterfs   19h
+bash-5.0$ oc get sc glusterfs-storage-block -o yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  creationTimestamp: 2020-03-14T23:21:56Z
+  name: glusterfs-storage-block
+  resourceVersion: "135134"
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/glusterfs-storage-block
+  uid: 9887fbd0-664a-11ea-abc3-566f4d920016
+parameters:
+  chapauthenabled: "true"
+  hacount: "3"
+  restsecretname: heketi-storage-admin-secret-block
+  restsecretnamespace: glusterfs
+  resturl: http://heketi-storage.glusterfs.svc:8080
+  restuser: admin
+provisioner: gluster.org/glusterblock-glusterfs
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+bash-5.0$ oc get sc glusterfs-storage -o yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  creationTimestamp: 2020-03-14T23:21:17Z
+  name: glusterfs-storage
+  resourceVersion: "134981"
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/glusterfs-storage
+  uid: 8187c9d4-664a-11ea-abc3-566f4d920016
+parameters:
+  resturl: http://heketi-storage.glusterfs.svc:8080
+  restuser: admin
+  secretName: heketi-storage-admin-secret
+  secretNamespace: glusterfs
+provisioner: kubernetes.io/glusterfs
+reclaimPolicy: Delete
+volumeBindingMode: Immediate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unfortunately editing in place doesn&#8217;t appear to work. It may have been my formating. Or maybe this object is immutable.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc edit sc glusterfs-storage
+error: storageclasses.storage.k8s.io "glusterfs-storage" is invalid
+A copy of your changes has been stored to "/tmp/oc-edit-6fb8q.yaml"
+error: Edit cancelled, no valid changes were saved.
+
+bash-5.0$ oc get sc glusterfs-storage -o yaml &gt; glusterfs-sc.yaml
+bash-5.0$ vi glusterfs-sc.yaml
+bash-5.0$ oc delete sc glusterfs-storage
+storageclass.storage.k8s.io "glusterfs-storage" deleted
+bash-5.0$ oc create -f glusterfs-sc.yaml
+storageclass.storage.k8s.io/glusterfs-storage created
+
+bash-5.0$ oc get sc glusterfs-storage -o yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  creationTimestamp: 2020-03-15T19:32:09Z
+  name: glusterfs-storage
+  resourceVersion: "385822"
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/glusterfs-storage
+  uid: a9b765a3-66f3-11ea-8c12-566f4d920014
+parameters:
+  resturl: http://heketi-storage.glusterfs.svc:8080
+  restuser: admin
+  secretName: heketi-storage-admin-secret
+  secretNamespace: glusterfs
+  volumeoptions: performance.stat-prefetch off performance.write-behind off performance.open-behind
+    off performance.quick-read off performance.strict-o-direct on performance.read-ahead
+    off performance.io-cache off performance.readdir-ahead off
+provisioner: kubernetes.io/glusterfs
+reclaimPolicy: Delete
+volumeBindingMode: Immediate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now on our next full deploy we get a clean database start up. And we can even see it initialize the user roles correctly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>bash-5.0$ oc logs -f pod/launcher-sso-postgresql-1-dg6pk
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data/userdata ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+creating template1 database in /var/lib/pgsql/data/userdata/base/1 ... ok
+initializing pg_authid ... ok
+initializing dependencies ... ok
+creating system views ... ok
+loading system objects' descriptions ... ok
+creating collations ... ok
+creating conversions ... ok
+creating dictionaries ... ok
+setting privileges on built-in objects ... ok
+creating information schema ... ok
+loading PL/pgSQL server-side language ... ok
+vacuuming database template1 ... ok
+copying template1 to template0 ... ok
+copying template1 to postgres ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data/userdata -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....LOG:  redirecting log output to logging collector process
+HINT:  Future log output will appear in directory "pg_log".
+ done
+server started
+/var/run/postgresql:5432 - accepting connections
+=&gt; sourcing /usr/share/container-scripts/postgresql/start/set_passwords.sh ...
+ALTER ROLE
+waiting for server to shut down.... done
+server stopped
+Starting server...
+LOG:  redirecting log output to logging collector process
+HINT:  Future log output will appear in directory "pg_log".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can now move on to finishing our application deploy.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://github.com/heketi/heketi/blob/release/9/pkg/glusterfs/api/types.go#L202" class="bare">https://github.com/heketi/heketi/blob/release/9/pkg/glusterfs/api/types.go#L202</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/persistent_storage_glusterfs.html#install-advanced-installer" class="bare">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/persistent_storage_glusterfs.html#install-advanced-installer</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://docs.openshift.com/container-platform/3.11/scaling_performance/optimizing_on_glusterfs_storage.html" class="bare">https://docs.openshift.com/container-platform/3.11/scaling_performance/optimizing_on_glusterfs_storage.html</a>
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. <a href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/3.11/html-single/deployment_guide/index#chap-Documentation-Red_Hat_Gluster_Storage_Container_Native_with_OpenShift_Platform-Setting_Shared_PV" class="bare">https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/3.11/html-single/deployment_guide/index#chap-Documentation-Red_Hat_Gluster_Storage_Container_Native_with_OpenShift_Platform-Setting_Shared_PV</a>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

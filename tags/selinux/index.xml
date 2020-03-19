@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>selinux on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/selinux/</link>
+    <description>Recent content in selinux on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 17 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/selinux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Running Secure Containers on Fedora 31 and RHEL 8</title>
+        <link>https://briantward.github.io/running-secure-containers-on-fedora/</link>
+        <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/running-secure-containers-on-fedora/</guid>
+        <description>Running Secure Containers on Fedora 31 and RHEL 8 The first thing to note here, is that &#34;secured&#34; means running the container with SELinux enforcing. If you don&amp;#8217;t care about SELinux or have other alternatives in place, move along here, as you won&amp;#8217;t find this useful. I will not be discussing application security or platform security.
+ The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat&amp;#8217;s Container platform built on Kubernetes.</description>
+      </item>
+    
+  </channel>
+</rss>

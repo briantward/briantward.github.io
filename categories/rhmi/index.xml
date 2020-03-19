@@ -1,0 +1,22 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rhmi on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/rhmi/</link>
+    <description>Recent content in rhmi on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/rhmi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Installing RHMI on OpenShift</title>
+        <link>https://briantward.github.io/installing-rhmi-on-openshift/</link>
+        <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/installing-rhmi-on-openshift/</guid>
+        <description>Installing RHMI on OpenShift   </description>
+      </item>
+    
+  </channel>
+</rss>
