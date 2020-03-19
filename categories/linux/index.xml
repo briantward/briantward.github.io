@@ -39,7 +39,8 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
  watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
  This one is useful when you don&amp;#8217;t have a user directory on the system yet.
  /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
-   </description>
+ Because docker rmi on all image IDs doesn&amp;#8217;t work when one image ID maps to multiple repo:tag combinations.
+ $ docker images | grep -v REPO | awk &#39;{print $1&#34;</description>
       </item>
     
       <item>
