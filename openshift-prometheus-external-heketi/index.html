@@ -172,7 +172,7 @@ Login Succeeded</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_create_the_external_enpoint_service_and_servicemonitor_objects_for_the_node_exporter">Create the external Enpoint, Service, and ServiceMonitor objects for the node exporter</h3>
+<h3 id="_create_the_external_endpoint_service_and_servicemonitor_objects_for_the_node_exporter">Create the external Endpoint, Service, and ServiceMonitor objects for the node exporter</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>apiVersion: v1
@@ -184,7 +184,7 @@ metadata:
     k8s-app: gluster-node-metrics-endpoint.yaml
 subsets:
 - addresses:
-  - iip: 192.168.1.20
+  - ip: 192.168.1.20
   ports:
   - name: metrics
     port: 9100
