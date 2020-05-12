@@ -5,10 +5,42 @@
     <description>Recent content in Categories on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>IBM</title>
+        <link>https://briantward.github.io/categories/ibm/</link>
+        <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/ibm/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>openshift</title>
+        <link>https://briantward.github.io/categories/openshift/</link>
+        <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/openshift/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>security</title>
+        <link>https://briantward.github.io/categories/security/</link>
+        <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/security/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>tips</title>
+        <link>https://briantward.github.io/categories/tips/</link>
+        <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/tips/</guid>
+        <description></description>
+      </item>
     
       <item>
         <title>container</title>
@@ -31,14 +63,6 @@
         <link>https://briantward.github.io/categories/rhel/</link>
         <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/categories/rhel/</guid>
-        <description></description>
-      </item>
-    
-      <item>
-        <title>openshift</title>
-        <link>https://briantward.github.io/categories/openshift/</link>
-        <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/categories/openshift/</guid>
         <description></description>
       </item>
     
@@ -95,14 +119,6 @@
         <link>https://briantward.github.io/categories/rhvh/</link>
         <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/categories/rhvh/</guid>
-        <description></description>
-      </item>
-    
-      <item>
-        <title>tips</title>
-        <link>https://briantward.github.io/categories/tips/</link>
-        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/categories/tips/</guid>
         <description></description>
       </item>
     

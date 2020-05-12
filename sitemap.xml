@@ -4,7 +4,90 @@
   
   <url>
     <loc>https://briantward.github.io/tags/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/ibm/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/installing-ocs-on-ibm-cloud-bare-metal/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/posts/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/container/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/openshift/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/storage/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/new-relic/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/new-relic-on-openshift-4/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/security/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/oc/</loc>
+    <lastmod>2020-03-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/oc-tips/</loc>
+    <lastmod>2020-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/tips/</loc>
+    <lastmod>2020-03-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -15,27 +98,7 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/categories/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/posts/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/running-secure-containers-on-fedora/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/</loc>
     <lastmod>2020-03-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -94,12 +157,6 @@
   
   <url>
     <loc>https://briantward.github.io/tags/integration/</loc>
-    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/openshift/</loc>
     <lastmod>2020-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -227,12 +284,6 @@
   
   <url>
     <loc>https://briantward.github.io/categories/rhvh/</loc>
-    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/tips/</loc>
     <lastmod>2020-02-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -881,12 +932,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/container/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/kubernetes/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -1112,22 +1157,6 @@
     <loc>https://briantward.github.io/tags/performance/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/oc/</loc>
-    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/oc-tips/</loc>
-    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/oc-tips/</loc>
-    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>

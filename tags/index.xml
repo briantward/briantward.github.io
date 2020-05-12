@@ -5,7 +5,7 @@
     <description>Recent content in Tags on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,8 +13,40 @@
       <item>
         <title></title>
         <link>https://briantward.github.io/tags/</link>
-        <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/tags/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>container</title>
+        <link>https://briantward.github.io/tags/container/</link>
+        <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/container/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>storage</title>
+        <link>https://briantward.github.io/tags/storage/</link>
+        <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/storage/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>New Relic</title>
+        <link>https://briantward.github.io/tags/new-relic/</link>
+        <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/new-relic/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>oc</title>
+        <link>https://briantward.github.io/tags/oc/</link>
+        <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/oc/</guid>
         <description></description>
       </item>
     
@@ -699,14 +731,6 @@
       </item>
     
       <item>
-        <title>container</title>
-        <link>https://briantward.github.io/tags/container/</link>
-        <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/tags/container/</guid>
-        <description></description>
-      </item>
-    
-      <item>
         <title>kubernetes</title>
         <link>https://briantward.github.io/tags/kubernetes/</link>
         <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
@@ -919,14 +943,6 @@
         <link>https://briantward.github.io/tags/performance/</link>
         <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/tags/performance/</guid>
-        <description></description>
-      </item>
-    
-      <item>
-        <title>oc</title>
-        <link>https://briantward.github.io/tags/oc/</link>
-        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/tags/oc/</guid>
         <description></description>
       </item>
     

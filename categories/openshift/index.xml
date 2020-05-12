@@ -5,10 +5,35 @@
     <description>Recent content in openshift on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/openshift/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)</title>
+        <link>https://briantward.github.io/installing-ocs-on-ibm-cloud-bare-metal/</link>
+        <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/installing-ocs-on-ibm-cloud-bare-metal/</guid>
+        <description>Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) Install OpenShift Container Storage Operator.  Do Section 1.1.1 in the official documentation.
+  Skip Section 1.1.2 because this is not a typical install.
+  Since these are RHEL based nodes do Section 1.1.3.
+In our case everything was already there, we just needed to enable cephfs through SELinux.
+ # setsebool -P container_use_cephfs on       Prepare the Raw Storage on Each Node These particular nodes had an SSD attached that was automatically picked up by multipath and also had a filesystem on it.</description>
+      </item>
+    
+      <item>
+        <title>New Relic on OpenShift 4</title>
+        <link>https://briantward.github.io/new-relic-on-openshift-4/</link>
+        <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/new-relic-on-openshift-4/</guid>
+        <description>New Relic on OpenShift 4 Follow the instructions on New Relic&amp;#8217;s website:
+ https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes
+ Modified here. There is no need for adding the MutatingAdmissionWebhook as this is already enabled by default in OCP 4, so skip that section.
+  Download the YAML file:
+curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernetes/k8s-metadata-injection-latest.yaml     Replace YOUR_CLUSTER_NAME with the name of your cluster in the YAML file.
+  Apply the YAML file to your Kubernetes cluster:</description>
+      </item>
     
       <item>
         <title>Installing RHMI on OpenShift</title>

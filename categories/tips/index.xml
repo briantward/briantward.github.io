@@ -5,10 +5,20 @@
     <description>Recent content in tips on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>oc Tips</title>
+        <link>https://briantward.github.io/oc-tips/</link>
+        <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
+ $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;</description>
+      </item>
     
       <item>
         <title>bash Tips</title>
@@ -154,25 +164,6 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/terminal-to-file/</guid>
         <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -     </description>
-      </item>
-    
-      <item>
-        <title>oc Tips</title>
-        <link>https://briantward.github.io/oc-tips/</link>
-        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/oc-tips/</guid>
-        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring     </description>
-      </item>
-    
-      <item>
-        <title>oc Tips</title>
-        <link>https://briantward.github.io/oc-tips/</link>
-        <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/oc-tips/</guid>
-        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
- $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;</description>
       </item>
     
       <item>

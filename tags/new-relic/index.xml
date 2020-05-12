@@ -1,0 +1,27 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>New Relic on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/new-relic/</link>
+    <description>Recent content in New Relic on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 May 2020 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/new-relic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>New Relic on OpenShift 4</title>
+        <link>https://briantward.github.io/new-relic-on-openshift-4/</link>
+        <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/new-relic-on-openshift-4/</guid>
+        <description>New Relic on OpenShift 4 Follow the instructions on New Relic&amp;#8217;s website:
+ https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes
+ Modified here. There is no need for adding the MutatingAdmissionWebhook as this is already enabled by default in OCP 4, so skip that section.
+  Download the YAML file:
+curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernetes/k8s-metadata-injection-latest.yaml     Replace YOUR_CLUSTER_NAME with the name of your cluster in the YAML file.
+  Apply the YAML file to your Kubernetes cluster:</description>
+      </item>
+    
+  </channel>
+</rss>
