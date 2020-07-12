@@ -22,11 +22,7 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)" />
-<meta property="og:description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) Install OpenShift Container Storage Operator.  Do Section 1.1.1 in the official documentation.
-  Skip Section 1.1.2 because this is not a typical install.
-  Since these are RHEL based nodes do Section 1.1.3.
-In our case everything was already there, we just needed to enable cephfs through SELinux.
- # setsebool -P container_use_cephfs on       Prepare the Raw Storage on Each Node These particular nodes had an SSD attached that was automatically picked up by multipath and also had a filesystem on it." />
+<meta property="og:description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/installing-ocs-on-ibm-cloud-bare-metal/" />
 <meta property="article:published_time" content="2020-05-11T00:00:00&#43;00:00"/>
@@ -35,16 +31,12 @@ In our case everything was already there, we just needed to enable cephfs throug
 
 
 <meta itemprop="name" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)">
-<meta itemprop="description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) Install OpenShift Container Storage Operator.  Do Section 1.1.1 in the official documentation.
-  Skip Section 1.1.2 because this is not a typical install.
-  Since these are RHEL based nodes do Section 1.1.3.
-In our case everything was already there, we just needed to enable cephfs through SELinux.
- # setsebool -P container_use_cephfs on       Prepare the Raw Storage on Each Node These particular nodes had an SSD attached that was automatically picked up by multipath and also had a filesystem on it.">
+<meta itemprop="description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform.">
 
 
 <meta itemprop="datePublished" content="2020-05-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-05-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2085">
+<meta itemprop="wordCount" content="2164">
 
 
 
@@ -52,11 +44,7 @@ In our case everything was already there, we just needed to enable cephfs throug
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)"/>
-<meta name="twitter:description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) Install OpenShift Container Storage Operator.  Do Section 1.1.1 in the official documentation.
-  Skip Section 1.1.2 because this is not a typical install.
-  Since these are RHEL based nodes do Section 1.1.3.
-In our case everything was already there, we just needed to enable cephfs through SELinux.
- # setsebool -P container_use_cephfs on       Prepare the Raw Storage on Each Node These particular nodes had an SSD attached that was automatically picked up by multipath and also had a filesystem on it."/>
+<meta name="twitter:description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform."/>
 
 
   </head>
@@ -142,6 +130,9 @@ In our case everything was already there, we just needed to enable cephfs throug
 <div class="sect1">
 <h2 id="_installing_openshift_container_storage_on_ibm_cloud_bare_metal_redhat_openshift_kubernetes_service_roks">Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>  It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform.</p>
+</div>
 <div class="sect2">
 <h3 id="_install_openshift_container_storage_operator">Install OpenShift Container Storage Operator.</h3>
 <div class="olist arabic">
@@ -596,7 +587,7 @@ local-pv-a0747d99                          1787Gi     RWO            Delete     
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Edit the system:node ClusterRole</p>
+<p>Edit the system:node ClusterRole. Alternatively, you can set <code>enable-controller-attach-detach</code> to true on the kubelet.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc edit clusterrole system\:node
@@ -685,6 +676,34 @@ spec:
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_notes_and_references">Notes and References</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/rook/rook/pull/5032" class="bare">https://github.com/rook/rook/pull/5032</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/ocs-operator/issues/453" class="bare">https://github.com/openshift/ocs-operator/issues/453</a></p>
+</li>
+<li>
+<p><a href="https://github.com/rook/rook/issues/3923#issuecomment-534037026" class="bare">https://github.com/rook/rook/issues/3923#issuecomment-534037026</a></p>
+</li>
+<li>
+<p><a href="https://github.com/rook/rook/pull/3927" class="bare">https://github.com/rook/rook/pull/3927</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://github.com/openshift/ocs-operator/issues/454#issuecomment-604522767" class="bare">https://github.com/openshift/ocs-operator/issues/454#issuecomment-604522767</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://github.com/openshift/ocs-operator/issues/453#issuecomment-619918779" class="bare">https://github.com/openshift/ocs-operator/issues/453#issuecomment-619918779</a>
 </div>
 </div>
 </section>

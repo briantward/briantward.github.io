@@ -15,11 +15,7 @@
         <link>https://briantward.github.io/installing-ocs-on-ibm-cloud-bare-metal/</link>
         <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/installing-ocs-on-ibm-cloud-bare-metal/</guid>
-        <description>Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) Install OpenShift Container Storage Operator.  Do Section 1.1.1 in the official documentation.
-  Skip Section 1.1.2 because this is not a typical install.
-  Since these are RHEL based nodes do Section 1.1.3.
-In our case everything was already there, we just needed to enable cephfs through SELinux.
- # setsebool -P container_use_cephfs on       Prepare the Raw Storage on Each Node These particular nodes had an SSD attached that was automatically picked up by multipath and also had a filesystem on it.</description>
+        <description>Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform.</description>
       </item>
     
       <item>

@@ -5,10 +5,20 @@
     <description>Recent content in linux on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>RHEL Port Forwarding Using Firewalld</title>
+        <link>https://briantward.github.io/rhel-port-forwarding.adoc/</link>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rhel-port-forwarding.adoc/</guid>
+        <description>RHEL Port Forwarding Using Firewalld Never underestimate the simplicity of a feature and the complications of a network.
+ RHEL 7 uses firewalld, which has a very simple syntax for port forwarding across the incoming port of an external interface to a NATed IP on an internal device. No matter what I tried in variations from the base documentation I simply could not get it to work.
+ In this configuration, note that I have eth0 on NetworkManager external zone with masquerade and eth1 on zone internal.</description>
+      </item>
     
       <item>
         <title>An Introduction to Running Java on Kubernetes</title>

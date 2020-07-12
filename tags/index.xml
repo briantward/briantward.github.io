@@ -5,7 +5,7 @@
     <description>Recent content in Tags on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,8 +13,40 @@
       <item>
         <title></title>
         <link>https://briantward.github.io/tags/</link>
-        <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/tags/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>forwarding</title>
+        <link>https://briantward.github.io/tags/forwarding/</link>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/forwarding/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>linux</title>
+        <link>https://briantward.github.io/tags/linux/</link>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/linux/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>port</title>
+        <link>https://briantward.github.io/tags/port/</link>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/port/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>router</title>
+        <link>https://briantward.github.io/tags/router/</link>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/tags/router/</guid>
         <description></description>
       </item>
     
@@ -235,14 +267,6 @@
       </item>
     
       <item>
-        <title>router</title>
-        <link>https://briantward.github.io/tags/router/</link>
-        <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/tags/router/</guid>
-        <description></description>
-      </item>
-    
-      <item>
         <title>applications</title>
         <link>https://briantward.github.io/tags/applications/</link>
         <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
@@ -407,14 +431,6 @@
         <link>https://briantward.github.io/tags/intel/</link>
         <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/tags/intel/</guid>
-        <description></description>
-      </item>
-    
-      <item>
-        <title>linux</title>
-        <link>https://briantward.github.io/tags/linux/</link>
-        <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/tags/linux/</guid>
         <description></description>
       </item>
     

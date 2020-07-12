@@ -5,10 +5,26 @@
     <description>Recent content in Categories on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>linux</title>
+        <link>https://briantward.github.io/categories/linux/</link>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/linux/</guid>
+        <description></description>
+      </item>
+    
+      <item>
+        <title>router</title>
+        <link>https://briantward.github.io/categories/router/</link>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/categories/router/</guid>
+        <description></description>
+      </item>
     
       <item>
         <title>IBM</title>
@@ -99,14 +115,6 @@
       </item>
     
       <item>
-        <title>linux</title>
-        <link>https://briantward.github.io/categories/linux/</link>
-        <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/categories/linux/</guid>
-        <description></description>
-      </item>
-    
-      <item>
         <title>ovirt</title>
         <link>https://briantward.github.io/categories/ovirt/</link>
         <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
@@ -155,10 +163,10 @@
       </item>
     
       <item>
-        <title>rysnc</title>
-        <link>https://briantward.github.io/categories/rysnc/</link>
+        <title>rsync</title>
+        <link>https://briantward.github.io/categories/rsync/</link>
         <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/categories/rysnc/</guid>
+        <guid>https://briantward.github.io/categories/rsync/</guid>
         <description></description>
       </item>
     
