@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.69.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -25,23 +25,19 @@
 <meta property="og:description" content="Automatically Update Red Hat Container Images on OpenShift 3.11 OpenShift manages container images using a registry. This is the place where it caches upstream container images and stores the images from your own builds as well. Each build or container image correlates to an ImageStream, which is an object that defines any number of related images by tags. For example, one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/sync-redhat-images-on-openshift-311/" />
-<meta property="article:published_time" content="2018-11-01T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2018-11-01T00:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2018-11-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-11-01T00:00:00+00:00" />
 
 
 <meta itemprop="name" content="Automatically Update Red Hat Container Images on OpenShift 3.11">
 <meta itemprop="description" content="Automatically Update Red Hat Container Images on OpenShift 3.11 OpenShift manages container images using a registry. This is the place where it caches upstream container images and stores the images from your own builds as well. Each build or container image correlates to an ImageStream, which is an object that defines any number of related images by tags. For example, one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2.">
-
-
 <meta itemprop="datePublished" content="2018-11-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-11-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1264">
+<meta itemprop="wordCount" content="1266">
 
 
 
 <meta itemprop="keywords" content="sync,Red Hat,container,imagestream," />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Automatically Update Red Hat Container Images on OpenShift 3.11"/>
 <meta name="twitter:description" content="Automatically Update Red Hat Container Images on OpenShift 3.11 OpenShift manages container images using a registry. This is the place where it caches upstream container images and stores the images from your own builds as well. Each build or container image correlates to an ImageStream, which is an object that defines any number of related images by tags. For example, one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2."/>
@@ -260,7 +256,7 @@ There are also concerns over supported and tested configurations <sup class="foo
 <div class="paragraph">
 <p>Second, you need to update all your ImageStreams to automatically update.  Note that the openshift_examples installed
 by the OpenShift Ansible Installer only install into your OpenShift environment ONCE.  They never get updated.  If new templates
-arrive in subsequent updates, they do get added, and some get removed. But they never get updated! <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> Here is how to change that.</p>
+arrive in subsequent updates, they do get added, and some get removed. But they never get updated!  <sup class="footnote" id="_footnote_openshift_examples_repo">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup> Here is how to change that.</p>
 </div>
 <div class="paragraph">
 <p>To perform this operation on all ImageStreams in the <code>openshift</code> namespace using a CLI json editor tool, <code>jq</code>:</p>
@@ -324,7 +320,7 @@ to build a new example application in Ruby.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The latest version as of this writing, 3.11, uses an authenticated Red Hat registry at registry.redhat.io <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>.</p>
+<p>The latest version as of this writing, 3.11, uses an authenticated Red Hat registry at registry.redhat.io <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
 </div>
 <div class="paragraph">
 <p>Copy your auth token from the <code>openshift</code> namespace just for this test.  OpenShift versions prior to 3.11 don&#8217;t need this (yet).</p>
@@ -420,7 +416,10 @@ latest
 <a href="#_footnoteref_5">5</a>. <a href="https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L103" class="bare">https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L103</a>
 </div>
 <div class="footnote" id="_footnotedef_6">
-<a href="#_footnoteref_6">6</a>. <a href="https://docs.openshift.com/container-platform/3.11/install_config/configuring_red_hat_registry.html" class="bare">https://docs.openshift.com/container-platform/3.11/install_config/configuring_red_hat_registry.html</a>
+<a href="#_footnoteref_6">6</a>. <a href="https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_examples" class="bare">https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_examples</a>
+</div>
+<div class="footnote" id="_footnotedef_7">
+<a href="#_footnoteref_7">7</a>. <a href="https://docs.openshift.com/container-platform/3.11/install_config/configuring_red_hat_registry.html" class="bare">https://docs.openshift.com/container-platform/3.11/install_config/configuring_red_hat_registry.html</a>
 </div>
 </div>
 </section>
@@ -436,7 +435,7 @@ latest
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

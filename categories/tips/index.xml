@@ -5,10 +5,34 @@
     <description>Recent content in tips on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>DD-WRT Custom Certificate</title>
+        <link>https://briantward.github.io/dd-wrt-certificate/</link>
+        <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
+        <description>DD-WRT Custom Certificate (Tested on R7000)
+ Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
+ In the router GUI go to Services &amp;gt; USB:
+ Select the following
+   Core USB Support: Enabled
+  USB Storage Support: Enabled
+  Automatic Drive Mount: Enabled
+   Click Apply Settings</description>
+      </item>
+    
+      <item>
+        <title>Image Video Metadata Part 2</title>
+        <link>https://briantward.github.io/image-video-metadata-p2/</link>
+        <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/image-video-metadata-p2/</guid>
+        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&amp;#8217;t right, it can be pretty confusing/noticeable.</description>
+      </item>
     
       <item>
         <title>oc Tips</title>

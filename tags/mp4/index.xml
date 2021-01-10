@@ -5,10 +5,18 @@
     <description>Recent content in  mp4 on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/mp4/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Image Video Metadata Part 2</title>
+        <link>https://briantward.github.io/image-video-metadata-p2/</link>
+        <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/image-video-metadata-p2/</guid>
+        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&amp;#8217;t right, it can be pretty confusing/noticeable.</description>
+      </item>
     
       <item>
         <title>Image Video Metadata</title>

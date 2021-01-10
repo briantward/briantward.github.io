@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.69.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -25,23 +25,19 @@
 <meta property="og:description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/installing-ocs-on-ibm-cloud-bare-metal/" />
-<meta property="article:published_time" content="2020-05-11T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-05-11T00:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2020-05-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-11T00:00:00+00:00" />
 
 
 <meta itemprop="name" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)">
 <meta itemprop="description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform.">
-
-
 <meta itemprop="datePublished" content="2020-05-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-05-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2164">
+<meta itemprop="wordCount" content="2199">
 
 
 
 <meta itemprop="keywords" content="storage,container," />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)"/>
 <meta name="twitter:description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform."/>
@@ -647,8 +643,17 @@ spec:
  $ oc edit ds csi-rbdplugin</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Automated this would look like:+</p>
+</div>
 </li>
 </ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> $ oc get ds csi-rbdplugin -o yaml | sed 's/var\/lib\/kubelet/var\/data\/kubelet/g' | oc apply -f -
+ $ oc get ds csi-cephfsplugin -o yaml | sed 's/var\/lib\/kubelet/var\/data\/kubelet/g' | oc apply -f -</pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -719,7 +724,7 @@ spec:
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

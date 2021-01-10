@@ -56,6 +56,15 @@
       </item>
     
       <item>
+        <title>Install a Quickstart App on Openshift Authenticated by RH-SSO</title>
+        <link>https://briantward.github.io/rh-sso-openshift-quickstart/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://briantward.github.io/rh-sso-openshift-quickstart/</guid>
+        <description>Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application.</description>
+      </item>
+    
+      <item>
         <title>Install RH-SSO on Openshift</title>
         <link>https://briantward.github.io/rh-sso-on-openshift/</link>
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
@@ -63,15 +72,6 @@
         <description>Install RH-SSO on Openshift First create a new project to keep RH-SSO work clean and easily delete it if necessary.
  oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You&amp;#8217;ve got lots of other choices.
  $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application.</description>
-      </item>
-    
-      <item>
-        <title>Install a Quickstart App on Openshift Authenticated by RH-SSO</title>
-        <link>https://briantward.github.io/rh-sso-openshift-quickstart/</link>
-        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://briantward.github.io/rh-sso-openshift-quickstart/</guid>
-        <description>Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
- $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application.</description>
       </item>
     
       <item>

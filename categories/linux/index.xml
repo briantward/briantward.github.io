@@ -5,10 +5,26 @@
     <description>Recent content in linux on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>DD-WRT Custom Certificate</title>
+        <link>https://briantward.github.io/dd-wrt-certificate/</link>
+        <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
+        <description>DD-WRT Custom Certificate (Tested on R7000)
+ Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
+ In the router GUI go to Services &amp;gt; USB:
+ Select the following
+   Core USB Support: Enabled
+  USB Storage Support: Enabled
+  Automatic Drive Mount: Enabled
+   Click Apply Settings</description>
+      </item>
     
       <item>
         <title>RHEL Port Forwarding Using Firewalld</title>
@@ -31,16 +47,6 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
       </item>
     
       <item>
-        <title>RHVH Ovirt</title>
-        <link>https://briantward.github.io/rhvh-ovirt/</link>
-        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/rhvh-ovirt/</guid>
-        <description>RHVH Ovirt Red Hat documentation is pretty thorough on the subject of multipath, which is a lovely failover mechanism for connections between remote volumes provided by SANs and the host.[1][2]
- There is even this KCS that discusses the matter a little more: Internal disk device is being detected as multipath device
- In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.</description>
-      </item>
-    
-      <item>
         <title>bash Tips</title>
         <link>https://briantward.github.io/bash-tips/</link>
         <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
@@ -51,6 +57,16 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
  /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
  Because docker rmi on all image IDs doesn&amp;#8217;t work when one image ID maps to multiple repo:tag combinations.
  $ docker images | grep -v REPO | awk &#39;{print $1&#34;</description>
+      </item>
+    
+      <item>
+        <title>RHVH Ovirt</title>
+        <link>https://briantward.github.io/rhvh-ovirt/</link>
+        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rhvh-ovirt/</guid>
+        <description>RHVH Ovirt Red Hat documentation is pretty thorough on the subject of multipath, which is a lovely failover mechanism for connections between remote volumes provided by SANs and the host.[1][2]
+ There is even this KCS that discusses the matter a little more: Internal disk device is being detected as multipath device
+ In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.</description>
       </item>
     
       <item>

@@ -5,10 +5,46 @@
     <description>Recent content in List of posts on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>DD-WRT Custom Certificate</title>
+        <link>https://briantward.github.io/dd-wrt-certificate/</link>
+        <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
+        <description>DD-WRT Custom Certificate (Tested on R7000)
+ Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
+ In the router GUI go to Services &amp;gt; USB:
+ Select the following
+   Core USB Support: Enabled
+  USB Storage Support: Enabled
+  Automatic Drive Mount: Enabled
+   Click Apply Settings</description>
+      </item>
+    
+      <item>
+        <title>Image Video Metadata Part 2</title>
+        <link>https://briantward.github.io/image-video-metadata-p2/</link>
+        <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/image-video-metadata-p2/</guid>
+        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&amp;#8217;t right, it can be pretty confusing/noticeable.</description>
+      </item>
+    
+      <item>
+        <title>Running a Container as a Systemd Service on Fedora and RHEL</title>
+        <link>https://briantward.github.io/running-container-as-systemd-service/</link>
+        <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/running-container-as-systemd-service/</guid>
+        <description>Running a Container as a Systemd Service on Fedora and RHEL There is some great documentation on this:
+   Chapter 7. Running containers as systemd services with Podman
+  Chapter 8. Container command-line reference: 8.1.10. Generate a systemd unit file
+   Even better there is a man page:
+ $ man podman-generate-systemd   The basic command looks like this, to be run on an existing running container:</description>
+      </item>
     
       <item>
         <title>RHEL Port Forwarding Using Firewalld</title>
@@ -101,16 +137,6 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
       </item>
     
       <item>
-        <title>RHVH Ovirt</title>
-        <link>https://briantward.github.io/rhvh-ovirt/</link>
-        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/rhvh-ovirt/</guid>
-        <description>RHVH Ovirt Red Hat documentation is pretty thorough on the subject of multipath, which is a lovely failover mechanism for connections between remote volumes provided by SANs and the host.[1][2]
- There is even this KCS that discusses the matter a little more: Internal disk device is being detected as multipath device
- In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.</description>
-      </item>
-    
-      <item>
         <title>bash Tips</title>
         <link>https://briantward.github.io/bash-tips/</link>
         <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
@@ -121,6 +147,16 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
  /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
  Because docker rmi on all image IDs doesn&amp;#8217;t work when one image ID maps to multiple repo:tag combinations.
  $ docker images | grep -v REPO | awk &#39;{print $1&#34;</description>
+      </item>
+    
+      <item>
+        <title>RHVH Ovirt</title>
+        <link>https://briantward.github.io/rhvh-ovirt/</link>
+        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rhvh-ovirt/</guid>
+        <description>RHVH Ovirt Red Hat documentation is pretty thorough on the subject of multipath, which is a lovely failover mechanism for connections between remote volumes provided by SANs and the host.[1][2]
+ There is even this KCS that discusses the matter a little more: Internal disk device is being detected as multipath device
+ In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.</description>
       </item>
     
       <item>
@@ -838,6 +874,15 @@ echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo
       </item>
     
       <item>
+        <title>Install a Quickstart App on Openshift Authenticated by RH-SSO</title>
+        <link>https://briantward.github.io/rh-sso-openshift-quickstart/</link>
+        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
+        <guid>https://briantward.github.io/rh-sso-openshift-quickstart/</guid>
+        <description>Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
+ $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application.</description>
+      </item>
+    
+      <item>
         <title>Install RH-SSO on Openshift</title>
         <link>https://briantward.github.io/rh-sso-on-openshift/</link>
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
@@ -845,15 +890,6 @@ echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo
         <description>Install RH-SSO on Openshift First create a new project to keep RH-SSO work clean and easily delete it if necessary.
  oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You&amp;#8217;ve got lots of other choices.
  $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application.</description>
-      </item>
-    
-      <item>
-        <title>Install a Quickstart App on Openshift Authenticated by RH-SSO</title>
-        <link>https://briantward.github.io/rh-sso-openshift-quickstart/</link>
-        <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
-        <guid>https://briantward.github.io/rh-sso-openshift-quickstart/</guid>
-        <description>Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
- $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap70-sso-s2i An example EAP 7 Single Sign-On application. For more information about using... 44 (19 blank) 8 eap71-sso-s2i An example EAP 7 Single Sign-On application.</description>
       </item>
     
       <item>

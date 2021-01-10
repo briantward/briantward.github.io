@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Video Metadata Part 2 - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.69.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Image Video Metadata Part 2" />
+<meta property="og:description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&#8217;t right, it can be pretty confusing/noticeable." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/image-video-metadata-p2/" />
+<meta property="article:published_time" content="2021-01-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-09T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="Image Video Metadata Part 2">
+<meta itemprop="description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&#8217;t right, it can be pretty confusing/noticeable.">
+<meta itemprop="datePublished" content="2021-01-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="471">
+
+
+
+<meta itemprop="keywords" content="image,jpeg,video,mov, mp4,metadata," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Image Video Metadata Part 2"/>
+<meta name="twitter:description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&#8217;t right, it can be pretty confusing/noticeable."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2021-01-09 12:00">2021-01-09</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          </p>
+      <h1>Image Video Metadata Part 2</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/image">
+              <span class="hash">#</span>image</a>
+          
+            , 
+            <a href="/tags/jpeg">
+              <span class="hash">#</span>jpeg</a>
+          
+            , 
+            <a href="/tags/video">
+              <span class="hash">#</span>video</a>
+          
+            , 
+            <a href="/tags/mov">
+              <span class="hash">#</span>mov</a>
+          
+            , 
+            <a href="/tags/mp4">
+              <span class="hash">#</span> mp4</a>
+          
+            , 
+            <a href="/tags/metadata">
+              <span class="hash">#</span>metadata</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_image_video_metadata_tips">Image Video Metadata Tips</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured.  This is pretty annoying, but can be fixed with a nice perl utility called <code>exiftool</code>.  Apple and a bunch of other photo tools these days use these dates for sorting your photos.  So if something isn&#8217;t right, it can be pretty confusing/noticeable.</p>
+</div>
+<div class="paragraph">
+<p>Dates before running the script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ exiftool WardFamilyPhotos-003.jpg -a -G -s| grep -i date
+[File]          FileModifyDate                  : 2021:01:09 09:28:53-05:00
+[File]          FileAccessDate                  : 2021:01:09 09:28:51-05:00
+[File]          FileInodeChangeDate             : 2021:01:09 18:58:40-05:00
+[EXIF]          ModifyDate                      : 2020:11:30 07:43:35
+[EXIF]          DateTimeOriginal                : 2014:01:06 14:46:39
+[EXIF]          CreateDate                      : 2014:01:06 14:46:39
+[IPTC]          DateCreated                     : 2014:01:06
+[IPTC]          DigitalCreationDate             : 2014:01:06
+[ICC_Profile]   ProfileDateTime                 : 1998:02:09 06:49:00
+[XMP]           CreateDate                      : 2014:01:06 14:46:39.08
+[XMP]           ModifyDate                      : 2020:11:30 07:43:35-05:00
+[XMP]           MetadataDate                    : 2020:11:30 07:43:35-05:00
+[XMP]           DateCreated                     : 2014:01:06 14:46:39.08
+[Composite]     SubSecCreateDate                : 2014:01:06 14:46:39.08
+[Composite]     SubSecDateTimeOriginal          : 2014:01:06 14:46:39.08
+[Composite]     SubSecModifyDate                : 2020:11:30 07:43:35-05:00
+[Composite]     DateTimeCreated                 : 2014:01:06 14:46:39
+[Composite]     DigitalCreationDateTime         : 2014:01:06 14:46:39</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>-s</code> gives us the actual field name we need to modify (see the script) instead of some pretty print formatted message.
+The <code>-G</code> gives us the group classification we need to modify.
+The <code>-a</code> gives us any duplicate fields.</p>
+</div>
+<div class="paragraph">
+<p><code>man exiftool</code> is a BIG manual.  It appears to be everything you need, if you have time.</p>
+</div>
+<div class="paragraph">
+<p>Dates after running the script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ exiftool WardFamilyPhotos-003.jpg -a -G -s| grep -i date
+[File]          FileModifyDate                  : 2021:01:09 12:32:31-05:00
+[File]          FileAccessDate                  : 2021:01:09 12:32:31-05:00
+[File]          FileInodeChangeDate             : 2021:01:09 12:32:31-05:00
+[EXIF]          ModifyDate                      : 2020:11:30 07:43:35
+[EXIF]          DateTimeOriginal                : 2020:11:25 14:46:39
+[EXIF]          CreateDate                      : 2020:11:25 14:46:39
+[IPTC]          DateCreated                     : 2020:11:25
+[IPTC]          DigitalCreationDate             : 2020:11:25
+[ICC_Profile]   ProfileDateTime                 : 1998:02:09 06:49:00
+[XMP]           DateCreated                     : 2020:11:25 14:46:39.08
+[XMP]           CreateDate                      : 2020:11:25 14:46:39.08
+[XMP]           MetadataDate                    : 2020:11:30 07:43:35-05:00
+[XMP]           ModifyDate                      : 2020:11:30 07:43:35-05:00
+[Composite]     SubSecCreateDate                : 2020:11:25 14:46:39.08
+[Composite]     SubSecDateTimeOriginal          : 2020:11:25 14:46:39.08
+[Composite]     SubSecModifyDate                : 2020:11:30 07:43:35-05:00
+[Composite]     DateTimeCreated                 : 2020:11:25 14:46:39
+[Composite]     DigitalCreationDateTime         : 2020:11:25 14:46:39</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#!/bin/bash
+
+# drop this script in the folder of images where you need to update the image date
+# requires exiftool (duh...)
+# slow as it opens and writes the file many times, but could be optimized perhaps...
+
+NEW_DATE=2020:11:25
+
+echo "new date is...: "$NEW_DATE
+
+for file in $(ls *.jpg)
+do
+  existing_time=$(exiftool -EXIF:DateTimeOriginal $file | grep -o -P "\d.*$" | cut -c11-19)
+  #echo "replacing existing EXIF values with: "$NEW_DATE$existing_time
+  exiftool -q -overwrite_original -EXIF:DateTimeOriginal="$NEW_DATE$existing_time" $file &amp;&gt; /dev/null
+  exiftool -q -overwrite_original -EXIF:CreateDate="$NEW_DATE$existing_time" $file &amp;&gt; /dev/null
+  #echo "replacing existing IPTC values with: "$NEW_DATE
+  exiftool -q -overwrite_original -IPTC:DigitalCreationDate="$NEW_DATE" $file &amp;&gt; /dev/null
+  exiftool -overwrite_original -IPTC:DateCreated="$NEW_DATE" $file &amp;&gt; /dev/null
+  existing_time_s=$(exiftool -XMP:CreateDate $file | grep -o -P "\d.*$" | cut -c11-22)
+  #echo "replacing existing XMP values with: "$NEW_DATE$existing_time_s
+  exiftool -q -overwrite_original -XMP:CreateDate="$NEW_DATE$existing_time_s" $file &amp;&gt; /dev/null
+  exiftool -q -overwrite_original -XMP:DateCreated="$NEW_DATE$existing_time_s" $file &amp;&gt; /dev/null
+done;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/briantward/bash-hacks/blob/master/replace-image-date.sh" class="bare">https://github.com/briantward/bash-hacks/blob/master/replace-image-date.sh</a></p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

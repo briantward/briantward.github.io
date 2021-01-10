@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.69.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -30,9 +30,8 @@ curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/
 for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/elasticsearch/" />
-<meta property="article:published_time" content="2019-11-17T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-11-17T00:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2019-11-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-17T00:00:00+00:00" />
 
 
 <meta itemprop="name" content="ElasticSearch on OpenShift">
@@ -42,8 +41,6 @@ $ sysctl -w vm.max_map_count=262144 $ echo &#34;vm.max_map_count=262144&#34; &gt
    Get indices, run from inside container
 curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s     Delete red indices, run from inside container
 for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container">
-
-
 <meta itemprop="datePublished" content="2019-11-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-17T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="186">
@@ -51,7 +48,6 @@ for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsea
 
 
 <meta itemprop="keywords" content="elasticsearch," />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ElasticSearch on OpenShift"/>
 <meta name="twitter:description" content="ElasticSearch on OpenShift   Node Tuning
@@ -251,7 +247,7 @@ curl -4 -s -XGET --cacert ./path_to_cert/admin-ca --cert ./admin-cert --key ./ad
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

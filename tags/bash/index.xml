@@ -5,10 +5,26 @@
     <description>Recent content in bash on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>DD-WRT Custom Certificate</title>
+        <link>https://briantward.github.io/dd-wrt-certificate/</link>
+        <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
+        <description>DD-WRT Custom Certificate (Tested on R7000)
+ Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
+ In the router GUI go to Services &amp;gt; USB:
+ Select the following
+   Core USB Support: Enabled
+  USB Storage Support: Enabled
+  Automatic Drive Mount: Enabled
+   Click Apply Settings</description>
+      </item>
     
       <item>
         <title>bash Tips</title>

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.69.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -27,25 +27,21 @@
  In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/rhvh-ovirt/" />
-<meta property="article:published_time" content="2020-02-01T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-02-01T00:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2020-02-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-01T00:00:00+00:00" />
 
 
 <meta itemprop="name" content="RHVH Ovirt">
 <meta itemprop="description" content="RHVH Ovirt Red Hat documentation is pretty thorough on the subject of multipath, which is a lovely failover mechanism for connections between remote volumes provided by SANs and the host.[1][2]
  There is even this KCS that discusses the matter a little more: Internal disk device is being detected as multipath device
  In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.">
-
-
 <meta itemprop="datePublished" content="2020-02-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-02-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1158">
+<meta itemprop="wordCount" content="1181">
 
 
 
 <meta itemprop="keywords" content="multipath," />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RHVH Ovirt"/>
 <meta name="twitter:description" content="RHVH Ovirt Red Hat documentation is pretty thorough on the subject of multipath, which is a lovely failover mechanism for connections between remote volumes provided by SANs and the host.[1][2]
@@ -325,6 +321,17 @@ sdg                                                        8:96   1 59.6G  0 dis
 [root@host-a ~]#</code></pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_notes">Notes</h3>
+<div class="paragraph">
+<p>Location of gluster install logs when installing RHV ovirt engine from the GUI:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-rw-r--r--. 1 root root 26K Jan 18 15:03 /var/log/cockpit/ovirt-dashboard/gluster-deployment.log</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="footnotes">
@@ -352,7 +359,7 @@ sdg                                                        8:96   1 59.6G  0 dis
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

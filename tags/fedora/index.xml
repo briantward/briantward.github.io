@@ -5,10 +5,22 @@
     <description>Recent content in fedora on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Running a Container as a Systemd Service on Fedora and RHEL</title>
+        <link>https://briantward.github.io/running-container-as-systemd-service/</link>
+        <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/running-container-as-systemd-service/</guid>
+        <description>Running a Container as a Systemd Service on Fedora and RHEL There is some great documentation on this:
+   Chapter 7. Running containers as systemd services with Podman
+  Chapter 8. Container command-line reference: 8.1.10. Generate a systemd unit file
+   Even better there is a man page:
+ $ man podman-generate-systemd   The basic command looks like this, to be run on an existing running container:</description>
+      </item>
     
       <item>
         <title>Java on RHEL / Centos / Fedora</title>

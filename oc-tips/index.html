@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.69.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -27,25 +27,21 @@
  $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/oc-tips/" />
-<meta property="article:published_time" content="2020-03-23T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-03-23T00:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2020-03-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-23T00:00:00+00:00" />
 
 
 <meta itemprop="name" content="oc Tips">
 <meta itemprop="description" content="OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&#8230;&#8203; and I mean ALL:
  $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
  $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;">
-
-
 <meta itemprop="datePublished" content="2020-03-23T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-23T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="69">
+<meta itemprop="wordCount" content="89">
 
 
 
 <meta itemprop="keywords" content="oc," />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="oc Tips"/>
 <meta name="twitter:description" content="OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&#8230;&#8203; and I mean ALL:
@@ -155,6 +151,14 @@
 <pre>$ for node in $(oc get pods -o jsonpath='{range .items[*].spec}{.nodeName}{" "}{end}'); do echo $node; ssh $node "docker images";done</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Capture total CPU usage in cluster:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc describe nodes | grep -P "cpu:\s*\d$" | awk '{s+=$2} END {print s}'</pre>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -170,7 +174,7 @@
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2020 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 
