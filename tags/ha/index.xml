@@ -1,0 +1,36 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ha on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/ha/</link>
+    <description>Recent content in ha on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/ha/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift HA</title>
+        <link>https://briantward.github.io/openshift-ha/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-ha/</guid>
+        <description>OpenShift HA Good references and resources
+   https://www.openshift.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://www.openshift.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://www.openshift.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://www.openshift.com/blog/disaster-recovery-with-gitops
+  https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html
+   DR options
+ Failure Scenarios
+   Complete datacenter outage
+  Availability Zone failure (network segment or group of racks)
+  Rack failure
+  Host failure
+  VM failure
+  OpenShift master failure
+  OpenShift etcd failure (etcd backup and restore)</description>
+      </item>
+    
+  </channel>
+</rss>

@@ -5,7 +5,7 @@
     <description>Recent content in certificate on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Dec 2018 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/certificate/index.xml" rel="self" type="application/rss+xml" />
     
@@ -24,7 +24,7 @@
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-update-router-fix/</guid>
         <description>OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
- Log message on router pod attempting to spin up. If you don&amp;#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
+ Log message on router pod attempting to spin up. If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
       </item>
     
   </channel>

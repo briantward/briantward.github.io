@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>client on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/client/</link>
+    <description>Recent content in client on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/client/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift SSH Client in a Pod</title>
+        <link>https://briantward.github.io/openshift-ssh-client-in-pod/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-ssh-client-in-pod/</guid>
+        <description>OpenShift SSH Client in a Pod This is just conceptual.
+ $ mkdir ssh-test &amp;amp;&amp;amp; cd ssh-test $ echo &amp;#39;FROM registry.access.redhat.com/rhel7:latest USER root RUN yum-config-manager --enable rhel-7-server-rpms &amp;amp;&amp;amp; yum install openssh-clients -y&amp;#39; &amp;gt; Dockerfile $ oc new-project ssh-test $ oc new-build . --to ssh-test $ oc start-build ssh-test --from-dir . $ oc run -i -t ssh-test --image=172.30.1.1:5000/ssh-test/ssh-test --command -- /bin/bash bash-4.2$ which ssh bash-4.2$ exit $ echo &amp;#39;&amp;lt;PRIVATE_KEY_FILE&amp;gt; id_rsa $ echo &amp;#39;&amp;lt;KNOWN_HOSTS_FILE&amp;#39; &amp;gt; known_hosts $ oc create secret generic id-key --from-file=id_rsa $ oc create secret generic known-hosts --from-file=known_hosts $ oc set volumes dc/ssh-test --add --name=id-key --type=secret --secret-name=id-key --mount-path=/ssh/id_rsa --default-mode=&amp;#39;0600&amp;#39; $ oc set volumes dc/ssh-test --add --name=known-hosts --type=secret --secret-name=known-hosts --mount-path=/ssh/known_hosts --default-mode=&amp;#39;0600&amp;#39; $ ssh -i /ssh/id_rsa/id_rsa user@remote.</description>
+      </item>
+    
+  </channel>
+</rss>

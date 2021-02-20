@@ -1,0 +1,29 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>continuous on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/continuous/</link>
+    <description>Recent content in continuous on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/continuous/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift CICD</title>
+        <link>https://briantward.github.io/openshift-cicd/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-cicd/</guid>
+        <description>OpenShift CICD   environment changes that progress through the environments
+  application performance configuration
+  feature flags
+  environment changes specific to an environment
+  connection endpoint URLs
+  image name/tag
+   Scenario 0: First project deployment - scaffold code, base image, build pipeline
+ Scenario 1: Application is rebuilt from source code, base image doesn’t change: - build binary image - rebuild container image from same base image - tag with new version numbering scheme - (dev) picks up new version and deploys immediately</description>
+      </item>
+    
+  </channel>
+</rss>

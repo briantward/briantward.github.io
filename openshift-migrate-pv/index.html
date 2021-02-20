@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -35,13 +35,14 @@
 <meta itemprop="description" content="Migrate OpenShift PersistentVolumes from One Cluster to Another Work In Progress!
  $ oc get pv mypvid -o yaml --export &gt; mypv.yaml $ oc get pvc mypvcid -o yaml --export &gt; mypvc.yaml   Remove all annotations and instance identifiers. If you leave them in place, you may get an error stating the PVC is lost.
  Verify that all SecurityContextContstraints are the same between each cluster and project environment, otherwise you may fail to gain ownership of the volume.">
-<meta itemprop="datePublished" content="2018-12-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-04T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-12-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-04T00:00:00+00:00" />
 <meta itemprop="wordCount" content="206">
 
 
 
 <meta itemprop="keywords" content="sync,Red Hat,container,pv,migrate,cluster,persistentvolume,persistentvolumeclaim," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Migrate OpenShift PersistentVolumes from One Cluster to Another"/>
 <meta name="twitter:description" content="Migrate OpenShift PersistentVolumes from One Cluster to Another Work In Progress!
@@ -175,7 +176,7 @@ $ oc get pvc mypvcid -o yaml --export &gt; mypvc.yaml</pre>
 <p>Validate from your storage backend that the volume was released, if possible.</p>
 </div>
 <div class="paragraph">
-<p>You do not need to worry about Retention if you leave everything in place in your old cluster while you spin up your new cluster.  However, if you were to delete your PVC and the Retention policy is delete, it will delete the PersistentVolume!  So don&#8217;t do that.  Bear in mind that if both environments are in use at the same time you could probably have serious problems.  If possible, point the new cluster to a new snapshot of the volumes such that the new cluster isn&#8217;t even using the same storage, but a copy of it.</p>
+<p>You do not need to worry about Retention if you leave everything in place in your old cluster while you spin up your new cluster.  However, if you were to delete your PVC and the Retention policy is delete, it will delete the PersistentVolume!  So don’t do that.  Bear in mind that if both environments are in use at the same time you could probably have serious problems.  If possible, point the new cluster to a new snapshot of the volumes such that the new cluster isn’t even using the same storage, but a copy of it.</p>
 </div>
 <div class="paragraph">
 <p>On new cluster</p>

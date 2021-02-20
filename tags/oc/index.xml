@@ -5,7 +5,7 @@
     <description>Recent content in oc on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/oc/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,11 +13,11 @@
       <item>
         <title>oc Tips</title>
         <link>https://briantward.github.io/oc-tips/</link>
-        <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/oc-tips/</guid>
-        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
+        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources…​ and I mean ALL:
  $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
- $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;</description>
+ $ for node in $(oc get pods -o jsonpath=&amp;#39;{range .items[*].spec}{.nodeName}{&amp;#34; &amp;#34;}{end}&amp;#39;); do echo $node; ssh $node &amp;#34;docker images&amp;#34;;done   Capture total CPU usage in cluster:</description>
       </item>
     
   </channel>

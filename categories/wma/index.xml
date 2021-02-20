@@ -16,7 +16,7 @@
         <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/convert-wma-to-mp3/</guid>
         <description>Convert WMA to MP3 A one liner to convert all WMA files in a directory to MP3
- for file in *.wma; do ffmpeg -i &#34;${file}&#34; -acodec libmp3lame -ab 192k &#34;${file/.wma/.mp3}&#34;; done   From:
+ for file in *.wma; do ffmpeg -i &amp;#34;${file}&amp;#34; -acodec libmp3lame -ab 192k &amp;#34;${file/.wma/.mp3}&amp;#34;; done   From:
    https://askubuntu.com/questions/508278/how-to-use-ffmpeg-to-convert-wma-to-mp3-recursively-importing-from-txt-file
      </description>
       </item>

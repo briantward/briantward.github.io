@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scc on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/scc/</link>
+    <description>Recent content in scc on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/scc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift SecurityContextConstraints (SCC)</title>
+        <link>https://briantward.github.io/scc/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/scc/</guid>
+        <description>OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
+ Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
+ # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
+ # oc create rolebinding useroot --role=useroot --serviceaccount=&amp;lt;namespace&amp;gt;:&amp;lt;sa&amp;gt;   (bind it to the service account)</description>
+      </item>
+    
+  </channel>
+</rss>

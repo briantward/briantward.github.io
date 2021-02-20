@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -35,13 +35,14 @@
 <meta itemprop="description" content="OpenShift Authenticate all Namespaces to a Secured Registry If your organization maintains or uses a third-party container registry requiring authentication, this article will help you setup one set of credentials in OpenShift for all your users.
  Implication: all users have access to these credentials. They should be read-only.
  Recently Red Hat launched a new Container Registry at registry.redhat.io requiring authenticated logins. When you install an OpenShift 3.10 or greater cluster, your default pull registry for the images and templates in the OpenShift namespace will use this registry.">
-<meta itemprop="datePublished" content="2019-05-24T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-05-24T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-05-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-05-24T00:00:00+00:00" />
 <meta itemprop="wordCount" content="634">
 
 
 
 <meta itemprop="keywords" content="registry,redhat," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift Authenticate all Namespaces to a Secured Registry"/>
 <meta name="twitter:description" content="OpenShift Authenticate all Namespaces to a Secured Registry If your organization maintains or uses a third-party container registry requiring authentication, this article will help you setup one set of credentials in OpenShift for all your users.
@@ -227,7 +228,7 @@
 <div class="content">
 <pre class="highlight"><code>    ...
     projectConfig:
-      projectRequestTemplate: "default/project-request"
+      projectRequestTemplate: &#34;default/project-request&#34;
       ...</code></pre>
 </div>
 </div>

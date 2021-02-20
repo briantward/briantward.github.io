@@ -16,7 +16,7 @@
         <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/gluster-tips/</guid>
         <description>Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
- # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&amp;#8217;s all down.</description>
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it’s all down.</description>
       </item>
     
   </channel>

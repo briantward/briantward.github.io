@@ -15,7 +15,7 @@
         <link>https://briantward.github.io/ansible-tips/</link>
         <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/ansible-tips/</guid>
-        <description>Ansible Tips Print to stout and log at same time&amp;#8230;&amp;#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&amp;#8230;&amp;#8203; this one cleans up your journals&amp;#8230;&amp;#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      </description>
+        <description>Ansible Tips Print to stout and log at same time…​ ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts…​ this one cleans up your journals…​ and runs 10 at a time ansible all -a &amp;#39;journalctl --vacuum-time=2d&amp;#39; -f 10      </description>
       </item>
     
       <item>
@@ -39,7 +39,7 @@
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
         <guid>https://briantward.github.io/configure-google-oidc/</guid>
         <description>Configure Google OIDC https://console.cloud.google.com
- Since this topic has been well handled by the Keycloak team, I&amp;#8217;m adding there documentation here.
+ Since this topic has been well handled by the Keycloak team, I’m adding there documentation here.
    https://www.keycloak.org/docs/3.4/server_admin/index.html#google
      </description>
       </item>
@@ -69,7 +69,7 @@
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
         <guid>https://briantward.github.io/rh-sso-on-openshift/</guid>
         <description>Install RH-SSO on Openshift First create a new project to keep RH-SSO work clean and easily delete it if necessary.
- oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You&amp;#8217;ve got lots of other choices.
+ oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You’ve got lots of other choices.
  $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application.</description>
       </item>
     

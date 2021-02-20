@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -37,13 +37,14 @@
  https://github.com/sclorg/httpd-container
   Create a configmap to mount a log.conf file that contains your apache loglevel configuration. Be sure to update &lt;PROJECT_NAMESPACE&gt; below before running this command.
    echo &#39;apiVersion: v1 data: log.conf: | LogLevel debug ErrorLog /dev/stdout TransferLog /dev/stdout&#39; kind: ConfigMap metadata: name: logfile namespace: &lt;PROJECT_NAMESPACE&gt;&#39; | oc create -f -    Update your deploymentConfig.">
-<meta itemprop="datePublished" content="2018-12-13T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-13T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-12-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-13T00:00:00+00:00" />
 <meta itemprop="wordCount" content="99">
 
 
 
 <meta itemprop="keywords" content="Red Hat,container,httpd,loglevel,logging," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift HTTPD loglevel"/>
 <meta name="twitter:description" content="OpenShift HTTPD loglevel OpenShift comes with a container image packaged from this source. To make further configuration changes check the documentation here.
@@ -159,16 +160,16 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>echo 'apiVersion: v1
+<pre class="highlight"><code>echo &#39;apiVersion: v1
 data:
   log.conf: |
     LogLevel debug
     ErrorLog /dev/stdout
-    TransferLog /dev/stdout'
+    TransferLog /dev/stdout&#39;
 kind: ConfigMap
 metadata:
   name: logfile
-  namespace: &lt;PROJECT_NAMESPACE&gt;' | oc create -f -</code></pre>
+  namespace: &lt;PROJECT_NAMESPACE&gt;&#39; | oc create -f -</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -177,7 +178,7 @@ metadata:
 <p>Update your deploymentConfig. Configmaps with apache configs for the image <code>rhscl/httpd-24-rhel7</code> should mount to <code>/opt/app-root/etc/httpd.d/</code></p>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc volume dc mydeploymentconfig  --add --overwrite --name=logfile --mount-path=/opt/app-root/etc/httpd.d/ --source='{"configMap": { "name": "logfile"}}'</pre>
+<pre>$ oc volume dc mydeploymentconfig  --add --overwrite --name=logfile --mount-path=/opt/app-root/etc/httpd.d/ --source=&#39;{&#34;configMap&#34;: { &#34;name&#34;: &#34;logfile&#34;}}&#39;</pre>
 </div>
 </div>
 </li>

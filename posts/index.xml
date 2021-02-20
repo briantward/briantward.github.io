@@ -5,10 +5,192 @@
     <description>Recent content in List of posts on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>AWS ELB Kubernetes Service</title>
+        <link>https://briantward.github.io/kubernetes-service-aws-elb/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/kubernetes-service-aws-elb/</guid>
+        <description>AWS ELB Kubernetes Service By default, services of type LoadBalancer create public-facing load balancers. To use an internal load balancer, apply the following annotation to your service:
+ service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;
+ https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
+   </description>
+      </item>
+    
+      <item>
+        <title>Building a Media Server</title>
+        <link>https://briantward.github.io/emby/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/emby/</guid>
+        <description>Building a Media Server A while back I was on the hunt for a media server solution…​ these are running notes about 2 years old as of now (2/2021).
+ Handling video playback and copying DVD content to my digital storage. This was interesting but looked a bit old. Dunno much about how old nux-desktop-release-0-5 is.
+ https://gist.github.com/tareqy/0a3c07d49258a678cf68ca17725ad326
+ yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm yum -y install yum install ffmpeg HandBrake-cli   Could make a totally custom build of Handbrake on the latest Fedora, which is what Handbrake’s website suggests.</description>
+      </item>
+    
+      <item>
+        <title>Convert VHS to Digital</title>
+        <link>https://briantward.github.io/convert-vhs-to-digital/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/convert-vhs-to-digital/</guid>
+        <description>Convert VHS to Digital OBS Studio is great for recording but limited in modification of video. OpenShot is great for then editing that video and trimming out pieces.
+ On Fedora 32, I can capture video and audio with the USB Easy Capture device and &amp;#34;Audio Capture Device&amp;#34; on OBS set to ALSA. The audio settings provide a sync offset that doesn’t work well and is hard to tell if it is working right unless you fully record and capture.</description>
+      </item>
+    
+      <item>
+        <title>Debugging Ephemeral Disk in Kubernetes</title>
+        <link>https://briantward.github.io/ephemeral/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/ephemeral/</guid>
+        <description>Debugging Ephemeral Disk in Kubernetes Useful links on discussing ephemeral storage in OpenShift
+   https://docs.openshift.com/container-platform/3.11/dev_guide/application_ephemeral_storage_sizing.html
+  https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/ephemeral-storage.html
+  https://docs.openshift.com/container-platform/3.11/scaling_performance/optimizing_ephemeral_storage.html
+  https://docs.openshift.com/container-platform/3.11/install_config/configuring_ephemeral.html
+   TODO: Add links for same in OpenShift 4
+ Funky log messages…​ when ephemeral limit request is not set, the system logs it as 0.
+ 1:32:26 PM Warning Evicted The node was low on resource: ephemeral-storage. Container mycontainer was using 215481700Ki, which exceeds its request of 0.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift CICD</title>
+        <link>https://briantward.github.io/openshift-cicd/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-cicd/</guid>
+        <description>OpenShift CICD   environment changes that progress through the environments
+  application performance configuration
+  feature flags
+  environment changes specific to an environment
+  connection endpoint URLs
+  image name/tag
+   Scenario 0: First project deployment - scaffold code, base image, build pipeline
+ Scenario 1: Application is rebuilt from source code, base image doesn’t change: - build binary image - rebuild container image from same base image - tag with new version numbering scheme - (dev) picks up new version and deploys immediately</description>
+      </item>
+    
+      <item>
+        <title>OpenShift HA</title>
+        <link>https://briantward.github.io/openshift-ha/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-ha/</guid>
+        <description>OpenShift HA Good references and resources
+   https://www.openshift.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://www.openshift.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://www.openshift.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://www.openshift.com/blog/disaster-recovery-with-gitops
+  https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html
+   DR options
+ Failure Scenarios
+   Complete datacenter outage
+  Availability Zone failure (network segment or group of racks)
+  Rack failure
+  Host failure
+  VM failure
+  OpenShift master failure
+  OpenShift etcd failure (etcd backup and restore)</description>
+      </item>
+    
+      <item>
+        <title>OpenShift RBAC</title>
+        <link>https://briantward.github.io/openshift-roles/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-roles/</guid>
+        <description>OpenShift RBAC oc auth can-i VERB OBJECT oc adm policy who-can VERB OBJECT   oc get clusterrole basic-user -o yaml oc get clusterrole cluster-admin -o yaml   https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications
+   </description>
+      </item>
+    
+      <item>
+        <title>OpenShift SecurityContextConstraints (SCC)</title>
+        <link>https://briantward.github.io/scc/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/scc/</guid>
+        <description>OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
+ Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
+ # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
+ # oc create rolebinding useroot --role=useroot --serviceaccount=&amp;lt;namespace&amp;gt;:&amp;lt;sa&amp;gt;   (bind it to the service account)</description>
+      </item>
+    
+      <item>
+        <title>OpenShift SSH Client in a Pod</title>
+        <link>https://briantward.github.io/openshift-ssh-client-in-pod/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-ssh-client-in-pod/</guid>
+        <description>OpenShift SSH Client in a Pod This is just conceptual.
+ $ mkdir ssh-test &amp;amp;&amp;amp; cd ssh-test $ echo &amp;#39;FROM registry.access.redhat.com/rhel7:latest USER root RUN yum-config-manager --enable rhel-7-server-rpms &amp;amp;&amp;amp; yum install openssh-clients -y&amp;#39; &amp;gt; Dockerfile $ oc new-project ssh-test $ oc new-build . --to ssh-test $ oc start-build ssh-test --from-dir . $ oc run -i -t ssh-test --image=172.30.1.1:5000/ssh-test/ssh-test --command -- /bin/bash bash-4.2$ which ssh bash-4.2$ exit $ echo &amp;#39;&amp;lt;PRIVATE_KEY_FILE&amp;gt; id_rsa $ echo &amp;#39;&amp;lt;KNOWN_HOSTS_FILE&amp;#39; &amp;gt; known_hosts $ oc create secret generic id-key --from-file=id_rsa $ oc create secret generic known-hosts --from-file=known_hosts $ oc set volumes dc/ssh-test --add --name=id-key --type=secret --secret-name=id-key --mount-path=/ssh/id_rsa --default-mode=&amp;#39;0600&amp;#39; $ oc set volumes dc/ssh-test --add --name=known-hosts --type=secret --secret-name=known-hosts --mount-path=/ssh/known_hosts --default-mode=&amp;#39;0600&amp;#39; $ ssh -i /ssh/id_rsa/id_rsa user@remote.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Time and Date</title>
+        <link>https://briantward.github.io/openshift4-timedate/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift4-timedate/</guid>
+        <description>OpenShift Time and Date OCP timedate
+   https://access.redhat.com/solutions/2567961
+  https://access.redhat.com/solutions/4994241
+     </description>
+      </item>
+    
+      <item>
+        <title>Pulseaudio Customization</title>
+        <link>https://briantward.github.io/audio-fix/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/audio-fix/</guid>
+        <description>Pulseaudio Customization Stop pulseaudio from messing around with your sound levels while in the middle of conference calls on Fedora 31. This may or may not work as intended. I have not done this on my latest Fedora 32 and have not felt the need for it. Previous releases I have had the problem of pulseaudio changing my microphone input levels dynamically. People on the other end claim that my input volume would go down drastically.</description>
+      </item>
+    
+      <item>
+        <title>Using nsenter strace and tcpdump in OpenShift containers</title>
+        <link>https://briantward.github.io/nsenter/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/nsenter/</guid>
+        <description>Using nsenter strace and tcpdump in OpenShift containers   nsenter
+  strace
+  tcpdump
+  oc rsyn -h
+   capture a tcpdump of the base ethernet interface on the node:
+ # tcpdump -s 0 -n -i ethX -w /tmp/$(hostname)-$(date +&amp;#34;%Y-%m-%d-%H-%M-%S&amp;#34;).pcap   find the container ID from the container engine:
+ # docker ps # cid=&amp;lt;docker-container-id&amp;gt;   find the runtime PID from inspecting the container itself:</description>
+      </item>
+    
+      <item>
+        <title>Running OpenShot in a Container</title>
+        <link>https://briantward.github.io/openshot-in-a-container/</link>
+        <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshot-in-a-container/</guid>
+        <description>Running OpenShot in a Container Transform with OpenShot OpenShot on Fedora 33 doesn’t work. Well, not for me at least. Basically it installs fine and runs fine, but the moment I attempt to import a file, boom! Core Dump generated.
+ using the following packages:
+ $ rpm -qa openshot ffmpeg ffmpeg-4.3.1-16.fc33.x86_64 openshot-2.5.1-4.fc33.noarch   I found the following when searching around for similar issues:
+ https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559
+ Which took me to this in the blender code:</description>
+      </item>
+    
+      <item>
+        <title>oc Tips</title>
+        <link>https://briantward.github.io/oc-tips/</link>
+        <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources…​ and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
+ $ for node in $(oc get pods -o jsonpath=&amp;#39;{range .items[*].spec}{.nodeName}{&amp;#34; &amp;#34;}{end}&amp;#39;); do echo $node; ssh $node &amp;#34;docker images&amp;#34;;done   Capture total CPU usage in cluster:</description>
+      </item>
+    
+      <item>
+        <title>Performance</title>
+        <link>https://briantward.github.io/performance/</link>
+        <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/performance/</guid>
+        <description>Performance https://docs.openshift.com/container-platform/4.6/scalability_and_performance/recommended-host-practices.html#recommended-etcd-practices_
+ How to Use &amp;#39;fio&amp;#39; to Check Etcd Disk Performance
+ https://access.redhat.com/solutions/4885641
+ https://access.redhat.com/solutions/4770281
+ https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd
+ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/vdo-ev-performance-testing
+ for depth in 1 2 4 8 16 32 64; do fio --rw=write --bs=4096 --name=vdo --filename=/var/lib/etcd/perftest --ioengine=libaio --numjobs=1 --thread --norandommap --runtime=300 --direct=1 --iodepth=$depth --scramble_buffers=1 --offset=0 --size=10g done   https://docs.openshift.com/container-platform/3.11/scaling_performance/managing_hugepages.html
+   </description>
+      </item>
     
       <item>
         <title>DD-WRT Custom Certificate</title>
@@ -16,7 +198,7 @@
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
         <description>DD-WRT Custom Certificate (Tested on R7000)
- Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.
  On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
  In the router GUI go to Services &amp;gt; USB:
  Select the following
@@ -31,7 +213,19 @@
         <link>https://briantward.github.io/image-video-metadata-p2/</link>
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/image-video-metadata-p2/</guid>
-        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&amp;#8217;t right, it can be pretty confusing/noticeable.</description>
+        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn’t right, it can be pretty confusing/noticeable.</description>
+      </item>
+    
+      <item>
+        <title>C Build Tools</title>
+        <link>https://briantward.github.io/c-build-tools/</link>
+        <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/c-build-tools/</guid>
+        <description>C Build Tools   autotools
+  bmake
+  cmake
+  llvm
+     </description>
       </item>
     
       <item>
@@ -69,7 +263,7 @@
         <link>https://briantward.github.io/new-relic-on-openshift-4/</link>
         <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/new-relic-on-openshift-4/</guid>
-        <description>New Relic on OpenShift 4 Follow the instructions on New Relic&amp;#8217;s website:
+        <description>New Relic on OpenShift 4 Follow the instructions on New Relic’s website:
  https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes
  Modified here. There is no need for adding the MutatingAdmissionWebhook as this is already enabled by default in OCP 4, so skip that section.
   Download the YAML file:
@@ -78,22 +272,12 @@ curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernete
       </item>
     
       <item>
-        <title>oc Tips</title>
-        <link>https://briantward.github.io/oc-tips/</link>
-        <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/oc-tips/</guid>
-        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
- $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;</description>
-      </item>
-    
-      <item>
         <title>Running Secure Containers on Fedora 31 and RHEL 8</title>
         <link>https://briantward.github.io/running-secure-containers-on-fedora/</link>
         <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/running-secure-containers-on-fedora/</guid>
-        <description>Running Secure Containers on Fedora 31 and RHEL 8 The first thing to note here, is that &#34;secured&#34; means running the container with SELinux enforcing. If you don&amp;#8217;t care about SELinux or have other alternatives in place, move along here, as you won&amp;#8217;t find this useful. I will not be discussing application security or platform security.
- The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat&amp;#8217;s Container platform built on Kubernetes.</description>
+        <description>Running Secure Containers on Fedora 31 and RHEL 8 The first thing to note here, is that &amp;#34;secured&amp;#34; means running the container with SELinux enforcing. If you don’t care about SELinux or have other alternatives in place, move along here, as you won’t find this useful. I will not be discussing application security or platform security.
+ The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat’s Container platform built on Kubernetes.</description>
       </item>
     
       <item>
@@ -109,8 +293,7 @@ curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernete
         <link>https://briantward.github.io/installing-glusterfs-on-openshift/</link>
         <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/installing-glusterfs-on-openshift/</guid>
-        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170
-OpenShift Container Storage 3.11.5
+        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170 OpenShift Container Storage 3.11.5
  Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)
  On my first run, I hit this for some odd reason:
  TASK [cockpit : Install cockpit-ws] ************************************************************************************************************** FAILED - RETRYING: Install cockpit-ws (3 retries left). FAILED - RETRYING: Install cockpit-ws (2 retries left). FAILED - RETRYING: Install cockpit-ws (1 retries left).</description>
@@ -123,7 +306,7 @@ OpenShift Container Storage 3.11.5
         <guid>https://briantward.github.io/coredns-nonprivileged/</guid>
         <description>CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
  You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
- $ echo &#39;apiVersion: v1 data: Corefile: | example.</description>
+ $ echo &amp;#39;apiVersion: v1 data: Corefile: | example.</description>
       </item>
     
       <item>
@@ -142,11 +325,11 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
         <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/bash-tips/</guid>
         <description>Command Tips String the watch command with several commands at once
- watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
- This one is useful when you don&amp;#8217;t have a user directory on the system yet.
+ watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don’t have a user directory on the system yet.
  /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
- Because docker rmi on all image IDs doesn&amp;#8217;t work when one image ID maps to multiple repo:tag combinations.
- $ docker images | grep -v REPO | awk &#39;{print $1&#34;</description>
+ Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
+ $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
       </item>
     
       <item>
@@ -164,9 +347,9 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
         <link>https://briantward.github.io/ssh-tips/</link>
         <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/ssh-tips/</guid>
-        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;    SSH-Forwarding Like this guy&amp;#8217;s example. After using nc for years, ProxyJump is now very useful!
+        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &amp;#34;email organization&amp;#34;    SSH-Forwarding Like this guy’s example. After using nc for years, ProxyJump is now very useful!
  Host forum HostName www.nixcraft.com ProxyJump vivek@jumhost.nixcraft.com:22 User vivek   https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/
-  ForwardAgent I&amp;#8217;m not truly certain about the security implications of using ForwardAgent, but this article does suggest there are some issues.</description>
+  ForwardAgent I’m not truly certain about the security implications of using ForwardAgent, but this article does suggest there are some issues.</description>
       </item>
     
       <item>
@@ -221,7 +404,7 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
         <guid>https://briantward.github.io/docker-core-dump/</guid>
         <description>Docker Core Dumps  Get the container id (CID) of the pod to be checked. From the node running the pod. You will need to be able to identify your container ID.
 # docker ps # CID=xxx     Check if docker is logging
-# docker logs &amp;lt;CID&amp;gt;     Check node&amp;#8217;s journal
+# docker logs &amp;lt;CID&amp;gt;     Check node’s journal
 # journalctl CONTAINER_ID=&amp;lt;CID&amp;gt;     Grab lsof and gcore for each process: dockerd-current, docker-containerd-current, and docker-containerd-shim-current.</description>
       </item>
     
@@ -231,7 +414,7 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
         <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/minishift-tips/</guid>
         <description>MiniShift Tips hard cleanup minishift environment For example, for errors such as
- domain &#39;minishift&#39; already exists with uuid    Check if the VM is still running
+ domain &amp;#39;minishift&amp;#39; already exists with uuid    Check if the VM is still running
 $ sudo virsh list --all     If it is running, stop the minishift VM
 $ sudo virsh destroy minishift     Delete the VM
 $ sudo virsh undefine minishift     Delete the .minishift/machines dir</description>
@@ -267,9 +450,7 @@ $ sudo virsh undefine minishift     Delete the .minishift/machines dir</descript
   https://docs.openshift.com/container-platform/3.7/architecture/networking/routes.html#routes-sticky-sessions
   https://docs.openshift.com/container-platform/3.7/dev_guide/routes.html#dev-guide-routes-allowing-endpoints-to-control-cookies
    passthrough
-   https://github.com/openshift/origin/commit/a4815c6314f9df1d2ce8060216d0924181c48b6c
-Changed the router default to roundrobin if non-zero weights are used
-https://bugzilla.redhat.com/show_bug.cgi?id=1416869
+   https://github.com/openshift/origin/commit/a4815c6314f9df1d2ce8060216d0924181c48b6c Changed the router default to roundrobin if non-zero weights are used https://bugzilla.redhat.com/show_bug.cgi?id=1416869
    stick sessions in haproxy
    https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/
   http://www.haproxy.org/download/1.8/doc/configuration.txt (3.11)
@@ -283,7 +464,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1416869
         <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/rh-sso-filter-examples/</guid>
         <description>RH-SSO Filter Examples This Undertow filter prevents certain IP addresses from access resources on the server.
-  &amp;lt;subsystem xmlns=&#34;urn:jboss:domain:undertow:3.1&#34;&amp;gt; &amp;lt;buffer-cache name=&#34;default&#34;/&amp;gt; &amp;lt;server name=&#34;default-server&#34;&amp;gt; &amp;lt;http-listener name=&#34;default&#34; socket-binding=&#34;http&#34; redirect-socket=&#34;https&#34;/&amp;gt; &amp;lt;https-listener name=&#34;https&#34; record-request-start-time=&#34;true&#34; security-realm=&#34;CertificateRealm&#34; socket-binding=&#34;https&#34;/&amp;gt; &amp;lt;host name=&#34;default-host&#34; alias=&#34;localhost&#34;&amp;gt; &amp;lt;location name=&#34;/&#34; handler=&#34;welcome-content&#34;/&amp;gt; &amp;lt;access-log pattern=&#34;%{i,X-Forwarded-For} %h %l %u %t &amp;amp;quot;%r&amp;amp;quot; %s %b &amp;amp;quot;%{i,Referer}&amp;amp;quot; &amp;amp;quot;%{i,User-Agent}&amp;amp;quot; &amp;amp;quot;%{i,COOKIE}&amp;amp;quot; &amp;amp;quot;%{o,SET-COOKIE}&amp;amp;quot; %S &amp;amp;quot;%I&amp;amp;quot; %T&#34;/&amp;gt; &amp;lt;filter-ref name=&#34;my-proxy-peer-address&#34; predicate=&#34;equals(%p,8443)&#34;/&amp;gt; &amp;lt;filter-ref name=&#34;kc-account-update-reject&#34;/&amp;gt; &amp;lt;filter-ref name=&#34;kc-admin-reject&#34;/&amp;gt; &amp;lt;/host&amp;gt; &amp;lt;/server&amp;gt; &amp;lt;servlet-container name=&#34;default&#34;&amp;gt; &amp;lt;jsp-config/&amp;gt; &amp;lt;websockets/&amp;gt; &amp;lt;/servlet-container&amp;gt; &amp;lt;handlers&amp;gt; &amp;lt;file name=&#34;</description>
+  &amp;lt;subsystem xmlns=&amp;#34;urn:jboss:domain:undertow:3.1&amp;#34;&amp;gt; &amp;lt;buffer-cache name=&amp;#34;default&amp;#34;/&amp;gt; &amp;lt;server name=&amp;#34;default-server&amp;#34;&amp;gt; &amp;lt;http-listener name=&amp;#34;default&amp;#34; socket-binding=&amp;#34;http&amp;#34; redirect-socket=&amp;#34;https&amp;#34;/&amp;gt; &amp;lt;https-listener name=&amp;#34;https&amp;#34; record-request-start-time=&amp;#34;true&amp;#34; security-realm=&amp;#34;CertificateRealm&amp;#34; socket-binding=&amp;#34;https&amp;#34;/&amp;gt; &amp;lt;host name=&amp;#34;default-host&amp;#34; alias=&amp;#34;localhost&amp;#34;&amp;gt; &amp;lt;location name=&amp;#34;/&amp;#34; handler=&amp;#34;welcome-content&amp;#34;/&amp;gt; &amp;lt;access-log pattern=&amp;#34;%{i,X-Forwarded-For} %h %l %u %t &amp;amp;quot;%r&amp;amp;quot; %s %b &amp;amp;quot;%{i,Referer}&amp;amp;quot; &amp;amp;quot;%{i,User-Agent}&amp;amp;quot; &amp;amp;quot;%{i,COOKIE}&amp;amp;quot; &amp;amp;quot;%{o,SET-COOKIE}&amp;amp;quot; %S &amp;amp;quot;%I&amp;amp;quot; %T&amp;#34;/&amp;gt; &amp;lt;filter-ref name=&amp;#34;my-proxy-peer-address&amp;#34; predicate=&amp;#34;equals(%p,8443)&amp;#34;/&amp;gt; &amp;lt;filter-ref name=&amp;#34;kc-account-update-reject&amp;#34;/&amp;gt; &amp;lt;filter-ref name=&amp;#34;kc-admin-reject&amp;#34;/&amp;gt; &amp;lt;/host&amp;gt; &amp;lt;/server&amp;gt; &amp;lt;servlet-container name=&amp;#34;default&amp;#34;&amp;gt; &amp;lt;jsp-config/&amp;gt; &amp;lt;websockets/&amp;gt; &amp;lt;/servlet-container&amp;gt; &amp;lt;handlers&amp;gt; &amp;lt;file name=&amp;#34;welcome-content&amp;#34; path=&amp;#34;${jboss.</description>
       </item>
     
       <item>
@@ -308,12 +489,10 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1416869
         <link>https://briantward.github.io/lenovo-linux-intel-i915-video-part3/</link>
         <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lenovo-linux-intel-i915-video-part3/</guid>
-        <description>Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps:
-Lenovo T460s
-thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+        <description>Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps: Lenovo T460s thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
   Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
   Undock laptop.
-  Redock laptop &amp;#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
+  Redock laptop → screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
       </item>
     
       <item>
@@ -322,11 +501,11 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/2
         <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/elasticsearch/</guid>
         <description>ElasticSearch on OpenShift   Node Tuning
-$ sysctl -w vm.max_map_count=262144 $ echo &#34;vm.max_map_count=262144&#34; &amp;gt; /etc/sysctl.d/90-logging.conf   https://github.com/openshift/openshift-ansible/blob/release-3.11/playbooks/openshift-logging/private/config.yml#L94-L116
+$ sysctl -w vm.max_map_count=262144 $ echo &amp;#34;vm.max_map_count=262144&amp;#34; &amp;gt; /etc/sysctl.d/90-logging.conf   https://github.com/openshift/openshift-ansible/blob/release-3.11/playbooks/openshift-logging/private/config.yml#L94-L116
  https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
    Get indices, run from inside container
 curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s     Delete red indices, run from inside container
-for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container</description>
+for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &amp;#39;{print $3}&amp;#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container</description>
       </item>
     
       <item>
@@ -334,9 +513,7 @@ for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsea
         <link>https://briantward.github.io/dev-containers/</link>
         <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/dev-containers/</guid>
-        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7
-https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7
-Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
+        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7 https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7 Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
       </item>
     
       <item>
@@ -354,15 +531,11 @@ Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red 
         <link>https://briantward.github.io/anti-virus-on-rhel/</link>
         <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/anti-virus-on-rhel/</guid>
-        <description>Antivirus on Red Hat Enterprise Linux   Search for Anti-Virus certified on RHEL ecosystem:
-https://access.redhat.com/ecosystem/search/#/category/Software?sort=sortTitle%20asc&amp;amp;query=virus&amp;amp;ecosystem=Red%20Hat%20Enterprise%20Linux
-  Is any virus protection software needed for Red Hat Enterprise Linux?
-https://access.redhat.com/solutions/9203
-  Is fanotify supported in Red Hat Enterprise Linux?
-https://access.redhat.com/solutions/458193
-  Systems become unresponsive due to an issue in the implementation of Fanotify in Red Hat and CentOS 7.x kernels
-https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;actp=null&amp;amp;viewlocale=en_US&amp;amp;showDraft=false&amp;amp;platinum_status=false&amp;amp;locale=en_US
-  System hang due to blocked tasks in fanotify code</description>
+        <description>Antivirus on Red Hat Enterprise Linux   Search for Anti-Virus certified on RHEL ecosystem: https://access.redhat.com/ecosystem/search/#/category/Software?sort=sortTitle%20asc&amp;amp;query=virus&amp;amp;ecosystem=Red%20Hat%20Enterprise%20Linux
+  Is any virus protection software needed for Red Hat Enterprise Linux? https://access.redhat.com/solutions/9203
+  Is fanotify supported in Red Hat Enterprise Linux? https://access.redhat.com/solutions/458193
+  Systems become unresponsive due to an issue in the implementation of Fanotify in Red Hat and CentOS 7.x kernels https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;actp=null&amp;amp;viewlocale=en_US&amp;amp;showDraft=false&amp;amp;platinum_status=false&amp;amp;locale=en_US
+  System hang due to blocked tasks in fanotify code https://access.</description>
       </item>
     
       <item>
@@ -371,7 +544,7 @@ https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;ac
         <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/gluster-tips/</guid>
         <description>Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
- # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&amp;#8217;s all down.</description>
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it’s all down.</description>
       </item>
     
       <item>
@@ -423,7 +596,7 @@ https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;ac
         <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/convert-wma-to-mp3/</guid>
         <description>Convert WMA to MP3 A one liner to convert all WMA files in a directory to MP3
- for file in *.wma; do ffmpeg -i &#34;${file}&#34; -acodec libmp3lame -ab 192k &#34;${file/.wma/.mp3}&#34;; done   From:
+ for file in *.wma; do ffmpeg -i &amp;#34;${file}&amp;#34; -acodec libmp3lame -ab 192k &amp;#34;${file/.wma/.mp3}&amp;#34;; done   From:
    https://askubuntu.com/questions/508278/how-to-use-ffmpeg-to-convert-wma-to-mp3-recursively-importing-from-txt-file
      </description>
       </item>
@@ -433,9 +606,9 @@ https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;ac
         <link>https://briantward.github.io/git/</link>
         <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/git/</guid>
-        <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
-$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
-$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+        <description>Git Tips   When you are required to use git over HTTPS but you don’t want to be prompted for your credentials every time.
+$ git config --global credential.helper cache $ git config credential.helper &amp;#39;cache --timeout=3600&amp;#39;     Set author display on git rebase
+$ git config --add rebase.instructionFormat &amp;#34;(%an &amp;lt;%ae&amp;gt;) %s&amp;#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
       </description>
       </item>
     
@@ -444,8 +617,8 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <link>https://briantward.github.io/openshift-jboss-eap/</link>
         <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-jboss-eap/</guid>
-        <description>OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don&amp;#8217;t want your change to be persistent:
- oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you&amp;#8217;ll need to update the standalone configuration. You may also want changes on a more permanent basis.
+        <description>OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don’t want your change to be persistent:
+ oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &amp;#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&amp;#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you’ll need to update the standalone configuration. You may also want changes on a more permanent basis.
   Get the existing configuration:</description>
       </item>
     
@@ -457,7 +630,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <description>Managing Certificates My favorite quick ref:
  https://www.sslshopper.com/article-most-common-openssl-commands.html
  Checking certificates on OpenShift You could just as easily modify this for other applications.
- # cat &amp;lt;&amp;lt; &#39;EOF&#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;</description>
+ # cat &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &amp;#34;*.crt*&amp;#34; -o -name &amp;#34;*.pem*&amp;#34; -o -name &amp;#34;*.cer*&amp;#34;` ; do echo $filename; echo &amp;#34; contains&amp;#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &amp;#34;Issuer:|Subject:|Not|CA&amp;#34; done EOF # chmod u+x .</description>
       </item>
     
       <item>
@@ -478,7 +651,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <guid>https://briantward.github.io/restore-files-from-rm/</guid>
         <description>Restore files from rm I wanted to type:
  $ rm *.retry   Instead I accidentally typed:
- $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&amp;#8217;t more. I was lucky I didn&amp;#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.</description>
+ $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn’t more. I was lucky I didn’t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.</description>
       </item>
     
       <item>
@@ -504,12 +677,10 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <link>https://briantward.github.io/lenovo-linux-intel-i915-video-part2/</link>
         <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lenovo-linux-intel-i915-video-part2/</guid>
-        <description>Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
-Lenovo T460s
-thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+        <description>Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps: Lenovo T460s thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
   Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
   Undock laptop.
-  Redock laptop &amp;#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
+  Redock laptop → screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
       </item>
     
       <item>
@@ -517,7 +688,7 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/2
         <link>https://briantward.github.io/image-video-metadata/</link>
         <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/image-video-metadata/</guid>
-        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&amp;#8217;t give you a lot of customization options. We couldn&amp;#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
+        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn’t give you a lot of customization options. We couldn’t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
       </item>
     
       <item>
@@ -525,7 +696,7 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/2
         <link>https://briantward.github.io/ansible-tips/</link>
         <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/ansible-tips/</guid>
-        <description>Ansible Tips Print to stout and log at same time&amp;#8230;&amp;#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&amp;#8230;&amp;#8203; this one cleans up your journals&amp;#8230;&amp;#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      </description>
+        <description>Ansible Tips Print to stout and log at same time…​ ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts…​ this one cleans up your journals…​ and runs 10 at a time ansible all -a &amp;#39;journalctl --vacuum-time=2d&amp;#39; -f 10      </description>
       </item>
     
       <item>
@@ -536,7 +707,7 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/2
         <description>OpenShift Remove Stuck ServiceInstance To delete a stuck serviceinstance where a project namespace no longer exists:
  $ oc get serviceinstance --all-namespaces -o wide NAMESPACE NAME CLASS PLAN STATUS AGE test cakephp-mysql-example-vfzkq ClusterServiceClass/cakephp-mysql-example default Failed 113d test cakephp-mysql-persistent-f75gl ClusterServiceClass/cakephp-mysql-persistent default Failed 113d webconsole-extensions httpd-example-6fxx5 ClusterServiceClass/httpd-example default DeprovisionCallFailed 10d    Create the project namespace again
 $ oc new-project test     Now delete the serviceinstance
-$ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that doesn&amp;#8217;t delete it, then remove the finalizer</description>
+$ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that doesn’t delete it, then remove the finalizer</description>
       </item>
     
       <item>
@@ -565,7 +736,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <description>OpenShift HTTPD loglevel OpenShift comes with a container image packaged from this source. To make further configuration changes check the documentation here.
  https://github.com/sclorg/httpd-container
   Create a configmap to mount a log.conf file that contains your apache loglevel configuration. Be sure to update &amp;lt;PROJECT_NAMESPACE&amp;gt; below before running this command.
-   echo &#39;apiVersion: v1 data: log.conf: | LogLevel debug ErrorLog /dev/stdout TransferLog /dev/stdout&#39; kind: ConfigMap metadata: name: logfile namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -    Update your deploymentConfig.</description>
+   echo &amp;#39;apiVersion: v1 data: log.conf: | LogLevel debug ErrorLog /dev/stdout TransferLog /dev/stdout&amp;#39; kind: ConfigMap metadata: name: logfile namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&amp;#39; | oc create -f -    Update your deploymentConfig.</description>
       </item>
     
       <item>
@@ -586,7 +757,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <link>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</guid>
-        <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&amp;#8217;ve only seen it once, we just kill the process holding the port open from the node itself.</description>
+        <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we’ve only seen it once, we just kill the process holding the port open from the node itself.</description>
       </item>
     
       <item>
@@ -595,7 +766,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-update-router-fix/</guid>
         <description>OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
- Log message on router pod attempting to spin up. If you don&amp;#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
+ Log message on router pod attempting to spin up. If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
       </item>
     
       <item>
@@ -603,7 +774,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <link>https://briantward.github.io/terminal-to-file/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/terminal-to-file/</guid>
-        <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -     </description>
+        <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &amp;#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&amp;#39; | oc create -f -     </description>
       </item>
     
       <item>
@@ -621,8 +792,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <link>https://briantward.github.io/openshift-web-console-extensions/</link>
         <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-web-console-extensions/</guid>
-        <description>OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
-Applicable Environment: OpenShift 3.9+
+        <description>OpenShift Web Console Extensions Testing Environment: OpenShift 3.11 Applicable Environment: OpenShift 3.9+
  As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
  In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files.</description>
       </item>
@@ -640,7 +810,7 @@ Applicable Environment: OpenShift 3.9+
         <link>https://briantward.github.io/openshift-image-management/</link>
         <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-image-management/</guid>
-        <description>OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 + 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&amp;lt;none&amp;gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.</description>
+        <description>OpenShift Image Management $ oc project openshift Now using project &amp;#34;openshift&amp;#34; on server &amp;#34;https://openshift.example.com:8443&amp;#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 + 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&amp;lt;none&amp;gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.</description>
       </item>
     
       <item>
@@ -665,8 +835,8 @@ Applicable Environment: OpenShift 3.9+
         <link>https://briantward.github.io/gnome-session/</link>
         <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/gnome-session/</guid>
-        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
- $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &amp;#39;{print $1}&amp;#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &amp;#34;restart&amp;#34; or just &amp;#34;r&amp;#34; and pressing enter.
   Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store.</description>
       </item>
     
@@ -683,7 +853,7 @@ Applicable Environment: OpenShift 3.9+
         <link>https://briantward.github.io/import-images-with-dockerimagerepository/</link>
         <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/import-images-with-dockerimagerepository/</guid>
-        <description>Import Images with dockerImageRepository $ echo &#39;apiVersion: v1 &amp;gt; kind: ImageStream &amp;gt; metadata: &amp;gt; creationTimestamp: null &amp;gt; generation: 2 &amp;gt; labels: &amp;gt; build: is-test &amp;gt; name: jenkins-slave-base-centos7 &amp;gt; spec: &amp;gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&#39; | oc apply -f- imagestream &#34;jenkins-slave-base-centos7&#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;ImageStream&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;creationTimestamp&#34;:null,&#34;generation&#34;:2,&#34;labels&#34;:{&#34;build&#34;:&#34;is-test&#34;},&#34;name&#34;:&#34;jenkins-slave-base-centos7&#34;,&#34;namespace&#34;:&#34;sbx-esauer&#34;},&#34;spec&#34;:{&#34;dockerImageRepository&#34;:&#34;docker.io/openshift/jenkins-slave-base-centos7&#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker.</description>
+        <description>Import Images with dockerImageRepository $ echo &amp;#39;apiVersion: v1 &amp;gt; kind: ImageStream &amp;gt; metadata: &amp;gt; creationTimestamp: null &amp;gt; generation: 2 &amp;gt; labels: &amp;gt; build: is-test &amp;gt; name: jenkins-slave-base-centos7 &amp;gt; spec: &amp;gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&amp;#39; | oc apply -f- imagestream &amp;#34;jenkins-slave-base-centos7&amp;#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&amp;#34;apiVersion&amp;#34;:&amp;#34;v1&amp;#34;,&amp;#34;kind&amp;#34;:&amp;#34;ImageStream&amp;#34;,&amp;#34;metadata&amp;#34;:{&amp;#34;annotations&amp;#34;:{},&amp;#34;creationTimestamp&amp;#34;:null,&amp;#34;generation&amp;#34;:2,&amp;#34;labels&amp;#34;:{&amp;#34;build&amp;#34;:&amp;#34;is-test&amp;#34;},&amp;#34;name&amp;#34;:&amp;#34;jenkins-slave-base-centos7&amp;#34;,&amp;#34;namespace&amp;#34;:&amp;#34;sbx-esauer&amp;#34;},&amp;#34;spec&amp;#34;:{&amp;#34;dockerImageRepository&amp;#34;:&amp;#34;docker.io/openshift/jenkins-slave-base-centos7&amp;#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker.</description>
       </item>
     
       <item>
@@ -700,7 +870,7 @@ Applicable Environment: OpenShift 3.9+
         <link>https://briantward.github.io/rhel-subscription-manager-pool-id/</link>
         <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/rhel-subscription-manager-pool-id/</guid>
-        <description>Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1)     </description>
+        <description>Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&amp;#34;OpenShift Container Platform&amp;#34; | awk &amp;#39;/Pool ID/ {print $3}&amp;#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&amp;#34;OpenShift Container Platform&amp;#34; | awk &amp;#39;/Pool ID/ {print $3}&amp;#39; | head -1)     </description>
       </item>
     
       <item>
@@ -726,7 +896,7 @@ Applicable Environment: OpenShift 3.9+
         <description>Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
 # tune2fs -m 0 /dev/sdb1     print UUID of filesystems
 # blkid     remount a readonly filesystem to rewrite
-# mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)</description>
+# mount -o remount,rw /     watch the status of dd (useful on systems without &amp;#34;status=progress&amp;#34;, like Mac I think)</description>
       </item>
     
       <item>
@@ -743,7 +913,7 @@ Applicable Environment: OpenShift 3.9+
         <link>https://briantward.github.io/lets-encrypt-on-openshift/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lets-encrypt-on-openshift/</guid>
-        <description>Let&amp;#8217;s Encrypt on OpenShift Updated OS on load balancer
+        <description>Let’s Encrypt on OpenShift Updated OS on load balancer
  # wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm # yum install epel-release-latest-7.noarch.rpm   Uses python:
    https://www.redpill-linpro.com/sysadvent/2017/12/15/letsencrypt-on-openshift.html
   https://certbot.eff.org/about/
@@ -766,7 +936,7 @@ Applicable Environment: OpenShift 3.9+
         <description>Navigating Linux   Move a file to different extension, or change parts of a name
 $ mv /etc/yum.repos.d/redhat.{repo,disabled}     Search for all mac dot underscore files
 $ find -name ._\* $ find -name .DS_Store $ find -name .DS_Store -delete     find and replace text in files in a directory, recursively:
-$ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#39;        </description>
+$ find /directory -type f -print0 | xargs -0 sed -i &amp;#39;s/old-text/new-text/g&amp;#39;        </description>
       </item>
     
       <item>
@@ -774,10 +944,7 @@ $ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#
         <link>https://briantward.github.io/networking/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/networking/</guid>
-        <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
--nn: Show PCI vendor and device codes as both numbers and names.
--k: Show driver information for a device.
--d: Filter on just the &#39;Ethernet&#39; device class (0200)
+        <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &amp;#39;/inet addr:/ {print $2}&amp;#39; | sed &amp;#39;s/addr://&amp;#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where, -nn: Show PCI vendor and device codes as both numbers and names. -k: Show driver information for a device. -d: Filter on just the &amp;#39;Ethernet&amp;#39; device class (0200)
   Check Kernel module load # dmesg | grep e1000e   (kernel module e1000e found above)</description>
       </item>
     
@@ -787,7 +954,7 @@ $ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/vim/</guid>
         <description>VIM Tips   Set YAML filetypes to have two spaces on indent
-$ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn&amp;#8217;t opened with sudo:
+$ echo &amp;#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&amp;#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn’t opened with sudo:
 :w !sudo tee %        </description>
       </item>
     
@@ -797,7 +964,7 @@ $ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/xml/</guid>
         <description>XML Tips   Format raw xml on the cli
-echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&#34;ipsum&#34; /&amp;gt;&amp;lt;/root&amp;gt;&#39; | xmllint --format -        </description>
+echo &amp;#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&amp;#34;b&amp;#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&amp;#34;ipsum&amp;#34; /&amp;gt;&amp;lt;/root&amp;gt;&amp;#39; | xmllint --format -        </description>
       </item>
     
       <item>
@@ -805,7 +972,7 @@ echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo
         <link>https://briantward.github.io/lenovo-linux-bios-update/</link>
         <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lenovo-linux-bios-update/</guid>
-        <description>I&amp;#8217;m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.</description>
+        <description>I’m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.</description>
       </item>
     
       <item>
@@ -814,7 +981,7 @@ echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo
         <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lenovo-linux-intel-i915-video/</guid>
         <description>Note: Out of Date and incorrect analysis.
- I&amp;#8217;m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn&amp;#8217;t come on, sometimes one monitor came on, and sometimes things worked fine.</description>
+ I’m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&amp;#34; monitors at work and another docking station with two 27&amp;#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn’t come on, sometimes one monitor came on, and sometimes things worked fine.</description>
       </item>
     
       <item>
@@ -858,7 +1025,7 @@ echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
         <guid>https://briantward.github.io/configure-google-oidc/</guid>
         <description>Configure Google OIDC https://console.cloud.google.com
- Since this topic has been well handled by the Keycloak team, I&amp;#8217;m adding there documentation here.
+ Since this topic has been well handled by the Keycloak team, I’m adding there documentation here.
    https://www.keycloak.org/docs/3.4/server_admin/index.html#google
      </description>
       </item>
@@ -888,7 +1055,7 @@ echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
         <guid>https://briantward.github.io/rh-sso-on-openshift/</guid>
         <description>Install RH-SSO on Openshift First create a new project to keep RH-SSO work clean and easily delete it if necessary.
- oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You&amp;#8217;ve got lots of other choices.
+ oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You’ve got lots of other choices.
  $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application.</description>
       </item>
     

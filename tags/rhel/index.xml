@@ -5,7 +5,7 @@
     <description>Recent content in rhel on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2020 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/rhel/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,8 +15,7 @@
         <link>https://briantward.github.io/installing-glusterfs-on-openshift/</link>
         <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/installing-glusterfs-on-openshift/</guid>
-        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170
-OpenShift Container Storage 3.11.5
+        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170 OpenShift Container Storage 3.11.5
  Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)
  On my first run, I hit this for some odd reason:
  TASK [cockpit : Install cockpit-ws] ************************************************************************************************************** FAILED - RETRYING: Install cockpit-ws (3 retries left). FAILED - RETRYING: Install cockpit-ws (2 retries left). FAILED - RETRYING: Install cockpit-ws (1 retries left).</description>
@@ -29,7 +28,7 @@ OpenShift Container Storage 3.11.5
         <guid>https://briantward.github.io/coredns-nonprivileged/</guid>
         <description>CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
  You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
- $ echo &#39;apiVersion: v1 data: Corefile: | example.</description>
+ $ echo &amp;#39;apiVersion: v1 data: Corefile: | example.</description>
       </item>
     
       <item>
@@ -37,15 +36,11 @@ OpenShift Container Storage 3.11.5
         <link>https://briantward.github.io/anti-virus-on-rhel/</link>
         <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/anti-virus-on-rhel/</guid>
-        <description>Antivirus on Red Hat Enterprise Linux   Search for Anti-Virus certified on RHEL ecosystem:
-https://access.redhat.com/ecosystem/search/#/category/Software?sort=sortTitle%20asc&amp;amp;query=virus&amp;amp;ecosystem=Red%20Hat%20Enterprise%20Linux
-  Is any virus protection software needed for Red Hat Enterprise Linux?
-https://access.redhat.com/solutions/9203
-  Is fanotify supported in Red Hat Enterprise Linux?
-https://access.redhat.com/solutions/458193
-  Systems become unresponsive due to an issue in the implementation of Fanotify in Red Hat and CentOS 7.x kernels
-https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;actp=null&amp;amp;viewlocale=en_US&amp;amp;showDraft=false&amp;amp;platinum_status=false&amp;amp;locale=en_US
-  System hang due to blocked tasks in fanotify code</description>
+        <description>Antivirus on Red Hat Enterprise Linux   Search for Anti-Virus certified on RHEL ecosystem: https://access.redhat.com/ecosystem/search/#/category/Software?sort=sortTitle%20asc&amp;amp;query=virus&amp;amp;ecosystem=Red%20Hat%20Enterprise%20Linux
+  Is any virus protection software needed for Red Hat Enterprise Linux? https://access.redhat.com/solutions/9203
+  Is fanotify supported in Red Hat Enterprise Linux? https://access.redhat.com/solutions/458193
+  Systems become unresponsive due to an issue in the implementation of Fanotify in Red Hat and CentOS 7.x kernels https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;actp=null&amp;amp;viewlocale=en_US&amp;amp;showDraft=false&amp;amp;platinum_status=false&amp;amp;locale=en_US
+  System hang due to blocked tasks in fanotify code https://access.</description>
       </item>
     
       <item>
@@ -79,7 +74,7 @@ https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;ac
         <link>https://briantward.github.io/rhel-subscription-manager-pool-id/</link>
         <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/rhel-subscription-manager-pool-id/</guid>
-        <description>Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1)     </description>
+        <description>Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&amp;#34;OpenShift Container Platform&amp;#34; | awk &amp;#39;/Pool ID/ {print $3}&amp;#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&amp;#34;OpenShift Container Platform&amp;#34; | awk &amp;#39;/Pool ID/ {print $3}&amp;#39; | head -1)     </description>
       </item>
     
   </channel>

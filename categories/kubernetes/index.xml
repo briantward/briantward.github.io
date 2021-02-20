@@ -5,10 +5,50 @@
     <description>Recent content in kubernetes on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>AWS ELB Kubernetes Service</title>
+        <link>https://briantward.github.io/kubernetes-service-aws-elb/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/kubernetes-service-aws-elb/</guid>
+        <description>AWS ELB Kubernetes Service By default, services of type LoadBalancer create public-facing load balancers. To use an internal load balancer, apply the following annotation to your service:
+ service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;
+ https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
+   </description>
+      </item>
+    
+      <item>
+        <title>Debugging Ephemeral Disk in Kubernetes</title>
+        <link>https://briantward.github.io/ephemeral/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/ephemeral/</guid>
+        <description>Debugging Ephemeral Disk in Kubernetes Useful links on discussing ephemeral storage in OpenShift
+   https://docs.openshift.com/container-platform/3.11/dev_guide/application_ephemeral_storage_sizing.html
+  https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/ephemeral-storage.html
+  https://docs.openshift.com/container-platform/3.11/scaling_performance/optimizing_ephemeral_storage.html
+  https://docs.openshift.com/container-platform/3.11/install_config/configuring_ephemeral.html
+   TODO: Add links for same in OpenShift 4
+ Funky log messages…​ when ephemeral limit request is not set, the system logs it as 0.
+ 1:32:26 PM Warning Evicted The node was low on resource: ephemeral-storage. Container mycontainer was using 215481700Ki, which exceeds its request of 0.</description>
+      </item>
+    
+      <item>
+        <title>Using nsenter strace and tcpdump in OpenShift containers</title>
+        <link>https://briantward.github.io/nsenter/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/nsenter/</guid>
+        <description>Using nsenter strace and tcpdump in OpenShift containers   nsenter
+  strace
+  tcpdump
+  oc rsyn -h
+   capture a tcpdump of the base ethernet interface on the node:
+ # tcpdump -s 0 -n -i ethX -w /tmp/$(hostname)-$(date +&amp;#34;%Y-%m-%d-%H-%M-%S&amp;#34;).pcap   find the container ID from the container engine:
+ # docker ps # cid=&amp;lt;docker-container-id&amp;gt;   find the runtime PID from inspecting the container itself:</description>
+      </item>
     
       <item>
         <title>An Introduction to Running Java on Kubernetes</title>

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -23,7 +23,7 @@
 
 <meta property="og:title" content="Lenovo Intel i915 Video Drivers in Linux" />
 <meta property="og:description" content="Note: Out of Date and incorrect analysis.
- I&#8217;m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn&#8217;t come on, sometimes one monitor came on, and sometimes things worked fine." />
+ I’m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn’t come on, sometimes one monitor came on, and sometimes things worked fine." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/lenovo-linux-intel-i915-video/" />
 <meta property="article:published_time" content="2018-05-19T00:00:00+00:00" />
@@ -32,18 +32,19 @@
 
 <meta itemprop="name" content="Lenovo Intel i915 Video Drivers in Linux">
 <meta itemprop="description" content="Note: Out of Date and incorrect analysis.
- I&#8217;m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn&#8217;t come on, sometimes one monitor came on, and sometimes things worked fine.">
-<meta itemprop="datePublished" content="2018-05-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-05-19T00:00:00&#43;00:00" />
+ I’m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn’t come on, sometimes one monitor came on, and sometimes things worked fine.">
+<meta itemprop="datePublished" content="2018-05-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-05-19T00:00:00+00:00" />
 <meta itemprop="wordCount" content="419">
 
 
 
 <meta itemprop="keywords" content="linux,intel,i915,video,T460s,Lenovo," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Lenovo Intel i915 Video Drivers in Linux"/>
 <meta name="twitter:description" content="Note: Out of Date and incorrect analysis.
- I&#8217;m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn&#8217;t come on, sometimes one monitor came on, and sometimes things worked fine."/>
+ I’m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn’t come on, sometimes one monitor came on, and sometimes things worked fine."/>
 
 
   </head>
@@ -145,11 +146,11 @@
 <p>Note: Out of Date and incorrect analysis.</p>
 </div>
 <div class="paragraph">
-<p>I&#8217;m running fedora 27 on my Lenovo T460s and have been for a while.  I have
-a docking station with two 24" monitors at work and another docking station with two 27" monitors at home.  I switch between them frequently.  Back in fedora
-21 and 22 I had tons of problems.  Sometimes monitors didn&#8217;t come on,
+<p>I’m running fedora 27 on my Lenovo T460s and have been for a while.  I have
+a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home.  I switch between them frequently.  Back in fedora
+21 and 22 I had tons of problems.  Sometimes monitors didn’t come on,
 sometimes one monitor came on, and sometimes things worked fine.  It got better
-as of fedora 27, such that I was pretty happy with things.  I&#8217;m thankful for the
+as of fedora 27, such that I was pretty happy with things.  I’m thankful for the
 hard work put into the video drivers by the people behind fedora, the linux kernel, and the many other distributions contributing.</p>
 </div>
 <div class="paragraph">
@@ -157,7 +158,7 @@ hard work put into the video drivers by the people behind fedora, the linux kern
 sudden, I was having complete crashes and uncontrolled reboots when moving
 my laptop from one docking station to another.  Maybe it had to do with
 moving between docking stations.  Maybe it just had to do with docking
-stations in general.  I don&#8217;t know
+stations in general.  I don’t know
 the details exactly, but here is my own system analysis.</p>
 </div>
 <div class="paragraph">
@@ -184,18 +185,18 @@ at the time of crash:</p>
 <p><a href="https://wiki.archlinux.org/index.php/intel_graphics#Skylake_support" class="bare">https://wiki.archlinux.org/index.php/intel_graphics#Skylake_support</a></p>
 </div>
 <div class="paragraph">
-<p>Because they stated "to take advantage of some driver options, you will need to create a Xorg configuration file", I added this to <code>/usr/share/X11/xorg.conf.d/20-intel.conf</code>:</p>
+<p>Because they stated &#34;to take advantage of some driver options, you will need to create a Xorg configuration file&#34;, I added this to <code>/usr/share/X11/xorg.conf.d/20-intel.conf</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Section "Device"
- Identifier "Intel Graphics"
- Driver "intel"
+<pre class="highlight"><code>Section &#34;Device&#34;
+ Identifier &#34;Intel Graphics&#34;
+ Driver &#34;intel&#34;
 EndSection</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I also enabled "GuC / HuC firmware loading" in <code>/etc/modprobe.d/i915.conf</code>, since I am on kernel 4.16 now.</p>
+<p>I also enabled &#34;GuC / HuC firmware loading&#34; in <code>/etc/modprobe.d/i915.conf</code>, since I am on kernel 4.16 now.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -203,17 +204,17 @@ EndSection</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>What does all this stuff mean?  I&#8217;m not really sure, but I encourage you
-to read up on the links if you&#8217;re curious.  At any rate, it seems like
+<p>What does all this stuff mean?  I’m not really sure, but I encourage you
+to read up on the links if you’re curious.  At any rate, it seems like
 something changed in the i915 driver that was being used for my device.
 According to a few of these posts, tweaking these driver parameters is
 helpful.  Also, reading the <a href="https://jlk.fjfi.cvut.cz/arch/manpages/man/intel.4">intel(4)</a> man page could be helpful.
 So far I have not had any crashes, but I will report again if I do.
-I&#8217;m not even sure if the changes I made will really do anything.  I might
+I’m not even sure if the changes I made will really do anything.  I might
 need to update the kernel boot line rather than the modprobe conf.</p>
 </div>
 <div class="paragraph">
-<p>One day I&#8217;ll spend more time on video and graphics.  Not today.</p>
+<p>One day I’ll spend more time on video and graphics.  Not today.</p>
 </div>
 </div>
 </div>

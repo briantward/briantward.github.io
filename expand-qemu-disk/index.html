@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -41,13 +41,14 @@
  But you might find this just as helpful:
  https://maunium.net/blog/resizing-qcow2-images/
  Here is another read on using virt-resize instead of qemu-resize but a little more to it:">
-<meta itemprop="datePublished" content="2019-12-31T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-31T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-12-31T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-31T00:00:00+00:00" />
 <meta itemprop="wordCount" content="171">
 
 
 
 <meta itemprop="keywords" content="qemu,disk,expand," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Expand a Qemu Disk"/>
 <meta name="twitter:description" content="Expand a Qemu Disk I exhausted the disk space on my Windows VM and found I needed more room. This is one of those lovely tasks that actually has simple and good documentation and works easily enough.
@@ -164,7 +165,7 @@
 <p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/virtualization_administration_guide/sect-expand-disk-image" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/virtualization_administration_guide/sect-expand-disk-image</a></p>
 </div>
 <div class="paragraph">
-<p>After the disk was enlarged, I wondered how I might verify it.  <code>virt-df</code> only shows the existing filesystem, and since it only changed the partition, nothing in that output changed.  I suppose the command <code>virt-list-partitions</code> might show a difference, but I didn&#8217;t have that on my system and didn&#8217;t want to go looking for it.</p>
+<p>After the disk was enlarged, I wondered how I might verify it.  <code>virt-df</code> only shows the existing filesystem, and since it only changed the partition, nothing in that output changed.  I suppose the command <code>virt-list-partitions</code> might show a difference, but I didn’t have that on my system and didn’t want to go looking for it.</p>
 </div>
 <div class="paragraph">
 <p>Booting into my Windows VM and verifying I had 20G newly available was simple enough.  I used the <code>Computer Management</code> &gt; <code>Storage</code> &gt; <code>Disk Management</code> interface and followed the GUI wizard steps for expanding a volume by Right Clicking on the drive and selecting <code>Extend Volume</code>.</p>

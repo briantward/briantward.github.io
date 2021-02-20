@@ -5,10 +5,101 @@
     <description>Recent content in openshift on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/openshift/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>OpenShift CICD</title>
+        <link>https://briantward.github.io/openshift-cicd/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-cicd/</guid>
+        <description>OpenShift CICD   environment changes that progress through the environments
+  application performance configuration
+  feature flags
+  environment changes specific to an environment
+  connection endpoint URLs
+  image name/tag
+   Scenario 0: First project deployment - scaffold code, base image, build pipeline
+ Scenario 1: Application is rebuilt from source code, base image doesn’t change: - build binary image - rebuild container image from same base image - tag with new version numbering scheme - (dev) picks up new version and deploys immediately</description>
+      </item>
+    
+      <item>
+        <title>OpenShift HA</title>
+        <link>https://briantward.github.io/openshift-ha/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-ha/</guid>
+        <description>OpenShift HA Good references and resources
+   https://www.openshift.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://www.openshift.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://www.openshift.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://www.openshift.com/blog/disaster-recovery-with-gitops
+  https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html
+   DR options
+ Failure Scenarios
+   Complete datacenter outage
+  Availability Zone failure (network segment or group of racks)
+  Rack failure
+  Host failure
+  VM failure
+  OpenShift master failure
+  OpenShift etcd failure (etcd backup and restore)</description>
+      </item>
+    
+      <item>
+        <title>OpenShift RBAC</title>
+        <link>https://briantward.github.io/openshift-roles/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-roles/</guid>
+        <description>OpenShift RBAC oc auth can-i VERB OBJECT oc adm policy who-can VERB OBJECT   oc get clusterrole basic-user -o yaml oc get clusterrole cluster-admin -o yaml   https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications
+   </description>
+      </item>
+    
+      <item>
+        <title>OpenShift SecurityContextConstraints (SCC)</title>
+        <link>https://briantward.github.io/scc/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/scc/</guid>
+        <description>OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
+ Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
+ # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
+ # oc create rolebinding useroot --role=useroot --serviceaccount=&amp;lt;namespace&amp;gt;:&amp;lt;sa&amp;gt;   (bind it to the service account)</description>
+      </item>
+    
+      <item>
+        <title>OpenShift SSH Client in a Pod</title>
+        <link>https://briantward.github.io/openshift-ssh-client-in-pod/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-ssh-client-in-pod/</guid>
+        <description>OpenShift SSH Client in a Pod This is just conceptual.
+ $ mkdir ssh-test &amp;amp;&amp;amp; cd ssh-test $ echo &amp;#39;FROM registry.access.redhat.com/rhel7:latest USER root RUN yum-config-manager --enable rhel-7-server-rpms &amp;amp;&amp;amp; yum install openssh-clients -y&amp;#39; &amp;gt; Dockerfile $ oc new-project ssh-test $ oc new-build . --to ssh-test $ oc start-build ssh-test --from-dir . $ oc run -i -t ssh-test --image=172.30.1.1:5000/ssh-test/ssh-test --command -- /bin/bash bash-4.2$ which ssh bash-4.2$ exit $ echo &amp;#39;&amp;lt;PRIVATE_KEY_FILE&amp;gt; id_rsa $ echo &amp;#39;&amp;lt;KNOWN_HOSTS_FILE&amp;#39; &amp;gt; known_hosts $ oc create secret generic id-key --from-file=id_rsa $ oc create secret generic known-hosts --from-file=known_hosts $ oc set volumes dc/ssh-test --add --name=id-key --type=secret --secret-name=id-key --mount-path=/ssh/id_rsa --default-mode=&amp;#39;0600&amp;#39; $ oc set volumes dc/ssh-test --add --name=known-hosts --type=secret --secret-name=known-hosts --mount-path=/ssh/known_hosts --default-mode=&amp;#39;0600&amp;#39; $ ssh -i /ssh/id_rsa/id_rsa user@remote.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Time and Date</title>
+        <link>https://briantward.github.io/openshift4-timedate/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift4-timedate/</guid>
+        <description>OpenShift Time and Date OCP timedate
+   https://access.redhat.com/solutions/2567961
+  https://access.redhat.com/solutions/4994241
+     </description>
+      </item>
+    
+      <item>
+        <title>Using nsenter strace and tcpdump in OpenShift containers</title>
+        <link>https://briantward.github.io/nsenter/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/nsenter/</guid>
+        <description>Using nsenter strace and tcpdump in OpenShift containers   nsenter
+  strace
+  tcpdump
+  oc rsyn -h
+   capture a tcpdump of the base ethernet interface on the node:
+ # tcpdump -s 0 -n -i ethX -w /tmp/$(hostname)-$(date +&amp;#34;%Y-%m-%d-%H-%M-%S&amp;#34;).pcap   find the container ID from the container engine:
+ # docker ps # cid=&amp;lt;docker-container-id&amp;gt;   find the runtime PID from inspecting the container itself:</description>
+      </item>
     
       <item>
         <title>Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)</title>
@@ -23,7 +114,7 @@
         <link>https://briantward.github.io/new-relic-on-openshift-4/</link>
         <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/new-relic-on-openshift-4/</guid>
-        <description>New Relic on OpenShift 4 Follow the instructions on New Relic&amp;#8217;s website:
+        <description>New Relic on OpenShift 4 Follow the instructions on New Relic’s website:
  https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes
  Modified here. There is no need for adding the MutatingAdmissionWebhook as this is already enabled by default in OCP 4, so skip that section.
   Download the YAML file:
@@ -44,8 +135,7 @@ curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernete
         <link>https://briantward.github.io/installing-glusterfs-on-openshift/</link>
         <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/installing-glusterfs-on-openshift/</guid>
-        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170
-OpenShift Container Storage 3.11.5
+        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170 OpenShift Container Storage 3.11.5
  Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)
  On my first run, I hit this for some odd reason:
  TASK [cockpit : Install cockpit-ws] ************************************************************************************************************** FAILED - RETRYING: Install cockpit-ws (3 retries left). FAILED - RETRYING: Install cockpit-ws (2 retries left). FAILED - RETRYING: Install cockpit-ws (1 retries left).</description>
@@ -58,7 +148,7 @@ OpenShift Container Storage 3.11.5
         <guid>https://briantward.github.io/coredns-nonprivileged/</guid>
         <description>CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
  You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
- $ echo &#39;apiVersion: v1 data: Corefile: | example.</description>
+ $ echo &amp;#39;apiVersion: v1 data: Corefile: | example.</description>
       </item>
     
       <item>
@@ -87,7 +177,7 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
         <guid>https://briantward.github.io/docker-core-dump/</guid>
         <description>Docker Core Dumps  Get the container id (CID) of the pod to be checked. From the node running the pod. You will need to be able to identify your container ID.
 # docker ps # CID=xxx     Check if docker is logging
-# docker logs &amp;lt;CID&amp;gt;     Check node&amp;#8217;s journal
+# docker logs &amp;lt;CID&amp;gt;     Check node’s journal
 # journalctl CONTAINER_ID=&amp;lt;CID&amp;gt;     Grab lsof and gcore for each process: dockerd-current, docker-containerd-current, and docker-containerd-shim-current.</description>
       </item>
     
@@ -121,9 +211,7 @@ $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</d
   https://docs.openshift.com/container-platform/3.7/architecture/networking/routes.html#routes-sticky-sessions
   https://docs.openshift.com/container-platform/3.7/dev_guide/routes.html#dev-guide-routes-allowing-endpoints-to-control-cookies
    passthrough
-   https://github.com/openshift/origin/commit/a4815c6314f9df1d2ce8060216d0924181c48b6c
-Changed the router default to roundrobin if non-zero weights are used
-https://bugzilla.redhat.com/show_bug.cgi?id=1416869
+   https://github.com/openshift/origin/commit/a4815c6314f9df1d2ce8060216d0924181c48b6c Changed the router default to roundrobin if non-zero weights are used https://bugzilla.redhat.com/show_bug.cgi?id=1416869
    stick sessions in haproxy
    https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/
   http://www.haproxy.org/download/1.8/doc/configuration.txt (3.11)
@@ -146,11 +234,11 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1416869
         <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/elasticsearch/</guid>
         <description>ElasticSearch on OpenShift   Node Tuning
-$ sysctl -w vm.max_map_count=262144 $ echo &#34;vm.max_map_count=262144&#34; &amp;gt; /etc/sysctl.d/90-logging.conf   https://github.com/openshift/openshift-ansible/blob/release-3.11/playbooks/openshift-logging/private/config.yml#L94-L116
+$ sysctl -w vm.max_map_count=262144 $ echo &amp;#34;vm.max_map_count=262144&amp;#34; &amp;gt; /etc/sysctl.d/90-logging.conf   https://github.com/openshift/openshift-ansible/blob/release-3.11/playbooks/openshift-logging/private/config.yml#L94-L116
  https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
    Get indices, run from inside container
 curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s     Delete red indices, run from inside container
-for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container</description>
+for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &amp;#39;{print $3}&amp;#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container</description>
       </item>
     
       <item>
@@ -187,8 +275,8 @@ for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsea
         <link>https://briantward.github.io/openshift-jboss-eap/</link>
         <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-jboss-eap/</guid>
-        <description>OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don&amp;#8217;t want your change to be persistent:
- oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you&amp;#8217;ll need to update the standalone configuration. You may also want changes on a more permanent basis.
+        <description>OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don’t want your change to be persistent:
+ oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &amp;#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&amp;#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you’ll need to update the standalone configuration. You may also want changes on a more permanent basis.
   Get the existing configuration:</description>
       </item>
     
@@ -209,7 +297,7 @@ for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsea
         <description>OpenShift Remove Stuck ServiceInstance To delete a stuck serviceinstance where a project namespace no longer exists:
  $ oc get serviceinstance --all-namespaces -o wide NAMESPACE NAME CLASS PLAN STATUS AGE test cakephp-mysql-example-vfzkq ClusterServiceClass/cakephp-mysql-example default Failed 113d test cakephp-mysql-persistent-f75gl ClusterServiceClass/cakephp-mysql-persistent default Failed 113d webconsole-extensions httpd-example-6fxx5 ClusterServiceClass/httpd-example default DeprovisionCallFailed 10d    Create the project namespace again
 $ oc new-project test     Now delete the serviceinstance
-$ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that doesn&amp;#8217;t delete it, then remove the finalizer</description>
+$ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that doesn’t delete it, then remove the finalizer</description>
       </item>
     
       <item>
@@ -238,7 +326,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <description>OpenShift HTTPD loglevel OpenShift comes with a container image packaged from this source. To make further configuration changes check the documentation here.
  https://github.com/sclorg/httpd-container
   Create a configmap to mount a log.conf file that contains your apache loglevel configuration. Be sure to update &amp;lt;PROJECT_NAMESPACE&amp;gt; below before running this command.
-   echo &#39;apiVersion: v1 data: log.conf: | LogLevel debug ErrorLog /dev/stdout TransferLog /dev/stdout&#39; kind: ConfigMap metadata: name: logfile namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -    Update your deploymentConfig.</description>
+   echo &amp;#39;apiVersion: v1 data: log.conf: | LogLevel debug ErrorLog /dev/stdout TransferLog /dev/stdout&amp;#39; kind: ConfigMap metadata: name: logfile namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&amp;#39; | oc create -f -    Update your deploymentConfig.</description>
       </item>
     
       <item>
@@ -259,7 +347,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <link>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</guid>
-        <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&amp;#8217;ve only seen it once, we just kill the process holding the port open from the node itself.</description>
+        <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we’ve only seen it once, we just kill the process holding the port open from the node itself.</description>
       </item>
     
       <item>
@@ -268,7 +356,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-update-router-fix/</guid>
         <description>OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
- Log message on router pod attempting to spin up. If you don&amp;#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
+ Log message on router pod attempting to spin up. If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
       </item>
     
       <item>
@@ -286,8 +374,7 @@ $ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that does
         <link>https://briantward.github.io/openshift-web-console-extensions/</link>
         <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-web-console-extensions/</guid>
-        <description>OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
-Applicable Environment: OpenShift 3.9+
+        <description>OpenShift Web Console Extensions Testing Environment: OpenShift 3.11 Applicable Environment: OpenShift 3.9+
  As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
  In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files.</description>
       </item>
@@ -305,7 +392,7 @@ Applicable Environment: OpenShift 3.9+
         <link>https://briantward.github.io/openshift-image-management/</link>
         <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-image-management/</guid>
-        <description>OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 + 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&amp;lt;none&amp;gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.</description>
+        <description>OpenShift Image Management $ oc project openshift Now using project &amp;#34;openshift&amp;#34; on server &amp;#34;https://openshift.example.com:8443&amp;#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 + 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&amp;lt;none&amp;gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.</description>
       </item>
     
       <item>
@@ -313,7 +400,7 @@ Applicable Environment: OpenShift 3.9+
         <link>https://briantward.github.io/import-images-with-dockerimagerepository/</link>
         <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/import-images-with-dockerimagerepository/</guid>
-        <description>Import Images with dockerImageRepository $ echo &#39;apiVersion: v1 &amp;gt; kind: ImageStream &amp;gt; metadata: &amp;gt; creationTimestamp: null &amp;gt; generation: 2 &amp;gt; labels: &amp;gt; build: is-test &amp;gt; name: jenkins-slave-base-centos7 &amp;gt; spec: &amp;gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&#39; | oc apply -f- imagestream &#34;jenkins-slave-base-centos7&#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;ImageStream&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;creationTimestamp&#34;:null,&#34;generation&#34;:2,&#34;labels&#34;:{&#34;build&#34;:&#34;is-test&#34;},&#34;name&#34;:&#34;jenkins-slave-base-centos7&#34;,&#34;namespace&#34;:&#34;sbx-esauer&#34;},&#34;spec&#34;:{&#34;dockerImageRepository&#34;:&#34;docker.io/openshift/jenkins-slave-base-centos7&#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker.</description>
+        <description>Import Images with dockerImageRepository $ echo &amp;#39;apiVersion: v1 &amp;gt; kind: ImageStream &amp;gt; metadata: &amp;gt; creationTimestamp: null &amp;gt; generation: 2 &amp;gt; labels: &amp;gt; build: is-test &amp;gt; name: jenkins-slave-base-centos7 &amp;gt; spec: &amp;gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&amp;#39; | oc apply -f- imagestream &amp;#34;jenkins-slave-base-centos7&amp;#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&amp;#34;apiVersion&amp;#34;:&amp;#34;v1&amp;#34;,&amp;#34;kind&amp;#34;:&amp;#34;ImageStream&amp;#34;,&amp;#34;metadata&amp;#34;:{&amp;#34;annotations&amp;#34;:{},&amp;#34;creationTimestamp&amp;#34;:null,&amp;#34;generation&amp;#34;:2,&amp;#34;labels&amp;#34;:{&amp;#34;build&amp;#34;:&amp;#34;is-test&amp;#34;},&amp;#34;name&amp;#34;:&amp;#34;jenkins-slave-base-centos7&amp;#34;,&amp;#34;namespace&amp;#34;:&amp;#34;sbx-esauer&amp;#34;},&amp;#34;spec&amp;#34;:{&amp;#34;dockerImageRepository&amp;#34;:&amp;#34;docker.io/openshift/jenkins-slave-base-centos7&amp;#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker.</description>
       </item>
     
       <item>
@@ -330,7 +417,7 @@ Applicable Environment: OpenShift 3.9+
         <link>https://briantward.github.io/lets-encrypt-on-openshift/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lets-encrypt-on-openshift/</guid>
-        <description>Let&amp;#8217;s Encrypt on OpenShift Updated OS on load balancer
+        <description>Let’s Encrypt on OpenShift Updated OS on load balancer
  # wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm # yum install epel-release-latest-7.noarch.rpm   Uses python:
    https://www.redpill-linpro.com/sysadvent/2017/12/15/letsencrypt-on-openshift.html
   https://certbot.eff.org/about/
@@ -375,7 +462,7 @@ Applicable Environment: OpenShift 3.9+
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
         <guid>https://briantward.github.io/configure-google-oidc/</guid>
         <description>Configure Google OIDC https://console.cloud.google.com
- Since this topic has been well handled by the Keycloak team, I&amp;#8217;m adding there documentation here.
+ Since this topic has been well handled by the Keycloak team, I’m adding there documentation here.
    https://www.keycloak.org/docs/3.4/server_admin/index.html#google
      </description>
       </item>
@@ -405,7 +492,7 @@ Applicable Environment: OpenShift 3.9+
         <pubDate>Wed, 09 May 2018 12:00:00 -0400</pubDate>
         <guid>https://briantward.github.io/rh-sso-on-openshift/</guid>
         <description>Install RH-SSO on Openshift First create a new project to keep RH-SSO work clean and easily delete it if necessary.
- oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You&amp;#8217;ve got lots of other choices.
+ oc new-project sso   I started by exporting the existing RH-SSO persistent depoyment template. This builds up one RH-SSO app with one postgres persistent database by default. You’ve got lots of other choices.
  $ oc get template -n openshift | grep sso eap64-sso-s2i An example EAP 6 Single Sign-On application.</description>
       </item>
     

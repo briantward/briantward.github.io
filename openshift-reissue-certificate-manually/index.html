@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="OpenShift Reissue Certificate Manually">
 <meta itemprop="description" content="OpenShift Reissue Certificate Manually I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps). In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router.">
-<meta itemprop="datePublished" content="2018-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-14T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-12-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-14T00:00:00+00:00" />
 <meta itemprop="wordCount" content="471">
 
 
 
 <meta itemprop="keywords" content="Red Hat,container,certificate,error," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift Reissue Certificate Manually"/>
 <meta name="twitter:description" content="OpenShift Reissue Certificate Manually I recently ran the redeploy certificates playbook on my 3.11 cluster and found it broke apps that rely on the certificate signer ca, as it issues a new certificate signer ca but does not retrigger new certificates to be generated from it (at least not for all of the apps). In my case, it killed the latest Prometheus deployment and I got service unavailable messages from the router."/>
@@ -165,32 +166,32 @@ prometheus-k8s-tls                            kubernetes.io/tls                 
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk '{print $2}' | base64 -d - | openssl x509 -in - -text -noout</pre>
+<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk &#39;{print $2}&#39; | base64 -d - | openssl x509 -in - -text -noout</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Looking at my certificate, everything seemed to be fine.  It had not expired.  But I did recall the logs specifically stating that the certificate authority was unknown, so let&#8217;s focus on that.</p>
+<p>Looking at my certificate, everything seemed to be fine.  It had not expired.  But I did recall the logs specifically stating that the certificate authority was unknown, so let’s focus on that.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk '{print $2}' | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
+<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk &#39;{print $2}&#39; | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
        Issuer: CN = openshift-service-serving-signer@1536343562</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s compare it to one of the apps that is working correctly:</p>
+<p>Let’s compare it to one of the apps that is working correctly:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc get secret console-serving-cert -n openshift-console -o yaml | grep tls.crt | awk '{print $2}' | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
+<pre>$ oc get secret console-serving-cert -n openshift-console -o yaml | grep tls.crt | awk &#39;{print $2}&#39; | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
        Issuer: CN = openshift-service-serving-signer@1544190532</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Aha! The redeploy certificates playbook didn&#8217;t update my Prometheus deployment.  That seems like a big miss.  Let&#8217;s fix it.</p>
+<p>Aha! The redeploy certificates playbook didn’t update my Prometheus deployment.  That seems like a big miss.  Let’s fix it.</p>
 </div>
 <div class="paragraph">
-<p>Delete the old secret since it&#8217;s worthless now.</p>
+<p>Delete the old secret since it’s worthless now.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -218,7 +219,7 @@ prometheus-k8s-tls                            kubernetes.io/tls                 
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk '{print $2}' | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
+<pre>$ oc get secret grafana-tls -n openshift-monitoring -o yaml | grep tls.crt | awk &#39;{print $2}&#39; | base64 -d - | openssl x509 -in - -text -noout | grep Issuer
        Issuer: CN = openshift-service-serving-signer@1544190532</pre>
 </div>
 </div>

@@ -15,8 +15,8 @@
         <link>https://briantward.github.io/gnome-session/</link>
         <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/gnome-session/</guid>
-        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
- $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &amp;#39;{print $1}&amp;#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &amp;#34;restart&amp;#34; or just &amp;#34;r&amp;#34; and pressing enter.
   Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store.</description>
       </item>
     

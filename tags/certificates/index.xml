@@ -18,7 +18,7 @@
         <description>Managing Certificates My favorite quick ref:
  https://www.sslshopper.com/article-most-common-openssl-commands.html
  Checking certificates on OpenShift You could just as easily modify this for other applications.
- # cat &amp;lt;&amp;lt; &#39;EOF&#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;</description>
+ # cat &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &amp;#34;*.crt*&amp;#34; -o -name &amp;#34;*.pem*&amp;#34; -o -name &amp;#34;*.cer*&amp;#34;` ; do echo $filename; echo &amp;#34; contains&amp;#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &amp;#34;Issuer:|Subject:|Not|CA&amp;#34; done EOF # chmod u+x .</description>
       </item>
     
   </channel>

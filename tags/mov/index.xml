@@ -5,17 +5,38 @@
     <description>Recent content in mov on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/mov/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Convert VHS to Digital</title>
+        <link>https://briantward.github.io/convert-vhs-to-digital/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/convert-vhs-to-digital/</guid>
+        <description>Convert VHS to Digital OBS Studio is great for recording but limited in modification of video. OpenShot is great for then editing that video and trimming out pieces.
+ On Fedora 32, I can capture video and audio with the USB Easy Capture device and &amp;#34;Audio Capture Device&amp;#34; on OBS set to ALSA. The audio settings provide a sync offset that doesn’t work well and is hard to tell if it is working right unless you fully record and capture.</description>
+      </item>
+    
+      <item>
+        <title>Running OpenShot in a Container</title>
+        <link>https://briantward.github.io/openshot-in-a-container/</link>
+        <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshot-in-a-container/</guid>
+        <description>Running OpenShot in a Container Transform with OpenShot OpenShot on Fedora 33 doesn’t work. Well, not for me at least. Basically it installs fine and runs fine, but the moment I attempt to import a file, boom! Core Dump generated.
+ using the following packages:
+ $ rpm -qa openshot ffmpeg ffmpeg-4.3.1-16.fc33.x86_64 openshot-2.5.1-4.fc33.noarch   I found the following when searching around for similar issues:
+ https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559
+ Which took me to this in the blender code:</description>
+      </item>
     
       <item>
         <title>Image Video Metadata Part 2</title>
         <link>https://briantward.github.io/image-video-metadata-p2/</link>
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/image-video-metadata-p2/</guid>
-        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&amp;#8217;t right, it can be pretty confusing/noticeable.</description>
+        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn’t right, it can be pretty confusing/noticeable.</description>
       </item>
     
       <item>
@@ -23,7 +44,7 @@
         <link>https://briantward.github.io/image-video-metadata/</link>
         <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/image-video-metadata/</guid>
-        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&amp;#8217;t give you a lot of customization options. We couldn&amp;#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
+        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn’t give you a lot of customization options. We couldn’t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
       </item>
     
   </channel>

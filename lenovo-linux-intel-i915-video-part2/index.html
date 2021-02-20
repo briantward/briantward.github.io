@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,12 +22,10 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="Lenovo Intel i915 Video Drivers in Linux, Part 2" />
-<meta property="og:description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
-Lenovo T460s
-thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+<meta property="og:description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps: Lenovo T460s thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
   Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
   Undock laptop.
-  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself." />
+  Redock laptop → screen failure and system lock until undock again. Leave it long enough and it will reboot itself." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/lenovo-linux-intel-i915-video-part2/" />
 <meta property="article:published_time" content="2019-01-02T00:00:00+00:00" />
@@ -35,27 +33,24 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/
 
 
 <meta itemprop="name" content="Lenovo Intel i915 Video Drivers in Linux, Part 2">
-<meta itemprop="description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
-Lenovo T460s
-thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+<meta itemprop="description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps: Lenovo T460s thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
   Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
   Undock laptop.
-  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.">
-<meta itemprop="datePublished" content="2019-01-02T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-01-02T00:00:00&#43;00:00" />
+  Redock laptop → screen failure and system lock until undock again. Leave it long enough and it will reboot itself.">
+<meta itemprop="datePublished" content="2019-01-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-01-02T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1301">
 
 
 
 <meta itemprop="keywords" content="linux,intel,i915,video,T460s,Lenovo," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Lenovo Intel i915 Video Drivers in Linux, Part 2"/>
-<meta name="twitter:description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
-Lenovo T460s
-thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+<meta name="twitter:description" content="Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps: Lenovo T460s thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
   Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
   Undock laptop.
-  Redock laptop &#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself."/>
+  Redock laptop → screen failure and system lock until undock again. Leave it long enough and it will reboot itself."/>
 
 
   </head>
@@ -155,8 +150,8 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11&#43; fedora 26/
 <h2 id="_lenovo_intel_i915_video_drivers_in_linux_part_2">Lenovo Intel i915 Video Drivers in Linux, Part 2</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Problem Scenario/Steps:<br>
-Lenovo T460s<br>
+<p>Problem Scenario/Steps:<br/>
+Lenovo T460s<br/>
 thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+
 fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64</p>
 </div>
@@ -169,7 +164,7 @@ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86
 <p>Undock laptop.</p>
 </li>
 <li>
-<p>Redock laptop &#8594; screen failure and system lock until undock again.  Leave it long enough and it will reboot itself.</p>
+<p>Redock laptop → screen failure and system lock until undock again.  Leave it long enough and it will reboot itself.</p>
 </li>
 </ol>
 </div>
@@ -232,10 +227,10 @@ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86
 </ol>
 </div>
 <div class="paragraph">
-<p>Since I was recently on fedora 28, I figured the best next step is to update to the latest fedora 29.  I ran my test against fedora 29 and found no change.  The next step was either to remain at fedora 29 and test with a later unsupported kernel or upgrade to fedora 30 or rawhide, both of which are in current development as I write this article.  Obviously none of this is supported.  Wait a minute, does anyone actually care about fedora support?  Nah, I didn&#8217;t think so.  Let&#8217;s just go with fedora 29 and a cutting edge kernel.  That puts the system at a stable point and the kernel at an unstable point.  Maybe that&#8217;s better than both at an unstable point, but I don&#8217;t care since I&#8217;m just testing stuff out and would like to have a stable system to revert back to.</p>
+<p>Since I was recently on fedora 28, I figured the best next step is to update to the latest fedora 29.  I ran my test against fedora 29 and found no change.  The next step was either to remain at fedora 29 and test with a later unsupported kernel or upgrade to fedora 30 or rawhide, both of which are in current development as I write this article.  Obviously none of this is supported.  Wait a minute, does anyone actually care about fedora support?  Nah, I didn’t think so.  Let’s just go with fedora 29 and a cutting edge kernel.  That puts the system at a stable point and the kernel at an unstable point.  Maybe that’s better than both at an unstable point, but I don’t care since I’m just testing stuff out and would like to have a stable system to revert back to.</p>
 </div>
 <div class="paragraph">
-<p>I built kernel from <a href="https://cgit.freedesktop.org/drm-tip">drm-tip</a>, where we have the latest and greatest from the development teams.  I used <a href="https://01.org/linuxgraphics/documentation/build-guide-0">documentation from intel</a>, although the steps for building a custom kernel are pretty generic.  I didn&#8217;t need to test any of the other drivers or libraries.</p>
+<p>I built kernel from <a href="https://cgit.freedesktop.org/drm-tip">drm-tip</a>, where we have the latest and greatest from the development teams.  I used <a href="https://01.org/linuxgraphics/documentation/build-guide-0">documentation from intel</a>, although the steps for building a custom kernel are pretty generic.  I didn’t need to test any of the other drivers or libraries.</p>
 </div>
 <div class="paragraph">
 <p>On my first kernel boot I made no custom changes, using the default generated <code>.config</code> file (created by the <code>make defconfig</code> step).</p>
@@ -247,7 +242,7 @@ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86
 <div class="content">
 <pre>         Starting Cryptography Setup for luks-48ef18c-7da6-4260-942b-2a203048b76f...
 [FAILED] Failed to start Cryptography Setup for luks-48ef18c-7da6-4260-942b-2a203048b76f.
-See 'systemctl status "systemd-cryptsetup@luks\\x2d48e8f18c\\x2d7da6\\x2d4260\\x2d942b\\x2d2a203048b76f.service"' for details.
+See &#39;systemctl status &#34;systemd-cryptsetup@luks\\x2d48e8f18c\\x2d7da6\\x2d4260\\x2d942b\\x2d2a203048b76f.service&#34;&#39; for details.
 [DEPEND] Dependency failed for Local Encrypted Volumes.</pre>
 </div>
 </div>
@@ -275,13 +270,13 @@ Jan 02 21:58:45 archimedes.home.dataxf.com systemd[1]: Started Cryptography Setu
 </div>
 </div>
 <div class="paragraph">
-<p>At this point I don&#8217;t know much about the internals of LUKS and its service, but I do know how to configure it when building a fedora system.  However, documenation for LUKS on fedora is flat-out awful.  Even worse is figuring out how to build a custom kernel with LUKS. I basically ran trial and error with some hints here and there from other people&#8217;s problems found by your favorite search engine.</p>
+<p>At this point I don’t know much about the internals of LUKS and its service, but I do know how to configure it when building a fedora system.  However, documenation for LUKS on fedora is flat-out awful.  Even worse is figuring out how to build a custom kernel with LUKS. I basically ran trial and error with some hints here and there from other people’s problems found by your favorite search engine.</p>
 </div>
 <div class="paragraph">
 <p>Kernel configuration changes are made in the <code>.config</code> file.</p>
 </div>
 <div class="paragraph">
-<p>I tried setting the following&#8230;&#8203;</p>
+<p>I tried setting the following…​</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -289,7 +284,7 @@ Jan 02 21:58:45 archimedes.home.dataxf.com systemd[1]: Started Cryptography Setu
 </div>
 </div>
 <div class="paragraph">
-<p>But that alone did not work.  Then I tried this&#8230;&#8203;</p>
+<p>But that alone did not work.  Then I tried this…​</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -299,7 +294,7 @@ CONFIG_CRYPTO_SHA512=y</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>But it corrected itself to this&#8230;&#8203;</p>
+<p>But it corrected itself to this…​</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -317,7 +312,7 @@ CONFIG_CRYPTO_SHA512=y</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So let&#8217;s see what other configuration settings were missing.  Maybe looking a the original crytography setup (using my good kernel) will tell me something:</p>
+<p>So let’s see what other configuration settings were missing.  Maybe looking a the original crytography setup (using my good kernel) will tell me something:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -335,7 +330,7 @@ CONFIG_CRYPTO_SHA512=y</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Searching around on the internet shows some aes-xts-plain64 things&#8230;&#8203; let&#8217;s set that value&#8230;&#8203;</p>
+<p>Searching around on the internet shows some aes-xts-plain64 things…​ let’s set that value…​</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -409,7 +404,7 @@ CONFIG_CRYPTO_SHA512=y</pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Just in case you don&#8217;t believe me&#8230;&#8203;</p>
+<p>Just in case you don’t believe me…​</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -418,7 +413,7 @@ Linux archimedes.home.dataxf.com 4.20.0+ #4 SMP Wed Jan 2 22:54:25 EST 2019 x86_
 </div>
 </div>
 <div class="paragraph">
-<p>This is the commit I built from&#8230;&#8203;</p>
+<p>This is the commit I built from…​</p>
 </div>
 <div class="listingblock">
 <div class="content">

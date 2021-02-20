@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -23,7 +23,7 @@
 
 <meta property="og:title" content="RH-SSO Filter Examples" />
 <meta property="og:description" content="RH-SSO Filter Examples This Undertow filter prevents certain IP addresses from access resources on the server.
-  &lt;subsystem xmlns=&#34;urn:jboss:domain:undertow:3.1&#34;&gt; &lt;buffer-cache name=&#34;default&#34;/&gt; &lt;server name=&#34;default-server&#34;&gt; &lt;http-listener name=&#34;default&#34; socket-binding=&#34;http&#34; redirect-socket=&#34;https&#34;/&gt; &lt;https-listener name=&#34;https&#34; record-request-start-time=&#34;true&#34; security-realm=&#34;CertificateRealm&#34; socket-binding=&#34;https&#34;/&gt; &lt;host name=&#34;default-host&#34; alias=&#34;localhost&#34;&gt; &lt;location name=&#34;/&#34; handler=&#34;welcome-content&#34;/&gt; &lt;access-log pattern=&#34;%{i,X-Forwarded-For} %h %l %u %t &amp;quot;%r&amp;quot; %s %b &amp;quot;%{i,Referer}&amp;quot; &amp;quot;%{i,User-Agent}&amp;quot; &amp;quot;%{i,COOKIE}&amp;quot; &amp;quot;%{o,SET-COOKIE}&amp;quot; %S &amp;quot;%I&amp;quot; %T&#34;/&gt; &lt;filter-ref name=&#34;my-proxy-peer-address&#34; predicate=&#34;equals(%p,8443)&#34;/&gt; &lt;filter-ref name=&#34;kc-account-update-reject&#34;/&gt; &lt;filter-ref name=&#34;kc-admin-reject&#34;/&gt; &lt;/host&gt; &lt;/server&gt; &lt;servlet-container name=&#34;default&#34;&gt; &lt;jsp-config/&gt; &lt;websockets/&gt; &lt;/servlet-container&gt; &lt;handlers&gt; &lt;file name=&#34;" />
+  &lt;subsystem xmlns=&#34;urn:jboss:domain:undertow:3.1&#34;&gt; &lt;buffer-cache name=&#34;default&#34;/&gt; &lt;server name=&#34;default-server&#34;&gt; &lt;http-listener name=&#34;default&#34; socket-binding=&#34;http&#34; redirect-socket=&#34;https&#34;/&gt; &lt;https-listener name=&#34;https&#34; record-request-start-time=&#34;true&#34; security-realm=&#34;CertificateRealm&#34; socket-binding=&#34;https&#34;/&gt; &lt;host name=&#34;default-host&#34; alias=&#34;localhost&#34;&gt; &lt;location name=&#34;/&#34; handler=&#34;welcome-content&#34;/&gt; &lt;access-log pattern=&#34;%{i,X-Forwarded-For} %h %l %u %t &amp;quot;%r&amp;quot; %s %b &amp;quot;%{i,Referer}&amp;quot; &amp;quot;%{i,User-Agent}&amp;quot; &amp;quot;%{i,COOKIE}&amp;quot; &amp;quot;%{o,SET-COOKIE}&amp;quot; %S &amp;quot;%I&amp;quot; %T&#34;/&gt; &lt;filter-ref name=&#34;my-proxy-peer-address&#34; predicate=&#34;equals(%p,8443)&#34;/&gt; &lt;filter-ref name=&#34;kc-account-update-reject&#34;/&gt; &lt;filter-ref name=&#34;kc-admin-reject&#34;/&gt; &lt;/host&gt; &lt;/server&gt; &lt;servlet-container name=&#34;default&#34;&gt; &lt;jsp-config/&gt; &lt;websockets/&gt; &lt;/servlet-container&gt; &lt;handlers&gt; &lt;file name=&#34;welcome-content&#34; path=&#34;${jboss." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/rh-sso-filter-examples/" />
 <meta property="article:published_time" content="2019-12-09T00:00:00+00:00" />
@@ -32,18 +32,19 @@
 
 <meta itemprop="name" content="RH-SSO Filter Examples">
 <meta itemprop="description" content="RH-SSO Filter Examples This Undertow filter prevents certain IP addresses from access resources on the server.
-  &lt;subsystem xmlns=&#34;urn:jboss:domain:undertow:3.1&#34;&gt; &lt;buffer-cache name=&#34;default&#34;/&gt; &lt;server name=&#34;default-server&#34;&gt; &lt;http-listener name=&#34;default&#34; socket-binding=&#34;http&#34; redirect-socket=&#34;https&#34;/&gt; &lt;https-listener name=&#34;https&#34; record-request-start-time=&#34;true&#34; security-realm=&#34;CertificateRealm&#34; socket-binding=&#34;https&#34;/&gt; &lt;host name=&#34;default-host&#34; alias=&#34;localhost&#34;&gt; &lt;location name=&#34;/&#34; handler=&#34;welcome-content&#34;/&gt; &lt;access-log pattern=&#34;%{i,X-Forwarded-For} %h %l %u %t &amp;quot;%r&amp;quot; %s %b &amp;quot;%{i,Referer}&amp;quot; &amp;quot;%{i,User-Agent}&amp;quot; &amp;quot;%{i,COOKIE}&amp;quot; &amp;quot;%{o,SET-COOKIE}&amp;quot; %S &amp;quot;%I&amp;quot; %T&#34;/&gt; &lt;filter-ref name=&#34;my-proxy-peer-address&#34; predicate=&#34;equals(%p,8443)&#34;/&gt; &lt;filter-ref name=&#34;kc-account-update-reject&#34;/&gt; &lt;filter-ref name=&#34;kc-admin-reject&#34;/&gt; &lt;/host&gt; &lt;/server&gt; &lt;servlet-container name=&#34;default&#34;&gt; &lt;jsp-config/&gt; &lt;websockets/&gt; &lt;/servlet-container&gt; &lt;handlers&gt; &lt;file name=&#34;">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+  &lt;subsystem xmlns=&#34;urn:jboss:domain:undertow:3.1&#34;&gt; &lt;buffer-cache name=&#34;default&#34;/&gt; &lt;server name=&#34;default-server&#34;&gt; &lt;http-listener name=&#34;default&#34; socket-binding=&#34;http&#34; redirect-socket=&#34;https&#34;/&gt; &lt;https-listener name=&#34;https&#34; record-request-start-time=&#34;true&#34; security-realm=&#34;CertificateRealm&#34; socket-binding=&#34;https&#34;/&gt; &lt;host name=&#34;default-host&#34; alias=&#34;localhost&#34;&gt; &lt;location name=&#34;/&#34; handler=&#34;welcome-content&#34;/&gt; &lt;access-log pattern=&#34;%{i,X-Forwarded-For} %h %l %u %t &amp;quot;%r&amp;quot; %s %b &amp;quot;%{i,Referer}&amp;quot; &amp;quot;%{i,User-Agent}&amp;quot; &amp;quot;%{i,COOKIE}&amp;quot; &amp;quot;%{o,SET-COOKIE}&amp;quot; %S &amp;quot;%I&amp;quot; %T&#34;/&gt; &lt;filter-ref name=&#34;my-proxy-peer-address&#34; predicate=&#34;equals(%p,8443)&#34;/&gt; &lt;filter-ref name=&#34;kc-account-update-reject&#34;/&gt; &lt;filter-ref name=&#34;kc-admin-reject&#34;/&gt; &lt;/host&gt; &lt;/server&gt; &lt;servlet-container name=&#34;default&#34;&gt; &lt;jsp-config/&gt; &lt;websockets/&gt; &lt;/servlet-container&gt; &lt;handlers&gt; &lt;file name=&#34;welcome-content&#34; path=&#34;${jboss.">
+<meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="168">
 
 
 
 <meta itemprop="keywords" content="keycloak,undertow," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RH-SSO Filter Examples"/>
 <meta name="twitter:description" content="RH-SSO Filter Examples This Undertow filter prevents certain IP addresses from access resources on the server.
-  &lt;subsystem xmlns=&#34;urn:jboss:domain:undertow:3.1&#34;&gt; &lt;buffer-cache name=&#34;default&#34;/&gt; &lt;server name=&#34;default-server&#34;&gt; &lt;http-listener name=&#34;default&#34; socket-binding=&#34;http&#34; redirect-socket=&#34;https&#34;/&gt; &lt;https-listener name=&#34;https&#34; record-request-start-time=&#34;true&#34; security-realm=&#34;CertificateRealm&#34; socket-binding=&#34;https&#34;/&gt; &lt;host name=&#34;default-host&#34; alias=&#34;localhost&#34;&gt; &lt;location name=&#34;/&#34; handler=&#34;welcome-content&#34;/&gt; &lt;access-log pattern=&#34;%{i,X-Forwarded-For} %h %l %u %t &amp;quot;%r&amp;quot; %s %b &amp;quot;%{i,Referer}&amp;quot; &amp;quot;%{i,User-Agent}&amp;quot; &amp;quot;%{i,COOKIE}&amp;quot; &amp;quot;%{o,SET-COOKIE}&amp;quot; %S &amp;quot;%I&amp;quot; %T&#34;/&gt; &lt;filter-ref name=&#34;my-proxy-peer-address&#34; predicate=&#34;equals(%p,8443)&#34;/&gt; &lt;filter-ref name=&#34;kc-account-update-reject&#34;/&gt; &lt;filter-ref name=&#34;kc-admin-reject&#34;/&gt; &lt;/host&gt; &lt;/server&gt; &lt;servlet-container name=&#34;default&#34;&gt; &lt;jsp-config/&gt; &lt;websockets/&gt; &lt;/servlet-container&gt; &lt;handlers&gt; &lt;file name=&#34;"/>
+  &lt;subsystem xmlns=&#34;urn:jboss:domain:undertow:3.1&#34;&gt; &lt;buffer-cache name=&#34;default&#34;/&gt; &lt;server name=&#34;default-server&#34;&gt; &lt;http-listener name=&#34;default&#34; socket-binding=&#34;http&#34; redirect-socket=&#34;https&#34;/&gt; &lt;https-listener name=&#34;https&#34; record-request-start-time=&#34;true&#34; security-realm=&#34;CertificateRealm&#34; socket-binding=&#34;https&#34;/&gt; &lt;host name=&#34;default-host&#34; alias=&#34;localhost&#34;&gt; &lt;location name=&#34;/&#34; handler=&#34;welcome-content&#34;/&gt; &lt;access-log pattern=&#34;%{i,X-Forwarded-For} %h %l %u %t &amp;quot;%r&amp;quot; %s %b &amp;quot;%{i,Referer}&amp;quot; &amp;quot;%{i,User-Agent}&amp;quot; &amp;quot;%{i,COOKIE}&amp;quot; &amp;quot;%{o,SET-COOKIE}&amp;quot; %S &amp;quot;%I&amp;quot; %T&#34;/&gt; &lt;filter-ref name=&#34;my-proxy-peer-address&#34; predicate=&#34;equals(%p,8443)&#34;/&gt; &lt;filter-ref name=&#34;kc-account-update-reject&#34;/&gt; &lt;filter-ref name=&#34;kc-admin-reject&#34;/&gt; &lt;/host&gt; &lt;/server&gt; &lt;servlet-container name=&#34;default&#34;&gt; &lt;jsp-config/&gt; &lt;websockets/&gt; &lt;/servlet-container&gt; &lt;handlers&gt; &lt;file name=&#34;welcome-content&#34; path=&#34;${jboss."/>
 
 
   </head>
@@ -131,30 +132,30 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>        &lt;subsystem xmlns="urn:jboss:domain:undertow:3.1"&gt;
-            &lt;buffer-cache name="default"/&gt;
-            &lt;server name="default-server"&gt;
-                &lt;http-listener name="default" socket-binding="http" redirect-socket="https"/&gt;
-                &lt;https-listener name="https" record-request-start-time="true" security-realm="CertificateRealm" socket-binding="https"/&gt;
-                &lt;host name="default-host" alias="localhost"&gt;
-                    &lt;location name="/" handler="welcome-content"/&gt;
-                    &lt;access-log pattern="%{i,X-Forwarded-For} %h %l %u %t &amp;quot;%r&amp;quot; %s %b &amp;quot;%{i,Referer}&amp;quot; &amp;quot;%{i,User-Agent}&amp;quot; &amp;quot;%{i,COOKIE}&amp;quot; &amp;quot;%{o,SET-COOKIE}&amp;quot; %S &amp;quot;%I&amp;quot; %T"/&gt;
-                    &lt;filter-ref name="my-proxy-peer-address" predicate="equals(%p,8443)"/&gt;
-                    &lt;filter-ref name="kc-account-update-reject"/&gt;
-                    &lt;filter-ref name="kc-admin-reject"/&gt;
+<pre class="highlight"><code>        &lt;subsystem xmlns=&#34;urn:jboss:domain:undertow:3.1&#34;&gt;
+            &lt;buffer-cache name=&#34;default&#34;/&gt;
+            &lt;server name=&#34;default-server&#34;&gt;
+                &lt;http-listener name=&#34;default&#34; socket-binding=&#34;http&#34; redirect-socket=&#34;https&#34;/&gt;
+                &lt;https-listener name=&#34;https&#34; record-request-start-time=&#34;true&#34; security-realm=&#34;CertificateRealm&#34; socket-binding=&#34;https&#34;/&gt;
+                &lt;host name=&#34;default-host&#34; alias=&#34;localhost&#34;&gt;
+                    &lt;location name=&#34;/&#34; handler=&#34;welcome-content&#34;/&gt;
+                    &lt;access-log pattern=&#34;%{i,X-Forwarded-For} %h %l %u %t &amp;quot;%r&amp;quot; %s %b &amp;quot;%{i,Referer}&amp;quot; &amp;quot;%{i,User-Agent}&amp;quot; &amp;quot;%{i,COOKIE}&amp;quot; &amp;quot;%{o,SET-COOKIE}&amp;quot; %S &amp;quot;%I&amp;quot; %T&#34;/&gt;
+                    &lt;filter-ref name=&#34;my-proxy-peer-address&#34; predicate=&#34;equals(%p,8443)&#34;/&gt;
+                    &lt;filter-ref name=&#34;kc-account-update-reject&#34;/&gt;
+                    &lt;filter-ref name=&#34;kc-admin-reject&#34;/&gt;
                 &lt;/host&gt;
             &lt;/server&gt;
-            &lt;servlet-container name="default"&gt;
+            &lt;servlet-container name=&#34;default&#34;&gt;
                 &lt;jsp-config/&gt;
                 &lt;websockets/&gt;
             &lt;/servlet-container&gt;
             &lt;handlers&gt;
-                &lt;file name="welcome-content" path="${jboss.home.dir}/welcome-content"/&gt;
+                &lt;file name=&#34;welcome-content&#34; path=&#34;${jboss.home.dir}/welcome-content&#34;/&gt;
             &lt;/handlers&gt;
             &lt;filters&gt;
-                &lt;expression-filter name="my-proxy-peer-address" expression="proxy-peer-address"/&gt;
-                &lt;expression-filter name="kc-account-update-reject" expression="method(POST) and regex('/auth/realms/(.*)/account') -&gt; response-code(403)"/&gt;
-                &lt;expression-filter name="kc-admin-reject" expression="regex('(^/auth$)|(^/auth/admin)|(^/auth/realms/master)') and not regex(pattern='(155\.155\.155\.155)|(154\.154\.154\.154)', value='%{i,X-Forwarded-For}', full-match=false) and not regex(pattern='^192\.168\.(1|2|3)\.([0-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-5]))$', value='%a', full-match=false)-&gt; response-code(403)"/&gt;
+                &lt;expression-filter name=&#34;my-proxy-peer-address&#34; expression=&#34;proxy-peer-address&#34;/&gt;
+                &lt;expression-filter name=&#34;kc-account-update-reject&#34; expression=&#34;method(POST) and regex(&#39;/auth/realms/(.*)/account&#39;) -&gt; response-code(403)&#34;/&gt;
+                &lt;expression-filter name=&#34;kc-admin-reject&#34; expression=&#34;regex(&#39;(^/auth$)|(^/auth/admin)|(^/auth/realms/master)&#39;) and not regex(pattern=&#39;(155\.155\.155\.155)|(154\.154\.154\.154)&#39;, value=&#39;%{i,X-Forwarded-For}&#39;, full-match=false) and not regex(pattern=&#39;^192\.168\.(1|2|3)\.([0-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-5]))$&#39;, value=&#39;%a&#39;, full-match=false)-&gt; response-code(403)&#34;/&gt;
             &lt;/filters&gt;
         &lt;/subsystem&gt;</code></pre>
 </div>

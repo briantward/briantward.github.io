@@ -23,8 +23,8 @@
         <link>https://briantward.github.io/openshift-jboss-eap/</link>
         <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-jboss-eap/</guid>
-        <description>OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don&amp;#8217;t want your change to be persistent:
- oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you&amp;#8217;ll need to update the standalone configuration. You may also want changes on a more permanent basis.
+        <description>OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don’t want your change to be persistent:
+ oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &amp;#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&amp;#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you’ll need to update the standalone configuration. You may also want changes on a more permanent basis.
   Get the existing configuration:</description>
       </item>
     

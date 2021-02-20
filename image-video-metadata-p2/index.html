@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,7 +22,7 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="Image Video Metadata Part 2" />
-<meta property="og:description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&#8217;t right, it can be pretty confusing/noticeable." />
+<meta property="og:description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn’t right, it can be pretty confusing/noticeable." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/image-video-metadata-p2/" />
 <meta property="article:published_time" content="2021-01-09T00:00:00+00:00" />
@@ -30,17 +30,18 @@
 
 
 <meta itemprop="name" content="Image Video Metadata Part 2">
-<meta itemprop="description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&#8217;t right, it can be pretty confusing/noticeable.">
-<meta itemprop="datePublished" content="2021-01-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-09T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn’t right, it can be pretty confusing/noticeable.">
+<meta itemprop="datePublished" content="2021-01-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="471">
 
 
 
 <meta itemprop="keywords" content="image,jpeg,video,mov, mp4,metadata," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Image Video Metadata Part 2"/>
-<meta name="twitter:description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&#8217;t right, it can be pretty confusing/noticeable."/>
+<meta name="twitter:description" content="Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn’t right, it can be pretty confusing/noticeable."/>
 
 
   </head>
@@ -140,7 +141,7 @@
 <h2 id="_image_video_metadata_tips">Image Video Metadata Tips</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured.  This is pretty annoying, but can be fixed with a nice perl utility called <a href="https://exiftool.org/"><code>exiftool</code></a>.  Apple and a bunch of other photo tools these days use these dates for sorting your photos.  So if something isn&#8217;t right, it can be pretty confusing/noticeable.</p>
+<p>Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured.  This is pretty annoying, but can be fixed with a nice perl utility called <a href="https://exiftool.org/"><code>exiftool</code></a>.  Apple and a bunch of other photo tools these days use these dates for sorting your photos.  So if something isn’t right, it can be pretty confusing/noticeable.</p>
 </div>
 <div class="paragraph">
 <p>Dates before running the script:</p>
@@ -212,21 +213,21 @@ The <code>-a</code> gives us any duplicate fields.</p>
 
 NEW_DATE=2020:11:25
 
-echo "new date is...: "$NEW_DATE
+echo &#34;new date is...: &#34;$NEW_DATE
 
 for file in $(ls *.jpg)
 do
-  existing_time=$(exiftool -EXIF:DateTimeOriginal $file | grep -o -P "\d.*$" | cut -c11-19)
-  #echo "replacing existing EXIF values with: "$NEW_DATE$existing_time
-  exiftool -q -overwrite_original -EXIF:DateTimeOriginal="$NEW_DATE$existing_time" $file &amp;&gt; /dev/null
-  exiftool -q -overwrite_original -EXIF:CreateDate="$NEW_DATE$existing_time" $file &amp;&gt; /dev/null
-  #echo "replacing existing IPTC values with: "$NEW_DATE
-  exiftool -q -overwrite_original -IPTC:DigitalCreationDate="$NEW_DATE" $file &amp;&gt; /dev/null
-  exiftool -overwrite_original -IPTC:DateCreated="$NEW_DATE" $file &amp;&gt; /dev/null
-  existing_time_s=$(exiftool -XMP:CreateDate $file | grep -o -P "\d.*$" | cut -c11-22)
-  #echo "replacing existing XMP values with: "$NEW_DATE$existing_time_s
-  exiftool -q -overwrite_original -XMP:CreateDate="$NEW_DATE$existing_time_s" $file &amp;&gt; /dev/null
-  exiftool -q -overwrite_original -XMP:DateCreated="$NEW_DATE$existing_time_s" $file &amp;&gt; /dev/null
+  existing_time=$(exiftool -EXIF:DateTimeOriginal $file | grep -o -P &#34;\d.*$&#34; | cut -c11-19)
+  #echo &#34;replacing existing EXIF values with: &#34;$NEW_DATE$existing_time
+  exiftool -q -overwrite_original -EXIF:DateTimeOriginal=&#34;$NEW_DATE$existing_time&#34; $file &amp;&gt; /dev/null
+  exiftool -q -overwrite_original -EXIF:CreateDate=&#34;$NEW_DATE$existing_time&#34; $file &amp;&gt; /dev/null
+  #echo &#34;replacing existing IPTC values with: &#34;$NEW_DATE
+  exiftool -q -overwrite_original -IPTC:DigitalCreationDate=&#34;$NEW_DATE&#34; $file &amp;&gt; /dev/null
+  exiftool -overwrite_original -IPTC:DateCreated=&#34;$NEW_DATE&#34; $file &amp;&gt; /dev/null
+  existing_time_s=$(exiftool -XMP:CreateDate $file | grep -o -P &#34;\d.*$&#34; | cut -c11-22)
+  #echo &#34;replacing existing XMP values with: &#34;$NEW_DATE$existing_time_s
+  exiftool -q -overwrite_original -XMP:CreateDate=&#34;$NEW_DATE$existing_time_s&#34; $file &amp;&gt; /dev/null
+  exiftool -q -overwrite_original -XMP:DateCreated=&#34;$NEW_DATE$existing_time_s&#34; $file &amp;&gt; /dev/null
 done;</code></pre>
 </div>
 </div>

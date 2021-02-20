@@ -16,7 +16,7 @@
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
         <description>DD-WRT Custom Certificate (Tested on R7000)
- Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.
  On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
  In the router GUI go to Services &amp;gt; USB:
  Select the following

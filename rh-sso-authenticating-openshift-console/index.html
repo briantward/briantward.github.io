@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -52,6 +52,7 @@
 
 
 <meta itemprop="keywords" content="google,rh-sso,keycloak,ansible,authentication,authorization," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Authenticate Openshift Console with RH-SSO"/>
 <meta name="twitter:description" content="Authenticate Openshift Console with RH-SSO Install based on OpenShift 3.7. Will probably work on other similar versions.
@@ -239,23 +240,23 @@
 </div>
 <div class="paragraph">
 <p>The above link is a great resource for modifying your OpenShift cluster if you did a basic install and you want
-to manually update all your master nodes.  But that&#8217;s just silly.  I hope you performed the advanced install
+to manually update all your master nodes.  But that’s just silly.  I hope you performed the advanced install
 with ansible.  In that event, you will need an entry in your inventory file such as the below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># OpenID auth
-#openshift_master_identity_providers=[{"name": "openid_auth", "login": "true", "challenge": "false", "kind": "OpenIDIdentityProvider", "client_id": "my_client_id", "client_secret": "my_client_secret", "claims": {"id": ["sub"], "preferredUsername": ["preferred_username"], "name": ["name"], "email": ["email"]}, "urls": {"authorize": "https://myidp.example.com/oauth2/authorize", "token": "https://myidp.example.com/oauth2/token"}, "ca": "my-openid-ca-bundle.crt"}]
+#openshift_master_identity_providers=[{&#34;name&#34;: &#34;openid_auth&#34;, &#34;login&#34;: &#34;true&#34;, &#34;challenge&#34;: &#34;false&#34;, &#34;kind&#34;: &#34;OpenIDIdentityProvider&#34;, &#34;client_id&#34;: &#34;my_client_id&#34;, &#34;client_secret&#34;: &#34;my_client_secret&#34;, &#34;claims&#34;: {&#34;id&#34;: [&#34;sub&#34;], &#34;preferredUsername&#34;: [&#34;preferred_username&#34;], &#34;name&#34;: [&#34;name&#34;], &#34;email&#34;: [&#34;email&#34;]}, &#34;urls&#34;: {&#34;authorize&#34;: &#34;https://myidp.example.com/oauth2/authorize&#34;, &#34;token&#34;: &#34;https://myidp.example.com/oauth2/token&#34;}, &#34;ca&#34;: &#34;my-openid-ca-bundle.crt&#34;}]
 
 # OpenID auth
-openshift_master_identity_providers=[{"name": "rh-sso", "login": "true", "challenge": "false", "kind": "OpenIDIdentityProvider", "client_id": "ocp", "client_secret": "SOME_SECRET_CODE", "claims": {"id": ["sub"], "preferredUsername": ["preferred_username"], "name": ["name"], "email": ["email"]}, "urls": {"authorize": "https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/auth", "token": "https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/token", "userInfo": "https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/userinfo"}, "ca": "ocp-sso.pem"}]
+openshift_master_identity_providers=[{&#34;name&#34;: &#34;rh-sso&#34;, &#34;login&#34;: &#34;true&#34;, &#34;challenge&#34;: &#34;false&#34;, &#34;kind&#34;: &#34;OpenIDIdentityProvider&#34;, &#34;client_id&#34;: &#34;ocp&#34;, &#34;client_secret&#34;: &#34;SOME_SECRET_CODE&#34;, &#34;claims&#34;: {&#34;id&#34;: [&#34;sub&#34;], &#34;preferredUsername&#34;: [&#34;preferred_username&#34;], &#34;name&#34;: [&#34;name&#34;], &#34;email&#34;: [&#34;email&#34;]}, &#34;urls&#34;: {&#34;authorize&#34;: &#34;https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/auth&#34;, &#34;token&#34;: &#34;https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/token&#34;, &#34;userInfo&#34;: &#34;https://sso.apps.example.com/auth/realms/ocp/protocol/openid-connect/userinfo&#34;}, &#34;ca&#34;: &#34;ocp-sso.pem&#34;}]
 
 #
 # Configure OpenID CA certificate
 # Specify either the ASCII contents of the certificate or the path to
 # the local file that will be copied to the remote host. CA
 # certificate contents will be copied to master systems and saved
-# within /etc/origin/master/ with a filename matching the "ca" key set
+# within /etc/origin/master/ with a filename matching the &#34;ca&#34; key set
 # within the OpenIDIdentityProvider.
 #
 openshift_master_openid_ca=INSERT_CA_ONE_LINE_OR_PATH_HERE</code></pre>

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -41,13 +41,14 @@ $ sysctl -w vm.max_map_count=262144 $ echo &#34;vm.max_map_count=262144&#34; &gt
    Get indices, run from inside container
 curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s     Delete red indices, run from inside container
 for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done     Explain allocation, frun from inside container">
-<meta itemprop="datePublished" content="2019-11-17T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-11-17T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-11-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-11-17T00:00:00+00:00" />
 <meta itemprop="wordCount" content="186">
 
 
 
 <meta itemprop="keywords" content="elasticsearch," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ElasticSearch on OpenShift"/>
 <meta name="twitter:description" content="ElasticSearch on OpenShift   Node Tuning
@@ -144,7 +145,7 @@ for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsea
 <div class="literalblock">
 <div class="content">
 <pre>$ sysctl -w vm.max_map_count=262144
-$ echo "vm.max_map_count=262144" &gt; /etc/sysctl.d/90-logging.conf</pre>
+$ echo &#34;vm.max_map_count=262144&#34; &gt; /etc/sysctl.d/90-logging.conf</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -166,7 +167,7 @@ $ echo "vm.max_map_count=262144" &gt; /etc/sysctl.d/90-logging.conf</pre>
 <p>Delete red indices, run from inside container</p>
 <div class="literalblock">
 <div class="content">
-<pre>for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk '{print $3}'); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done</pre>
+<pre>for i in $(curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/indices -s | grep red | awk &#39;{print $3}&#39;); do curl --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca https://localhost:9200/$i -X DELETE; done</pre>
 </div>
 </div>
 </li>
@@ -182,7 +183,7 @@ $ echo "vm.max_map_count=262144" &gt; /etc/sysctl.d/90-logging.conf</pre>
 <p>Change kibana nodeSelector to run it on a different node</p>
 <div class="literalblock">
 <div class="content">
-<pre>oc patch dc  logging-kibana -p '{"spec":{"template":{"spec":{"nodeSelector":{"kubernetes.io/hostname": "NODENAME"}}}}}'</pre>
+<pre>oc patch dc  logging-kibana -p &#39;{&#34;spec&#34;:{&#34;template&#34;:{&#34;spec&#34;:{&#34;nodeSelector&#34;:{&#34;kubernetes.io/hostname&#34;: &#34;NODENAME&#34;}}}}}&#39;</pre>
 </div>
 </div>
 </li>
@@ -190,7 +191,7 @@ $ echo "vm.max_map_count=262144" &gt; /etc/sysctl.d/90-logging.conf</pre>
 <p>Change ElasticSearch nodeSelector to run it on a different node</p>
 <div class="literalblock">
 <div class="content">
-<pre>oc patch deploymentconfig.apps.openshift.io/logging-es-data-master-edoju9ue -p '{"spec":{"template":{"spec":{"nodeSelector":{"kubernetes.io/hostname": "NODENAME"}}}}}'</pre>
+<pre>oc patch deploymentconfig.apps.openshift.io/logging-es-data-master-edoju9ue -p &#39;{&#34;spec&#34;:{&#34;template&#34;:{&#34;spec&#34;:{&#34;nodeSelector&#34;:{&#34;kubernetes.io/hostname&#34;: &#34;NODENAME&#34;}}}}}&#39;</pre>
 </div>
 </div>
 </li>

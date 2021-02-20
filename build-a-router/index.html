@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="Build A Router">
 <meta itemprop="description" content="Build A Router on Red Hat Enterprise Linux 7 This provided a nice resource for reference.[1] I will elaborate a litte more here. I wanted to set up a custom router to the internet, to provide advanced firewall and logging features. Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that. Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own.">
-<meta itemprop="datePublished" content="2019-12-27T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-27T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-12-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-27T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1124">
 
 
 
 <meta itemprop="keywords" content="router," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Build A Router"/>
 <meta name="twitter:description" content="Build A Router on Red Hat Enterprise Linux 7 This provided a nice resource for reference.[1] I will elaborate a litte more here. I wanted to set up a custom router to the internet, to provide advanced firewall and logging features. Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that. Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own."/>
@@ -120,12 +121,12 @@
 <h2 id="_build_a_router_on_red_hat_enterprise_linux_7">Build A Router on Red Hat Enterprise Linux 7</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This provided a nice resource for reference.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>  I will elaborate a litte more here.  I wanted to set up a custom router to the internet, to provide advanced firewall and logging features.  Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that.  Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own.  Another good option, and perhaps simpler, would be to flash the OTS router with a good firmware alternative such as DD-WRT.  I&#8217;ve done that successfully years ago, but decided I wanted real control over everything by building from scratch.  This may be overkill, but it&#8217;s an interesting project.</p>
+<p>This provided a nice resource for reference.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>  I will elaborate a litte more here.  I wanted to set up a custom router to the internet, to provide advanced firewall and logging features.  Note that this example does not provide DHCP services. In my case, I have a secondary off-the-shelf (OTS) router doing that.  Since the OTS router did not offer advanced firewall, NAT, port-forwarding, and such features, I decided to build my own.  Another good option, and perhaps simpler, would be to flash the OTS router with a good firmware alternative such as DD-WRT.  I’ve done that successfully years ago, but decided I wanted real control over everything by building from scratch.  This may be overkill, but it’s an interesting project.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Set your interface that will be connected to the public internet to use DHCP provided by your ISP.  This may be ready out of the box on a fresh install, in which case you would just need to plug in the ethernet cable. If you don&#8217;t know which physical port maps to which interface id, take a moment to figure it out by testing with your internet cable.  If you are wondering why your interface is something like <code>enp0s25</code> instead of <code>eth0</code> thank the nice engineers who thought this new naming scheme would help identify the exact physical location on your box.  Theoretically this is great if you have a lot of interfaces on one box.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+<p>Set your interface that will be connected to the public internet to use DHCP provided by your ISP.  This may be ready out of the box on a fresh install, in which case you would just need to plug in the ethernet cable. If you don’t know which physical port maps to which interface id, take a moment to figure it out by testing with your internet cable.  If you are wondering why your interface is something like <code>enp0s25</code> instead of <code>eth0</code> thank the nice engineers who thought this new naming scheme would help identify the exact physical location on your box.  Theoretically this is great if you have a lot of interfaces on one box.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
 <div class="literalblock">
 <div class="content">
 <pre># nmcli con add type ethernet autoconnect yes ifname enp0s25 con-name enp0s25 connection.zone external</pre>
@@ -155,7 +156,7 @@ connection.zone:                        external
 </div>
 </li>
 <li>
-<p>Set your interface for your local network. Make sure you have the right cable attached to the right interface.  Here I am using a <code>modify</code> rather than an <code>add</code> just to give an example of changing an interface added during OS installation.  I want a static IP here, and I&#8217;m going to borrow Google&#8217;s DNS server, and make sure it always comes up at boot.</p>
+<p>Set your interface for your local network. Make sure you have the right cable attached to the right interface.  Here I am using a <code>modify</code> rather than an <code>add</code> just to give an example of changing an interface added during OS installation.  I want a static IP here, and I’m going to borrow Google’s DNS server, and make sure it always comes up at boot.</p>
 <div class="literalblock">
 <div class="content">
 <pre># nmcli con modify enp1s0f1 ipv4.addresses 192.168.1.1/24 ipv4.dns 8.8.8.8 autoconnect yes connection.zone internal</pre>
@@ -243,16 +244,16 @@ XXX.XXX.XXX.0/24 dev enp0s25 proto kernel scope link src XXX.XXX.XXX.154 metric 
 <a href="https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos" class="bare">https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos</a></p>
 </li>
 <li>
-<p>How to configure Linux as router for sharing internet in RHEL?<br>
+<p>How to configure Linux as router for sharing internet in RHEL?<br/>
 <a href="https://access.redhat.com/solutions/648473" class="bare">https://access.redhat.com/solutions/648473</a></p>
 </li>
 <li>
-<p>How to configure RHEL as a router in the middle of a network?<br>
+<p>How to configure RHEL as a router in the middle of a network?<br/>
 <a href="https://access.redhat.com/solutions/2854141" class="bare">https://access.redhat.com/solutions/2854141</a></p>
 </li>
 <li>
-<p>NetworkManager and the Network Scripts<br>
-<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-using_networkmanager_with_network_scripts" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-using_networkmanager_with_network_scripts</a><br>
+<p>NetworkManager and the Network Scripts<br/>
+<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-using_networkmanager_with_network_scripts" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-using_networkmanager_with_network_scripts</a><br/>
 For old school lovers of the network scripts.  Once you learn the ease of <code>nmcli</code> you may never go back.</p>
 </li>
 </ul>
@@ -261,12 +262,12 @@ For old school lovers of the network scripts.  Once you learn the ease of <code>
 <div class="sect2">
 <h3 id="_warning_guidance">Warning Guidance</h3>
 <div class="paragraph">
-<p>Please do not follow any recommendations or instructions from this particular guide for RHEL 7:<br>
+<p>Please do not follow any recommendations or instructions from this particular guide for RHEL 7:<br/>
 <a href="https://linuxtechlab.com/turning-centosrhel-6-7-machine-router/" class="bare">https://linuxtechlab.com/turning-centosrhel-6-7-machine-router/</a></p>
 </div>
 <div class="paragraph">
 <p>I started here because it was one of the first hits with what appeared to be fairly decent information.  Also, I was aware of the
-implications of using firewalld direct passthrough, which I&#8217;ll address in a moment.</p>
+implications of using firewalld direct passthrough, which I’ll address in a moment.</p>
 </div>
 <div class="paragraph">
 <p>The command used for their RHEL 7 example is both poorly formatted and bad guidance, for at least four reasons:</p>
@@ -320,7 +321,7 @@ internet service, this would be it.</p>
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <a href="https://unix.stackexchange.com/questions/217872/centos-7-firewalld-passthrough-traffic-with-firewall-cmd" class="bare">https://unix.stackexchange.com/questions/217872/centos-7-firewalld-passthrough-traffic-with-firewall-cmd</a>
 </div>

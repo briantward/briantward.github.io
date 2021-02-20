@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>obs studio on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/obs-studio/</link>
+    <description>Recent content in obs studio on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/obs-studio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Convert VHS to Digital</title>
+        <link>https://briantward.github.io/convert-vhs-to-digital/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/convert-vhs-to-digital/</guid>
+        <description>Convert VHS to Digital OBS Studio is great for recording but limited in modification of video. OpenShot is great for then editing that video and trimming out pieces.
+ On Fedora 32, I can capture video and audio with the USB Easy Capture device and &amp;#34;Audio Capture Device&amp;#34; on OBS set to ALSA. The audio settings provide a sync offset that doesn’t work well and is hard to tell if it is working right unless you fully record and capture.</description>
+      </item>
+    
+  </channel>
+</rss>

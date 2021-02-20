@@ -15,15 +15,11 @@
         <link>https://briantward.github.io/anti-virus-on-rhel/</link>
         <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/anti-virus-on-rhel/</guid>
-        <description>Antivirus on Red Hat Enterprise Linux   Search for Anti-Virus certified on RHEL ecosystem:
-https://access.redhat.com/ecosystem/search/#/category/Software?sort=sortTitle%20asc&amp;amp;query=virus&amp;amp;ecosystem=Red%20Hat%20Enterprise%20Linux
-  Is any virus protection software needed for Red Hat Enterprise Linux?
-https://access.redhat.com/solutions/9203
-  Is fanotify supported in Red Hat Enterprise Linux?
-https://access.redhat.com/solutions/458193
-  Systems become unresponsive due to an issue in the implementation of Fanotify in Red Hat and CentOS 7.x kernels
-https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;actp=null&amp;amp;viewlocale=en_US&amp;amp;showDraft=false&amp;amp;platinum_status=false&amp;amp;locale=en_US
-  System hang due to blocked tasks in fanotify code</description>
+        <description>Antivirus on Red Hat Enterprise Linux   Search for Anti-Virus certified on RHEL ecosystem: https://access.redhat.com/ecosystem/search/#/category/Software?sort=sortTitle%20asc&amp;amp;query=virus&amp;amp;ecosystem=Red%20Hat%20Enterprise%20Linux
+  Is any virus protection software needed for Red Hat Enterprise Linux? https://access.redhat.com/solutions/9203
+  Is fanotify supported in Red Hat Enterprise Linux? https://access.redhat.com/solutions/458193
+  Systems become unresponsive due to an issue in the implementation of Fanotify in Red Hat and CentOS 7.x kernels https://kc.mcafee.com/corporate/index?page=content&amp;amp;id=KB90121&amp;amp;actp=null&amp;amp;viewlocale=en_US&amp;amp;showDraft=false&amp;amp;platinum_status=false&amp;amp;locale=en_US
+  System hang due to blocked tasks in fanotify code https://access.</description>
       </item>
     
   </channel>

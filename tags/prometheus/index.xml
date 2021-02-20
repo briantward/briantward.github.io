@@ -15,7 +15,7 @@
         <link>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-prometheus-node-exporter-crashloop/</guid>
-        <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we&amp;#8217;ve only seen it once, we just kill the process holding the port open from the node itself.</description>
+        <description>OpenShift Prometheus Node Exporter CrashLoop Issue: A prometheus node exporter pod is stuck in a CrashLoopBackOff as a result of a failure to release the port 9100 bound by the previous instance before the next instance starts and attempts to reattach to it. This could potentially be resolved by changing the daemonset configuration (updateStrategy or terminationGracePeriodSeconds). Here, since we’ve only seen it once, we just kill the process holding the port open from the node itself.</description>
       </item>
     
   </channel>

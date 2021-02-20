@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -35,13 +35,14 @@
 <meta itemprop="description" content="RHVH Ovirt Red Hat documentation is pretty thorough on the subject of multipath, which is a lovely failover mechanism for connections between remote volumes provided by SANs and the host.[1][2]
  There is even this KCS that discusses the matter a little more: Internal disk device is being detected as multipath device
  In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.">
-<meta itemprop="datePublished" content="2020-02-01T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-02-01T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2020-02-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-02-01T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1181">
 
 
 
 <meta itemprop="keywords" content="multipath," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RHVH Ovirt"/>
 <meta name="twitter:description" content="RHVH Ovirt Red Hat documentation is pretty thorough on the subject of multipath, which is a lovely failover mechanism for connections between remote volumes provided by SANs and the host.[1][2]
@@ -138,7 +139,7 @@
 <p>There is even this KCS that discusses the matter a little more: <a href="https://access.redhat.com/solutions/66569">Internal disk device is being detected as multipath device</a></p>
 </div>
 <div class="paragraph">
-<p>In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.  I guess I could have just used the multipath device names and created filesystems from those, but it seems a bit odd to me.  Reading around in the docs suggests that if you have one path you shouldn&#8217;t use multipath at all, which kinda seems obvious.  I&#8217;ll be using a cloud replication strategy, so local disks in RAID 0 seems sufficient for this use case. As you can see, my root filesystem is on another disk as well.  If these fail and this host fails, I have other systems available.  This is also my home lab and I don&#8217;t care about rebuild/down time if one of these disks goes out.</p>
+<p>In setting up my bare metal servers for RHVH, after adding all my disks to the system as basically single RAID 0 disks, I found that the base image for RHVH had particular settings for creating a single path multipath entry for these.  I guess I could have just used the multipath device names and created filesystems from those, but it seems a bit odd to me.  Reading around in the docs suggests that if you have one path you shouldn’t use multipath at all, which kinda seems obvious.  I’ll be using a cloud replication strategy, so local disks in RAID 0 seems sufficient for this use case. As you can see, my root filesystem is on another disk as well.  If these fail and this host fails, I have other systems available.  This is also my home lab and I don’t care about rebuild/down time if one of these disks goes out.</p>
 </div>
 <div class="paragraph">
 <p>So how do we fix this?</p>
@@ -186,10 +187,10 @@ sdg                                          8:96   1 59.6G  0 disk
 </div>
 </div>
 <div class="paragraph">
-<p>Reading this statement, "If you have previously created a multipath device without using the find_multipaths parameter and then you later set the parameter to yes, you may need to remove the WWIDs of any device you do not want created as a multipath device from the /etc/multipath/wwids file."<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup> we come to understand that since we have only one path to each of these devices, we can set <code>find_multipaths yes</code> in our configuration file while also removing the stored <code>wwid</code>.</p>
+<p>Reading this statement, &#34;If you have previously created a multipath device without using the find_multipaths parameter and then you later set the parameter to yes, you may need to remove the WWIDs of any device you do not want created as a multipath device from the /etc/multipath/wwids file.&#34;<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup> we come to understand that since we have only one path to each of these devices, we can set <code>find_multipaths yes</code> in our configuration file while also removing the stored <code>wwid</code>.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s back up the <code>wwid</code> file where these are stored.  Then remove the entries corresponding to the drives we want to remove from <code>multipath</code>.</p>
+<p>Let’s back up the <code>wwid</code> file where these are stored.  Then remove the entries corresponding to the drives we want to remove from <code>multipath</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -227,28 +228,28 @@ sdg                                          8:96   1 59.6G  0 disk
 <div class="content">
 <pre class="highlight"><code>[root@host-a ~]# multipath -ll
 36842b2b04ff9d90025ab90d07fd7775b dm-9 DELL    ,PERC 6/i
-size=931G features='1 queue_if_no_path' hwhandler='0' wp=rw
-`-+- policy='service-time 0' prio=1 status=active
+size=931G features=&#39;1 queue_if_no_path&#39; hwhandler=&#39;0&#39; wp=rw
+`-+- policy=&#39;service-time 0&#39; prio=1 status=active
   `- 1:2:1:0 sdb 8:16 active ready running
 36842b2b04ff9d90025ab910f8391d6c7 dm-5 DELL    ,PERC 6/i
-size=931G features='1 queue_if_no_path' hwhandler='0' wp=rw
-`-+- policy='service-time 0' prio=1 status=active
+size=931G features=&#39;1 queue_if_no_path&#39; hwhandler=&#39;0&#39; wp=rw
+`-+- policy=&#39;service-time 0&#39; prio=1 status=active
   `- 1:2:3:0 sdd 8:48 active ready running
 36842b2b04ff9d90025abddda04ad4d15 dm-8 DELL    ,PERC 6/i
-size=931G features='1 queue_if_no_path' hwhandler='0' wp=rw
-`-+- policy='service-time 0' prio=1 status=active
+size=931G features=&#39;1 queue_if_no_path&#39; hwhandler=&#39;0&#39; wp=rw
+`-+- policy=&#39;service-time 0&#39; prio=1 status=active
   `- 1:2:4:0 sde 8:64 active ready running
 36842b2b04ff9d90025abddf306245003 dm-6 DELL    ,PERC 6/i
-size=931G features='1 queue_if_no_path' hwhandler='0' wp=rw
-`-+- policy='service-time 0' prio=1 status=active
+size=931G features=&#39;1 queue_if_no_path&#39; hwhandler=&#39;0&#39; wp=rw
+`-+- policy=&#39;service-time 0&#39; prio=1 status=active
   `- 1:2:5:0 sdf 8:80 active ready running
 36842b2b04ff9d90025ab90f78228beb1 dm-10 DELL    ,PERC 6/i
-size=931G features='1 queue_if_no_path' hwhandler='0' wp=rw
-`-+- policy='service-time 0' prio=1 status=active
+size=931G features=&#39;1 queue_if_no_path&#39; hwhandler=&#39;0&#39; wp=rw
+`-+- policy=&#39;service-time 0&#39; prio=1 status=active
   `- 1:2:2:0 sdc 8:32 active ready running
 36842b2b04ff9d90025ab58e52a9663bc dm-7 DELL    ,PERC 6/i
-size=931G features='1 queue_if_no_path' hwhandler='0' wp=rw
-`-+- policy='service-time 0' prio=1 status=active
+size=931G features=&#39;1 queue_if_no_path&#39; hwhandler=&#39;0&#39; wp=rw
+`-+- policy=&#39;service-time 0&#39; prio=1 status=active
   `- 1:2:0:0 sda 8:0  active ready running</code></pre>
 </div>
 </div>
@@ -263,7 +264,7 @@ size=931G features='1 queue_if_no_path' hwhandler='0' wp=rw
 # This file is managed by vdsm.
 #
 # The recommended way to add configuration for your storage is to add a
-# drop-in configuration file in "/etc/multipath/conf.d/&lt;mydevice&gt;.conf".
+# drop-in configuration file in &#34;/etc/multipath/conf.d/&lt;mydevice&gt;.conf&#34;.
 # Settings in drop-in configuration files override settings in this
 # file.</code></pre>
 </div>
@@ -335,7 +336,7 @@ sdg                                                        8:96   1 59.6G  0 dis
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/dm_multipath/ignore_localdisk_procedure" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/dm_multipath/ignore_localdisk_procedure</a>
 </div>

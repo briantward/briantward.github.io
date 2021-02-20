@@ -16,7 +16,7 @@
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
         <description>DD-WRT Custom Certificate (Tested on R7000)
- Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.
  On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
  In the router GUI go to Services &amp;gt; USB:
  Select the following
@@ -57,9 +57,7 @@
   https://docs.openshift.com/container-platform/3.7/architecture/networking/routes.html#routes-sticky-sessions
   https://docs.openshift.com/container-platform/3.7/dev_guide/routes.html#dev-guide-routes-allowing-endpoints-to-control-cookies
    passthrough
-   https://github.com/openshift/origin/commit/a4815c6314f9df1d2ce8060216d0924181c48b6c
-Changed the router default to roundrobin if non-zero weights are used
-https://bugzilla.redhat.com/show_bug.cgi?id=1416869
+   https://github.com/openshift/origin/commit/a4815c6314f9df1d2ce8060216d0924181c48b6c Changed the router default to roundrobin if non-zero weights are used https://bugzilla.redhat.com/show_bug.cgi?id=1416869
    stick sessions in haproxy
    https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/
   http://www.haproxy.org/download/1.8/doc/configuration.txt (3.11)
@@ -73,7 +71,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1416869
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/openshift-update-router-fix/</guid>
         <description>OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
- Log message on router pod attempting to spin up. If you don&amp;#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
+ Log message on router pod attempting to spin up. If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
       </item>
     
   </channel>

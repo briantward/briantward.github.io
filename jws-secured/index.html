@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -44,6 +44,7 @@
 
 
 <meta itemprop="keywords" content="jws,ews,jboss,tomcat,apache,red hat,secure,security," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Securing Red Hat JBoss Web Server 3.X"/>
 <meta name="twitter:description" content="Securing Red Hat JBoss Web Server 3.X (configured on 3.0.3 but should be good for 3.1 as well)
@@ -245,13 +246,13 @@ apache user with /sbin/nologin shell.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the script did not correctly install the user, you&#8217;ve probably done something incredibly wrong.<br>
-If you want to do this part yourself and you don&#8217;t want absolute URLS in your configs:<br></p>
+<p>If the script did not correctly install the user, you’ve probably done something incredibly wrong.<br/>
+If you want to do this part yourself and you don’t want absolute URLS in your configs:<br/></p>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>$ sudo groupadd -g 48 -r apache
-$ sudo useradd -c "Apache" -u 48 -g apache -s /sbin/nologin -r apache
+$ sudo useradd -c &#34;Apache&#34; -u 48 -g apache -s /sbin/nologin -r apache
 $ sudo chown -R apache:apache httpd
 $ sudo passwd -l apache</pre>
 </div>
@@ -329,7 +330,7 @@ $ cp -Ra confg.modules.d config.modules.d.backup</pre>
 <p>Change the following existing directives in httpd.conf:</p>
 <div class="literalblock">
 <div class="content">
-<pre># CIS 8.1 Set ServerToken to 'Prod'
+<pre># CIS 8.1 Set ServerToken to &#39;Prod&#39;
 ServerTokens Prod</pre>
 </div>
 </div>
@@ -363,7 +364,7 @@ Listen 127.0.0.1:8080</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;Directory "ANY"&gt;
+<pre>&lt;Directory &#34;ANY&#34;&gt;
 ...
 Options None
 ...
@@ -372,7 +373,7 @@ Options None
 </div>
 <div class="literalblock">
 <div class="content">
-<pre># CIS 8.2 Set ServerSignature to 'Off'
+<pre># CIS 8.2 Set ServerSignature to &#39;Off&#39;
 ServerSignature Off</pre>
 </div>
 </div>
@@ -447,7 +448,7 @@ Header always append X-Frame-Options SAMEORIGIN</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;Directory "/opt/jws/jws-3.0/httpd/www/html"&gt;
+<pre>&lt;Directory &#34;/opt/jws/jws-3.0/httpd/www/html&#34;&gt;
 ...
 # CIS 5.7 Limit HTTP Request Methods
     AllowMethods GET POST OPTIONS
@@ -458,14 +459,14 @@ Header always append X-Frame-Options SAMEORIGIN</pre>
 <div class="literalblock">
 <div class="content">
 <pre># CIS 5.11 Restrict File Extensions
-&lt;FilesMatch "^.*\..*$"&gt;
+&lt;FilesMatch &#34;^.*\..*$&#34;&gt;
     Require all denied
 &lt;/FilesMatch&gt;</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;FilesMatch "^.*\.(css|html?|js|pdf|txt|xml|xsl|gif|ico|jpe?g|png)$"&gt;
+<pre>&lt;FilesMatch &#34;^.*\.(css|html?|js|pdf|txt|xml|xsl|gif|ico|jpe?g|png)$&#34;&gt;
     Require all granted
 &lt;/FilesMatch&gt;</pre>
 </div>
@@ -502,35 +503,35 @@ Group apache</pre>
 </div>
 </li>
 <li>
-<p>Comment out the following sections:<br></p>
+<p>Comment out the following sections:<br/></p>
 <div class="ulist">
 <ul>
 <li>
-<p>The settings for providing icon images, which won&#8217;t be needed because auto-indexing will be turned off.</p>
+<p>The settings for providing icon images, which won’t be needed because auto-indexing will be turned off.</p>
 </li>
 <li>
-<p>The WebDAV settings, which won&#8217;t be activated anyways because we will turn off the module.</p>
+<p>The WebDAV settings, which won’t be activated anyways because we will turn off the module.</p>
 </li>
 <li>
-<p>The CGI bin settings and ScriptAlias, because we won&#8217;t be using it.</p>
+<p>The CGI bin settings and ScriptAlias, because we won’t be using it.</p>
 </li>
 <li>
-<p>The IndexOptions, which won&#8217;t be needed because auto-indexing will be turned off.</p>
+<p>The IndexOptions, which won’t be needed because auto-indexing will be turned off.</p>
 </li>
 <li>
-<p>The settings for AddIconByEncoding, AddIconByType, AddIcon, DefaultIcon, ReadmeName, HeaderName, and IndexIgnore, which won&#8217;t be needed because auto-indexing will be turned off.</p>
+<p>The settings for AddIconByEncoding, AddIconByType, AddIcon, DefaultIcon, ReadmeName, HeaderName, and IndexIgnore, which won’t be needed because auto-indexing will be turned off.</p>
 </li>
 <li>
 <p>The Alias for error and the settings for the error page by language, because this feature requires Server Side Includes which will be disabled.</p>
 </li>
 <li>
-<p>IncludeOptional directive, which disables all subconfigs. Reenable if any are needed and be sure to comment out ones you don&#8217;t want.</p>
+<p>IncludeOptional directive, which disables all subconfigs. Reenable if any are needed and be sure to comment out ones you don’t want.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Comment out all the files in conf.d.  Even though we have commented out the IncludeOptional line in httpd.conf, we may want to add some features back, sometime in the future.  Doing this proactively means nothing else gets turned on by accident.<br></p>
+<p>Comment out all the files in conf.d.  Even though we have commented out the IncludeOptional line in httpd.conf, we may want to add some features back, sometime in the future.  Doing this proactively means nothing else gets turned on by accident.<br/></p>
 <div class="ulist">
 <ul>
 <li>
@@ -558,7 +559,7 @@ Group apache</pre>
 </div>
 </li>
 <li>
-<p>In conf.modules.d folder, comment out all lines of the below files.  Do not delete or rename the files, as during an RPM upgrade they would simply be replaced.<br></p>
+<p>In conf.modules.d folder, comment out all lines of the below files.  Do not delete or rename the files, as during an RPM upgrade they would simply be replaced.<br/></p>
 <div class="ulist">
 <ul>
 <li>
@@ -589,11 +590,11 @@ Group apache</pre>
 </div>
 </li>
 <li>
-<p>That should leave two more files in conf.modules.d:<br></p>
+<p>That should leave two more files in conf.modules.d:<br/></p>
 <div class="ulist">
 <ul>
 <li>
-<p>00-base.conf, comment out&#8230;&#8203;</p>
+<p>00-base.conf, comment out…​</p>
 <div class="literalblock">
 <div class="content">
 <pre># This provides use of Order, Allow, Deny syntax from apache 2.2.  Disable for new servers using

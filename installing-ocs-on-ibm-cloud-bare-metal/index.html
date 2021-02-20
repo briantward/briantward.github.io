@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)">
 <meta itemprop="description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform.">
-<meta itemprop="datePublished" content="2020-05-11T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-05-11T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2020-05-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-11T00:00:00+00:00" />
 <meta itemprop="wordCount" content="2199">
 
 
 
 <meta itemprop="keywords" content="storage,container," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS)"/>
 <meta name="twitter:description" content="Installing OpenShift Container Storage on IBM Cloud Bare Metal RedHat Openshift Kubernetes Service (ROKS) This feature set, deploying OCS on Bare Metal, has not gone GA yet and is still a work in progress.[1] It should be coming soon, but the main issue is that there is no documentation specific to this deployment scenario and the kubelet home directory on IBM ROKS is not the same as Red Hat OpenShift Container Platform."/>
@@ -140,7 +141,7 @@
 <p>Skip Section 1.1.2 because this is not a typical install.</p>
 </li>
 <li>
-<p>Since these are RHEL based nodes do <a href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.3/html-single/deploying_openshift_container_storage/index#enabling-file-system-access-for-containers-on-red-hat-enterprise-linux-based-nodes_rhocs">Section 1.1.3</a>.<br></p>
+<p>Since these are RHEL based nodes do <a href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.3/html-single/deploying_openshift_container_storage/index#enabling-file-system-access-for-containers-on-red-hat-enterprise-linux-based-nodes_rhocs">Section 1.1.3</a>.<br/></p>
 <div class="paragraph">
 <p>In our case everything was already there, we just needed to enable cephfs through SELinux.</p>
 </div>
@@ -171,7 +172,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Identify the nodes.  We are working with the first three. ROKS doesn&#8217;t show us easily which ones we need. You may know this from the provision order, or you may be able to do describes on these nodes.</p>
+<p>Identify the nodes.  We are working with the first three. ROKS doesn’t show us easily which ones we need. You may know this from the provision order, or you may be able to do describes on these nodes.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc get nodes
@@ -193,7 +194,7 @@ NAME             STATUS   ROLES           AGE     VERSION
 Starting pod/10194150196-debug ...
 To use host binaries, run `chroot /host`
 Pod IP: 10.194.150.196
-If you don't see a command prompt, try pressing enter.
+If you don&#39;t see a command prompt, try pressing enter.
 sh-4.2# chroot /host
 sh-4.2# lsblk
 NAME                                   MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
@@ -222,8 +223,8 @@ sh-4.2# dmsetup ls
 
 sh-4.2# multipath -ll
 3600605b00b5982502642ac600341c0bb dm-0 AVAGO   ,MR9361-8i
-size=1.7T features='0' hwhandler='0' wp=rw
-`-+- policy='service-time 0' prio=1 status=active
+size=1.7T features=&#39;0&#39; hwhandler=&#39;0&#39; wp=rw
+`-+- policy=&#39;service-time 0&#39; prio=1 status=active
   `- 0:2:2:0 sdc 8:32 active ready running</code></pre>
 </div>
 </div>
@@ -251,22 +252,22 @@ fast_io_fail_tmo 5
 }
 # All data under blacklist must be specific to your system.
 blacklist {
-wwid "SAdaptec*"
-devnode "^hd[a-z]"
-devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-devnode "^cciss.*"
+wwid &#34;SAdaptec*&#34;
+devnode &#34;^hd[a-z]&#34;
+devnode &#34;^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*&#34;
+devnode &#34;^cciss.*&#34;
 }
 devices {
 device {
-vendor "NETAPP"
-product "LUN"
+vendor &#34;NETAPP&#34;
+product &#34;LUN&#34;
 path_grouping_policy group_by_prio
-features "3 queue_if_no_path pg_init_retries 50"
-prio "alua"
+features &#34;3 queue_if_no_path pg_init_retries 50&#34;
+prio &#34;alua&#34;
 path_checker tur
 failback immediate
-path_selector "round-robin 0"
-hardware_handler "1 alua"
+path_selector &#34;round-robin 0&#34;
+hardware_handler &#34;1 alua&#34;
 rr_weight uniform
 rr_min_io 128
 uid_attribute ID_SERIAL
@@ -314,22 +315,22 @@ fast_io_fail_tmo 5
 # All data under blacklist must be specific to your system.
 blacklist {
 wwid 3600605b00b5982502642ac600341c0bb
-wwid "SAdaptec*"
-devnode "^hd[a-z]"
-devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-devnode "^cciss.*"
+wwid &#34;SAdaptec*&#34;
+devnode &#34;^hd[a-z]&#34;
+devnode &#34;^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*&#34;
+devnode &#34;^cciss.*&#34;
 }
 devices {
 device {
-vendor "NETAPP"
-product "LUN"
+vendor &#34;NETAPP&#34;
+product &#34;LUN&#34;
 path_grouping_policy group_by_prio
-features "3 queue_if_no_path pg_init_retries 50"
-prio "alua"
+features &#34;3 queue_if_no_path pg_init_retries 50&#34;
+prio &#34;alua&#34;
 path_checker tur
 failback immediate
-path_selector "round-robin 0"
-hardware_handler "1 alua"
+path_selector &#34;round-robin 0&#34;
+hardware_handler &#34;1 alua&#34;
 rr_weight uniform
 rr_min_io 128
 uid_attribute ID_SERIAL
@@ -400,7 +401,7 @@ exit</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>cp /etc/multipath.conf{,.bk}
-sed -i 's/wwid \"SAdaptec\*\"/wwid \"SAdaptec\*\"\nwwid '$(multipath -ll | grep AVAGO | awk '{print $1}')'/g' /etc/multipath.conf
+sed -i &#39;s/wwid \&#34;SAdaptec\*\&#34;/wwid \&#34;SAdaptec\*\&#34;\nwwid &#39;$(multipath -ll | grep AVAGO | awk &#39;{print $1}&#39;)&#39;/g&#39; /etc/multipath.conf
 systemctl reload multipathd.service
 wipefs /dev/sdc --all --force</code></pre>
 </div>
@@ -413,15 +414,15 @@ wipefs /dev/sdc --all --force</code></pre>
 </div>
 <div class="admonitionblock note">
 <table>
-<tr>
+<tbody><tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-These RHEL systems are "ephemeral" if "reset" using the <code>ibmcloud</code> command.  You will lose any alteration to the underlying OS.  Further work and testing needs to be done if we need to be able to use the machines and their storage correctly on a "reset".  It is unclear to me if there is a "Reboot" option that does not "reset" the OS.  For the purposes of this POC it does not appear to be important as long as we do not "Reset" the machines.
+These RHEL systems are &#34;ephemeral&#34; if &#34;reset&#34; using the <code>ibmcloud</code> command.  You will lose any alteration to the underlying OS.  Further work and testing needs to be done if we need to be able to use the machines and their storage correctly on a &#34;reset&#34;.  It is unclear to me if there is a &#34;Reboot&#34; option that does not &#34;reset&#34; the OS.  For the purposes of this POC it does not appear to be important as long as we do not &#34;Reset&#34; the machines.
 </td>
 </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 <div class="sect2">
@@ -429,7 +430,7 @@ These RHEL systems are "ephemeral" if "reset" using the <code>ibmcloud</code> co
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Do <a href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.3/html-single/deploying_openshift_container_storage/index#requirements-for-installing-openshift-container-storage-using-local-storage-devices_rhocs">Section 1.2.2</a> in the official documentation.<br></p>
+<p>Do <a href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.3/html-single/deploying_openshift_container_storage/index#requirements-for-installing-openshift-container-storage-using-local-storage-devices_rhocs">Section 1.2.2</a> in the official documentation.<br/></p>
 <div class="paragraph">
 <p><a href="https://github.com/openshift/local-storage-operator/blob/master/docs/deploy-with-olm.md">Additional LocalVolume Reference</a></p>
 </div>
@@ -438,7 +439,7 @@ These RHEL systems are "ephemeral" if "reset" using the <code>ibmcloud</code> co
 <p>Create the LocalVolume object:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>echo 'apiVersion: local.storage.openshift.io/v1
+<pre class="highlight"><code>echo &#39;apiVersion: local.storage.openshift.io/v1
 kind: LocalVolume
 metadata:
   name: ocs-backing
@@ -457,7 +458,7 @@ spec:
   - devicePaths:
     - /dev/sdc
     storageClassName: local-ocs-backing
-    volumeMode: Block' | oc create -f -</code></pre>
+    volumeMode: Block&#39; | oc create -f -</code></pre>
 </div>
 </div>
 </li>
@@ -465,7 +466,7 @@ spec:
 </div>
 <div class="admonitionblock note">
 <table>
-<tr>
+<tbody><tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
@@ -473,7 +474,7 @@ spec:
 Best practices suggested by the OCS documentation is to use the <code>/dev/disks/by-id</code> name of the disk.  This was not originally done in this POC.
 </td>
 </tr>
-</table>
+</tbody></table>
 </div>
 <div class="paragraph">
 <p>Results:</p>
@@ -498,7 +499,7 @@ ocs-backing-local-provisioner-wz4qk                     1/1     Running   0     
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the "diskmaker" logs don&#8217;t take any action until there is a PVC created to match the PV.</p>
+<p>Note that the &#34;diskmaker&#34; logs don’t take any action until there is a PVC created to match the PV.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -509,12 +510,12 @@ I0505 02:28:06.808796       1 diskmaker.go:24] Go OS/Arch: linux/amd64
 </div>
 </div>
 <div class="paragraph">
-<p>The "provisioner" logs show the capture of the raw block device.</p>
+<p>The &#34;provisioner&#34; logs show the capture of the raw block device.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc logs -f ocs-backing-local-provisioner-5sqq4
-I0505 02:28:06.851623       1 common.go:320] StorageClass "local-ocs-backing" configured with MountDir "/mnt/local-storage/local-ocs-backing", HostDir "/mnt/local-storage/local-ocs-backing", VolumeMode "Block", FsType "", BlockCleanerCommand ["/scripts/quick_reset.sh"]
+I0505 02:28:06.851623       1 common.go:320] StorageClass &#34;local-ocs-backing&#34; configured with MountDir &#34;/mnt/local-storage/local-ocs-backing&#34;, HostDir &#34;/mnt/local-storage/local-ocs-backing&#34;, VolumeMode &#34;Block&#34;, FsType &#34;&#34;, BlockCleanerCommand [&#34;/scripts/quick_reset.sh&#34;]
 I0505 02:28:06.851784       1 main.go:63] Loaded configuration: {StorageClassConfig:map[local-ocs-backing:{HostDir:/mnt/local-storage/local-ocs-backing MountDir:/mnt/local-storage/local-ocs-backing BlockCleanerCommand:[/scripts/quick_reset.sh] VolumeMode:Block FsType:}] NodeLabelsForPV:[] UseAlphaAPI:false UseJobForCleaning:false MinResyncPeriod:{Duration:5m0s} UseNodeNameOnly:false LabelsForPV:map[storage.openshift.com/local-volume-owner-name:ocs-backing storage.openshift.com/local-volume-owner-namespace:local-storage]}
 I0505 02:28:06.851817       1 main.go:64] Ready to run...
 W0505 02:28:06.851829       1 main.go:73] MY_NAMESPACE environment variable not set, will be set to default.
@@ -525,13 +526,13 @@ I0505 02:28:06.884272       1 main.go:100] Starting metrics server at :8080
 I0505 02:28:06.884403       1 controller.go:45] Initializing volume cache
 I0505 02:28:07.087009       1 controller.go:108] Controller started
 E0505 02:28:07.087143       1 discovery.go:201] Error reading directory: open /mnt/local-storage/local-ocs-backing: no such file or directory
-I0505 02:28:17.087958       1 discovery.go:304] Found new volume at host path "/mnt/local-storage/local-ocs-backing/sdc" with capacity 1919816826880, creating Local PV "local-pv-a0747d99", required volumeMode "Block"
-I0505 02:28:17.102694       1 discovery.go:337] Created PV "local-pv-a0747d99" for volume at "/mnt/local-storage/local-ocs-backing/sdc"
-I0505 02:28:17.102824       1 cache.go:55] Added pv "local-pv-a0747d99" to cache
-I0505 02:28:17.116552       1 cache.go:64] Updated pv "local-pv-a0747d99" to cache
+I0505 02:28:17.087958       1 discovery.go:304] Found new volume at host path &#34;/mnt/local-storage/local-ocs-backing/sdc&#34; with capacity 1919816826880, creating Local PV &#34;local-pv-a0747d99&#34;, required volumeMode &#34;Block&#34;
+I0505 02:28:17.102694       1 discovery.go:337] Created PV &#34;local-pv-a0747d99&#34; for volume at &#34;/mnt/local-storage/local-ocs-backing/sdc&#34;
+I0505 02:28:17.102824       1 cache.go:55] Added pv &#34;local-pv-a0747d99&#34; to cache
+I0505 02:28:17.116552       1 cache.go:64] Updated pv &#34;local-pv-a0747d99&#34; to cache
 ^C
 $ oc logs -f ocs-backing-local-provisioner-n9mxg
-I0505 02:28:06.628631       1 common.go:320] StorageClass "local-ocs-backing" configured with MountDir "/mnt/local-storage/local-ocs-backing", HostDir "/mnt/local-storage/local-ocs-backing", VolumeMode "Block", FsType "", BlockCleanerCommand ["/scripts/quick_reset.sh"]
+I0505 02:28:06.628631       1 common.go:320] StorageClass &#34;local-ocs-backing&#34; configured with MountDir &#34;/mnt/local-storage/local-ocs-backing&#34;, HostDir &#34;/mnt/local-storage/local-ocs-backing&#34;, VolumeMode &#34;Block&#34;, FsType &#34;&#34;, BlockCleanerCommand [&#34;/scripts/quick_reset.sh&#34;]
 I0505 02:28:06.628779       1 main.go:63] Loaded configuration: {StorageClassConfig:map[local-ocs-backing:{HostDir:/mnt/local-storage/local-ocs-backing MountDir:/mnt/local-storage/local-ocs-backing BlockCleanerCommand:[/scripts/quick_reset.sh] VolumeMode:Block FsType:}] NodeLabelsForPV:[] UseAlphaAPI:false UseJobForCleaning:false MinResyncPeriod:{Duration:5m0s} UseNodeNameOnly:false LabelsForPV:map[storage.openshift.com/local-volume-owner-name:ocs-backing storage.openshift.com/local-volume-owner-namespace:local-storage]}
 I0505 02:28:06.628809       1 main.go:64] Ready to run...
 W0505 02:28:06.628820       1 main.go:73] MY_NAMESPACE environment variable not set, will be set to default.
@@ -542,13 +543,13 @@ I0505 02:28:06.658072       1 main.go:100] Starting metrics server at :8080
 I0505 02:28:06.658185       1 controller.go:45] Initializing volume cache
 I0505 02:28:06.860545       1 controller.go:108] Controller started
 E0505 02:28:06.860666       1 discovery.go:201] Error reading directory: open /mnt/local-storage/local-ocs-backing: no such file or directory
-I0505 02:28:16.861298       1 discovery.go:304] Found new volume at host path "/mnt/local-storage/local-ocs-backing/sdc" with capacity 1919816826880, creating Local PV "local-pv-4db9cb47", required volumeMode "Block"
-I0505 02:28:16.877592       1 discovery.go:337] Created PV "local-pv-4db9cb47" for volume at "/mnt/local-storage/local-ocs-backing/sdc"
-I0505 02:28:16.877745       1 cache.go:55] Added pv "local-pv-4db9cb47" to cache
-I0505 02:28:16.887963       1 cache.go:64] Updated pv "local-pv-4db9cb47" to cache
+I0505 02:28:16.861298       1 discovery.go:304] Found new volume at host path &#34;/mnt/local-storage/local-ocs-backing/sdc&#34; with capacity 1919816826880, creating Local PV &#34;local-pv-4db9cb47&#34;, required volumeMode &#34;Block&#34;
+I0505 02:28:16.877592       1 discovery.go:337] Created PV &#34;local-pv-4db9cb47&#34; for volume at &#34;/mnt/local-storage/local-ocs-backing/sdc&#34;
+I0505 02:28:16.877745       1 cache.go:55] Added pv &#34;local-pv-4db9cb47&#34; to cache
+I0505 02:28:16.887963       1 cache.go:64] Updated pv &#34;local-pv-4db9cb47&#34; to cache
 ^C
 $ oc logs -f ocs-backing-local-provisioner-wz4qk
-I0505 02:28:06.777835       1 common.go:320] StorageClass "local-ocs-backing" configured with MountDir "/mnt/local-storage/local-ocs-backing", HostDir "/mnt/local-storage/local-ocs-backing", VolumeMode "Block", FsType "", BlockCleanerCommand ["/scripts/quick_reset.sh"]
+I0505 02:28:06.777835       1 common.go:320] StorageClass &#34;local-ocs-backing&#34; configured with MountDir &#34;/mnt/local-storage/local-ocs-backing&#34;, HostDir &#34;/mnt/local-storage/local-ocs-backing&#34;, VolumeMode &#34;Block&#34;, FsType &#34;&#34;, BlockCleanerCommand [&#34;/scripts/quick_reset.sh&#34;]
 I0505 02:28:06.777974       1 main.go:63] Loaded configuration: {StorageClassConfig:map[local-ocs-backing:{HostDir:/mnt/local-storage/local-ocs-backing MountDir:/mnt/local-storage/local-ocs-backing BlockCleanerCommand:[/scripts/quick_reset.sh] VolumeMode:Block FsType:}] NodeLabelsForPV:[] UseAlphaAPI:false UseJobForCleaning:false MinResyncPeriod:{Duration:5m0s} UseNodeNameOnly:false LabelsForPV:map[storage.openshift.com/local-volume-owner-name:ocs-backing storage.openshift.com/local-volume-owner-namespace:local-storage]}
 I0505 02:28:06.778007       1 main.go:64] Ready to run...
 W0505 02:28:06.778018       1 main.go:73] MY_NAMESPACE environment variable not set, will be set to default.
@@ -559,10 +560,10 @@ I0505 02:28:06.803728       1 main.go:100] Starting metrics server at :8080
 I0505 02:28:06.803815       1 controller.go:45] Initializing volume cache
 I0505 02:28:07.006479       1 controller.go:108] Controller started
 E0505 02:28:07.006588       1 discovery.go:201] Error reading directory: open /mnt/local-storage/local-ocs-backing: no such file or directory
-I0505 02:28:17.007375       1 discovery.go:304] Found new volume at host path "/mnt/local-storage/local-ocs-backing/sdc" with capacity 1919816826880, creating Local PV "local-pv-7f5385f2", required volumeMode "Block"
-I0505 02:28:17.026660       1 discovery.go:337] Created PV "local-pv-7f5385f2" for volume at "/mnt/local-storage/local-ocs-backing/sdc"
-I0505 02:28:17.026720       1 cache.go:55] Added pv "local-pv-7f5385f2" to cache
-I0505 02:28:17.036906       1 cache.go:64] Updated pv "local-pv-7f5385f2" to cache
+I0505 02:28:17.007375       1 discovery.go:304] Found new volume at host path &#34;/mnt/local-storage/local-ocs-backing/sdc&#34; with capacity 1919816826880, creating Local PV &#34;local-pv-7f5385f2&#34;, required volumeMode &#34;Block&#34;
+I0505 02:28:17.026660       1 discovery.go:337] Created PV &#34;local-pv-7f5385f2&#34; for volume at &#34;/mnt/local-storage/local-ocs-backing/sdc&#34;
+I0505 02:28:17.026720       1 cache.go:55] Added pv &#34;local-pv-7f5385f2&#34; to cache
+I0505 02:28:17.036906       1 cache.go:64] Updated pv &#34;local-pv-7f5385f2&#34; to cache
 ^C</code></pre>
 </div>
 </div>
@@ -605,7 +606,7 @@ local-pv-a0747d99                          1787Gi     RWO            Delete     
 <p>Do <a href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.3/html-single/deploying_openshift_container_storage/index#creating-openshift-container-storage-cluster-on-bare-metal_rhocs">Section 1.2.6</a> in the official documentation to create a custom cluster.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ echo 'apiVersion: ocs.openshift.io/v1
+<pre class="highlight"><code>$ echo &#39;apiVersion: ocs.openshift.io/v1
 kind: StorageCluster
 metadata:
   name: ocs-storagecluster
@@ -628,7 +629,7 @@ spec:
     placement: {}
     replica: 3
     resources: {}
-  version: 4.3.0' | oc create -f -</code></pre>
+  version: 4.3.0&#39; | oc create -f -</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -651,8 +652,8 @@ spec:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre> $ oc get ds csi-rbdplugin -o yaml | sed 's/var\/lib\/kubelet/var\/data\/kubelet/g' | oc apply -f -
- $ oc get ds csi-cephfsplugin -o yaml | sed 's/var\/lib\/kubelet/var\/data\/kubelet/g' | oc apply -f -</pre>
+<pre> $ oc get ds csi-rbdplugin -o yaml | sed &#39;s/var\/lib\/kubelet/var\/data\/kubelet/g&#39; | oc apply -f -
+ $ oc get ds csi-cephfsplugin -o yaml | sed &#39;s/var\/lib\/kubelet/var\/data\/kubelet/g&#39; | oc apply -f -</pre>
 </div>
 </div>
 </div>
@@ -669,7 +670,7 @@ spec:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>May 11 21:30:34 kube-bqjdgjof0jub1eqc7830-cluster0-storage-00000d76 kubelet.service: E0511 21:30:34.616492   15432 goroutinemap.go:150] Operation for "/var/data/kubelet/plugins/openshift-storage.rbd.csi.ceph.com/csi.sock" failed. No retries permitted until 2020-05-11 21:32:36.616461186 -0500 CDT m=+637666.488684071 (durationBeforeRetry 2m2s). Error: "RegisterPlugin error -- failed to get plugin info using RPC GetInfo at socket /var/data/kubelet/plugins/openshift-storage.rbd.csi.ceph.com/csi.sock, err: rpc error: code = Unimplemented desc = unknown service pluginregistration.Registration"</code></pre>
+<pre class="highlight"><code>May 11 21:30:34 kube-bqjdgjof0jub1eqc7830-cluster0-storage-00000d76 kubelet.service: E0511 21:30:34.616492   15432 goroutinemap.go:150] Operation for &#34;/var/data/kubelet/plugins/openshift-storage.rbd.csi.ceph.com/csi.sock&#34; failed. No retries permitted until 2020-05-11 21:32:36.616461186 -0500 CDT m=+637666.488684071 (durationBeforeRetry 2m2s). Error: &#34;RegisterPlugin error -- failed to get plugin info using RPC GetInfo at socket /var/data/kubelet/plugins/openshift-storage.rbd.csi.ceph.com/csi.sock, err: rpc error: code = Unimplemented desc = unknown service pluginregistration.Registration&#34;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -677,7 +678,7 @@ spec:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>May 11 10:56:11 kube-bqjdgjof0jub1eqc7830-cluster0-storage-00000d76 kubelet.service: E0511 10:56:11.498116   15432 nestedpendingoperations.go:20] Operation for "\"kubernetes.io/csi/openshift-storage.rbd.csi.ceph.com^0001-0011-openshift-storage-0000000000000002-abcba85c-9395-11ea-abcf-52f7713ae97\"" failed. No retries permitted until 2020-05-11 10:58:13.498080928 -0500 CDT m=+599603.370303765 (durationBeforeRetry 2m2s). Error: "AttahVolume.Attach failed for volume \"pvc-3797850b-b025-46fc-a177-242b86483049\" (UniqueName: \"kubernetes.io/csi/openshift-storage.rbd.csi.ceph.com^001-0011-openshift-storage-0000000000000002-abcba85c-9395-11ea-abcf-52f77713ae97\") from node \"10.194.150.204\" : kubernetes.io/csi: attacher.Attch failed: volumeattachments.storage.k8s.io is forbidden: User \"system:node:10.194.150.204\" cannot create resource \"volumeattachments\" in API roup \"storage.k8s.io\" at the cluster scope: can only get individual resources of this type"</code></pre>
+<pre class="highlight"><code>May 11 10:56:11 kube-bqjdgjof0jub1eqc7830-cluster0-storage-00000d76 kubelet.service: E0511 10:56:11.498116   15432 nestedpendingoperations.go:20] Operation for &#34;\&#34;kubernetes.io/csi/openshift-storage.rbd.csi.ceph.com^0001-0011-openshift-storage-0000000000000002-abcba85c-9395-11ea-abcf-52f7713ae97\&#34;&#34; failed. No retries permitted until 2020-05-11 10:58:13.498080928 -0500 CDT m=+599603.370303765 (durationBeforeRetry 2m2s). Error: &#34;AttahVolume.Attach failed for volume \&#34;pvc-3797850b-b025-46fc-a177-242b86483049\&#34; (UniqueName: \&#34;kubernetes.io/csi/openshift-storage.rbd.csi.ceph.com^001-0011-openshift-storage-0000000000000002-abcba85c-9395-11ea-abcf-52f77713ae97\&#34;) from node \&#34;10.194.150.204\&#34; : kubernetes.io/csi: attacher.Attch failed: volumeattachments.storage.k8s.io is forbidden: User \&#34;system:node:10.194.150.204\&#34; cannot create resource \&#34;volumeattachments\&#34; in API roup \&#34;storage.k8s.io\&#34; at the cluster scope: can only get individual resources of this type&#34;</code></pre>
 </div>
 </div>
 </div>
@@ -703,7 +704,7 @@ spec:
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <a href="https://github.com/openshift/ocs-operator/issues/454#issuecomment-604522767" class="bare">https://github.com/openshift/ocs-operator/issues/454#issuecomment-604522767</a>
 </div>

@@ -24,7 +24,7 @@
         <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/gluster-tips/</guid>
         <description>Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
- # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&amp;#8217;s all down.</description>
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it’s all down.</description>
       </item>
     
       <item>
@@ -47,9 +47,9 @@
         <link>https://briantward.github.io/git/</link>
         <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/git/</guid>
-        <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
-$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
-$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+        <description>Git Tips   When you are required to use git over HTTPS but you don’t want to be prompted for your credentials every time.
+$ git config --global credential.helper cache $ git config credential.helper &amp;#39;cache --timeout=3600&amp;#39;     Set author display on git rebase
+$ git config --add rebase.instructionFormat &amp;#34;(%an &amp;lt;%ae&amp;gt;) %s&amp;#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
       </description>
       </item>
     
@@ -58,7 +58,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <link>https://briantward.github.io/terminal-to-file/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/terminal-to-file/</guid>
-        <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -     </description>
+        <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &amp;#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&amp;#39; | oc create -f -     </description>
       </item>
     
       <item>
@@ -69,7 +69,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <description>Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
 # tune2fs -m 0 /dev/sdb1     print UUID of filesystems
 # blkid     remount a readonly filesystem to rewrite
-# mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)</description>
+# mount -o remount,rw /     watch the status of dd (useful on systems without &amp;#34;status=progress&amp;#34;, like Mac I think)</description>
       </item>
     
       <item>
@@ -89,7 +89,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <description>Navigating Linux   Move a file to different extension, or change parts of a name
 $ mv /etc/yum.repos.d/redhat.{repo,disabled}     Search for all mac dot underscore files
 $ find -name ._\* $ find -name .DS_Store $ find -name .DS_Store -delete     find and replace text in files in a directory, recursively:
-$ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#39;        </description>
+$ find /directory -type f -print0 | xargs -0 sed -i &amp;#39;s/old-text/new-text/g&amp;#39;        </description>
       </item>
     
       <item>
@@ -97,10 +97,7 @@ $ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#
         <link>https://briantward.github.io/networking/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/networking/</guid>
-        <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
--nn: Show PCI vendor and device codes as both numbers and names.
--k: Show driver information for a device.
--d: Filter on just the &#39;Ethernet&#39; device class (0200)
+        <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &amp;#39;/inet addr:/ {print $2}&amp;#39; | sed &amp;#39;s/addr://&amp;#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where, -nn: Show PCI vendor and device codes as both numbers and names. -k: Show driver information for a device. -d: Filter on just the &amp;#39;Ethernet&amp;#39; device class (0200)
   Check Kernel module load # dmesg | grep e1000e   (kernel module e1000e found above)</description>
       </item>
     
@@ -110,7 +107,7 @@ $ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/vim/</guid>
         <description>VIM Tips   Set YAML filetypes to have two spaces on indent
-$ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn&amp;#8217;t opened with sudo:
+$ echo &amp;#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&amp;#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn’t opened with sudo:
 :w !sudo tee %        </description>
       </item>
     
@@ -120,7 +117,7 @@ $ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/xml/</guid>
         <description>XML Tips   Format raw xml on the cli
-echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&#34;ipsum&#34; /&amp;gt;&amp;lt;/root&amp;gt;&#39; | xmllint --format -        </description>
+echo &amp;#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&amp;#34;b&amp;#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&amp;#34;ipsum&amp;#34; /&amp;gt;&amp;lt;/root&amp;gt;&amp;#39; | xmllint --format -        </description>
       </item>
     
   </channel>

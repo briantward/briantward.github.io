@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -23,7 +23,7 @@
 
 <meta property="og:title" content="OpenShift Update Router Fix" />
 <meta property="og:description" content="OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
- Log message on router pod attempting to spin up. If you don&#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!" />
+ Log message on router pod attempting to spin up. If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/openshift-update-router-fix/" />
 <meta property="article:published_time" content="2018-12-13T00:00:00+00:00" />
@@ -32,18 +32,19 @@
 
 <meta itemprop="name" content="OpenShift Update Router Fix">
 <meta itemprop="description" content="OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
- Log message on router pod attempting to spin up. If you don&#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!">
-<meta itemprop="datePublished" content="2018-12-13T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-13T00:00:00&#43;00:00" />
+ Log message on router pod attempting to spin up. If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!">
+<meta itemprop="datePublished" content="2018-12-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-13T00:00:00+00:00" />
 <meta itemprop="wordCount" content="134">
 
 
 
 <meta itemprop="keywords" content="Red Hat,container,router,metrics,certificate,error," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift Update Router Fix"/>
 <meta name="twitter:description" content="OpenShift Update Router Fix Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).
- Log message on router pod attempting to spin up. If you don&#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!"/>
+ Log message on router pod attempting to spin up. If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!"/>
 
 
   </head>
@@ -146,7 +147,7 @@
 <p>Updating from v3.11.0 to v3.11.51 introduced a new volume mount on the router that did not previously exist (or maybe something wonky just happened in my cluster).</p>
 </div>
 <div class="paragraph">
-<p>Log message on router pod attempting to spin up.  If you don&#8217;t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!) and a new builder pod and router pods will attempt to spin up.</p>
+<p>Log message on router pod attempting to spin up.  If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!) and a new builder pod and router pods will attempt to spin up.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -160,7 +161,7 @@ error: open /etc/pki/tls/metrics/tls.crt: no such file or directory</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc set volume dc/router --add --mount-path=/etc/pki/tls/metrics --secret-name='router-certs' --name metrics-server-certificate</pre>
+<pre>$ oc set volume dc/router --add --mount-path=/etc/pki/tls/metrics --secret-name=&#39;router-certs&#39; --name metrics-server-certificate</pre>
 </div>
 </div>
 </div>

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="Attach a Specific Subscription Pool to a RHEL Machine">
 <meta itemprop="description" content="Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1)     ">
-<meta itemprop="datePublished" content="2018-06-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-06-15T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-06-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-06-15T00:00:00+00:00" />
 <meta itemprop="wordCount" content="43">
 
 
 
 <meta itemprop="keywords" content="rhel,subscription-manager,pool," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Attach a Specific Subscription Pool to a RHEL Machine"/>
 <meta name="twitter:description" content="Attach a Specific Subscription Pool to a RHEL Machine subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1 subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1)     "/>
@@ -129,8 +130,8 @@
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>subscription-manager list --all --available --matches="OpenShift Container Platform" | awk '/Pool ID/ {print $3}' | head -1
-subscription-manager attach --pool=$(subscription-manager list --all --available --matches="OpenShift Container Platform" | awk '/Pool ID/ {print $3}' | head -1)</pre>
+<pre>subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1
+subscription-manager attach --pool=$(subscription-manager list --all --available --matches=&#34;OpenShift Container Platform&#34; | awk &#39;/Pool ID/ {print $3}&#39; | head -1)</pre>
 </div>
 </div>
 </div>

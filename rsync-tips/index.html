@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="Rsync Tips">
 <meta itemprop="description" content="Rsync Tips   Be careful with trailing slashes with rsync. Always test behavior first. Excluded directories are relative to the second-to-last folder of the copy-from arg. Here I am copying the some folder. But in order to exclude folders directly beneath some, I must still reference some in the exclusion. Note the trailing slash at the remote location, which means the some folder is copied into /bk/ rather than replacing the contents of /bk with the contents of some.">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="85">
 
 
 
 <meta itemprop="keywords" content="tips," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Rsync Tips"/>
 <meta name="twitter:description" content="Rsync Tips   Be careful with trailing slashes with rsync. Always test behavior first. Excluded directories are relative to the second-to-last folder of the copy-from arg. Here I am copying the some folder. But in order to exclude folders directly beneath some, I must still reference some in the exclusion. Note the trailing slash at the remote location, which means the some folder is copied into /bk/ rather than replacing the contents of /bk with the contents of some."/>
@@ -125,7 +126,7 @@
 <p>Be careful with trailing slashes with <code>rsync</code>.  Always test behavior first. Excluded directories are relative to the second-to-last folder of the copy-from arg.  Here I am copying the <code>some</code> folder.  But in order to exclude folders directly beneath <code>some</code>, I must still reference <code>some</code> in the exclusion.  Note the trailing slash at the remote location, which means the <code>some</code> folder is copied into <code>/bk/</code> rather than replacing the contents of <code>/bk</code> with the contents of <code>some</code>.</p>
 <div class="literalblock">
 <div class="content">
-<pre>rsync -av --delete --delete-excluded --exclude={"some/folder-A","some/folder-B"} /home/user/some remote-sys:/bk/</pre>
+<pre>rsync -av --delete --delete-excluded --exclude={&#34;some/folder-A&#34;,&#34;some/folder-B&#34;} /home/user/some remote-sys:/bk/</pre>
 </div>
 </div>
 </li>

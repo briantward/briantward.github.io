@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running OpenShot in a Container - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Running OpenShot in a Container" />
+<meta property="og:description" content="Running OpenShot in a Container Transform with OpenShot OpenShot on Fedora 33 doesn’t work. Well, not for me at least. Basically it installs fine and runs fine, but the moment I attempt to import a file, boom! Core Dump generated.
+ using the following packages:
+ $ rpm -qa openshot ffmpeg ffmpeg-4.3.1-16.fc33.x86_64 openshot-2.5.1-4.fc33.noarch   I found the following when searching around for similar issues:
+ https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559
+ Which took me to this in the blender code:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/openshot-in-a-container/" />
+<meta property="article:published_time" content="2021-02-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-01T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="Running OpenShot in a Container">
+<meta itemprop="description" content="Running OpenShot in a Container Transform with OpenShot OpenShot on Fedora 33 doesn’t work. Well, not for me at least. Basically it installs fine and runs fine, but the moment I attempt to import a file, boom! Core Dump generated.
+ using the following packages:
+ $ rpm -qa openshot ffmpeg ffmpeg-4.3.1-16.fc33.x86_64 openshot-2.5.1-4.fc33.noarch   I found the following when searching around for similar issues:
+ https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559
+ Which took me to this in the blender code:">
+<meta itemprop="datePublished" content="2021-02-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="651">
+
+
+
+<meta itemprop="keywords" content="openshot,video,mov, mp4,podman," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Running OpenShot in a Container"/>
+<meta name="twitter:description" content="Running OpenShot in a Container Transform with OpenShot OpenShot on Fedora 33 doesn’t work. Well, not for me at least. Basically it installs fine and runs fine, but the moment I attempt to import a file, boom! Core Dump generated.
+ using the following packages:
+ $ rpm -qa openshot ffmpeg ffmpeg-4.3.1-16.fc33.x86_64 openshot-2.5.1-4.fc33.noarch   I found the following when searching around for similar issues:
+ https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559
+ Which took me to this in the blender code:"/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2021-02-01 12:00">2021-02-01</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          </p>
+      <h1>Running OpenShot in a Container</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/openshot">
+              <span class="hash">#</span>openshot</a>
+          
+            , 
+            <a href="/tags/video">
+              <span class="hash">#</span>video</a>
+          
+            , 
+            <a href="/tags/mov">
+              <span class="hash">#</span>mov</a>
+          
+            , 
+            <a href="/tags/mp4">
+              <span class="hash">#</span> mp4</a>
+          
+            , 
+            <a href="/tags/podman">
+              <span class="hash">#</span>podman</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_running_openshot_in_a_container">Running OpenShot in a Container</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_transform_with_openshot">Transform with OpenShot</h3>
+<div class="paragraph">
+<p>OpenShot on Fedora 33 doesn’t work.  Well, not for me at least.  Basically it installs fine and runs fine, but the moment I attempt to import a file, boom! Core Dump generated.</p>
+</div>
+<div class="paragraph">
+<p>using the following packages:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ rpm -qa openshot ffmpeg
+ffmpeg-4.3.1-16.fc33.x86_64
+openshot-2.5.1-4.fc33.noarch</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I found the following when searching around for similar issues:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559" class="bare">https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559</a></p>
+</div>
+<div class="paragraph">
+<p>Which took me to this in the blender code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  /* Certain versions of FFmpeg have a bug in libswscale which ends up in crash
+   * when destination buffer is not properly aligned. For example, this happens
+   * in FFmpeg 4.3.1. It got fixed later on, but for compatibility reasons is
+   * still best to avoid crash.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://developer.blender.org/rB6778ef4dcc6e8d92e3b2ec9b9ecaf1e54e5bf7b5" class="bare">https://developer.blender.org/rB6778ef4dcc6e8d92e3b2ec9b9ecaf1e54e5bf7b5</a></p>
+</div>
+<div class="paragraph">
+<p>And further addressed here and supposedly fixed in 4.3:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://trac.ffmpeg.org/ticket/8747" class="bare">https://trac.ffmpeg.org/ticket/8747</a></p>
+</div>
+<div class="paragraph">
+<p>dnf doesn’t like the idea of downgrading to f32 versions because there are a ton of dependency changes there!  We could otherwise see there are a lot of possibilities going up or down in version: <a href="https://rpmfind.net/linux/rpm2html/search.php?query=ffmpeg" class="bare">https://rpmfind.net/linux/rpm2html/search.php?query=ffmpeg</a> but I don’t feel like breaking my distribution’s dependencies.</p>
+</div>
+<div class="paragraph">
+<p>The direct download at <a href="https://www.openshot.org/download/" class="bare">https://www.openshot.org/download/</a> didn’t help either as it is an AppImage that uses my underlying system libraries and bombs out worse than before:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ./OpenShot-v2.5.1-x86_64.AppImage
+Loaded modules from current directory: /tmp/.mount_LL5Meh/usr/bin
+         app:INFO ------------------------------------------------
+         app:INFO             Mon Feb  1 22:38:17 2021
+         app:INFO               Starting new session
+         app:ERROR OpenShotApp::Import Error: /lib64/libpango-1.0.so.0: undefined symbol: g_list_model_get_n_items
+Traceback (most recent call last):
+  File &#34;/home/gitlab-runner/builds/5cd61c66/0/OpenShot/openshot-qt/openshot.py&#34;, line 18, in swig_import_helper
+  File &#34;/usr/lib/python3.4/imp.py&#34;, line 297, in find_module
+ImportError: No module named &#39;_openshot&#39;
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File &#34;/usr/local/lib/python3.4/dist-packages/cx_Freeze-4.3.4-py3.4-linux-x86_64.egg/cx_Freeze/initscripts/Console.py&#34;, line 27, in &lt;module&gt;
+  File &#34;openshot_qt/launch.py&#34;, line 104, in &lt;module&gt;
+    main()
+  File &#34;openshot_qt/launch.py&#34;, line 97, in main
+    app = OpenShotApp(argv)
+  File &#34;/tmp/.mount_LL5Meh/usr/bin/classes/app.py&#34;, line 72, in __init__
+    from classes import settings, project_data, updates, language, ui_util, logger_libopenshot
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 2284, in _handle_fromlist
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 321, in _call_with_frames_removed
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 2237, in _find_and_load
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 2226, in _find_and_load_unlocked
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 1200, in _load_unlocked
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 1129, in _exec
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 1471, in exec_module
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 321, in _call_with_frames_removed
+  File &#34;/tmp/.mount_LL5Meh/usr/bin/classes/logger_libopenshot.py&#34;, line 31, in &lt;module&gt;
+    import openshot
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 2237, in _find_and_load
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 2226, in _find_and_load_unlocked
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 1191, in _load_unlocked
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 1161, in _load_backward_compatible
+  File &#34;/home/gitlab-runner/builds/5cd61c66/0/OpenShot/openshot-qt/openshot.py&#34;, line 28, in &lt;module&gt;
+  File &#34;/home/gitlab-runner/builds/5cd61c66/0/OpenShot/openshot-qt/openshot.py&#34;, line 20, in swig_import_helper
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 2237, in _find_and_load
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 2226, in _find_and_load_unlocked
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 1191, in _load_unlocked
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 1161, in _load_backward_compatible
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 539, in _check_name_wrapper
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 1715, in load_module
+  File &#34;/usr/lib/python3.4/importlib/_bootstrap.py&#34;, line 321, in _call_with_frames_removed
+ImportError: /lib64/libpango-1.0.so.0: undefined symbol: g_list_model_get_n_items
+         app:INFO             OpenShot&#39;s session ended
+         app:INFO             Mon Feb  1 22:38:22 2021
+         app:INFO ================================================</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similar to</p>
+</div>
+<div class="paragraph">
+<p><a href="https://askubuntu.com/questions/1303623/cannot-run-openshot-libpango-1-0-so-0-undefined-symbol-g-list-model-get-n-ite" class="bare">https://askubuntu.com/questions/1303623/cannot-run-openshot-libpango-1-0-so-0-undefined-symbol-g-list-model-get-n-ite</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.gitmemory.com/issue/OpenShot/openshot-qt/3821/725780806" class="bare">https://www.gitmemory.com/issue/OpenShot/openshot-qt/3821/725780806</a></p>
+</div>
+<div class="paragraph">
+<p>So there seem to be two options:</p>
+</div>
+<div class="paragraph">
+<p>flatpak</p>
+</div>
+<div class="paragraph">
+<p><a href="https://flatpak.org/setup/Fedora/" class="bare">https://flatpak.org/setup/Fedora/</a></p>
+</div>
+<div class="paragraph">
+<p>flatpak remote-add --if-not-exists flathub <a href="https://flathub.org/repo/flathub.flatpakrepo" class="bare">https://flathub.org/repo/flathub.flatpakrepo</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://flathub.org/apps/details/org.openshot.OpenShot" class="bare">https://flathub.org/apps/details/org.openshot.OpenShot</a></p>
+</div>
+<div class="paragraph">
+<p>flatpak install flathub org.openshot.OpenShot</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ flatpak install flathub org.openshot.OpenShot
+Looking for matches…
+Required runtime for org.openshot.OpenShot/x86_64/stable (runtime/org.kde.Platform/x86_64/5.15) found in remote flathub
+Do you want to install it? [Y/n]: Y
+
+org.openshot.OpenShot permissions:
+    ipc      network     pulseaudio     x11     dri     file access [1]     dbus access [2]
+
+    [1] host, xdg-config/kdeglobals:ro
+    [2] com.canonical.AppMenu.Registrar, org.freedesktop.Flatpak
+
+
+        ID                                                               Branch              Op             Remote              Download
+ 1.     org.freedesktop.Platform.GL.default                              20.08               i              flathub              &lt; 95.9 MB
+ 2.     org.freedesktop.Platform.VAAPI.Intel                             20.08               i              flathub              &lt; 11.2 MB
+ 3.     org.freedesktop.Platform.openh264                                2.0                 i              flathub               &lt; 1.5 MB
+ 4.     org.kde.KStyle.Adwaita                                           5.15                i              flathub               &lt; 6.2 MB
+ 5.     org.kde.Platform.Locale                                          5.15                i              flathub             &lt; 341.5 MB (partial)
+ 6.     org.kde.PlatformTheme.QGnomePlatform                             5.15                i              flathub               &lt; 4.9 MB
+ 7.     org.kde.PlatformTheme.QtSNI                                      5.15                i              flathub               &lt; 1.3 MB
+ 8.     org.kde.WaylandDecoration.QGnomePlatform-decoration              5.15                i              flathub               &lt; 4.8 MB
+ 9.     org.kde.Platform                                                 5.15                i              flathub             &lt; 385.8 MB
+10.     org.openshot.OpenShot                                            stable              i              flathub             &lt; 103.6 MB
+
+Proceed with these changes to the system installation? [Y/n]:</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>containerize this bitch</p>
+</div>
+<div class="paragraph">
+<p><a href="https://blog.jessfraz.com/post/docker-containers-on-the-desktop/" class="bare">https://blog.jessfraz.com/post/docker-containers-on-the-desktop/</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jessfraz/dockerfiles/blob/master/chrome/stable/Dockerfile" class="bare">https://github.com/jessfraz/dockerfiles/blob/master/chrome/stable/Dockerfile</a></p>
+</div>
+<div class="paragraph">
+<p>(don’t use the seccomp files provided by Jesse)</p>
+</div>
+<div class="paragraph">
+<p>did not need this one - <a href="https://forums.docker.com/t/start-a-gui-application-as-root-in-a-ubuntu-container/17069" class="bare">https://forums.docker.com/t/start-a-gui-application-as-root-in-a-ubuntu-container/17069</a></p>
+</div>
+<div class="paragraph">
+<p>headful chrome <a href="https://www.mattzeunert.com/2018/07/21/running-headful-chrome-on-ubuntu-server.html" class="bare">https://www.mattzeunert.com/2018/07/21/running-headful-chrome-on-ubuntu-server.html</a></p>
+</div>
+<div class="paragraph">
+<p>Custom Profile</p>
+</div>
+<div class="paragraph">
+<p><a href="https://cdn.openshot.org/static/files/user-guide/profiles.html" class="bare">https://cdn.openshot.org/static/files/user-guide/profiles.html</a></p>
+</div>
+<div class="paragraph">
+<p>details - <a href="https://github.com/OpenShot/openshot-qt/issues/3427" class="bare">https://github.com/OpenShot/openshot-qt/issues/3427</a></p>
+</div>
+<div class="paragraph">
+<p>Distorted edge</p>
+</div>
+<div class="paragraph">
+<p><a href="https://askubuntu.com/questions/1047583/openshot-distorted-line-on-the-right-side-after-exporting" class="bare">https://askubuntu.com/questions/1047583/openshot-distorted-line-on-the-right-side-after-exporting</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/OpenShot/openshot-qt/issues/2053" class="bare">https://github.com/OpenShot/openshot-qt/issues/2053</a></p>
+</div>
+<div class="paragraph">
+<p>Curious about different distribution packages?</p>
+</div>
+<div class="paragraph">
+<p><a href="https://askubuntu.com/questions/866511/what-are-the-differences-between-snaps-appimage-flatpak-and-others" class="bare">https://askubuntu.com/questions/866511/what-are-the-differences-between-snaps-appimage-flatpak-and-others</a></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

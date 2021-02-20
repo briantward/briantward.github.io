@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -33,13 +33,14 @@
 <meta itemprop="name" content="Security Pipelines in OpenShift Container Platform">
 <meta itemprop="description" content="Security Pipelines in OpenShift Container Platform These are random notes for work in progress coded at https://github.com/briantward/container-pipelines/tree/parallel-spring-boot
  - two OCP clusters: nonprod (dev, test, etc) and prod (prod, stage) - allow nonprod cluster to continue pulling image updates automatically to registry - have separate registries between nonprod and prod - new builds only happen in nonprod, never in prod - existing dev pipeline must be aware of possible update to deployed container by alternative parallel pipeline route and keep base image in sync - new security pipeline, parallel to existing dev pipeline: -- poll for updates to images in nonprod cluster --- polling will check similar to what happens when the nonprod cluster syncs from RH Registry --- can we capture a log of the updates from RH registry and just act on them?">
-<meta itemprop="datePublished" content="2019-10-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-10-19T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-10-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-10-19T00:00:00+00:00" />
 <meta itemprop="wordCount" content="904">
 
 
 
 <meta itemprop="keywords" content="security,platform,containers," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Security Pipelines in OpenShift Container Platform"/>
 <meta name="twitter:description" content="Security Pipelines in OpenShift Container Platform These are random notes for work in progress coded at https://github.com/briantward/container-pipelines/tree/parallel-spring-boot
@@ -146,7 +147,7 @@
 --- polling will check similar to what happens when the nonprod cluster syncs from RH Registry
 --- can we capture a log of the updates from RH registry and just act on them? - prob not a good idea
 --- or perform a diff between nonprod and prod registries?
---- "I am app A, need access to container X, Y, Z latest builds"
+--- &#34;I am app A, need access to container X, Y, Z latest builds&#34;
 --- Define: latest build
 -- run any application specific tests (?), i.e. smoke tests
 --- this requires the process to be built independently for EVERY application, and effectively must be a CI pipeline
@@ -161,9 +162,9 @@
 
 - new security pipeline, parallel to existing dev pipeline:
 -- poll for updates to core images from RHCC (--scheduled=true)
---- Application with tag "app-v1.2.3" updates to "app-v1.2.3" (no change in tag) based on seeing a change in underlying image, kicks off build trigger, then kicks off deploy trigger
--- poll for updates to images in nonprod cluster (check existing image sha256 in dev registry "app-v1.2.3" and compares it to prod registry "app-v1.2.3-0001"
---- Define: latest build. Application with tag "app-v1.2.3-0001" updates to "app-v1.2.3-0002" based on dev environment change to sha256 and
+--- Application with tag &#34;app-v1.2.3&#34; updates to &#34;app-v1.2.3&#34; (no change in tag) based on seeing a change in underlying image, kicks off build trigger, then kicks off deploy trigger
+-- poll for updates to images in nonprod cluster (check existing image sha256 in dev registry &#34;app-v1.2.3&#34; and compares it to prod registry &#34;app-v1.2.3-0001&#34;
+--- Define: latest build. Application with tag &#34;app-v1.2.3-0001&#34; updates to &#34;app-v1.2.3-0002&#34; based on dev environment change to sha256 and
 -- run any application specific tests (?), i.e. smoke tests
 --- this requires the process to be built independently for EVERY application, and effectively must be a CI pipeline
 -- queue for manual verification by users before pushing to production cluster
@@ -238,31 +239,31 @@ if dev work not current, then kick off on schedule</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>def currentState = 'green'
-def newState = 'blue'
+<pre class="highlight"><code>def currentState = &#39;green&#39;
+def newState = &#39;blue&#39;
 
 
 openshift.withCluster() {
             openshift.withProject(PROD) {
-              def activeService = openshift.selector("route/${APP_NAME}").object().spec.to.name
-              if (activeService == "${APP_NAME}-blue") {
-                newState = 'green'
-                currentState = 'blue'
+              def activeService = openshift.selector(&#34;route/${APP_NAME}&#34;).object().spec.to.name
+              if (activeService == &#34;${APP_NAME}-blue&#34;) {
+                newState = &#39;green&#39;
+                currentState = &#39;blue&#39;
               }
-              def dc = openshift.selector("dc/${APP_NAME}-${newState}").object()
+              def dc = openshift.selector(&#34;dc/${APP_NAME}-${newState}&#34;).object()
               def trigger_patch =  [
-                ["type":"ImageChange",
-                 "imageChangeParams":[
-                   "automatic": true,
-                   "containerNames": ["${APP_NAME}-${newState}"],
-                   "from":[
-                     "kind":"ImageStreamTag",
-                     "namespace":PROD,
-                     "name":"${APP_NAME}-${newState}:${version}"
+                [&#34;type&#34;:&#34;ImageChange&#34;,
+                 &#34;imageChangeParams&#34;:[
+                   &#34;automatic&#34;: true,
+                   &#34;containerNames&#34;: [&#34;${APP_NAME}-${newState}&#34;],
+                   &#34;from&#34;:[
+                     &#34;kind&#34;:&#34;ImageStreamTag&#34;,
+                     &#34;namespace&#34;:PROD,
+                     &#34;name&#34;:&#34;${APP_NAME}-${newState}:${version}&#34;
                    ]
                  ]
                 ],
-                ["type":"ConfigChange"]
+                [&#34;type&#34;:&#34;ConfigChange&#34;]
               ]
               dc.spec.triggers = trigger_patch
               openshift.apply(dc)

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -33,13 +33,14 @@
 <meta itemprop="name" content="Create Root Access from any Build in OpenShift">
 <meta itemprop="description" content="Create Root Access from any Build in OpenShift TODO: split examples, show DC options
  This example adds an SCC permission to run root on the default service account, allowing you to run root containers. This is not recommended for normal practice and should only be done during troubleshooting, on an isolated nonprod worker node. You could also choose to create a service account specific to this one application and configure the DeploymentConfig to use that (this is not shown here).">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="142">
 
 
 
 <meta itemprop="keywords" content="builds,root," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Create Root Access from any Build in OpenShift"/>
 <meta name="twitter:description" content="Create Root Access from any Build in OpenShift TODO: split examples, show DC options
@@ -143,7 +144,7 @@
 <pre class="highlight"><code>$ oc new-project ${PROJECT_NAME}
 $ oc adm policy add-scc-to-user anyuid -z default -n ${PROJECT_NAME}
 $ mkdir temp &amp;&amp; cd temp
-$ printf 'FROM ${IMAGE_NAME} \nUSER 0' &gt; Dockerfile
+$ printf &#39;FROM ${IMAGE_NAME} \nUSER 0&#39; &gt; Dockerfile
 $ oc new-build --name=$IMAGE_NAME-root .
 $ oc start-build $IMAGE_NAME-root --from-file=.
 $ oc new-app $IMAGE_NAME-root</code></pre>

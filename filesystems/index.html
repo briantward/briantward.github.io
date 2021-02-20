@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -37,13 +37,14 @@
 # tune2fs -m 0 /dev/sdb1     print UUID of filesystems
 # blkid     remount a readonly filesystem to rewrite
 # mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)">
-<meta itemprop="datePublished" content="2018-05-21T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-05-21T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-05-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-05-21T00:00:00+00:00" />
 <meta itemprop="wordCount" content="116">
 
 
 
 <meta itemprop="keywords" content="tips,filesystems,tune2fs,mount,kill,umount,blkid," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Helpful Filesystem Tips"/>
 <meta name="twitter:description" content="Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
@@ -179,7 +180,7 @@
 </div>
 </li>
 <li>
-<p>watch the status of dd (useful on systems without "status=progress", like Mac I think)</p>
+<p>watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)</p>
 <div class="literalblock">
 <div class="content">
 <pre># kill -USR1 $(pgrep ^dd)</pre>
@@ -187,7 +188,7 @@
 </div>
 </li>
 <li>
-<p>lazy unmount an NFS mount that no longer exists on the network, if it&#8217;s hung</p>
+<p>lazy unmount an NFS mount that no longer exists on the network, if it’s hung</p>
 <div class="literalblock">
 <div class="content">
 <pre># umount -l /media/bosch</pre>

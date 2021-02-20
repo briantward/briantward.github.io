@@ -1,0 +1,28 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tcpdump on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/tcpdump/</link>
+    <description>Recent content in tcpdump on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/tcpdump/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Using nsenter strace and tcpdump in OpenShift containers</title>
+        <link>https://briantward.github.io/nsenter/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/nsenter/</guid>
+        <description>Using nsenter strace and tcpdump in OpenShift containers   nsenter
+  strace
+  tcpdump
+  oc rsyn -h
+   capture a tcpdump of the base ethernet interface on the node:
+ # tcpdump -s 0 -n -i ethX -w /tmp/$(hostname)-$(date +&amp;#34;%Y-%m-%d-%H-%M-%S&amp;#34;).pcap   find the container ID from the container engine:
+ # docker ps # cid=&amp;lt;docker-container-id&amp;gt;   find the runtime PID from inspecting the container itself:</description>
+      </item>
+    
+  </channel>
+</rss>

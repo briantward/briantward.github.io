@@ -15,8 +15,7 @@
         <link>https://briantward.github.io/installing-glusterfs-on-openshift/</link>
         <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/installing-glusterfs-on-openshift/</guid>
-        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170
-OpenShift Container Storage 3.11.5
+        <description>Installing GlusterFS on OpenShift OpenShift 3.11.170 OpenShift Container Storage 3.11.5
  Working through some errors, after following documentation for a normal OpenShift deploy with GlusterFS (OpenShift Container Storage)
  On my first run, I hit this for some odd reason:
  TASK [cockpit : Install cockpit-ws] ************************************************************************************************************** FAILED - RETRYING: Install cockpit-ws (3 retries left). FAILED - RETRYING: Install cockpit-ws (2 retries left). FAILED - RETRYING: Install cockpit-ws (1 retries left).</description>
@@ -29,7 +28,7 @@ OpenShift Container Storage 3.11.5
         <guid>https://briantward.github.io/coredns-nonprivileged/</guid>
         <description>CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
  You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
- $ echo &#39;apiVersion: v1 data: Corefile: | example.</description>
+ $ echo &amp;#39;apiVersion: v1 data: Corefile: | example.</description>
       </item>
     
   </channel>

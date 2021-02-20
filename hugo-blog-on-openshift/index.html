@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -33,13 +33,14 @@
 <meta itemprop="name" content="Hugo Blog on OpenShift">
 <meta itemprop="description" content="Create a Dockerfile that adds all the dependencies your environment needs. A lot of the work is in this Dockerfile. I used asciidocs, so I needed an implementation of either asciidoc or asciidoctor, the two options that Hugo provides integration with. I chose asciidoctor.
    $ cat Dockerfile FROM centos:centos7 COPY . /opt/blog RUN cd /opt \ &amp;&amp; curl -O -J -L https://github.com/gohugoio/hugo/releases/download/v0.40.3/hugo_0.40.3_Linux-64bit.tar.gz \ &amp;&amp; tar -xf hugo_0.">
-<meta itemprop="datePublished" content="2018-05-11T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-05-11T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-05-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-05-11T00:00:00+00:00" />
 <meta itemprop="wordCount" content="403">
 
 
 
 <meta itemprop="keywords" content="go,hugo,blog,asciidoc,asciidoctor," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hugo Blog on OpenShift"/>
 <meta name="twitter:description" content="Create a Dockerfile that adds all the dependencies your environment needs. A lot of the work is in this Dockerfile. I used asciidocs, so I needed an implementation of either asciidoc or asciidoctor, the two options that Hugo provides integration with. I chose asciidoctor.
@@ -164,7 +165,7 @@ EXPOSE 1313
 
 WORKDIR /opt/blog
 
-CMD ["/opt/hugo","server","--bind","0.0.0.0"]</code></pre>
+CMD [&#34;/opt/hugo&#34;,&#34;server&#34;,&#34;--bind&#34;,&#34;0.0.0.0&#34;]</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -182,8 +183,8 @@ CMD ["/opt/hugo","server","--bind","0.0.0.0"]</code></pre>
 centos distribution.  You might have to request this from your system admin if
 you do not have access to execute this command. By default, there are three <code>sa</code> or <code>serviceaccounts</code> in each project:
 <code>builder</code>, <code>deployer</code>, and <code>default</code>.  You will only need root to build the image, but it can deploy and run as anyone.
-This is better security practice.  Best security practice would be to derive this image from a secured image on Red Hat&#8217;s
-repository.  Perhaps we&#8217;ll do that later.</p>
+This is better security practice.  Best security practice would be to derive this image from a secured image on Red Hat’s
+repository.  Perhaps we’ll do that later.</p>
 <div class="literalblock">
 <div class="content">
 <pre>$ oc adm policy add-scc-to-user anyuid -z builder -n my-blog</pre>
@@ -289,8 +290,8 @@ repository.  Perhaps we&#8217;ll do that later.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Update for trigger from GitHub. Find URL from buildConfig: "Webhook GitHub:	URL: ".  Add this URL to your WebHook in GitHub and make sure to choose content
-type "application/json".  It defaults to "application/x-www-form-urlencoded" and OpenShift doesn&#8217;t like that format.</p>
+<p>Update for trigger from GitHub. Find URL from buildConfig: &#34;Webhook GitHub:	URL: &#34;.  Add this URL to your WebHook in GitHub and make sure to choose content
+type &#34;application/json&#34;.  It defaults to &#34;application/x-www-form-urlencoded&#34; and OpenShift doesn’t like that format.</p>
 </div>
 <div class="literalblock">
 <div class="content">

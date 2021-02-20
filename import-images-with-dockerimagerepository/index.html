@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="Import Images with dockerImageRepository">
 <meta itemprop="description" content="Import Images with dockerImageRepository $ echo &#39;apiVersion: v1 &gt; kind: ImageStream &gt; metadata: &gt; creationTimestamp: null &gt; generation: 2 &gt; labels: &gt; build: is-test &gt; name: jenkins-slave-base-centos7 &gt; spec: &gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&#39; | oc apply -f- imagestream &#34;jenkins-slave-base-centos7&#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;ImageStream&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;creationTimestamp&#34;:null,&#34;generation&#34;:2,&#34;labels&#34;:{&#34;build&#34;:&#34;is-test&#34;},&#34;name&#34;:&#34;jenkins-slave-base-centos7&#34;,&#34;namespace&#34;:&#34;sbx-esauer&#34;},&#34;spec&#34;:{&#34;dockerImageRepository&#34;:&#34;docker.io/openshift/jenkins-slave-base-centos7&#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker.">
-<meta itemprop="datePublished" content="2018-07-25T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-07-25T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-07-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-07-25T00:00:00+00:00" />
 <meta itemprop="wordCount" content="160">
 
 
 
 <meta itemprop="keywords" content="sync,Red Hat,container,imagestream," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Import Images with dockerImageRepository"/>
 <meta name="twitter:description" content="Import Images with dockerImageRepository $ echo &#39;apiVersion: v1 &gt; kind: ImageStream &gt; metadata: &gt; creationTimestamp: null &gt; generation: 2 &gt; labels: &gt; build: is-test &gt; name: jenkins-slave-base-centos7 &gt; spec: &gt; dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&#39; | oc apply -f- imagestream &#34;jenkins-slave-base-centos7&#34; created [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7 apiVersion: v1 kind: ImageStream metadata: annotations: kubectl.kubernetes.io/last-applied-configuration: | {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;ImageStream&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;creationTimestamp&#34;:null,&#34;generation&#34;:2,&#34;labels&#34;:{&#34;build&#34;:&#34;is-test&#34;},&#34;name&#34;:&#34;jenkins-slave-base-centos7&#34;,&#34;namespace&#34;:&#34;sbx-esauer&#34;},&#34;spec&#34;:{&#34;dockerImageRepository&#34;:&#34;docker.io/openshift/jenkins-slave-base-centos7&#34;}} openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z creationTimestamp: null generation: 2 labels: build: is-test name: jenkins-slave-base-centos7 spec: dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7 lookupPolicy: local: false tags: - annotations: null from: kind: DockerImage name: docker."/>
@@ -133,7 +134,7 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ echo 'apiVersion: v1
+<pre class="highlight"><code>$ echo &#39;apiVersion: v1
 &gt; kind: ImageStream
 &gt; metadata:
 &gt;   creationTimestamp: null
@@ -142,15 +143,15 @@
 &gt;     build: is-test
 &gt;   name: jenkins-slave-base-centos7
 &gt; spec:
-&gt;   dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7' | oc apply -f-
-imagestream "jenkins-slave-base-centos7" created
+&gt;   dockerImageRepository: docker.io/openshift/jenkins-slave-base-centos7&#39; | oc apply -f-
+imagestream &#34;jenkins-slave-base-centos7&#34; created
 [esauer@localhost image-scanning]$ oc export is jenkins-slave-base-centos7
 apiVersion: v1
 kind: ImageStream
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"v1","kind":"ImageStream","metadata":{"annotations":{},"creationTimestamp":null,"generation":2,"labels":{"build":"is-test"},"name":"jenkins-slave-base-centos7","namespace":"sbx-esauer"},"spec":{"dockerImageRepository":"docker.io/openshift/jenkins-slave-base-centos7"}}
+      {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;ImageStream&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;creationTimestamp&#34;:null,&#34;generation&#34;:2,&#34;labels&#34;:{&#34;build&#34;:&#34;is-test&#34;},&#34;name&#34;:&#34;jenkins-slave-base-centos7&#34;,&#34;namespace&#34;:&#34;sbx-esauer&#34;},&#34;spec&#34;:{&#34;dockerImageRepository&#34;:&#34;docker.io/openshift/jenkins-slave-base-centos7&#34;}}
     openshift.io/image.dockerRepositoryCheck: 2018-07-25T13:47:59Z
   creationTimestamp: null
   generation: 2
@@ -208,7 +209,7 @@ spec:
     referencePolicy:
       type: Source
 status:
-  dockerImageRepository: ""</code></pre>
+  dockerImageRepository: &#34;&#34;</code></pre>
 </div>
 </div>
 </div>

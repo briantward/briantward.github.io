@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,10 +22,7 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="Networking tips" />
-<meta property="og:description" content="Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
--nn: Show PCI vendor and device codes as both numbers and names.
--k: Show driver information for a device.
--d: Filter on just the &#39;Ethernet&#39; device class (0200)
+<meta property="og:description" content="Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where, -nn: Show PCI vendor and device codes as both numbers and names. -k: Show driver information for a device. -d: Filter on just the &#39;Ethernet&#39; device class (0200)
   Check Kernel module load # dmesg | grep e1000e   (kernel module e1000e found above)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/networking/" />
@@ -34,24 +31,19 @@
 
 
 <meta itemprop="name" content="Networking tips">
-<meta itemprop="description" content="Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
--nn: Show PCI vendor and device codes as both numbers and names.
--k: Show driver information for a device.
--d: Filter on just the &#39;Ethernet&#39; device class (0200)
+<meta itemprop="description" content="Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where, -nn: Show PCI vendor and device codes as both numbers and names. -k: Show driver information for a device. -d: Filter on just the &#39;Ethernet&#39; device class (0200)
   Check Kernel module load # dmesg | grep e1000e   (kernel module e1000e found above)">
-<meta itemprop="datePublished" content="2018-05-21T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-05-21T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-05-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-05-21T00:00:00+00:00" />
 <meta itemprop="wordCount" content="81">
 
 
 
 <meta itemprop="keywords" content="tips," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Networking tips"/>
-<meta name="twitter:description" content="Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
--nn: Show PCI vendor and device codes as both numbers and names.
--k: Show driver information for a device.
--d: Filter on just the &#39;Ethernet&#39; device class (0200)
+<meta name="twitter:description" content="Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where, -nn: Show PCI vendor and device codes as both numbers and names. -k: Show driver information for a device. -d: Filter on just the &#39;Ethernet&#39; device class (0200)
   Check Kernel module load # dmesg | grep e1000e   (kernel module e1000e found above)"/>
 
 
@@ -135,7 +127,7 @@
 <h3 id="_find_the_eth0_ip_addr">Find the eth0 ip addr</h3>
 <div class="literalblock">
 <div class="content">
-<pre>ETH0_IP=`ifconfig eth0 2&gt;/dev/null | awk '/inet addr:/ {print $2}' | sed 's/addr://'`</pre>
+<pre>ETH0_IP=`ifconfig eth0 2&gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`</pre>
 </div>
 </div>
 </div>
@@ -148,10 +140,10 @@
 </div>
 </div>
 <div class="paragraph">
-<p>where,<br>
--nn: Show PCI vendor and device codes as both numbers and names.<br>
--k: Show driver information for a device.<br>
--d: Filter on just the 'Ethernet' device class (0200)</p>
+<p>where,<br/>
+-nn: Show PCI vendor and device codes as both numbers and names.<br/>
+-k: Show driver information for a device.<br/>
+-d: Filter on just the &#39;Ethernet&#39; device class (0200)</p>
 </div>
 </div>
 <div class="sect2">

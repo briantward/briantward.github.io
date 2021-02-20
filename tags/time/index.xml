@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>time on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/time/</link>
+    <description>Recent content in time on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/time/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift Time and Date</title>
+        <link>https://briantward.github.io/openshift4-timedate/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift4-timedate/</guid>
+        <description>OpenShift Time and Date OCP timedate
+   https://access.redhat.com/solutions/2567961
+  https://access.redhat.com/solutions/4994241
+     </description>
+      </item>
+    
+  </channel>
+</rss>

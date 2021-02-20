@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,8 +22,8 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="OpenShift JBoss EAP" />
-<meta property="og:description" content="OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don&#8217;t want your change to be persistent:
- oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you&#8217;ll need to update the standalone configuration. You may also want changes on a more permanent basis.
+<meta property="og:description" content="OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don’t want your change to be persistent:
+ oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you’ll need to update the standalone configuration. You may also want changes on a more permanent basis.
   Get the existing configuration:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/openshift-jboss-eap/" />
@@ -32,20 +32,21 @@
 
 
 <meta itemprop="name" content="OpenShift JBoss EAP">
-<meta itemprop="description" content="OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don&#8217;t want your change to be persistent:
- oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you&#8217;ll need to update the standalone configuration. You may also want changes on a more permanent basis.
+<meta itemprop="description" content="OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don’t want your change to be persistent:
+ oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you’ll need to update the standalone configuration. You may also want changes on a more permanent basis.
   Get the existing configuration:">
-<meta itemprop="datePublished" content="2019-04-10T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-04-10T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-04-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-04-10T00:00:00+00:00" />
 <meta itemprop="wordCount" content="132">
 
 
 
 <meta itemprop="keywords" content="jboss-clis.sh,log,logging,EAP,thread,dumps," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift JBoss EAP"/>
-<meta name="twitter:description" content="OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don&#8217;t want your change to be persistent:
- oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you&#8217;ll need to update the standalone configuration. You may also want changes on a more permanent basis.
+<meta name="twitter:description" content="OpenShift JBoss EAP Logging To update the server on-the-fly, if you are debugging and don’t want your change to be persistent:
+ oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;   Note that the above requires the server to already be booted. If you are troubleshooting the boot sequence you’ll need to update the standalone configuration. You may also want changes on a more permanent basis.
   Get the existing configuration:"/>
 
 
@@ -151,15 +152,15 @@
 <div class="sect2">
 <h3 id="_logging">Logging</h3>
 <div class="paragraph">
-<p>To update the server on-the-fly, if you are debugging and don&#8217;t want your change to be persistent:</p>
+<p>To update the server on-the-fly, if you are debugging and don’t want your change to be persistent:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c "/subsystem=logging/logger=org.keycloak:add(level=TRACE)"</pre>
+<pre>oc exec $POD_NAME -- /opt/eap/bin/jboss-cli.sh -c &#34;/subsystem=logging/logger=org.keycloak:add(level=TRACE)&#34;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the above requires the server to already be booted.  If you are troubleshooting the boot sequence you&#8217;ll need to update the standalone configuration.  You may also want changes on a more permanent basis.</p>
+<p>Note that the above requires the server to already be booted.  If you are troubleshooting the boot sequence you’ll need to update the standalone configuration.  You may also want changes on a more permanent basis.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -197,7 +198,7 @@
 <h3 id="_thread_dumps">Thread Dumps</h3>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc exec $POD_NAME -- jstack -l $(oc exec $POD_NAME -- ps -ef | grep "bin/java" | awk '{print $2}') &gt; tdump.out</pre>
+<pre>$ oc exec $POD_NAME -- jstack -l $(oc exec $POD_NAME -- ps -ef | grep &#34;bin/java&#34; | awk &#39;{print $2}&#39;) &gt; tdump.out</pre>
 </div>
 </div>
 </div>

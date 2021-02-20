@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,7 +22,7 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="Lenovo BIOS/UEFI update via USB from Linux" />
-<meta property="og:description" content="I&#8217;m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me." />
+<meta property="og:description" content="I’m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/lenovo-linux-bios-update/" />
 <meta property="article:published_time" content="2018-05-19T00:00:00+00:00" />
@@ -30,17 +30,18 @@
 
 
 <meta itemprop="name" content="Lenovo BIOS/UEFI update via USB from Linux">
-<meta itemprop="description" content="I&#8217;m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.">
-<meta itemprop="datePublished" content="2018-05-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-05-19T00:00:00&#43;00:00" />
+<meta itemprop="description" content="I’m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.">
+<meta itemprop="datePublished" content="2018-05-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-05-19T00:00:00+00:00" />
 <meta itemprop="wordCount" content="208">
 
 
 
 <meta itemprop="keywords" content="linux,bios,uefi,update,USB," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Lenovo BIOS/UEFI update via USB from Linux"/>
-<meta name="twitter:description" content="I&#8217;m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me."/>
+<meta name="twitter:description" content="I’m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me."/>
 
 
   </head>
@@ -133,7 +134,7 @@
     <section>
       
 <div class="paragraph">
-<p>I&#8217;m on a Lenovo T460s running fedora 27.  One day, I ran into an issue with
+<p>I’m on a Lenovo T460s running fedora 27.  One day, I ran into an issue with
 my video setup. It occurred to me that I had not updated my bios in a while,
 and since the whole Meltdown/Spectre thing came up, I should probably check on
 this.  Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix
@@ -143,7 +144,7 @@ but me.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Find your system&#8217;s bios update from Lenovo, via Bootable CD.  Mine, a T460s,
+<p>Find your system’s bios update from Lenovo, via Bootable CD.  Mine, a T460s,
 was here:</p>
 <div class="ulist">
 <ul>
@@ -154,8 +155,8 @@ was here:</p>
 </div>
 </li>
 <li>
-<p>Check out this guys&#8217;s great post. You would think you could just copy the
-<code>.iso</code> to your USB device with <code>dd</code>, but no you cannot.  It&#8217;s a CD format <code>.iso</code>
+<p>Check out this guys’s great post. You would think you could just copy the
+<code>.iso</code> to your USB device with <code>dd</code>, but no you cannot.  It’s a CD format <code>.iso</code>
 and you have to pull out the CD formatting with this nice utility called
 <code>geteltorito</code>.</p>
 <div class="ulist">

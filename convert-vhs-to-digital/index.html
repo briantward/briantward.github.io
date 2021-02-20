@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convert VHS to Digital - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Convert VHS to Digital" />
+<meta property="og:description" content="Convert VHS to Digital OBS Studio is great for recording but limited in modification of video. OpenShot is great for then editing that video and trimming out pieces.
+ On Fedora 32, I can capture video and audio with the USB Easy Capture device and &#34;Audio Capture Device&#34; on OBS set to ALSA. The audio settings provide a sync offset that doesn’t work well and is hard to tell if it is working right unless you fully record and capture." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/convert-vhs-to-digital/" />
+<meta property="article:published_time" content="2021-02-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-20T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="Convert VHS to Digital">
+<meta itemprop="description" content="Convert VHS to Digital OBS Studio is great for recording but limited in modification of video. OpenShot is great for then editing that video and trimming out pieces.
+ On Fedora 32, I can capture video and audio with the USB Easy Capture device and &#34;Audio Capture Device&#34; on OBS set to ALSA. The audio settings provide a sync offset that doesn’t work well and is hard to tell if it is working right unless you fully record and capture.">
+<meta itemprop="datePublished" content="2021-02-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="517">
+
+
+
+<meta itemprop="keywords" content="vhs,mkv,avi,openshot,video,mov, mp4,obs studio," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Convert VHS to Digital"/>
+<meta name="twitter:description" content="Convert VHS to Digital OBS Studio is great for recording but limited in modification of video. OpenShot is great for then editing that video and trimming out pieces.
+ On Fedora 32, I can capture video and audio with the USB Easy Capture device and &#34;Audio Capture Device&#34; on OBS set to ALSA. The audio settings provide a sync offset that doesn’t work well and is hard to tell if it is working right unless you fully record and capture."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2021-02-20 12:00">2021-02-20</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          
+            , 
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>Convert VHS to Digital</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/vhs">
+              <span class="hash">#</span>vhs</a>
+          
+            , 
+            <a href="/tags/mkv">
+              <span class="hash">#</span>mkv</a>
+          
+            , 
+            <a href="/tags/avi">
+              <span class="hash">#</span>avi</a>
+          
+            , 
+            <a href="/tags/openshot">
+              <span class="hash">#</span>openshot</a>
+          
+            , 
+            <a href="/tags/video">
+              <span class="hash">#</span>video</a>
+          
+            , 
+            <a href="/tags/mov">
+              <span class="hash">#</span>mov</a>
+          
+            , 
+            <a href="/tags/mp4">
+              <span class="hash">#</span> mp4</a>
+          
+            , 
+            <a href="/tags/obs-studio">
+              <span class="hash">#</span>obs studio</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_convert_vhs_to_digital">Convert VHS to Digital</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OBS Studio is great for recording but limited in modification of video.  OpenShot is great for then editing that video and trimming out pieces.</p>
+</div>
+<div class="paragraph">
+<p>On Fedora 32, I can capture video and audio with the USB Easy Capture device and &#34;Audio Capture Device&#34; on OBS set to ALSA. The audio settings provide a sync offset that doesn’t work well and is hard to tell if it is working right unless you fully record and capture.</p>
+</div>
+<div class="paragraph">
+<p>As of the OSB builds for Fedora 33, the audio device set to pulseaudio works much better.</p>
+</div>
+<div class="paragraph">
+<p>When audio is out of sync these could be possible causes:<br/>
+- CPU possibly failing to capture audio and video at same time (try a different, faster computer)
+- disable audio on the monitor? (not tried this much yet, might be interfering with CPU execution cycles)
+- VCR sucks (try a different VCR)
+- VHS cassette sucks (try a different cassette)</p>
+</div>
+<div class="paragraph">
+<p>Improvements to make:<br/>
+- New CPU / GPU / VCR</p>
+</div>
+<div class="paragraph">
+<p>OBS Studio can capture at the quality level I intend to keep.  I had not tweaked this setting, and it’s default was 2500 Kbps.</p>
+</div>
+<div class="paragraph">
+<p>My settings:<br/>
+NTSC 720 x 486<br/>
+720x486 = 40x27 = 1.4815<br/>
+29.97 Fps<br/>
+825 Kbps<br/></p>
+</div>
+<div class="paragraph">
+<p>NTSC VHS is roughly 333x480 = 0.6937<br/>
+486x320 = ?<br/>
+640 x 480 = 1.333 VGA NTSC*<br/>
+320x240 = QVGA ?<br/></p>
+</div>
+<div class="paragraph">
+<p>720x480 is recommended by many online but this was not a selection in the OpenShot software<br/>
+Half D1 (352x576 PAL or 352x480 NTSC) with 2-pass vbr and an average bitrate around 3000 kbit/s seems OK for VHS source.<br/>
+<a href="https://forum.videohelp.com/threads/75289-Hi8-VHS-to-DVD-which-bitrate-do-you-recommend" class="bare">https://forum.videohelp.com/threads/75289-Hi8-VHS-to-DVD-which-bitrate-do-you-recommend</a></p>
+</div>
+<div class="paragraph">
+<p>&#34;The effective resolution of a VHS recording is about 320x240, interlaced, 50 Hz (PAL) or 60 Hz (NTSC), so set your OBS canvas size to this.&#34;</p>
+</div>
+<div class="paragraph">
+<p><a href="https://obsproject.com/forum/threads/best-settings-for-recording-vhs.80171/" class="bare">https://obsproject.com/forum/threads/best-settings-for-recording-vhs.80171/</a></p>
+</div>
+<div class="paragraph">
+<p>&#34;The horizontal resolution is 240 lines per picture height, or about 320 lines across a scan line, and the vertical resolution (the number of scan lines) is the same as the respective analog TV standard (576 for PAL or 486 for NTSC; usually, somewhat fewer scan lines are actually visible due to overscan).&#34;</p>
+</div>
+<div class="paragraph">
+<p><a href="https://en.wikipedia.org/wiki/VHS" class="bare">https://en.wikipedia.org/wiki/VHS</a></p>
+</div>
+<div class="paragraph">
+<p>resulting pick is 480x320 based on scaling the screen size provided by the VCR input through the EasyCAP device.  I’m left with very small black edges on all four sides, that look like they can be removed with &#34;overscan&#34;.  The ratio of 480x320 is equivalent to 3:2 (or 1.5), not 4:3 (or 1.33) found in typical NTSC TV.  But if I change the Sample Aspect Ratio to 8:9 while keeping the Display Aspect Ration at 4:3 then I achieve the same pixels &#34;squished&#34; into a 4:3 screen ( (4/3) * (8/9) = 1.5).</p>
+</div>
+<div class="paragraph">
+<p>TODO: try the above suggestion, size down the capture resolution but increase the bitrate</p>
+</div>
+<div class="paragraph">
+<p>OBS has settings for deinterlacing!! Use them!</p>
+</div>
+<div class="paragraph">
+<p>Right Click on Video Source Object &gt; Deinterlacing &gt; Blend , Top Field First</p>
+</div>
+<div class="paragraph">
+<p>Settings &gt; Output (advanced) &gt; type standard, format mkv, bitrate 825 Kbps</p>
+</div>
+<div class="paragraph">
+<p>Video Capture Settings in Video Source Object (gear button or Properties)<br/>
+Input: Composite<br/>
+Video Format: YUYV 4:2:2<br/>
+Video Standard: NTSC<br/>
+Color Range: Default<br/></p>
+</div>
+<div class="paragraph">
+<p>Settings &gt; Video &gt; Downscale Filter: Bicubic</p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

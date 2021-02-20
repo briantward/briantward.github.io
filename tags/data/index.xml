@@ -17,7 +17,7 @@
         <guid>https://briantward.github.io/restore-files-from-rm/</guid>
         <description>Restore files from rm I wanted to type:
  $ rm *.retry   Instead I accidentally typed:
- $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn&amp;#8217;t more. I was lucky I didn&amp;#8217;t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.</description>
+ $ rm * .retry   That wiped out the four or five files I had been working on the last two days. I was lucky it wasn’t more. I was lucky I didn’t care about the binary data I had in the folder. It took a little time and work, but in the end, I was able to find all the documents.</description>
       </item>
     
   </channel>

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,7 +22,7 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="Image Video Metadata" />
-<meta property="og:description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&#8217;t give you a lot of customization options. We couldn&#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it." />
+<meta property="og:description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn’t give you a lot of customization options. We couldn’t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/image-video-metadata/" />
 <meta property="article:published_time" content="2018-12-27T00:00:00+00:00" />
@@ -30,17 +30,18 @@
 
 
 <meta itemprop="name" content="Image Video Metadata">
-<meta itemprop="description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&#8217;t give you a lot of customization options. We couldn&#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.">
-<meta itemprop="datePublished" content="2018-12-27T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-27T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn’t give you a lot of customization options. We couldn’t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.">
+<meta itemprop="datePublished" content="2018-12-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-27T00:00:00+00:00" />
 <meta itemprop="wordCount" content="414">
 
 
 
 <meta itemprop="keywords" content="image,jpeg,video,mov, mp4,metadata," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Image Video Metadata"/>
-<meta name="twitter:description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&#8217;t give you a lot of customization options. We couldn&#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it."/>
+<meta name="twitter:description" content="Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn’t give you a lot of customization options. We couldn’t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it."/>
 
 
   </head>
@@ -140,10 +141,10 @@
 <h2 id="_image_video_metadata_tips">Image Video Metadata Tips</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6.  Apple has a nice app that compiles photos and videos with background music, but doesn&#8217;t give you a lot of customization options.  We couldn&#8217;t sort except by date.  Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</p>
+<p>My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6.  Apple has a nice app that compiles photos and videos with background music, but doesn’t give you a lot of customization options.  We couldn’t sort except by date.  Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</p>
 </div>
 <div class="paragraph">
-<p>Then there were the videos.  Videos imported from the Samsung onto the Apple were sorted as though they were taken the day they were imported.  I was hoping there was some metadata field I could add that Apple might use over the file create date; however, all my attempts there failed.  The only way I think I could trick it would be to update the actual create date on the iPhone.  Since I haven&#8217;t hacked much on iPhones, I gave up and just let the sort order of the videos be wrong.</p>
+<p>Then there were the videos.  Videos imported from the Samsung onto the Apple were sorted as though they were taken the day they were imported.  I was hoping there was some metadata field I could add that Apple might use over the file create date; however, all my attempts there failed.  The only way I think I could trick it would be to update the actual create date on the iPhone.  Since I haven’t hacked much on iPhones, I gave up and just let the sort order of the videos be wrong.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://michaelkummer.com/technology/videos-imported-photos-app-wrong-date/" class="bare">https://michaelkummer.com/technology/videos-imported-photos-app-wrong-date/</a></p>
@@ -179,7 +180,7 @@ Date/Time Original              : 2018:10:14 16:09:17.99</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ exiftool -overwrite_original -EXIF:CreateDate="2018:12:31 16:09:17" image0264.jpg</pre>
+<pre>$ exiftool -overwrite_original -EXIF:CreateDate=&#34;2018:12:31 16:09:17&#34; image0264.jpg</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -187,7 +188,7 @@ Date/Time Original              : 2018:10:14 16:09:17.99</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ exiftool -overwrite_original -EXIF:DateTimeOriginal="2018:12:31 16:09:17" image0264.jpg</pre>
+<pre>$ exiftool -overwrite_original -EXIF:DateTimeOriginal=&#34;2018:12:31 16:09:17&#34; image0264.jpg</pre>
 </div>
 </div>
 </div>
@@ -214,7 +215,7 @@ Date/Time Original              : 2018:10:14 16:09:17.99</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ ffmpeg -i 20180316_202002-1920.mp4 -c copy -metadata creation_time="2018-03-16 20:20:02" 20180316_202002-1920-new.mp4</pre>
+<pre>$ ffmpeg -i 20180316_202002-1920.mp4 -c copy -metadata creation_time=&#34;2018-03-16 20:20:02&#34; 20180316_202002-1920-new.mp4</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -233,7 +234,7 @@ Tagged date                              : UTC 2018-03-17 00:20:02</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ ffmpeg -i 20180316_202002-1920.mp4 -c copy -metadata ICRD="2018-03-16 20:20:02" 20180316_202002-1920-new-2.mp4</pre>
+<pre>$ ffmpeg -i 20180316_202002-1920.mp4 -c copy -metadata ICRD=&#34;2018-03-16 20:20:02&#34; 20180316_202002-1920-new-2.mp4</pre>
 </div>
 </div>
 <div class="listingblock">

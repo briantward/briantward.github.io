@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Media Server - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Building a Media Server" />
+<meta property="og:description" content="Building a Media Server A while back I was on the hunt for a media server solution…​ these are running notes about 2 years old as of now (2/2021).
+ Handling video playback and copying DVD content to my digital storage. This was interesting but looked a bit old. Dunno much about how old nux-desktop-release-0-5 is.
+ https://gist.github.com/tareqy/0a3c07d49258a678cf68ca17725ad326
+ yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm yum -y install yum install ffmpeg HandBrake-cli   Could make a totally custom build of Handbrake on the latest Fedora, which is what Handbrake’s website suggests." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/emby/" />
+<meta property="article:published_time" content="2021-02-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-20T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="Building a Media Server">
+<meta itemprop="description" content="Building a Media Server A while back I was on the hunt for a media server solution…​ these are running notes about 2 years old as of now (2/2021).
+ Handling video playback and copying DVD content to my digital storage. This was interesting but looked a bit old. Dunno much about how old nux-desktop-release-0-5 is.
+ https://gist.github.com/tareqy/0a3c07d49258a678cf68ca17725ad326
+ yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm yum -y install yum install ffmpeg HandBrake-cli   Could make a totally custom build of Handbrake on the latest Fedora, which is what Handbrake’s website suggests.">
+<meta itemprop="datePublished" content="2021-02-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2047">
+
+
+
+<meta itemprop="keywords" content="emby,media,server," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Building a Media Server"/>
+<meta name="twitter:description" content="Building a Media Server A while back I was on the hunt for a media server solution…​ these are running notes about 2 years old as of now (2/2021).
+ Handling video playback and copying DVD content to my digital storage. This was interesting but looked a bit old. Dunno much about how old nux-desktop-release-0-5 is.
+ https://gist.github.com/tareqy/0a3c07d49258a678cf68ca17725ad326
+ yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm yum -y install yum install ffmpeg HandBrake-cli   Could make a totally custom build of Handbrake on the latest Fedora, which is what Handbrake’s website suggests."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2021-02-20 12:00">2021-02-20</time> &bull;
+          
+            
+            <a href="/categories/tips">TIPS</a>
+          
+            , 
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>Building a Media Server</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/emby">
+              <span class="hash">#</span>emby</a>
+          
+            , 
+            <a href="/tags/media">
+              <span class="hash">#</span>media</a>
+          
+            , 
+            <a href="/tags/server">
+              <span class="hash">#</span>server</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_building_a_media_server">Building a Media Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A while back I was on the hunt for a media server solution…​ these are running notes about 2 years old as of now (2/2021).</p>
+</div>
+<div class="sect2">
+<h3 id="_handling_video_playback_and_copying_dvd_content_to_my_digital_storage">Handling video playback and copying DVD content to my digital storage.</h3>
+<div class="paragraph">
+<p>This was interesting but looked a bit old.  Dunno much about how old nux-desktop-release-0-5 is.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://gist.github.com/tareqy/0a3c07d49258a678cf68ca17725ad326" class="bare">https://gist.github.com/tareqy/0a3c07d49258a678cf68ca17725ad326</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
+yum -y install
+yum install ffmpeg HandBrake-cli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Could make a totally custom build of Handbrake on the latest Fedora, which is what Handbrake’s website suggests.</p>
+</div>
+<div class="paragraph">
+<p>Followed these instructions to create a base container image</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.google.com/search?client=firefox-b-1-d&amp;q=handbrake+fedora" class="bare">https://www.google.com/search?client=firefox-b-1-d&amp;q=handbrake+fedora</a></p>
+</div>
+<div class="paragraph">
+<p>Then these instruction to create a custom build of latest Handbrake from source:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://handbrake.fr/docs/en/latest/developer/build-linux.html" class="bare">https://handbrake.fr/docs/en/latest/developer/build-linux.html</a></p>
+</div>
+<div class="paragraph">
+<p>Create a Dockerfile from the basics of this article.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dnf install https://download0.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download0.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dnf install handbrake</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.fosslinux.com/969/install-handbrake-fedora-22.htm" class="bare">https://www.fosslinux.com/969/install-handbrake-fedora-22.htm</a></p>
+</div>
+<div class="paragraph">
+<p>handbrake vs makemkv</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>makemkv will rip without loss</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_media_server_search">Media server search</h3>
+<div class="paragraph">
+<p>Started with PMS, Plex Media Server. What a terrible acronym. Let’s just call it Plex. I got this working from its official Docker image with a little work, to run using rootless containers with Podman instead of Docker. But I found out this requires a login to authorize and synchronize machine access.  Bleh.  How awful.  The whole point of running my own software is that I control it without any phone home to another third party organization.  Plex is dumped. I know how to manage my networking, and I don’t care about UPNP.</p>
+</div>
+<div class="paragraph">
+<p>Then I checked out Emby, as others recommended after finding the auth requirement for Plex.  It has a Tizen app for Samsung TVs so looks promising. But on first load of my test ISO, it failed to play properly.  No ISO support.  Ok, so that is asking a lot I suppose, but it’s a lot of work for me to convert hundreds of DVD ISOs to mp4 or mkv.</p>
+</div>
+<div class="paragraph">
+<p>Then I checked out Kodi, which appears to be the first for many to select.  I didn’t care much for the fact that they did not build their own container images.  Linuxserver.io however builds one, and it worked fairly well I think.  But I never figured out how to get the headless kodi instance to scan any particular folders for media.  Maybe it was the web browser interface, Chorus.  After 20 minutes of searching the web for answers and clicking around in the interface, I decided this idea was dead.  Kodi apparently supports ISO, which is a huge plus for me, but it does not have a Tizen native app.</p>
+</div>
+<div class="paragraph">
+<p>So back to Emby.  It looks as though I’ll be building a process to convert all my ISO images to mp4.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_notes_on_container_builds">Notes on container builds.</h3>
+<div class="paragraph">
+<p>How to set up Macvlan Network with Podman
+- <a href="https://access.redhat.com/solutions/3898801" class="bare">https://access.redhat.com/solutions/3898801</a></p>
+</div>
+<div class="paragraph">
+<p>Running rootless Podman as a non-root user
+- <a href="https://www.redhat.com/sysadmin/rootless-podman-makes-sense" class="bare">https://www.redhat.com/sysadmin/rootless-podman-makes-sense</a></p>
+</div>
+<div class="paragraph">
+<p>Podman and user namespaces: A marriage made in heaven
+- <a href="https://opensource.com/article/18/12/podman-and-user-namespaces" class="bare">https://opensource.com/article/18/12/podman-and-user-namespaces</a></p>
+</div>
+<div class="paragraph">
+<p>How does rootless Podman work?
+- <a href="https://opensource.com/article/19/2/how-does-rootless-podman-work" class="bare">https://opensource.com/article/19/2/how-does-rootless-podman-work</a></p>
+</div>
+<div class="paragraph">
+<p>Why can’t rootless Podman pull my image?
+- <a href="https://www.redhat.com/sysadmin/rootless-podman" class="bare">https://www.redhat.com/sysadmin/rootless-podman</a></p>
+</div>
+<div class="paragraph">
+<p>fatal: unable to exec run: Permission denied
+- <a href="https://github.com/linuxserver/docker-nzbget/issues/64" class="bare">https://github.com/linuxserver/docker-nzbget/issues/64</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For future readers (as this was high up in the search results): this is a conflict between s6-overlay and podman, triggered by the name of the entrypoint (init).</p>
+</li>
+<li>
+<p>Set <code>--systemd=false</code> to prevent the mounting behaviour that causes this conflict. (Source)<br/>
+<a href="https://github.com/containers/libpod/issues/3803#issuecomment-520925279" class="bare">https://github.com/containers/libpod/issues/3803#issuecomment-520925279</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>man podman run
+...
+       --systemd=true|false
+
+       Run container in systemd mode. The default is true.
+
+       If the command you running inside of the container is systemd or init, podman will setup tmpfs mount points in the following directories:
+
+       /run, /run/lock, /tmp, /sys/fs/cgroup/systemd, /var/lib/journal
+
+       It will also set the default stop signal to SIGRTMIN+3.
+
+       This allow systemd to run in a confined container without any modifications.
+
+       Note: On SELinux systems, systemd attempts to write to the cgroup file system.  Containers writing to the cgroup file system are denied by default.  The container_manage_cgroup boolean must be enabled for this to be allowed
+       on an SELinux separated system.
+
+       setsebool -P container_manage_cgroup true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>podman system migrate</code> is useful sometimes upgrading from older Podman configs to newer ones.</p>
+</div>
+<div class="paragraph">
+<p>error creating libpod runtime: there might not be enough IDs available in the namespace
+- <a href="https://github.com/containers/libpod/issues/3421" class="bare">https://github.com/containers/libpod/issues/3421</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ podman pull plexinc/pms-docker
+Trying to pull registry.access.redhat.com/plexinc/pms-docker...ERRO[0000] Error pulling image ref //registry.access.redhat.com/plexinc/pms-docker:latest: Error initializing source docker://registry.access.redhat.com/plexinc/pms-docker:latest: Error reading manifest latest in registry.access.redhat.com/plexinc/pms-docker: name unknown: Repo not found
+Failed
+Trying to pull docker.io/plexinc/pms-docker...Getting image source signatures
+Copying blob 996ae761782e done
+Copying blob 716d454e56b6 done
+Copying blob 19197c550755 done
+Copying blob cc899a5544da done
+Copying blob 0a01a72a686c done
+Copying blob 5702041563a7 done
+Copying blob ae8227024d17 done
+Copying config f84c2bd8e6 done
+Writing manifest to image destination
+Storing signatures
+ERRO[0019] Error while applying layer: ApplyLayer exit status 1 stdout:  stderr: there might not be enough IDs available in the namespace (requested 0:42 for /etc/gshadow): lchown /etc/gshadow: invalid argument
+ERRO[0019] Error pulling image ref //plexinc/pms-docker:latest: Error committing the finished image: error adding layer with blob &#34;sha256:0a01a72a686c389637334de1e2d0012da298960366f6d8f358b8e10dc3b5e330&#34;: ApplyLayer exit status 1 stdout:  stderr: there might not be enough IDs available in the namespace (requested 0:42 for /etc/gshadow): lchown /etc/gshadow: invalid argument
+Failed
+Trying to pull registry.fedoraproject.org/plexinc/pms-docker...ERRO[0020] Error pulling image ref //registry.fedoraproject.org/plexinc/pms-docker:latest: Error initializing source docker://registry.fedoraproject.org/plexinc/pms-docker:latest: Error reading manifest latest in registry.fedoraproject.org/plexinc/pms-docker: manifest unknown: manifest unknown
+Failed
+Trying to pull quay.io/plexinc/pms-docker...ERRO[0020] Error pulling image ref //quay.io/plexinc/pms-docker:latest: Error initializing source docker://quay.io/plexinc/pms-docker:latest: Error reading manifest latest in quay.io/plexinc/pms-docker: unauthorized: access to the requested resource is not authorized
+Failed
+Trying to pull registry.centos.org/plexinc/pms-docker...ERRO[0020] Error pulling image ref //registry.centos.org/plexinc/pms-docker:latest: Error initializing source docker://registry.centos.org/plexinc/pms-docker:latest: Error reading manifest latest in registry.centos.org/plexinc/pms-docker: manifest unknown: manifest unknown
+Failed
+Error: error pulling image &#34;plexinc/pms-docker&#34;: unable to pull plexinc/pms-docker: 5 errors occurred:
+	* Error initializing source docker://registry.access.redhat.com/plexinc/pms-docker:latest: Error reading manifest latest in registry.access.redhat.com/plexinc/pms-docker: name unknown: Repo not found
+	* Error committing the finished image: error adding layer with blob &#34;sha256:0a01a72a686c389637334de1e2d0012da298960366f6d8f358b8e10dc3b5e330&#34;: ApplyLayer exit status 1 stdout:  stderr: there might not be enough IDs available in the namespace (requested 0:42 for /etc/gshadow): lchown /etc/gshadow: invalid argument
+	* Error initializing source docker://registry.fedoraproject.org/plexinc/pms-docker:latest: Error reading manifest latest in registry.fedoraproject.org/plexinc/pms-docker: manifest unknown: manifest unknown
+	* Error initializing source docker://quay.io/plexinc/pms-docker:latest: Error reading manifest latest in quay.io/plexinc/pms-docker: unauthorized: access to the requested resource is not authorized
+	* Error initializing source docker://registry.centos.org/plexinc/pms-docker:latest: Error reading manifest latest in registry.centos.org/plexinc/pms-docker: manifest unknown: manifest unknown</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above is a podman thing.  We gotta set up our system to handle rootless.  The first go I ran this on an upgraded RHEL 7 box and had to tweak some things.  RHEL 8 and Fedora have this stuff set up default now.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo sysctl user.max_user_namespaces=15000
+sudo vi /etc/subuid
+sudo vi /etc/subgid</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_makemkv_containerized">makemkv containerized</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>Unable to execute external program &#39;ccextractor&#39; as its path is not set in preferences
+Failed to execute external program &#39;ccextractor&#39; from location &#39;/opt/makemkv/bin/mmccextr&#39;
+LIBMKV_TRACE: Exception: Error while reading input
+Failed to save title 0 to file /output//title_t00.mkv
+Unable to execute external program &#39;ccextractor&#39; as its path is not set in preferences
+Failed to execute external program &#39;ccextractor&#39; from location &#39;/opt/makemkv/bin/mmccextr&#39;
+LIBMKV_TRACE: Exception: Error while reading input
+Failed to save title 1 to file /output//title_t01.mkv
+Unable to execute external program &#39;ccextractor&#39; as its path is not set in preferences
+Failed to execute external program &#39;ccextractor&#39; from location &#39;/opt/makemkv/bin/mmccextr&#39;
+LIBMKV_TRACE: Exception: Error while reading input
+Failed to save title 2 to file /output//title_t02.mkv</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A few tweaks to run it in a container:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># ln -s /usr/bin/ccextractor /opt/makemkv/bin/mmccextr
+# ls -lah /opt/makemkv/bin/mmccextr
+lrwxrwxrwx    1 root     root          20 Feb 11 02:06 /opt/makemkv/bin/mmccextr -&gt; /usr/bin/ccextractor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>example run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>/opt/makemkv/bin # makemkvcon mkv iso:/storage/X-Men.iso all /output
+MakeMKV v1.14.7 linux(x64-release) started
+The program can&#39;t find any usable optical drives.
+Using direct disc access mode
+Title #1 was added (60 cell(s), 1:43:47)
+Cells 15-end were skipped due to cell commands (structure protection?)
+Title #2 was added (13 cell(s), 0:27:07)
+Cells 23-end were skipped due to cell commands (structure protection?)
+Title #2/0/1 was added (3 cell(s), 0:06:36)
+Cells 33-end were skipped due to cell commands (structure protection?)
+Title #2/0/2 was added (5 cell(s), 0:11:18)
+Cells 45-end were skipped due to cell commands (structure protection?)
+Title #2/0/3 was added (9 cell(s), 0:17:00)
+Title #2/0/4 was added (14 cell(s), 0:31:51)
+Title #3 was added (5 cell(s), 0:21:57)
+Title #4 has length of 31 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #5 has length of 31 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #6 has length of 32 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #7 was added (1 cell(s), 0:02:05)
+Title #8 was added (1 cell(s), 0:02:29)
+Title #9 has length of 51 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #10 has length of 62 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #11 has length of 117 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #12 has length of 101 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #13 has length of 32 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #14 has length of 95 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #15 has length of 27 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #16 has length of 110 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #17 has length of 94 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #18 was added (1 cell(s), 0:02:19)
+Title #19 has length of 100 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #20 was added (1 cell(s), 0:03:13)
+Title #21 was added (1 cell(s), 0:02:34)
+Title #22 has length of 22 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #23 has length of 34 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #24 has length of 34 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #25 has length of 16 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #26 has length of 74 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #27 has length of 34 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #28 has length of 5 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #29 has length of 8 seconds which is less than minimum title length of 120 seconds and was therefore skipped
+Title #30 was added (1 cell(s), 0:02:21)
+Operation successfully completed
+Saving 13 titles into directory /output
+File /output/title_t06.mkv already exist. Do you want to overwrite it?
+File /output/title_t07.mkv already exist. Do you want to overwrite it?
+File /output/title_t08.mkv already exist. Do you want to overwrite it?
+File /output/title_t09.mkv already exist. Do you want to overwrite it?
+File /output/title_t10.mkv already exist. Do you want to overwrite it?
+File /output/title_t11.mkv already exist. Do you want to overwrite it?
+File /output/title_t12.mkv already exist. Do you want to overwrite it?
+Program reads data faster than it can write to disk, consider upgrading your hard drive if you see many of these messages.
+Program reads data faster than it can write to disk, consider upgrading your hard drive if you see many of these messages.
+AV synchronization issues were found in file &#39;title_t02.mkv&#39; (title #3)
+Track #4 turned out to be empty and was removed from output file
+AV synchronization issues were found in file &#39;title_t04.mkv&#39; (title #5)
+Track #4 turned out to be empty and was removed from output file
+Program reads data faster than it can write to disk, consider upgrading your hard drive if you see many of these messages.
+AV synchronization issues were found in file &#39;title_t05.mkv&#39; (title #6)
+Track #4 turned out to be empty and was removed from output file
+13 titles saved
+Copy complete. 13 titles saved.</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.makemkv.com/forum/viewtopic.php?f=10&amp;t=15426" class="bare">https://www.makemkv.com/forum/viewtopic.php?f=10&amp;t=15426</a></p>
+</li>
+<li>
+<p><a href="https://makemkv.com/forum/viewtopic.php?f=3&amp;t=18362" class="bare">https://makemkv.com/forum/viewtopic.php?f=3&amp;t=18362</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A run connecting to the host network:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ podman run -it --systemd=false --network=host -p 5800:5800 -v $HOME/makemkv/config:/config:rw -v /home/bward/emby/media:/storage:rw jlesage/makemkv:latest /bin/sh</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

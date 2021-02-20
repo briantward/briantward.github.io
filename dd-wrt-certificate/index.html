@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -23,7 +23,7 @@
 
 <meta property="og:title" content="DD-WRT Custom Certificate" />
 <meta property="og:description" content="DD-WRT Custom Certificate (Tested on R7000)
- Install acme.sh or other system for creating certs every 30 days from Let&#8217;s Encrypt.
+ Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.
  On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
  In the router GUI go to Services &gt; USB:
  Select the following
@@ -39,7 +39,7 @@
 
 <meta itemprop="name" content="DD-WRT Custom Certificate">
 <meta itemprop="description" content="DD-WRT Custom Certificate (Tested on R7000)
- Install acme.sh or other system for creating certs every 30 days from Let&#8217;s Encrypt.
+ Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.
  On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
  In the router GUI go to Services &gt; USB:
  Select the following
@@ -47,17 +47,18 @@
   USB Storage Support: Enabled
   Automatic Drive Mount: Enabled
    Click Apply Settings">
-<meta itemprop="datePublished" content="2021-01-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-09T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2021-01-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="319">
 
 
 
 <meta itemprop="keywords" content="bash,router,dd-wrt," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="DD-WRT Custom Certificate"/>
 <meta name="twitter:description" content="DD-WRT Custom Certificate (Tested on R7000)
- Install acme.sh or other system for creating certs every 30 days from Let&#8217;s Encrypt.
+ Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.
  On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
  In the router GUI go to Services &gt; USB:
  Select the following
@@ -158,7 +159,7 @@
 <p>(Tested on R7000)</p>
 </div>
 <div class="paragraph">
-<p>Install acme.sh or other system for creating certs every 30 days from Let&#8217;s Encrypt.</p>
+<p>Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.</p>
 </div>
 <div class="paragraph">
 <p>On your router, plug in an empty USB drive, FAT or ext3/4 formatted.</p>
@@ -208,7 +209,7 @@
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>#!/bin/bash
-if find "/home/bward/.acme.sh/mydd-wrt.mydomain.com/mydd-wrt.mydomain.com.cer" -mmin -2880
+if find &#34;/home/bward/.acme.sh/mydd-wrt.mydomain.com/mydd-wrt.mydomain.com.cer&#34; -mmin -2880
 then
   scp /home/bward/.acme.sh/mydd-wrt.mydomain.com/*.* root@192.168.1.1:/mnt/sda1
 fi</code></pre>
@@ -239,7 +240,7 @@ startservice httpd</code></pre>
 <p>Click <code>Save Startup</code> and this will apply again on reboot.</p>
 </div>
 <div class="paragraph">
-<p>N.B. Accessing via IP address will still prompt you with a security alert because Let&#8217;s Encrypt does not allow you to provision certificates with an IP address inside the hostname or SAN fields of the certificate.  If you want those features, you&#8217;ll have to find and pay a vendor.</p>
+<p>N.B. Accessing via IP address will still prompt you with a security alert because Let’s Encrypt does not allow you to provision certificates with an IP address inside the hostname or SAN fields of the certificate.  If you want those features, you’ll have to find and pay a vendor.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://wiki.dd-wrt.com/wiki/index.php/USB_storage" class="bare">https://wiki.dd-wrt.com/wiki/index.php/USB_storage</a></p>

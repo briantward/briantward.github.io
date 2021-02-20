@@ -17,7 +17,7 @@
         <guid>https://briantward.github.io/docker-core-dump/</guid>
         <description>Docker Core Dumps  Get the container id (CID) of the pod to be checked. From the node running the pod. You will need to be able to identify your container ID.
 # docker ps # CID=xxx     Check if docker is logging
-# docker logs &amp;lt;CID&amp;gt;     Check node&amp;#8217;s journal
+# docker logs &amp;lt;CID&amp;gt;     Check node’s journal
 # journalctl CONTAINER_ID=&amp;lt;CID&amp;gt;     Grab lsof and gcore for each process: dockerd-current, docker-containerd-current, and docker-containerd-shim-current.</description>
       </item>
     

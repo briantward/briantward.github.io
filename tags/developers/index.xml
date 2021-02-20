@@ -23,9 +23,7 @@
         <link>https://briantward.github.io/dev-containers/</link>
         <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/dev-containers/</guid>
-        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7
-https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7
-Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
+        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7 https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7 Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
       </item>
     
   </channel>

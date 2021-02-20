@@ -27,8 +27,8 @@
         <link>https://briantward.github.io/running-secure-containers-on-fedora/</link>
         <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/running-secure-containers-on-fedora/</guid>
-        <description>Running Secure Containers on Fedora 31 and RHEL 8 The first thing to note here, is that &#34;secured&#34; means running the container with SELinux enforcing. If you don&amp;#8217;t care about SELinux or have other alternatives in place, move along here, as you won&amp;#8217;t find this useful. I will not be discussing application security or platform security.
- The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat&amp;#8217;s Container platform built on Kubernetes.</description>
+        <description>Running Secure Containers on Fedora 31 and RHEL 8 The first thing to note here, is that &amp;#34;secured&amp;#34; means running the container with SELinux enforcing. If you don’t care about SELinux or have other alternatives in place, move along here, as you won’t find this useful. I will not be discussing application security or platform security.
+ The second thing to note here, is that setting this up requires more work, per container, than running your container on OpenShift, which is Red Hat’s Container platform built on Kubernetes.</description>
       </item>
     
   </channel>

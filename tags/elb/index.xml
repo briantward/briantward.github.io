@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>elb on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/elb/</link>
+    <description>Recent content in elb on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/elb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>AWS ELB Kubernetes Service</title>
+        <link>https://briantward.github.io/kubernetes-service-aws-elb/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/kubernetes-service-aws-elb/</guid>
+        <description>AWS ELB Kubernetes Service By default, services of type LoadBalancer create public-facing load balancers. To use an internal load balancer, apply the following annotation to your service:
+ service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;
+ https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
+   </description>
+      </item>
+    
+  </channel>
+</rss>

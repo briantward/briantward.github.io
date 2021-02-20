@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -45,13 +45,14 @@
  Any
     Setup a bridged network connection on RHEL 7.5 using Network Manager so that a VM can reside on the same network as the host.
  e.g.">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1216">
 
 
 
 <meta itemprop="keywords" content="bridge,virtual,machine," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Bridged Host-VM Network"/>
 <meta name="twitter:description" content="Bridged Host-VM Network     Host OS:
@@ -150,8 +151,8 @@
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
 </colgroup>
 <tbody>
 <tr>
@@ -183,7 +184,7 @@ vm2 192.168.1.21</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>&#8230;&#8203;
+<p>…​
 vm1 and vm2 will use the bridge from the host to reach the DHCP server 192.168.1.1</p>
 </div>
 <div class="paragraph">
@@ -216,8 +217,8 @@ You might find watching this first useful.</p>
 <div class="paragraph">
 <p>First, do not use <code>network</code> to manage your network behavior.  That is the old way of things.
 A lot of old tutorials are still out there claiming you need to use <code>network</code> to make <code>virt-manager</code>
-or <code>virsh</code> or <code>libvirt</code> happy.  It&#8217;s not true anymore.  Use <code>NetworkManager</code> instead to manage
-your network behavior.  If you don&#8217;t know the difference between these two tools, go research it.</p>
+or <code>virsh</code> or <code>libvirt</code> happy.  It’s not true anymore.  Use <code>NetworkManager</code> instead to manage
+your network behavior.  If you don’t know the difference between these two tools, go research it.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -233,12 +234,12 @@ your network behavior.  If you don&#8217;t know the difference between these two
 </ul>
 </div>
 <div class="paragraph">
-<p>Second, the same tutorials frequently suggest using the "Virtual Network Connections" feature of
-virt-manager.  Do NOT attempt to use this.  It simply doesn&#8217;t work with <code>NetworkManager</code>.  In
-fact, I think one of the sites I found suggested this is why <code>network</code> is required.  You&#8217;ll see
+<p>Second, the same tutorials frequently suggest using the &#34;Virtual Network Connections&#34; feature of
+virt-manager.  Do NOT attempt to use this.  It simply doesn’t work with <code>NetworkManager</code>.  In
+fact, I think one of the sites I found suggested this is why <code>network</code> is required.  You’ll see
 shortly just how to configure <code>NetworkManager</code> and your virtual machines. For now, take a look
-at these screen shots under "QEMU Virtial Networks" and understand that if you have been working with this interface, and you&#8217;re
-frustrated you haven&#8217;t got the results you want, you should not be surprised.</p>
+at these screen shots under &#34;QEMU Virtial Networks&#34; and understand that if you have been working with this interface, and you’re
+frustrated you haven’t got the results you want, you should not be surprised.</p>
 </div>
 </div>
 </div>
@@ -252,24 +253,24 @@ frustrated you haven&#8217;t got the results you want, you should not be surpris
 <p>Virt-Manager &gt; Edit &gt; Connection Details</p>
 </div>
 <div class="paragraph">
-<p>"Virtual Networks" Tab is somewhat misleading.  You can create an isolated private
+<p>&#34;Virtual Networks&#34; Tab is somewhat misleading.  You can create an isolated private
 network for just your VMs.  This could be advantageous if you wanted to create a whole
 separate subnet just for your vms.  All of them would be addressable through a NAT on
 your host machine.  I did not want that.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/001-qemu-virtual-networks.png" alt="001 qemu virtual networks"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/001-qemu-virtual-networks.png" alt="001 qemu virtual networks"/></span></p>
 </div>
 <div class="paragraph">
-<p>This is a suggested flow below for creating a NAT&#8217;d isolated network.  It does not bridge
-the vm to the host subnet.  The "Virtual Network Interface" settings on your vm profile
-used to suggest creating a "bridge" this way.</p>
+<p>This is a suggested flow below for creating a NAT’d isolated network.  It does not bridge
+the vm to the host subnet.  The &#34;Virtual Network Interface&#34; settings on your vm profile
+used to suggest creating a &#34;bridge&#34; this way.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/002-qemu-create-virtual-networks-01.png" alt="002 qemu create virtual networks 01"></span>
-<span class="image"><img src="/images/vm-bridge/003-qemu-create-virtual-networks-02.png" alt="003 qemu create virtual networks 02"></span>
-<span class="image"><img src="/images/vm-bridge/004-qemu-create-virtual-networks-03.png" alt="004 qemu create virtual networks 03"></span>
-<span class="image"><img src="/images/vm-bridge/005-qemu-create-virtual-networks-04.png" alt="005 qemu create virtual networks 04"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/002-qemu-create-virtual-networks-01.png" alt="002 qemu create virtual networks 01"/></span>
+<span class="image"><img src="/images/vm-bridge/003-qemu-create-virtual-networks-02.png" alt="003 qemu create virtual networks 02"/></span>
+<span class="image"><img src="/images/vm-bridge/004-qemu-create-virtual-networks-03.png" alt="004 qemu create virtual networks 03"/></span>
+<span class="image"><img src="/images/vm-bridge/005-qemu-create-virtual-networks-04.png" alt="005 qemu create virtual networks 04"/></span></p>
 </div>
 </div>
 </div>
@@ -304,8 +305,8 @@ used to suggest creating a "bridge" this way.</p>
 <h2 id="_using_gnome_control_center_gui">Using gnome-control-center GUI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You used to be able to build bridges from the gnome-control-panel.  This is the "Settings"
-feature from the top right drop-down screen or from the "Settings" control panel.</p>
+<p>You used to be able to build bridges from the gnome-control-panel.  This is the &#34;Settings&#34;
+feature from the top right drop-down screen or from the &#34;Settings&#34; control panel.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -314,15 +315,15 @@ feature from the top right drop-down screen or from the "Settings" control panel
 </div>
 <div class="paragraph">
 <p>DO NOT EDIT YOUR NETWORK CONFIGURATION HERE
-<span class="image"><img src="/images/vm-bridge/006-gnome-settings-network-01.png" alt="006 gnome settings network 01"></span></p>
+<span class="image"><img src="/images/vm-bridge/006-gnome-settings-network-01.png" alt="006 gnome settings network 01"/></span></p>
 </div>
 <div class="paragraph">
 <p>DO NOT EDIT YOUR NETWORK CONFIGURATION HERE
-<span class="image"><img src="/images/vm-bridge/007-gome-shortcut-screenshot-01.png" alt="007 gome shortcut screenshot 01"></span></p>
+<span class="image"><img src="/images/vm-bridge/007-gome-shortcut-screenshot-01.png" alt="007 gome shortcut screenshot 01"/></span></p>
 </div>
 <div class="paragraph">
 <p>DO NOT EDIT YOUR NETWORK CONFIGURATION HERE
-<span class="image"><img src="/images/vm-bridge/008-gome-shortcut-screenshot-02.png" alt="008 gome shortcut screenshot 02"></span></p>
+<span class="image"><img src="/images/vm-bridge/008-gome-shortcut-screenshot-02.png" alt="008 gome shortcut screenshot 02"/></span></p>
 </div>
 </div>
 </div>
@@ -344,82 +345,82 @@ isolated networks for your vms.  We are not going to use it, but we will leave i
 for now.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/012-gnome-network-connections-01.png" alt="012 gnome network connections 01"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/012-gnome-network-connections-01.png" alt="012 gnome network connections 01"/></span></p>
 </div>
 <div class="paragraph">
-<p>Click the "+" icon and up pops this dialog.  Choose "Bridge" type. Sorry the image below
-just shows "Ethernet".</p>
+<p>Click the &#34;+&#34; icon and up pops this dialog.  Choose &#34;Bridge&#34; type. Sorry the image below
+just shows &#34;Ethernet&#34;.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/014-connmanager-create-network-connection.png" alt="014 connmanager create network connection"></span>
-<span class="image"><img src="/images/vm-bridge/013-gnome-network-connections-02.png" alt="013 gnome network connections 02"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/014-connmanager-create-network-connection.png" alt="014 connmanager create network connection"/></span>
+<span class="image"><img src="/images/vm-bridge/013-gnome-network-connections-02.png" alt="013 gnome network connections 02"/></span></p>
 </div>
 <div class="paragraph">
 <p>Rename your connection as desired.
-Note that there is a 15 character limit for "Connection Name".
+Note that there is a 15 character limit for &#34;Connection Name&#34;.
 If you go past 15 characters, it will look ok
 in the user interface but the button to Save or Activate the profile will not be available.
-Notice here I tried naming my connection "bridge-vm-enp0s25" to logically identify what
-I am bridging.  However, because it has too many characters, the "Save" button remains
+Notice here I tried naming my connection &#34;bridge-vm-enp0s25&#34; to logically identify what
+I am bridging.  However, because it has too many characters, the &#34;Save&#34; button remains
 greyed-out.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/022-connmanager-edit-network-connection.png" alt="022 connmanager edit network connection"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/022-connmanager-edit-network-connection.png" alt="022 connmanager edit network connection"/></span></p>
 </div>
 <div class="paragraph">
-<p>Here I used a shorter bridge name: "br-vm-enp0s25". Also, make your "Connection Name" and
-"Interface Name" match.  It&#8217;s funny how such trivial problems
+<p>Here I used a shorter bridge name: &#34;br-vm-enp0s25&#34;. Also, make your &#34;Connection Name&#34; and
+&#34;Interface Name&#34; match.  It’s funny how such trivial problems
 from poor user interface translate into enormous amounts of wasted time and effort. I
 thought I was configuring something else incorrectly.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/026-connmanager-edit-network-connection.png" alt="026 connmanager edit network connection"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/026-connmanager-edit-network-connection.png" alt="026 connmanager edit network connection"/></span></p>
 </div>
 <div class="paragraph">
-<p>Click "Add" next to "Bridged Connections" to specific which device you want to source the
+<p>Click &#34;Add&#34; next to &#34;Bridged Connections&#34; to specific which device you want to source the
 bridge from.  That is, what physical device or ethernet port is attached to the network
-you want the VMs to bridge to. In my case, I want "enp0s25".</p>
+you want the VMs to bridge to. In my case, I want &#34;enp0s25&#34;.</p>
 </div>
 <div class="paragraph">
-<p>Click "Ethernet" in the dialog box this time.  Name this Connection after your network
-interface, then select the same network interface in the "Device" dropdown. Click Save.</p>
+<p>Click &#34;Ethernet&#34; in the dialog box this time.  Name this Connection after your network
+interface, then select the same network interface in the &#34;Device&#34; dropdown. Click Save.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/025-connmanager-edit-network-connection.png" alt="025 connmanager edit network connection"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/025-connmanager-edit-network-connection.png" alt="025 connmanager edit network connection"/></span></p>
 </div>
 <div class="paragraph">
-<p>Now click "Save" and you should see the results similar to below.</p>
+<p>Now click &#34;Save&#34; and you should see the results similar to below.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/027-connmanager-edit-network-connection.png" alt="027 connmanager edit network connection"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/027-connmanager-edit-network-connection.png" alt="027 connmanager edit network connection"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now <code>virt-manager</code> go to Edit &gt; Connection Detils &gt; Network Interfaces.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/019-qemu-network-connections.png" alt="019 qemu network connections"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/019-qemu-network-connections.png" alt="019 qemu network connections"/></span></p>
 </div>
 <div class="paragraph">
-<p>Click this "+" icon to add your bridge.  It should show up here. If it does not, you may want
+<p>Click this &#34;+&#34; icon to add your bridge.  It should show up here. If it does not, you may want
 to restart services or reboot the machine.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/028-qemu-network-connections-add-bridge.png" alt="028 qemu network connections add bridge"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/028-qemu-network-connections-add-bridge.png" alt="028 qemu network connections add bridge"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now go to your vm in <code>virt-manager</code>.  Double-Click on it to bring it up.  Click on the light-bulb
-icon to change its configuration.  Click on the device labeled "NIC" and change "Network Source"
+icon to change its configuration.  Click on the device labeled &#34;NIC&#34; and change &#34;Network Source&#34;
 to match the bridge you just set up.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/029-qemu-device-settings.png" alt="029 qemu device settings"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/029-qemu-device-settings.png" alt="029 qemu device settings"/></span></p>
 </div>
 <div class="paragraph">
 <p>Note here that you will see a vnet0 get added as a slave interface automatically the next time
 everything starts and is working.  This is required for things to work.  See my debug note below.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/vm-bridge/030-qemu-network-connections-add-bridge.png" alt="030 qemu network connections add bridge"></span></p>
+<p><span class="image"><img src="/images/vm-bridge/030-qemu-network-connections-add-bridge.png" alt="030 qemu network connections add bridge"/></span></p>
 </div>
 </div>
 </div>
@@ -473,11 +474,11 @@ nmcli connection up em1</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;interface type='bridge'&gt;
-  &lt;mac address='52:54:00:8e:3c:67'/&gt;
-  &lt;source bridge='br0'/&gt;
-  &lt;model type='virtio'/&gt;
-  &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
+<pre>&lt;interface type=&#39;bridge&#39;&gt;
+  &lt;mac address=&#39;52:54:00:8e:3c:67&#39;/&gt;
+  &lt;source bridge=&#39;br0&#39;/&gt;
+  &lt;model type=&#39;virtio&#39;/&gt;
+  &lt;address type=&#39;pci&#39; domain=&#39;0x0000&#39; bus=&#39;0x00&#39; slot=&#39;0x03&#39; function=&#39;0x0&#39;/&gt;
 &lt;/interface&gt;</pre>
 </div>
 </div>

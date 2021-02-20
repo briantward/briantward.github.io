@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -25,7 +25,7 @@
 <meta property="og:description" content="Managing Certificates My favorite quick ref:
  https://www.sslshopper.com/article-most-common-openssl-commands.html
  Checking certificates on OpenShift You could just as easily modify this for other applications.
- # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;" />
+ # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;Issuer:|Subject:|Not|CA&#34; done EOF # chmod u&#43;x ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/cert-tips/" />
 <meta property="article:published_time" content="2019-03-14T00:00:00+00:00" />
@@ -36,20 +36,21 @@
 <meta itemprop="description" content="Managing Certificates My favorite quick ref:
  https://www.sslshopper.com/article-most-common-openssl-commands.html
  Checking certificates on OpenShift You could just as easily modify this for other applications.
- # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;">
-<meta itemprop="datePublished" content="2019-03-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-03-14T00:00:00&#43;00:00" />
+ # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;Issuer:|Subject:|Not|CA&#34; done EOF # chmod u&#43;x .">
+<meta itemprop="datePublished" content="2019-03-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-03-14T00:00:00+00:00" />
 <meta itemprop="wordCount" content="80">
 
 
 
 <meta itemprop="keywords" content="bash,certificates," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Managing Certificates"/>
 <meta name="twitter:description" content="Managing Certificates My favorite quick ref:
  https://www.sslshopper.com/article-most-common-openssl-commands.html
  Checking certificates on OpenShift You could just as easily modify this for other applications.
- # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;"/>
+ # cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;Issuer:|Subject:|Not|CA&#34; done EOF # chmod u&#43;x ."/>
 
 
   </head>
@@ -148,18 +149,18 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># cat &lt;&lt; 'EOF' &gt;&gt; check-certs.sh
+<pre class="highlight"><code># cat &lt;&lt; &#39;EOF&#39; &gt;&gt; check-certs.sh
 #!/bin/bash
 
-for filename in `find /etc/origin -name "*.crt*" -o -name "*.pem*" -o -name "*.cer*"` ; do
+for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do
   echo $filename;
-  echo "  contains" `grep BEGIN $filename | wc -l`;
-  openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E "Issuer:|Subject:|Not|CA"
+  echo &#34;  contains&#34; `grep BEGIN $filename | wc -l`;
+  openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;Issuer:|Subject:|Not|CA&#34;
 done
 EOF
 
 # chmod u+x ./check-certs.sh
-# ./check-certs.sh &gt; certs-$(hostname)-$(date +"%Y-%m-%d-%H-%M-%S").log</code></pre>
+# ./check-certs.sh &gt; certs-$(hostname)-$(date +&#34;%Y-%m-%d-%H-%M-%S&#34;).log</code></pre>
 </div>
 </div>
 </div>

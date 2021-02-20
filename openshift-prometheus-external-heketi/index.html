@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -33,13 +33,14 @@
 <meta itemprop="name" content="Configuring an External Heketi Prometheus Monitor on OpenShift">
 <meta itemprop="description" content="Configuring an External Heketi Prometheus Monitor on OpenShift Kudos goes to Ido Braunstain at devops.college for doing this on a raw Kubernetes cluster to monitor a GPU node. I adapted my information from his article to apply to monitoring both heketi and my external gluster nodes.
  Install the node-exporter on the external host First install docker to run the node-exporter container. You may want to consider configuring other docker options.">
-<meta itemprop="datePublished" content="2019-01-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-01-15T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-01-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-01-15T00:00:00+00:00" />
 <meta itemprop="wordCount" content="624">
 
 
 
 <meta itemprop="keywords" content="heketi,servicemonitor," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Configuring an External Heketi Prometheus Monitor on OpenShift"/>
 <meta name="twitter:description" content="Configuring an External Heketi Prometheus Monitor on OpenShift Kudos goes to Ido Braunstain at devops.college for doing this on a raw Kubernetes cluster to monitor a GPU node. I adapted my information from his article to apply to monitoring both heketi and my external gluster nodes.
@@ -145,7 +146,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Login to Red Hat&#8217;s container repo to stash credentials.</p>
+<p>Login to Red Hat’s container repo to stash credentials.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -164,7 +165,7 @@ Login Succeeded</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Don&#8217;t forget your firewall or selinux.</p>
+<p>Don’t forget your firewall or selinux.</p>
 </div>
 </div>
 <div class="sect2">
@@ -395,7 +396,7 @@ $ oc scale deployment.apps/prometheus-operator --replicas-0</pre>
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. Note that the Service name must match the Endpoint name.
 </div>

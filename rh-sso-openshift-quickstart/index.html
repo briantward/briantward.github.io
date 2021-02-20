@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -40,6 +40,7 @@
 
 
 <meta itemprop="keywords" content="google,rh-sso,keycloak,ansible,authentication,authorization," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Install a Quickstart App on Openshift Authenticated by RH-SSO"/>
 <meta name="twitter:description" content="Install a Quickstart App on Openshift Authenticated by RH-SSO You will need to build and run an app and configure the client in RH-SSO.
@@ -164,7 +165,7 @@ sso72-postgresql-persistent                     An example SSO 7 application wit
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s go with eap71-sso-s2i&#8230;&#8203;</p>
+<p>Let’s go with eap71-sso-s2i…​</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -172,7 +173,7 @@ sso72-postgresql-persistent                     An example SSO 7 application wit
 </div>
 </div>
 <div class="paragraph">
-<p>Notice that the template uses the 7.0.x-ose branch of the official Red Hat RH-SSO quickstarts. The version is a little behind but it doesn&#8217;t
+<p>Notice that the template uses the 7.0.x-ose branch of the official Red Hat RH-SSO quickstarts. The version is a little behind but it doesn’t
 affect anything on the quickstarts.</p>
 </div>
 <div class="listingblock">
@@ -189,8 +190,8 @@ affect anything on the quickstarts.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You could just specificy one example app using CONTEXT_DIR, but this only works if you are trying out the examples that don&#8217;t need two WAR files.
-I&#8217;m leaving it blank here, which will cause all maven sub-modules to be built.  That&#8217;s fine because we&#8217;ll later tell it to only deploy the artifacts
+<p>You could just specificy one example app using CONTEXT_DIR, but this only works if you are trying out the examples that don’t need two WAR files.
+I’m leaving it blank here, which will cause all maven sub-modules to be built.  That’s fine because we’ll later tell it to only deploy the artifacts
 we want.</p>
 </div>
 <div class="listingblock">
@@ -227,7 +228,7 @@ ARTIFACT_DIR=app-jee-jsp/target,app-profile-jee-jsp/target</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ keytool -genkeypair -alias sso-test -keyalg RSA -storetype JKS -keystore keystore.jks -storepass redacted -keypass redacted --dname "CN=sso-test.apps.example.com,OU=openshift,O=example.com,L=City,S=ST,C=US"</pre>
+<pre>$ keytool -genkeypair -alias sso-test -keyalg RSA -storetype JKS -keystore keystore.jks -storepass redacted -keypass redacted --dname &#34;CN=sso-test.apps.example.com,OU=openshift,O=example.com,L=City,S=ST,C=US&#34;</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -236,7 +237,7 @@ ARTIFACT_DIR=app-jee-jsp/target,app-profile-jee-jsp/target</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Import the SSO server&#8217;s certificate into the EAP server&#8217;s truststore. In general, it&#8217;s just a good idea. (TODO verify truststore needed for this test)</p>
+<p>Import the SSO server’s certificate into the EAP server’s truststore. In general, it’s just a good idea. (TODO verify truststore needed for this test)</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -268,19 +269,19 @@ ARTIFACT_DIR=app-jee-jsp/target,app-profile-jee-jsp/target</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now we&#8217;re ready to build from the template:</p>
+<p>Now we’re ready to build from the template:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc process -f sso-test.yml --param-file sso-test-params | oc apply -f-
-service "sso-test" created
-service "secure-sso-test" created
-service "sso-test-ping" created
-route "sso-test" created
-route "secure-sso-test" created
-imagestream "sso-test" created
-buildconfig "sso-test" created
-deploymentconfig "sso-test" created</code></pre>
+service &#34;sso-test&#34; created
+service &#34;secure-sso-test&#34; created
+service &#34;sso-test-ping&#34; created
+route &#34;sso-test&#34; created
+route &#34;secure-sso-test&#34; created
+imagestream &#34;sso-test&#34; created
+buildconfig &#34;sso-test&#34; created
+deploymentconfig &#34;sso-test&#34; created</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -293,18 +294,18 @@ INFO: Configuring JGroups discovery protocol to openshift.DNS_PING
 Using PicketBox SSL configuration.
 Obtained auth token from https://secure-sso:8443/auth for realm ocp
 /opt/eap/standalone/deployments ~
-Registered openid-connect client for module app-jsp in realm ocp on "http://sso-test-i.apps.example.com/app-jsp/*","https://sso-test.apps.example.com/app-jsp/*"
+Registered openid-connect client for module app-jsp in realm ocp on &#34;http://sso-test-i.apps.example.com/app-jsp/*&#34;,&#34;https://sso-test.apps.example.com/app-jsp/*&#34;
 Configured keycloak subsystem for openid-connect module app-jsp from app-jsp.war
-Registered openid-connect client for module app-profile-jsp in realm ocp on "http://sso-test-i.apps.example.com/app-profile-jsp/*","https://sso-test.apps.example.com/app-profile-jsp/*"
+Registered openid-connect client for module app-profile-jsp in realm ocp on &#34;http://sso-test-i.apps.example.com/app-profile-jsp/*&#34;,&#34;https://sso-test.apps.example.com/app-profile-jsp/*&#34;
 Configured keycloak subsystem for openid-connect module app-profile-jsp from app-profile-jsp.war
 
 ...
 
-12:37:42,608 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 75) WFLYUT0021: Registered web context: '/app-jsp' for server 'default-server'
-12:37:42,608 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 72) WFLYUT0021: Registered web context: '/app-profile-jsp' for server 'default-server'
-12:37:42,673 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed "app-profile-jsp.war" (runtime-name : "app-profile-jsp.war")
-12:37:42,675 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed "app-jsp.war" (runtime-name : "app-jsp.war")
-12:37:42,675 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed "activemq-rar.rar" (runtime-name : "activemq-rar.rar")
+12:37:42,608 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 75) WFLYUT0021: Registered web context: &#39;/app-jsp&#39; for server &#39;default-server&#39;
+12:37:42,608 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 72) WFLYUT0021: Registered web context: &#39;/app-profile-jsp&#39; for server &#39;default-server&#39;
+12:37:42,673 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed &#34;app-profile-jsp.war&#34; (runtime-name : &#34;app-profile-jsp.war&#34;)
+12:37:42,675 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed &#34;app-jsp.war&#34; (runtime-name : &#34;app-jsp.war&#34;)
+12:37:42,675 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 40) WFLYSRV0010: Deployed &#34;activemq-rar.rar&#34; (runtime-name : &#34;activemq-rar.rar&#34;)
 12:37:42,858 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
 12:37:42,868 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
 12:37:42,868 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0054: Admin console is not enabled
@@ -350,10 +351,10 @@ This is detailed in the README here: <a href="https://github.com/redhat-develope
 <div class="content">
 <pre class="highlight"><code>Caused by: org.apache.maven.wagon.TransferFailedException: Failed to transfer file: https://maven.repository.redhat.com/ga/com/redhat/bom/rh-sso/rh-sso-eap7-bom/7.0.0.GA/rh-sso-eap7-bom-7.0.0.GA.pom. Return code is: 500 , ReasonPhrase:Internal Server Error.
 ...
-[ERROR]     'dependencies.dependency.version' for org.keycloak:keycloak-core:jar is missing. @ line 58, column 21
-[ERROR]     'dependencies.dependency.version' for org.keycloak:keycloak-adapter-core:jar is missing. @ line 63, column 21
-[ERROR]     'dependencies.dependency.version' for org.keycloak:keycloak-adapter-spi:jar is missing. @ line 68, column 21
-[ERROR]     'dependencies.dependency.version' for org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:jar is missing. @ line 135, column 29</code></pre>
+[ERROR]     &#39;dependencies.dependency.version&#39; for org.keycloak:keycloak-core:jar is missing. @ line 58, column 21
+[ERROR]     &#39;dependencies.dependency.version&#39; for org.keycloak:keycloak-adapter-core:jar is missing. @ line 63, column 21
+[ERROR]     &#39;dependencies.dependency.version&#39; for org.keycloak:keycloak-adapter-spi:jar is missing. @ line 68, column 21
+[ERROR]     &#39;dependencies.dependency.version&#39; for org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:jar is missing. @ line 135, column 29</code></pre>
 </div>
 </div>
 <div class="paragraph">

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -37,13 +37,14 @@
  for file in *.wma; do ffmpeg -i &#34;${file}&#34; -acodec libmp3lame -ab 192k &#34;${file/.wma/.mp3}&#34;; done   From:
    https://askubuntu.com/questions/508278/how-to-use-ffmpeg-to-convert-wma-to-mp3-recursively-importing-from-txt-file
      ">
-<meta itemprop="datePublished" content="2019-05-11T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-05-11T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-05-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-05-11T00:00:00+00:00" />
 <meta itemprop="wordCount" content="33">
 
 
 
 <meta itemprop="keywords" content="audio," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Convert WMA to MP3"/>
 <meta name="twitter:description" content="Convert WMA to MP3 A one liner to convert all WMA files in a directory to MP3
@@ -142,7 +143,7 @@
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>for file in *.wma; do ffmpeg -i "${file}"  -acodec libmp3lame -ab 192k "${file/.wma/.mp3}"; done</pre>
+<pre>for file in *.wma; do ffmpeg -i &#34;${file}&#34;  -acodec libmp3lame -ab 192k &#34;${file/.wma/.mp3}&#34;; done</pre>
 </div>
 </div>
 <div class="paragraph">

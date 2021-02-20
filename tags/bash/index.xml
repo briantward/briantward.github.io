@@ -16,7 +16,7 @@
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
         <description>DD-WRT Custom Certificate (Tested on R7000)
- Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.
  On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
  In the router GUI go to Services &amp;gt; USB:
  Select the following
@@ -32,11 +32,11 @@
         <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/bash-tips/</guid>
         <description>Command Tips String the watch command with several commands at once
- watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
- This one is useful when you don&amp;#8217;t have a user directory on the system yet.
+ watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don’t have a user directory on the system yet.
  /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
- Because docker rmi on all image IDs doesn&amp;#8217;t work when one image ID maps to multiple repo:tag combinations.
- $ docker images | grep -v REPO | awk &#39;{print $1&#34;</description>
+ Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
+ $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
       </item>
     
       <item>
@@ -62,7 +62,7 @@
         <description>Managing Certificates My favorite quick ref:
  https://www.sslshopper.com/article-most-common-openssl-commands.html
  Checking certificates on OpenShift You could just as easily modify this for other applications.
- # cat &amp;lt;&amp;lt; &#39;EOF&#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;</description>
+ # cat &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &amp;#34;*.crt*&amp;#34; -o -name &amp;#34;*.pem*&amp;#34; -o -name &amp;#34;*.cer*&amp;#34;` ; do echo $filename; echo &amp;#34; contains&amp;#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &amp;#34;Issuer:|Subject:|Not|CA&amp;#34; done EOF # chmod u+x .</description>
       </item>
     
   </channel>

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -33,13 +33,14 @@
 <meta itemprop="name" content="Sync Red Hat Container Images on OpenShift 3.9">
 <meta itemprop="description" content="Sync Red Hat Container Images on OpenShift 3.9 If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples [1] in your cluster (or using the default which is true), you will find that the ansible installer adds some nice stuff to your local registry from the openshift_examples [2] folder.
  $ oc get is -n openshift NAME DOCKER REPO TAGS UPDATED imagestreams/eap71-openshift docker-registry.default.svc:5000/openshift/eap71-openshift latest 3 months ago imagestreams/httpd docker-registry.">
-<meta itemprop="datePublished" content="2018-07-25T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-07-25T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-07-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-07-25T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1408">
 
 
 
 <meta itemprop="keywords" content="sync,Red Hat,container,imagestream," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sync Red Hat Container Images on OpenShift 3.9"/>
 <meta name="twitter:description" content="Sync Red Hat Container Images on OpenShift 3.9 If using the default Advanced Installer, and setting the flag to deploy openshift_install_examples [1] in your cluster (or using the default which is true), you will find that the ansible installer adds some nice stuff to your local registry from the openshift_examples [2] folder.
@@ -192,8 +193,8 @@ imagestreams/ruby                                  docker-registry.default.svc:5
 Note on the right hand side of the output above that most of these images have
 not been updated in 3-4 months!  A couple of them have been updated manually in a more recent time frame.
 One day you ask yourself,
-why?  Well, by default we don&#8217;t want to push people into making changes they aren&#8217;t thinking about.  Ideally you have a security pipeline to push base images to
-production as quickly as possible, separate from any development pipelines.  Hopefully that&#8217;s a fully automated pipeline.  Why not?  After all that&#8217;s the whole purpose
+why?  Well, by default we don’t want to push people into making changes they aren’t thinking about.  Ideally you have a security pipeline to push base images to
+production as quickly as possible, separate from any development pipelines.  Hopefully that’s a fully automated pipeline.  Why not?  After all that’s the whole purpose
 of the platform!</p>
 </div>
 <div class="paragraph">
@@ -228,8 +229,8 @@ of the platform!</p>
 <div class="content">
 <pre class="highlight"><code># Configure imagePolicyConfig in the master config
 # See: https://godoc.org/github.com/openshift/origin/pkg/cmd/server/api#ImagePolicyConfig
-#openshift_master_image_policy_config={"maxImagesBulkImportedPerRepository": 3, "disableScheduledImport": true}
-openshift_master_image_policy_config={"maxImagesBulkImportedPerRepository": 3, "disableScheduledImport": false, "MaxScheduledImageImportsPerMinute": 10, "ScheduledImageImportMinimumIntervalSeconds": 1800}</code></pre>
+#openshift_master_image_policy_config={&#34;maxImagesBulkImportedPerRepository&#34;: 3, &#34;disableScheduledImport&#34;: true}
+openshift_master_image_policy_config={&#34;maxImagesBulkImportedPerRepository&#34;: 3, &#34;disableScheduledImport&#34;: false, &#34;MaxScheduledImageImportsPerMinute&#34;: 10, &#34;ScheduledImageImportMinimumIntervalSeconds&#34;: 1800}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -257,7 +258,7 @@ arrive in subsequent updates, they do get added, and some get removed. But they 
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc get is -n openshift &gt; openshift-is.json
-$ jq '.items[].spec.tags[]? |= if .from.kind == "DockerImage" then .importPolicy.scheduled |= true else . end' openshift-is.json &gt; openshift-is-scheduled.json
+$ jq &#39;.items[].spec.tags[]? |= if .from.kind == &#34;DockerImage&#34; then .importPolicy.scheduled |= true else . end&#39; openshift-is.json &gt; openshift-is-scheduled.json
 $ oc apply -f openshift-is-scheduled.json -n openshift</code></pre>
 </div>
 </div>
@@ -266,11 +267,11 @@ $ oc apply -f openshift-is-scheduled.json -n openshift</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc patch is redis -p '{"spec":{"tags":[{"name":"3.2","importPolicy":{"scheduled":true}}]}}'</pre>
+<pre>$ oc patch is redis -p &#39;{&#34;spec&#34;:{&#34;tags&#34;:[{&#34;name&#34;:&#34;3.2&#34;,&#34;importPolicy&#34;:{&#34;scheduled&#34;:true}}]}}&#39;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the tag "name" must be of kind "DockerImage" and not "ImageStreamTag"!  Also note that once you apply the scheduled update to
+<p>Note that the tag &#34;name&#34; must be of kind &#34;DockerImage&#34; and not &#34;ImageStreamTag&#34;!  Also note that once you apply the scheduled update to
 one tag, it will update all tags.</p>
 </div>
 </div>
@@ -287,9 +288,9 @@ however, want to trigger a new build and deploy directly on production.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc new-project test
-Now using project "test" on server "https://openshift.opencontainer.io:8443".
+Now using project &#34;test&#34; on server &#34;https://openshift.opencontainer.io:8443&#34;.
 
-You can add applications to this project with the 'new-app' command. For example, try:
+You can add applications to this project with the &#39;new-app&#39; command. For example, try:
 
     oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
 
@@ -415,7 +416,7 @@ items:
     generation: 1
     name: ruby
     namespace: test
-    resourceVersion: "37153060"
+    resourceVersion: &#34;37153060&#34;
     selfLink: /oapi/v1/namespaces/test/imagestreams/ruby
     uid: 5e0e659f-9032-11e8-a295-001a4a160161
   spec:
@@ -443,8 +444,8 @@ items:
       tag: latest
 kind: List
 metadata:
-  resourceVersion: ""
-  selfLink: ""</code></pre>
+  resourceVersion: &#34;&#34;
+  selfLink: &#34;&#34;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -476,7 +477,7 @@ metadata:
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <a href="https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L89" class="bare">https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L89</a>
 </div>

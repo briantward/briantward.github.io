@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>emby on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/emby/</link>
+    <description>Recent content in emby on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/emby/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Building a Media Server</title>
+        <link>https://briantward.github.io/emby/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/emby/</guid>
+        <description>Building a Media Server A while back I was on the hunt for a media server solution…​ these are running notes about 2 years old as of now (2/2021).
+ Handling video playback and copying DVD content to my digital storage. This was interesting but looked a bit old. Dunno much about how old nux-desktop-release-0-5 is.
+ https://gist.github.com/tareqy/0a3c07d49258a678cf68ca17725ad326
+ yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm yum -y install yum install ffmpeg HandBrake-cli   Could make a totally custom build of Handbrake on the latest Fedora, which is what Handbrake’s website suggests.</description>
+      </item>
+    
+  </channel>
+</rss>

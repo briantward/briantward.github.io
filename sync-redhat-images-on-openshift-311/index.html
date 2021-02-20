@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="Automatically Update Red Hat Container Images on OpenShift 3.11">
 <meta itemprop="description" content="Automatically Update Red Hat Container Images on OpenShift 3.11 OpenShift manages container images using a registry. This is the place where it caches upstream container images and stores the images from your own builds as well. Each build or container image correlates to an ImageStream, which is an object that defines any number of related images by tags. For example, one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2.">
-<meta itemprop="datePublished" content="2018-11-01T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-11-01T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-11-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-11-01T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1266">
 
 
 
 <meta itemprop="keywords" content="sync,Red Hat,container,imagestream," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Automatically Update Red Hat Container Images on OpenShift 3.11"/>
 <meta name="twitter:description" content="Automatically Update Red Hat Container Images on OpenShift 3.11 OpenShift manages container images using a registry. This is the place where it caches upstream container images and stores the images from your own builds as well. Each build or container image correlates to an ImageStream, which is an object that defines any number of related images by tags. For example, one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2."/>
@@ -137,16 +138,16 @@ Each build or container image correlates to an ImageStream, which is an object t
 one specific version of a Ruby container might be v2.5-22, but you can have one ImageStream definition that holds ruby tags and correlating images for v2.5, v2.4, v2.3 and so on.</p>
 </div>
 <div class="paragraph">
-<p>At Red Hat&#8217;s Online Container Catalog, searching for Ruby brings up the following for the 2.5 release:</p>
+<p>At Red Hat’s Online Container Catalog, searching for Ruby brings up the following for the 2.5 release:</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/sync-redhat-images/ruby-list.png" alt="ruby list"></span></p>
+<p><span class="image"><img src="/images/sync-redhat-images/ruby-list.png" alt="ruby list"/></span></p>
 </div>
 <div class="paragraph">
 <p>You can also see that the Container Catalog tracks the latest release history and details:</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/sync-redhat-images/ruby-list-details.png" alt="ruby list details"></span></p>
+<p><span class="image"><img src="/images/sync-redhat-images/ruby-list-details.png" alt="ruby list details"/></span></p>
 </div>
 <div class="paragraph">
 <p>When using the OpenShift Ansible (Advanced) Installer, you will find that by default
@@ -156,7 +157,7 @@ the installer adds some useful ImageStreams to your <code>openshift</code> proje
 <p>When you deploy the Red Hat Container Registry, either as a part of your OpenShift cluster or external to it, you will get a web console where you can take a peak at what ImageStreams and container images you have in your registry.  Here is an example of the corresponding Ruby ImageStream.  Note that it has several tags for different major.minor versions.  As a part of normal security and development, any one of those major.minor versions might get a new release at any time.  You can see when each was last updated in the far right column.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/sync-redhat-images/registry.png" alt="registry"></span>
+<p><span class="image"><img src="/images/sync-redhat-images/registry.png" alt="registry"/></span>
 <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
 </div>
 <div class="paragraph">
@@ -188,7 +189,7 @@ imagestreams/ruby                                  docker-registry.default.svc:5
 Note on the right hand side of the output above that most of these images have
 not been updated in 3-4 months!  A couple of them have been updated manually in a more recent time frame.
 One day you ask yourself,
-why?  Well, by default we don&#8217;t want to push people into making changes they aren&#8217;t thinking about. So this is the default behavior.
+why?  Well, by default we don’t want to push people into making changes they aren’t thinking about. So this is the default behavior.
 There are also concerns over supported and tested configurations <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.</p>
 </div>
 <div class="paragraph">
@@ -207,7 +208,7 @@ There are also concerns over supported and tested configurations <sup class="foo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>openshift_master_image_policy_config={"MaxImagesBulkImportedPerRepository": "3", "DisableScheduledImport": "false", "MaxScheduledImageImportsPerMinute": "10", "ScheduledImageImportMinimumIntervalSeconds": "1800"}</code></pre>
+<pre class="highlight"><code>openshift_master_image_policy_config={&#34;MaxImagesBulkImportedPerRepository&#34;: &#34;3&#34;, &#34;DisableScheduledImport&#34;: &#34;false&#34;, &#34;MaxScheduledImageImportsPerMinute&#34;: &#34;10&#34;, &#34;ScheduledImageImportMinimumIntervalSeconds&#34;: &#34;1800&#34;}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -264,7 +265,7 @@ arrive in subsequent updates, they do get added, and some get removed. But they 
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc get is -n openshift -o json &gt; openshift-is.json
-$ jq '.items[].spec.tags[]? |= if .from.kind == "DockerImage" then .importPolicy.scheduled |= true else . end' openshift-is.json &gt; openshift-is-scheduled.json
+$ jq &#39;.items[].spec.tags[]? |= if .from.kind == &#34;DockerImage&#34; then .importPolicy.scheduled |= true else . end&#39; openshift-is.json &gt; openshift-is-scheduled.json
 $ oc apply -f openshift-is-scheduled.json -n openshift</code></pre>
 </div>
 </div>
@@ -273,7 +274,7 @@ $ oc apply -f openshift-is-scheduled.json -n openshift</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc patch is redis -p '{"spec":{"tags":[{"name":"3.2","importPolicy":{"scheduled":true}}]}}'</pre>
+<pre>$ oc patch is redis -p &#39;{&#34;spec&#34;:{&#34;tags&#34;:[{&#34;name&#34;:&#34;3.2&#34;,&#34;importPolicy&#34;:{&#34;scheduled&#34;:true}}]}}&#39;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -281,7 +282,7 @@ $ oc apply -f openshift-is-scheduled.json -n openshift</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ oc describe is redis | grep "updates automatically"
+<pre>$ oc describe is redis | grep &#34;updates automatically&#34;
   updates automatically from registry registry.redhat.io/rhscl/redis-32-rhel7:latest</pre>
 </div>
 </div>
@@ -291,7 +292,7 @@ $ oc apply -f openshift-is-scheduled.json -n openshift</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>The tag "name" must be of kind "DockerImage" and not "ImageStreamTag"!</p>
+<p>The tag &#34;name&#34; must be of kind &#34;DockerImage&#34; and not &#34;ImageStreamTag&#34;!</p>
 </li>
 <li>
 <p>Once you apply the scheduled update to one tag, it will update all tags on the same object.</p>
@@ -305,14 +306,14 @@ $ oc apply -f openshift-is-scheduled.json -n openshift</code></pre>
 <div class="sect2">
 <h3 id="_configure_new_imagestreams_to_update_automatically">Configure New ImageStreams to Update Automatically</h3>
 <div class="paragraph">
-<p>Third, when working with ImageStreams, performing an <code>import-image</code> or <code>oc tag</code> into any namespace, be sure to specify the flag <code>--scheduled=true</code>.  Let&#8217;s test it out on a sample project space:</p>
+<p>Third, when working with ImageStreams, performing an <code>import-image</code> or <code>oc tag</code> into any namespace, be sure to specify the flag <code>--scheduled=true</code>.  Let’s test it out on a sample project space:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc new-project test
-Now using project "test" on server "https://openshift.example.com:8443".
+Now using project &#34;test&#34; on server &#34;https://openshift.example.com:8443&#34;.
 
-You can add applications to this project with the 'new-app' command. For example, try:
+You can add applications to this project with the &#39;new-app&#39; command. For example, try:
 
     oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
 
@@ -323,7 +324,7 @@ to build a new example application in Ruby.</code></pre>
 <p>The latest version as of this writing, 3.11, uses an authenticated Red Hat registry at registry.redhat.io <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
 </div>
 <div class="paragraph">
-<p>Copy your auth token from the <code>openshift</code> namespace just for this test.  OpenShift versions prior to 3.11 don&#8217;t need this (yet).</p>
+<p>Copy your auth token from the <code>openshift</code> namespace just for this test.  OpenShift versions prior to 3.11 don’t need this (yet).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -399,7 +400,7 @@ latest
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <a href="https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_examples" class="bare">https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_examples</a>
 </div>

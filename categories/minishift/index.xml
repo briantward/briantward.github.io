@@ -16,7 +16,7 @@
         <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/minishift-tips/</guid>
         <description>MiniShift Tips hard cleanup minishift environment For example, for errors such as
- domain &#39;minishift&#39; already exists with uuid    Check if the VM is still running
+ domain &amp;#39;minishift&amp;#39; already exists with uuid    Check if the VM is still running
 $ sudo virsh list --all     If it is running, stop the minishift VM
 $ sudo virsh destroy minishift     Delete the VM
 $ sudo virsh undefine minishift     Delete the .minishift/machines dir</description>

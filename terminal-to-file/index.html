@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="Terminal to File Tips">
 <meta itemprop="description" content="Terminal to File Tips cat &lt;&lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &lt;FILENAME&gt;: | &lt;FILECONTENT&gt; kind: ConfigMap metadata: name: &lt;CONFIGMAP_NAME&gt; namespace: &lt;PROJECT_NAMESPACE&gt;&#39; | oc create -f -     ">
-<meta itemprop="datePublished" content="2018-12-13T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-13T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-12-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-13T00:00:00+00:00" />
 <meta itemprop="wordCount" content="38">
 
 
 
 <meta itemprop="keywords" content="tips," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Terminal to File Tips"/>
 <meta name="twitter:description" content="Terminal to File Tips cat &lt;&lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &lt;FILENAME&gt;: | &lt;FILECONTENT&gt; kind: ConfigMap metadata: name: &lt;CONFIGMAP_NAME&gt; namespace: &lt;PROJECT_NAMESPACE&gt;&#39; | oc create -f -     "/>
@@ -131,14 +132,14 @@ EOF</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>echo 'apiVersion: v1
+<pre class="highlight"><code>echo &#39;apiVersion: v1
 data:
   &lt;FILENAME&gt;: |
     &lt;FILECONTENT&gt;
 kind: ConfigMap
 metadata:
   name: &lt;CONFIGMAP_NAME&gt;
-  namespace: &lt;PROJECT_NAMESPACE&gt;' | oc create -f -</code></pre>
+  namespace: &lt;PROJECT_NAMESPACE&gt;&#39; | oc create -f -</code></pre>
 </div>
 </div>
 </div>

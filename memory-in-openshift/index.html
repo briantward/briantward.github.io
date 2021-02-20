@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -35,13 +35,14 @@
 <meta itemprop="description" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift Work In Progress
  memory.usage_in_bytes # show current usage for memory (See 5.5 for details) memory.memsw.usage_in_bytes # show current usage for memory&#43;Swap (See 5.5 for details)   memory.stat file includes following statistics
    per-memory cgroup local status cache - # of bytes of page cache memory. rss - # of bytes of anonymous and swap cache memory (includes transparent hugepages).">
-<meta itemprop="datePublished" content="2018-12-13T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1544">
+<meta itemprop="datePublished" content="2018-12-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1546">
 
 
 
 <meta itemprop="keywords" content="Red Hat,container," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift"/>
 <meta name="twitter:description" content="Cgroups, cAdvisor, heapster, hawkular, and docker memory statistics in OpenShift Work In Progress
@@ -189,7 +190,7 @@ avail Mem</p>
 <p>The cgroups kernel team still thinks the best calculation for memory usage would be RSS+CACHE(+SWAP) values in memory.stat [3]. Also note that RSS here is not the same as RES on <code>top</code> as explained at the bottom of section 5.2 of cgroups memory documentation [3].</p>
 </div>
 <div class="paragraph">
-<p>"Only anonymous and swap cache memory is listed as part of 'rss' stat. This should not be confused with the true 'resident set size' or the amount of physical memory used by the cgroup. 'rss + mapped_file" will give you resident set size of cgroup. (Note: file and shmem may be shared among other cgroups. In that case, mapped_file is accounted only when the memory cgroup is owner of page cache.)"</p>
+<p>&#34;Only anonymous and swap cache memory is listed as part of &#39;rss&#39; stat. This should not be confused with the true &#39;resident set size&#39; or the amount of physical memory used by the cgroup. &#39;rss + mapped_file&#34; will give you resident set size of cgroup. (Note: file and shmem may be shared among other cgroups. In that case, mapped_file is accounted only when the memory cgroup is owner of page cache.)&#34;</p>
 </div>
 <div class="paragraph">
 <p><a href="https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt" class="bare">https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt</a></p>
@@ -203,20 +204,20 @@ avail Mem</p>
 <p>With regards to <code>docker stats</code>:</p>
 </div>
 <div class="paragraph">
-<p>It actually calculates using memory.usage_in_bytes and subtracts "cache" from the memory.stats output [1,2]. Docker made this change to more closely reflect memory usage that sysadmins were used to seeing when using the <code>top</code> command [4].</p>
+<p>It actually calculates using memory.usage_in_bytes and subtracts &#34;cache&#34; from the memory.stats output [1,2]. Docker made this change to more closely reflect memory usage that sysadmins were used to seeing when using the <code>top</code> command [4].</p>
 </div>
 <div class="paragraph">
 <p>Here we see the comment from BEFORE docker made the change, as docker was showing memory usage_in_bytes back then:</p>
 </div>
 <div class="paragraph">
-<p>&gt;&gt; The statistics of RES and memory cgroup are different, the RES does not take caches into account, but the memory cgroup does, that&#8217;s why MEM USAGE in docker stats is much more than RES in top [4]</p>
+<p>&gt;&gt; The statistics of RES and memory cgroup are different, the RES does not take caches into account, but the memory cgroup does, that’s why MEM USAGE in docker stats is much more than RES in top [4]</p>
 </div>
 <div class="paragraph">
-<p>The difficult part of that comment is that one might read that&#8217;s the way they continue to do it today.  However, this PR [1] shows that they did bend to the will of those who opened that issue, and they changed the memory report to remove cache.</p>
+<p>The difficult part of that comment is that one might read that’s the way they continue to do it today.  However, this PR [1] shows that they did bend to the will of those who opened that issue, and they changed the memory report to remove cache.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>memory.usage_in_bytes and subtracts "cache"</pre>
+<pre>memory.usage_in_bytes and subtracts &#34;cache&#34;</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -265,12 +266,12 @@ s.Memory = float64(v.MemoryStats.Usage)
 <p>Every <code>metrics_resolution</code>, Heapster will query each node via one of the two aforementioned APIs.  I believe the default for OpenShift 3.5 uses the stats summary API (you can confirm by looking at the Heapster RC, and seeing if it uses <code>--source=kubernetes.summary_api:&lt;some stuff&gt;</code> (summary) or <code>--source=kubernetes:&lt;some stuff&gt;</code> legacy.</p>
 <div class="literalblock">
 <div class="content">
-<pre>For the summary API, this looks more or less like `curl -H "Authorization: Bearer &lt;Heapster service account token&gt;" https://$NODE_IP:10250/stats/summary`</pre>
+<pre>For the summary API, this looks more or less like `curl -H &#34;Authorization: Bearer &lt;Heapster service account token&gt;&#34; https://$NODE_IP:10250/stats/summary`</pre>
 </div>
 </div>
 </li>
 <li>
-<p>For CPU, Heapster takes the most recent data point of cumulative CPU time and combines it with the new data point to form the CPU usage rate.  Importantly, duplicate batches of metrics, or metrics whose pod start time does not match the previous batch&#8217;s start time, will cause missing data points here.</p>
+<p>For CPU, Heapster takes the most recent data point of cumulative CPU time and combines it with the new data point to form the CPU usage rate.  Importantly, duplicate batches of metrics, or metrics whose pod start time does not match the previous batch’s start time, will cause missing data points here.</p>
 </li>
 </ol>
 </div>
@@ -318,7 +319,7 @@ s.Memory = float64(v.MemoryStats.Usage)
 </div>
 <div class="literalblock">
 <div class="content">
-<pre># curl -H "Authorization: Bearer &lt;redacted&gt;" https://127.0.0.1:10250/stats/summary -k -o stats.json</pre>
+<pre># curl -H &#34;Authorization: Bearer &lt;redacted&gt;&#34; https://127.0.0.1:10250/stats/summary -k -o stats.json</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -334,14 +335,14 @@ s.Memory = float64(v.MemoryStats.Usage)
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>"memory": {
- "time": "2018-12-04T21:18:58Z",
- "availableBytes": 18936287232,
- "usageBytes": 3045765120,
- "workingSetBytes": 1942880256,
- "rssBytes": 1789882368,
- "pageFaults": 0,
- "majorPageFaults": 0
+<pre>&#34;memory&#34;: {
+ &#34;time&#34;: &#34;2018-12-04T21:18:58Z&#34;,
+ &#34;availableBytes&#34;: 18936287232,
+ &#34;usageBytes&#34;: 3045765120,
+ &#34;workingSetBytes&#34;: 1942880256,
+ &#34;rssBytes&#34;: 1789882368,
+ &#34;pageFaults&#34;: 0,
+ &#34;majorPageFaults&#34;: 0
 }</pre>
 </div>
 </div>
@@ -349,7 +350,7 @@ s.Memory = float64(v.MemoryStats.Usage)
 <p>Solly Ross 2018-03-07 17:05:06 EST</p>
 </div>
 <div class="paragraph">
-<p>One of these days, I&#8217;ll actually write this down somewhere more permanent:</p>
+<p>One of these days, I’ll actually write this down somewhere more permanent:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -360,12 +361,12 @@ s.Memory = float64(v.MemoryStats.Usage)
 <p>Every <code>metrics_resolution</code>, Heapster will query each node via one of the two aforementioned APIs.  I believe the default for OpenShift 3.5 uses the stats summary API (you can confirm by looking at the Heapster RC, and seeing if it uses <code>--source=kubernetes.summary_api:&lt;some stuff&gt;</code> (summary) or <code>--source=kubernetes:&lt;some stuff&gt;</code> legacy.</p>
 <div class="literalblock">
 <div class="content">
-<pre>For the summary API, this looks more or less like `curl -H "Authorization: Bearer &lt;Heapster service account token&gt;" https://$NODE_IP:10250/stats/summary`</pre>
+<pre>For the summary API, this looks more or less like `curl -H &#34;Authorization: Bearer &lt;Heapster service account token&gt;&#34; https://$NODE_IP:10250/stats/summary`</pre>
 </div>
 </div>
 </li>
 <li>
-<p>For CPU, Heapster takes the most recent data point of cumulative CPU time and combines it with the new data point to form the CPU usage rate.  Importantly, duplicate batches of metrics, or metrics whose pod start time does not match the previous batch&#8217;s start time, will cause missing data points here.</p>
+<p>For CPU, Heapster takes the most recent data point of cumulative CPU time and combines it with the new data point to form the CPU usage rate.  Importantly, duplicate batches of metrics, or metrics whose pod start time does not match the previous batch’s start time, will cause missing data points here.</p>
 </li>
 </ol>
 </div>
@@ -385,17 +386,17 @@ s.Memory = float64(v.MemoryStats.Usage)
 <p>NB: for Heapster, memory as reported by <code>kubectl top</code> and the resource metrics API is working set size.</p>
 </div>
 <div class="paragraph">
-<p>The below details roughly how cAdvisor determines memory stats.  CPU is similar.  However, I suspect this isn&#8217;t a collection issue at the cAdvisor level.  I suspect the issue is further up the chain (Heapster, for instance).  Can you please check that the summary API returns the correct information?</p>
+<p>The below details roughly how cAdvisor determines memory stats.  CPU is similar.  However, I suspect this isn’t a collection issue at the cAdvisor level.  I suspect the issue is further up the chain (Heapster, for instance).  Can you please check that the summary API returns the correct information?</p>
 </div>
-<hr>
+<hr/>
 <div class="paragraph">
-<p>The actual information for CPU and memory is done by inspecting cgroup hierarchies.  To cAdivsor, a "container" is basically some point in a cgroup hierarchy.  Kubelet determines which of these are pod containers by checking which have associated Docker container information, and the correct labels to indicate that they&#8217;re owned by a pod.</p>
-</div>
-<div class="paragraph">
-<p>For each "container" (from cAdvisor&#8217;s perspective), every 10-30s, new stats are fetched by inspecting the values at a particular cgroup hierarchy point.  We can take a look at this information ourselves.  First, find the pid of the docker container: <code>CPID=$(docker inspect &lt;docker-container-id&gt; -f '{{.State.Pid}}')</code>.  Then, we can check the list of available subsystems using <code>cat /proc/${CPID}/cgroup</code>.  We should see a list of cgroups and paths to them.</p>
+<p>The actual information for CPU and memory is done by inspecting cgroup hierarchies.  To cAdivsor, a &#34;container&#34; is basically some point in a cgroup hierarchy.  Kubelet determines which of these are pod containers by checking which have associated Docker container information, and the correct labels to indicate that they’re owned by a pod.</p>
 </div>
 <div class="paragraph">
-<p>Find the one for "memory"&#8201;&#8212;&#8201;it should have a path like <code>/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5d973d8c_0790_11e8_b804_5254002b8d24.slice/docker-67c1459bc4d3146c91471a365febac47f2513ebf71c75c6e795caa321b87c37f.scope</code>.  That path is relative to the cgroup mount point at <code>/sys/fs/cgroups</code>, and also to the particular subsystem within <code>/sys/fs/cgroups</code>.  So, if we need to look at <code>/sys/fs/cgroups/memory/$PATH</code>.  Within that path, we should should a "file" called <code>memory.stat</code>.  If so, we&#8217;re in the right place.  Next, look for a "file" called <code>usage_in_bytes</code>.  This file contains the value (in bytes) used to determine the actual working set size.</p>
+<p>For each &#34;container&#34; (from cAdvisor’s perspective), every 10-30s, new stats are fetched by inspecting the values at a particular cgroup hierarchy point.  We can take a look at this information ourselves.  First, find the pid of the docker container: <code>CPID=$(docker inspect &lt;docker-container-id&gt; -f &#39;{{.State.Pid}}&#39;)</code>.  Then, we can check the list of available subsystems using <code>cat /proc/${CPID}/cgroup</code>.  We should see a list of cgroups and paths to them.</p>
+</div>
+<div class="paragraph">
+<p>Find the one for &#34;memory&#34; — it should have a path like <code>/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5d973d8c_0790_11e8_b804_5254002b8d24.slice/docker-67c1459bc4d3146c91471a365febac47f2513ebf71c75c6e795caa321b87c37f.scope</code>.  That path is relative to the cgroup mount point at <code>/sys/fs/cgroups</code>, and also to the particular subsystem within <code>/sys/fs/cgroups</code>.  So, if we need to look at <code>/sys/fs/cgroups/memory/$PATH</code>.  Within that path, we should should a &#34;file&#34; called <code>memory.stat</code>.  If so, we’re in the right place.  Next, look for a &#34;file&#34; called <code>usage_in_bytes</code>.  This file contains the value (in bytes) used to determine the actual working set size.</p>
 </div>
 <div class="paragraph">
 <p>from comment #6
@@ -409,16 +410,16 @@ s.Memory = float64(v.MemoryStats.Usage)
 <p>With regards to <code>docker stats</code>:</p>
 </div>
 <div class="paragraph">
-<p>It actually calculates using memory.usage_in_bytes and subtracts "cache" from the memory.stats output [1,2]. Docker made this change to more closely reflect memory usage that sysadmins were used to seeing when using the <code>top</code> command [4].</p>
+<p>It actually calculates using memory.usage_in_bytes and subtracts &#34;cache&#34; from the memory.stats output [1,2]. Docker made this change to more closely reflect memory usage that sysadmins were used to seeing when using the <code>top</code> command [4].</p>
 </div>
 <div class="paragraph">
 <p>Here we see the comment from BEFORE docker made the change, as docker was showing memory usage_in_bytes back then:</p>
 </div>
 <div class="paragraph">
-<p>&gt;&gt; The statistics of RES and memory cgroup are different, the RES does not take caches into account, but the memory cgroup does, that&#8217;s why MEM USAGE in docker stats is much more than RES in top [4]</p>
+<p>&gt;&gt; The statistics of RES and memory cgroup are different, the RES does not take caches into account, but the memory cgroup does, that’s why MEM USAGE in docker stats is much more than RES in top [4]</p>
 </div>
 <div class="paragraph">
-<p>The difficult part of that comment is that one might read that&#8217;s the way they continue to do it today.  However, this PR [1] shows that they did bend to the will of those who opened that issue, and they changed the memory report to remove cache.</p>
+<p>The difficult part of that comment is that one might read that’s the way they continue to do it today.  However, this PR [1] shows that they did bend to the will of those who opened that issue, and they changed the memory report to remove cache.</p>
 </div>
 <div class="paragraph">
 <p>cAdvisor only reports memory.usage_in_bytes (VERIFY in code)</p>
@@ -428,10 +429,10 @@ s.Memory = float64(v.MemoryStats.Usage)
 values in memory.stat [3]. Also note that RSS here is not the same as RES on <code>top</code> as explained at the bottom of section 5.2 of cgroups memory documentation [3].</p>
 </div>
 <div class="paragraph">
-<p>&gt;&gt; Only anonymous and swap cache memory is listed as part of 'rss' stat.
-	This should not be confused with the true 'resident set size' or the
+<p>&gt;&gt; Only anonymous and swap cache memory is listed as part of &#39;rss&#39; stat.
+	This should not be confused with the true &#39;resident set size&#39; or the
 	amount of physical memory used by the cgroup.
-	'rss + mapped_file" will give you resident set size of cgroup.
+	&#39;rss + mapped_file&#34; will give you resident set size of cgroup.
 	(Note: file and shmem may be shared among other cgroups. In that case,
 	 mapped_file is accounted only when the memory cgroup is owner of page
 	 cache.)</p>
@@ -445,7 +446,7 @@ values in memory.stat [3]. Also note that RSS here is not the same as RES on <co
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <a href="https://github.com/google/cadvisor/blob/master/info/v1/container.go#L338-L373" class="bare">https://github.com/google/cadvisor/blob/master/info/v1/container.go#L338-L373</a>
 </div>

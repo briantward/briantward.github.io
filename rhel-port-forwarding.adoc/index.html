@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -35,13 +35,14 @@
 <meta itemprop="description" content="RHEL Port Forwarding Using Firewalld Never underestimate the simplicity of a feature and the complications of a network.
  RHEL 7 uses firewalld, which has a very simple syntax for port forwarding across the incoming port of an external interface to a NATed IP on an internal device. No matter what I tried in variations from the base documentation I simply could not get it to work.
  In this configuration, note that I have eth0 on NetworkManager external zone with masquerade and eth1 on zone internal.">
-<meta itemprop="datePublished" content="2020-07-12T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-07-12T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2020-07-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-07-12T00:00:00+00:00" />
 <meta itemprop="wordCount" content="360">
 
 
 
 <meta itemprop="keywords" content="linux,router,port,forwarding," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RHEL Port Forwarding Using Firewalld"/>
 <meta name="twitter:description" content="RHEL Port Forwarding Using Firewalld Never underestimate the simplicity of a feature and the complications of a network.
@@ -167,7 +168,7 @@ firewall-cmd --direct --add-rule ipv4 filter FORWARD 0 -p tcp -d 192.168.1.2 --d
 <p>This still did not work. Short of switching my system completely to iptables out of belief that something was wonky in firewalld, I was out of options.  I found this particular person with a very similar story: <a href="https://forums.centos.org/viewtopic.php?t=52697" class="bare">https://forums.centos.org/viewtopic.php?t=52697</a>.</p>
 </div>
 <div class="paragraph">
-<p>So here&#8217;s the fun part.  Testing an inbound port forward from inside your own network is a bit troublesome.  Routing rules play some magic here, and I&#8217;d love to dig into the real explanation behind it at some point.  You shouldn&#8217;t be testing ingress to your network through port forwarding from within your own network.  That seems reasonable doesn&#8217;t it?  I&#8217;ve known this before, so in these cases, I use my phone tethered to my laptop as a secondary external network that is COMPLETELY separate from my internal network.  Except, it isn&#8217;t so when wifi on my phone is active!!  Of course, your phone is going to use the fastest provided internet connection, which happens to be wifi when it is available.  So, when I thought I was connected to an external network through my phone, and I had not noticed it was using my wifi network, I was really still on my own internal network.  Disconnecting the wifi on the phone, refreshing all my connections/interfaces there, and then testing the exact above configuration straight out of the documentation turns out to work perfectly fine. Wow&#8230;&#8203; four hours wasted&#8230;&#8203;</p>
+<p>So here’s the fun part.  Testing an inbound port forward from inside your own network is a bit troublesome.  Routing rules play some magic here, and I’d love to dig into the real explanation behind it at some point.  You shouldn’t be testing ingress to your network through port forwarding from within your own network.  That seems reasonable doesn’t it?  I’ve known this before, so in these cases, I use my phone tethered to my laptop as a secondary external network that is COMPLETELY separate from my internal network.  Except, it isn’t so when wifi on my phone is active!!  Of course, your phone is going to use the fastest provided internet connection, which happens to be wifi when it is available.  So, when I thought I was connected to an external network through my phone, and I had not noticed it was using my wifi network, I was really still on my own internal network.  Disconnecting the wifi on the phone, refreshing all my connections/interfaces there, and then testing the exact above configuration straight out of the documentation turns out to work perfectly fine. Wow…​ four hours wasted…​</p>
 </div>
 <div class="paragraph">
 <p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-port_forwarding" class="bare">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-port_forwarding</a></p>

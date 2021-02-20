@@ -5,10 +5,18 @@
     <description>Recent content in audio on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/audio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Pulseaudio Customization</title>
+        <link>https://briantward.github.io/audio-fix/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/audio-fix/</guid>
+        <description>Pulseaudio Customization Stop pulseaudio from messing around with your sound levels while in the middle of conference calls on Fedora 31. This may or may not work as intended. I have not done this on my latest Fedora 32 and have not felt the need for it. Previous releases I have had the problem of pulseaudio changing my microphone input levels dynamically. People on the other end claim that my input volume would go down drastically.</description>
+      </item>
     
       <item>
         <title>Convert WMA to MP3</title>
@@ -16,7 +24,7 @@
         <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/convert-wma-to-mp3/</guid>
         <description>Convert WMA to MP3 A one liner to convert all WMA files in a directory to MP3
- for file in *.wma; do ffmpeg -i &#34;${file}&#34; -acodec libmp3lame -ab 192k &#34;${file/.wma/.mp3}&#34;; done   From:
+ for file in *.wma; do ffmpeg -i &amp;#34;${file}&amp;#34; -acodec libmp3lame -ab 192k &amp;#34;${file/.wma/.mp3}&amp;#34;; done   From:
    https://askubuntu.com/questions/508278/how-to-use-ffmpeg-to-convert-wma-to-mp3-recursively-importing-from-txt-file
      </description>
       </item>

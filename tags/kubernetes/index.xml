@@ -18,7 +18,7 @@
         <description>OpenShift Remove Stuck ServiceInstance To delete a stuck serviceinstance where a project namespace no longer exists:
  $ oc get serviceinstance --all-namespaces -o wide NAMESPACE NAME CLASS PLAN STATUS AGE test cakephp-mysql-example-vfzkq ClusterServiceClass/cakephp-mysql-example default Failed 113d test cakephp-mysql-persistent-f75gl ClusterServiceClass/cakephp-mysql-persistent default Failed 113d webconsole-extensions httpd-example-6fxx5 ClusterServiceClass/httpd-example default DeprovisionCallFailed 10d    Create the project namespace again
 $ oc new-project test     Now delete the serviceinstance
-$ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that doesn&amp;#8217;t delete it, then remove the finalizer</description>
+$ oc delete serviceinstance test -n cakephp-mysql-example-vfzkq     If that doesn’t delete it, then remove the finalizer</description>
       </item>
     
   </channel>

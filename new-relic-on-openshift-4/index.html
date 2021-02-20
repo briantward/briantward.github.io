@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,7 +22,7 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="New Relic on OpenShift 4" />
-<meta property="og:description" content="New Relic on OpenShift 4 Follow the instructions on New Relic&#8217;s website:
+<meta property="og:description" content="New Relic on OpenShift 4 Follow the instructions on New Relic’s website:
  https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes
  Modified here. There is no need for adding the MutatingAdmissionWebhook as this is already enabled by default in OCP 4, so skip that section.
   Download the YAML file:
@@ -35,22 +35,23 @@ curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernete
 
 
 <meta itemprop="name" content="New Relic on OpenShift 4">
-<meta itemprop="description" content="New Relic on OpenShift 4 Follow the instructions on New Relic&#8217;s website:
+<meta itemprop="description" content="New Relic on OpenShift 4 Follow the instructions on New Relic’s website:
  https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes
  Modified here. There is no need for adding the MutatingAdmissionWebhook as this is already enabled by default in OCP 4, so skip that section.
   Download the YAML file:
 curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernetes/k8s-metadata-injection-latest.yaml     Replace YOUR_CLUSTER_NAME with the name of your cluster in the YAML file.
   Apply the YAML file to your Kubernetes cluster:">
-<meta itemprop="datePublished" content="2020-05-06T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-05-06T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2020-05-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-06T00:00:00+00:00" />
 <meta itemprop="wordCount" content="119">
 
 
 
 <meta itemprop="keywords" content="New Relic," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="New Relic on OpenShift 4"/>
-<meta name="twitter:description" content="New Relic on OpenShift 4 Follow the instructions on New Relic&#8217;s website:
+<meta name="twitter:description" content="New Relic on OpenShift 4 Follow the instructions on New Relic’s website:
  https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes
  Modified here. There is no need for adding the MutatingAdmissionWebhook as this is already enabled by default in OCP 4, so skip that section.
   Download the YAML file:
@@ -138,7 +139,7 @@ curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernete
 <h2 id="_new_relic_on_openshift_4">New Relic on OpenShift 4</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Follow the instructions on New Relic&#8217;s website:</p>
+<p>Follow the instructions on New Relic’s website:</p>
 </div>
 <div class="paragraph">
 <p><a href="https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes" class="bare">https://docs.newrelic.com/docs/integrations/kubernetes-integration/link-your-applications/link-your-applications-kubernetes</a></p>
@@ -176,9 +177,9 @@ curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernete
 <div class="content">
 <pre class="highlight"><code>LATEST_CSR_SIGNER=$(oc get secret -n openshift-kube-controller-manager --sort-by=.metadata.creationTimestamp | grep csr-signer | tail -1)
 echo $LATEST_CSR_SIGNER
-LATEST_CSR_CA=$(oc get secret $LATEST_CSR_SIGNER -n openshift-kube-controller-manager  -o jsonpath='{.data.tls\.crt}')
+LATEST_CSR_CA=$(oc get secret $LATEST_CSR_SIGNER -n openshift-kube-controller-manager  -o jsonpath=&#39;{.data.tls\.crt}&#39;)
 echo $LATEST_CSR_CA
-oc patch mutatingwebhookconfiguration newrelic-metadata-injection-cfg -n default -p '{"webhooks":[{"name":"metadata-injection.newrelic.com","clientConfig":{"caBundle":"'${LATEST_CSR_CA}'"}}]}'</code></pre>
+oc patch mutatingwebhookconfiguration newrelic-metadata-injection-cfg -n default -p &#39;{&#34;webhooks&#34;:[{&#34;name&#34;:&#34;metadata-injection.newrelic.com&#34;,&#34;clientConfig&#34;:{&#34;caBundle&#34;:&#34;&#39;${LATEST_CSR_CA}&#39;&#34;}}]}&#39;</code></pre>
 </div>
 </div>
 <div class="paragraph">

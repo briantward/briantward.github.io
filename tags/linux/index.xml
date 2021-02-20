@@ -25,12 +25,10 @@
         <link>https://briantward.github.io/lenovo-linux-intel-i915-video-part3/</link>
         <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lenovo-linux-intel-i915-video-part3/</guid>
-        <description>Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps:
-Lenovo T460s
-thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+        <description>Lenovo Intel i915 Video Drivers in Linux, Part 3 Problem Scenario/Steps: Lenovo T460s thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
   Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
   Undock laptop.
-  Redock laptop &amp;#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
+  Redock laptop → screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
       </item>
     
       <item>
@@ -38,12 +36,10 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/2
         <link>https://briantward.github.io/lenovo-linux-intel-i915-video-part2/</link>
         <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lenovo-linux-intel-i915-video-part2/</guid>
-        <description>Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps:
-Lenovo T460s
-thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
+        <description>Lenovo Intel i915 Video Drivers in Linux, Part 2 Problem Scenario/Steps: Lenovo T460s thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/28/29, according to my records any kernel since 4.15.9-300.fc27.x86_64
   Dock laptop in docking station with two connected monitors, one HDMI and one DVI.
   Undock laptop.
-  Redock laptop &amp;#8594; screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
+  Redock laptop → screen failure and system lock until undock again. Leave it long enough and it will reboot itself.</description>
       </item>
     
       <item>
@@ -51,7 +47,7 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/2
         <link>https://briantward.github.io/lenovo-linux-bios-update/</link>
         <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lenovo-linux-bios-update/</guid>
-        <description>I&amp;#8217;m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.</description>
+        <description>I’m on a Lenovo T460s running fedora 27. One day, I ran into an issue with my video setup. It occurred to me that I had not updated my bios in a while, and since the whole Meltdown/Spectre thing came up, I should probably check on this. Yes, sure enough, I was on patch 1.20, the latest was 1.34, and the fix for Meltdown/Spectre was in 1.31. Good thing no one cares about my machine but me.</description>
       </item>
     
       <item>
@@ -60,7 +56,7 @@ thinkpad ultra dock P/N SD20A06046 Type 40A2 S/N M3-A0AC8E 16/11+ fedora 26/27/2
         <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/lenovo-linux-intel-i915-video/</guid>
         <description>Note: Out of Date and incorrect analysis.
- I&amp;#8217;m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&#34; monitors at work and another docking station with two 27&#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn&amp;#8217;t come on, sometimes one monitor came on, and sometimes things worked fine.</description>
+ I’m running fedora 27 on my Lenovo T460s and have been for a while. I have a docking station with two 24&amp;#34; monitors at work and another docking station with two 27&amp;#34; monitors at home. I switch between them frequently. Back in fedora 21 and 22 I had tons of problems. Sometimes monitors didn’t come on, sometimes one monitor came on, and sometimes things worked fine.</description>
       </item>
     
       <item>

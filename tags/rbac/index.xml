@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rbac on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/rbac/</link>
+    <description>Recent content in rbac on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/rbac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift RBAC</title>
+        <link>https://briantward.github.io/openshift-roles/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-roles/</guid>
+        <description>OpenShift RBAC oc auth can-i VERB OBJECT oc adm policy who-can VERB OBJECT   oc get clusterrole basic-user -o yaml oc get clusterrole cluster-admin -o yaml   https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications
+   </description>
+      </item>
+    
+  </channel>
+</rss>

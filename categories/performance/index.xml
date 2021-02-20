@@ -5,10 +5,25 @@
     <description>Recent content in performance on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/performance/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Performance</title>
+        <link>https://briantward.github.io/performance/</link>
+        <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/performance/</guid>
+        <description>Performance https://docs.openshift.com/container-platform/4.6/scalability_and_performance/recommended-host-practices.html#recommended-etcd-practices_
+ How to Use &amp;#39;fio&amp;#39; to Check Etcd Disk Performance
+ https://access.redhat.com/solutions/4885641
+ https://access.redhat.com/solutions/4770281
+ https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd
+ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/vdo-ev-performance-testing
+ for depth in 1 2 4 8 16 32 64; do fio --rw=write --bs=4096 --name=vdo --filename=/var/lib/etcd/perftest --ioengine=libaio --numjobs=1 --thread --norandommap --runtime=300 --direct=1 --iodepth=$depth --scramble_buffers=1 --offset=0 --size=10g done   https://docs.openshift.com/container-platform/3.11/scaling_performance/managing_hugepages.html
+   </description>
+      </item>
     
       <item>
         <title>Performance and Benchmarking</title>

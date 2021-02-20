@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -35,13 +35,14 @@
 <meta itemprop="description" content="CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
  You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
  $ echo &#39;apiVersion: v1 data: Corefile: | example.">
-<meta itemprop="datePublished" content="2020-03-11T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-11T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2020-03-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-03-11T00:00:00+00:00" />
 <meta itemprop="wordCount" content="697">
 
 
 
 <meta itemprop="keywords" content="rhel,coredns,core,zone," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="CoreDNS Custom DNS Running on OpenShift"/>
 <meta name="twitter:description" content="CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
@@ -148,7 +149,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ echo 'apiVersion: v1
+<pre class="highlight"><code>$ echo &#39;apiVersion: v1
 data:
   Corefile: |
     example.com:8053 {
@@ -169,7 +170,7 @@ data:
     infra        IN  A  192.168.1.5
 kind: ConfigMap
 metadata:
-  name: dns-config' | oc create -f -</code></pre>
+  name: dns-config&#39; | oc create -f -</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -177,7 +178,7 @@ metadata:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ echo 'apiVersion: apps/v1
+<pre class="highlight"><code>$ echo &#39;apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dns
@@ -198,8 +199,8 @@ spec:
       containers:
       - name: coredns-openshift
         image: quay.io/openshift/origin-coredns:4.5
-        command: ["/usr/bin/coredns"]
-        args: ["-dns.port","8053","-conf","/etc/coredns/Corefile"]
+        command: [&#34;/usr/bin/coredns&#34;]
+        args: [&#34;-dns.port&#34;,&#34;8053&#34;,&#34;-conf&#34;,&#34;/etc/coredns/Corefile&#34;]
         volumeMounts:
         - mountPath: /etc/coredns
           name: dns-config
@@ -207,7 +208,7 @@ spec:
       - configMap:
           defaultMode: 420
           name: dns-config
-        name: dns-config' | oc create -f -</code></pre>
+        name: dns-config&#39; | oc create -f -</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -215,7 +216,7 @@ spec:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ echo 'apiVersion: v1
+<pre class="highlight"><code>$ echo &#39;apiVersion: v1
 kind: Service
 metadata:
   labels:
@@ -233,7 +234,7 @@ spec:
     targetPort: 8053
   selector:
     app: dns
-    deployment: dns' | oc create -f -</code></pre>
+    deployment: dns&#39; | oc create -f -</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -249,7 +250,7 @@ spec:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ echo 'apiVersion: v1
+<pre class="highlight"><code>$ echo &#39;apiVersion: v1
 kind: Service
 metadata:
   name: dns-np
@@ -268,7 +269,7 @@ spec:
       protocol: UDP
   selector:
     app: dns
-    deployment: dns' | oc create -f -
+    deployment: dns&#39; | oc create -f -
 $ oc get nodes -o wide
 NAME        STATUS    ROLES     AGE       VERSION           INTERNAL-IP      EXTERNAL-IP   OS-IMAGE                                      KERNEL-VERSION               CONTAINER-RUNTIME
 localhost   Ready     &lt;none&gt;    13d       v1.11.0+d4cacc0   192.168.122.37   &lt;none&gt;        Red Hat Enterprise Linux Server 7.6 (Maipo)   3.10.0-957.21.3.el7.x86_64   docker://1.13.1
@@ -317,13 +318,13 @@ infra.example.com.	1800	IN	A	192.168.1.5
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ mkdir dns-tools &amp;&amp; cd dns-tools
-$ echo 'FROM quay.io/redhat-cop/tool-box:v1.16
+$ echo &#39;FROM quay.io/redhat-cop/tool-box:v1.16
 
 USER 0
 
 RUN dnf install bind-utils -y
 
-USER 1001' &gt; Dockerfile
+USER 1001&#39; &gt; Dockerfile
 $ oc new-build . --name dns-tools
 $ oc start-build dns-tools --from-dir=.
 $ oc get is | grep dns-tools

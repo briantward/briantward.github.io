@@ -5,10 +5,60 @@
     <description>Recent content in tips on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Building a Media Server</title>
+        <link>https://briantward.github.io/emby/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/emby/</guid>
+        <description>Building a Media Server A while back I was on the hunt for a media server solution…​ these are running notes about 2 years old as of now (2/2021).
+ Handling video playback and copying DVD content to my digital storage. This was interesting but looked a bit old. Dunno much about how old nux-desktop-release-0-5 is.
+ https://gist.github.com/tareqy/0a3c07d49258a678cf68ca17725ad326
+ yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm yum -y install yum install ffmpeg HandBrake-cli   Could make a totally custom build of Handbrake on the latest Fedora, which is what Handbrake’s website suggests.</description>
+      </item>
+    
+      <item>
+        <title>Convert VHS to Digital</title>
+        <link>https://briantward.github.io/convert-vhs-to-digital/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/convert-vhs-to-digital/</guid>
+        <description>Convert VHS to Digital OBS Studio is great for recording but limited in modification of video. OpenShot is great for then editing that video and trimming out pieces.
+ On Fedora 32, I can capture video and audio with the USB Easy Capture device and &amp;#34;Audio Capture Device&amp;#34; on OBS set to ALSA. The audio settings provide a sync offset that doesn’t work well and is hard to tell if it is working right unless you fully record and capture.</description>
+      </item>
+    
+      <item>
+        <title>Pulseaudio Customization</title>
+        <link>https://briantward.github.io/audio-fix/</link>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/audio-fix/</guid>
+        <description>Pulseaudio Customization Stop pulseaudio from messing around with your sound levels while in the middle of conference calls on Fedora 31. This may or may not work as intended. I have not done this on my latest Fedora 32 and have not felt the need for it. Previous releases I have had the problem of pulseaudio changing my microphone input levels dynamically. People on the other end claim that my input volume would go down drastically.</description>
+      </item>
+    
+      <item>
+        <title>Running OpenShot in a Container</title>
+        <link>https://briantward.github.io/openshot-in-a-container/</link>
+        <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshot-in-a-container/</guid>
+        <description>Running OpenShot in a Container Transform with OpenShot OpenShot on Fedora 33 doesn’t work. Well, not for me at least. Basically it installs fine and runs fine, but the moment I attempt to import a file, boom! Core Dump generated.
+ using the following packages:
+ $ rpm -qa openshot ffmpeg ffmpeg-4.3.1-16.fc33.x86_64 openshot-2.5.1-4.fc33.noarch   I found the following when searching around for similar issues:
+ https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559
+ Which took me to this in the blender code:</description>
+      </item>
+    
+      <item>
+        <title>oc Tips</title>
+        <link>https://briantward.github.io/oc-tips/</link>
+        <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources…​ and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
+ $ for node in $(oc get pods -o jsonpath=&amp;#39;{range .items[*].spec}{.nodeName}{&amp;#34; &amp;#34;}{end}&amp;#39;); do echo $node; ssh $node &amp;#34;docker images&amp;#34;;done   Capture total CPU usage in cluster:</description>
+      </item>
     
       <item>
         <title>DD-WRT Custom Certificate</title>
@@ -16,7 +66,7 @@
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/dd-wrt-certificate/</guid>
         <description>DD-WRT Custom Certificate (Tested on R7000)
- Install acme.sh or other system for creating certs every 30 days from Let&amp;#8217;s Encrypt.
+ Install acme.sh or other system for creating certs every 30 days from Let’s Encrypt.
  On your router, plug in an empty USB drive, FAT or ext3/4 formatted.
  In the router GUI go to Services &amp;gt; USB:
  Select the following
@@ -31,17 +81,19 @@
         <link>https://briantward.github.io/image-video-metadata-p2/</link>
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/image-video-metadata-p2/</guid>
-        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&amp;#8217;t right, it can be pretty confusing/noticeable.</description>
+        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn’t right, it can be pretty confusing/noticeable.</description>
       </item>
     
       <item>
-        <title>oc Tips</title>
-        <link>https://briantward.github.io/oc-tips/</link>
-        <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/oc-tips/</guid>
-        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources&amp;#8230;&amp;#8203; and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
- $ for node in $(oc get pods -o jsonpath=&#39;{range .items[*].spec}{.nodeName}{&#34; &#34;}{end}&#39;); do echo $node; ssh $node &#34;</description>
+        <title>C Build Tools</title>
+        <link>https://briantward.github.io/c-build-tools/</link>
+        <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/c-build-tools/</guid>
+        <description>C Build Tools   autotools
+  bmake
+  cmake
+  llvm
+     </description>
       </item>
     
       <item>
@@ -50,11 +102,11 @@
         <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/bash-tips/</guid>
         <description>Command Tips String the watch command with several commands at once
- watch &#39;command | othertool | yet-another-tool&#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
- This one is useful when you don&amp;#8217;t have a user directory on the system yet.
+ watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don’t have a user directory on the system yet.
  /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
- Because docker rmi on all image IDs doesn&amp;#8217;t work when one image ID maps to multiple repo:tag combinations.
- $ docker images | grep -v REPO | awk &#39;{print $1&#34;</description>
+ Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
+ $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
       </item>
     
       <item>
@@ -62,9 +114,9 @@
         <link>https://briantward.github.io/ssh-tips/</link>
         <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/ssh-tips/</guid>
-        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;    SSH-Forwarding Like this guy&amp;#8217;s example. After using nc for years, ProxyJump is now very useful!
+        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &amp;#34;email organization&amp;#34;    SSH-Forwarding Like this guy’s example. After using nc for years, ProxyJump is now very useful!
  Host forum HostName www.nixcraft.com ProxyJump vivek@jumhost.nixcraft.com:22 User vivek   https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/
-  ForwardAgent I&amp;#8217;m not truly certain about the security implications of using ForwardAgent, but this article does suggest there are some issues.</description>
+  ForwardAgent I’m not truly certain about the security implications of using ForwardAgent, but this article does suggest there are some issues.</description>
       </item>
     
       <item>
@@ -82,7 +134,7 @@
         <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/minishift-tips/</guid>
         <description>MiniShift Tips hard cleanup minishift environment For example, for errors such as
- domain &#39;minishift&#39; already exists with uuid    Check if the VM is still running
+ domain &amp;#39;minishift&amp;#39; already exists with uuid    Check if the VM is still running
 $ sudo virsh list --all     If it is running, stop the minishift VM
 $ sudo virsh destroy minishift     Delete the VM
 $ sudo virsh undefine minishift     Delete the .minishift/machines dir</description>
@@ -93,9 +145,7 @@ $ sudo virsh undefine minishift     Delete the .minishift/machines dir</descript
         <link>https://briantward.github.io/dev-containers/</link>
         <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/dev-containers/</guid>
-        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7
-https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7
-Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
+        <description>Red Hat Certified Developer Containers   registry.redhat.io/rhscl/devtoolset-8-toolchain-rhel7 https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/devtoolset-8-toolchain-rhel7 Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red Hat Developer Toolset is a Red Hat offering for developers on the Red Hat Enterprise Linux platform. It provides a complete set of development and performance analysis tools that can be installed and used on multiple versions of Red Hat Enterprise Linux. Executables built with the Red Hat Developer Toolset toolchain can then also be deployed and run on multiple versions of Red Hat Enterprise Linux.</description>
       </item>
     
       <item>
@@ -128,7 +178,7 @@ Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red 
         <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/convert-wma-to-mp3/</guid>
         <description>Convert WMA to MP3 A one liner to convert all WMA files in a directory to MP3
- for file in *.wma; do ffmpeg -i &#34;${file}&#34; -acodec libmp3lame -ab 192k &#34;${file/.wma/.mp3}&#34;; done   From:
+ for file in *.wma; do ffmpeg -i &amp;#34;${file}&amp;#34; -acodec libmp3lame -ab 192k &amp;#34;${file/.wma/.mp3}&amp;#34;; done   From:
    https://askubuntu.com/questions/508278/how-to-use-ffmpeg-to-convert-wma-to-mp3-recursively-importing-from-txt-file
      </description>
       </item>
@@ -138,9 +188,9 @@ Platform for building C/C++ applications using Red Hat Developer Toolset 7. Red 
         <link>https://briantward.github.io/git/</link>
         <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/git/</guid>
-        <description>Git Tips   When you are required to use git over HTTPS but you don&amp;#8217;t want to be prompted for your credentials every time.
-$ git config --global credential.helper cache $ git config credential.helper &#39;cache --timeout=3600&#39;     Set author display on git rebase
-$ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
+        <description>Git Tips   When you are required to use git over HTTPS but you don’t want to be prompted for your credentials every time.
+$ git config --global credential.helper cache $ git config credential.helper &amp;#39;cache --timeout=3600&amp;#39;     Set author display on git rebase
+$ git config --add rebase.instructionFormat &amp;#34;(%an &amp;lt;%ae&amp;gt;) %s&amp;#34;   https://stackoverflow.com/questions/35851671/is-there-a-way-to-list-the-commits-author-in-git-rebase-i-interactive
       </description>
       </item>
     
@@ -152,7 +202,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <description>Managing Certificates My favorite quick ref:
  https://www.sslshopper.com/article-most-common-openssl-commands.html
  Checking certificates on OpenShift You could just as easily modify this for other applications.
- # cat &amp;lt;&amp;lt; &#39;EOF&#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &#34;*.crt*&#34; -o -name &#34;*.pem*&#34; -o -name &#34;*.cer*&#34;` ; do echo $filename; echo &#34; contains&#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &#34;</description>
+ # cat &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; &amp;gt;&amp;gt; check-certs.sh #!/bin/bash for filename in `find /etc/origin -name &amp;#34;*.crt*&amp;#34; -o -name &amp;#34;*.pem*&amp;#34; -o -name &amp;#34;*.cer*&amp;#34;` ; do echo $filename; echo &amp;#34; contains&amp;#34; `grep BEGIN $filename | wc -l`; openssl crl2pkcs7 -nocrl -certfile $filename | openssl pkcs7 -print_certs -text -noout | grep -E &amp;#34;Issuer:|Subject:|Not|CA&amp;#34; done EOF # chmod u+x .</description>
       </item>
     
       <item>
@@ -171,7 +221,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <link>https://briantward.github.io/image-video-metadata/</link>
         <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/image-video-metadata/</guid>
-        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&amp;#8217;t give you a lot of customization options. We couldn&amp;#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
+        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn’t give you a lot of customization options. We couldn’t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
       </item>
     
       <item>
@@ -179,7 +229,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <link>https://briantward.github.io/ansible-tips/</link>
         <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/ansible-tips/</guid>
-        <description>Ansible Tips Print to stout and log at same time&amp;#8230;&amp;#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&amp;#8230;&amp;#8203; this one cleans up your journals&amp;#8230;&amp;#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      </description>
+        <description>Ansible Tips Print to stout and log at same time…​ ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts…​ this one cleans up your journals…​ and runs 10 at a time ansible all -a &amp;#39;journalctl --vacuum-time=2d&amp;#39; -f 10      </description>
       </item>
     
       <item>
@@ -187,7 +237,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <link>https://briantward.github.io/terminal-to-file/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/terminal-to-file/</guid>
-        <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&#39; | oc create -f -     </description>
+        <description>Terminal to File Tips cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: ServiceAccount metadata: name: heapster EOF   echo &amp;#39;apiVersion: v1 data: &amp;lt;FILENAME&amp;gt;: | &amp;lt;FILECONTENT&amp;gt; kind: ConfigMap metadata: name: &amp;lt;CONFIGMAP_NAME&amp;gt; namespace: &amp;lt;PROJECT_NAMESPACE&amp;gt;&amp;#39; | oc create -f -     </description>
       </item>
     
       <item>
@@ -203,8 +253,8 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <link>https://briantward.github.io/gnome-session/</link>
         <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/gnome-session/</guid>
-        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
- $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
+        <description>Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &amp;#39;{print $1}&amp;#39;) -p Type   or
+ $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl + alt + f1    Restart You can restart the gnome-shell by pressing Alt+F2 and then typing in either &amp;#34;restart&amp;#34; or just &amp;#34;r&amp;#34; and pressing enter.
   Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store.</description>
       </item>
     
@@ -224,7 +274,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <description>Helpful Filesystem Tips   change reserved space on ext4 partitions to zero. Useful for drives specifically for data storage and no system recovery needed.
 # tune2fs -m 0 /dev/sdb1     print UUID of filesystems
 # blkid     remount a readonly filesystem to rewrite
-# mount -o remount,rw /     watch the status of dd (useful on systems without &#34;status=progress&#34;, like Mac I think)</description>
+# mount -o remount,rw /     watch the status of dd (useful on systems without &amp;#34;status=progress&amp;#34;, like Mac I think)</description>
       </item>
     
       <item>
@@ -244,7 +294,7 @@ $ git config --add rebase.instructionFormat &#34;(%an &amp;lt;%ae&amp;gt;) %s&#3
         <description>Navigating Linux   Move a file to different extension, or change parts of a name
 $ mv /etc/yum.repos.d/redhat.{repo,disabled}     Search for all mac dot underscore files
 $ find -name ._\* $ find -name .DS_Store $ find -name .DS_Store -delete     find and replace text in files in a directory, recursively:
-$ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#39;        </description>
+$ find /directory -type f -print0 | xargs -0 sed -i &amp;#39;s/old-text/new-text/g&amp;#39;        </description>
       </item>
     
       <item>
@@ -252,10 +302,7 @@ $ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#
         <link>https://briantward.github.io/networking/</link>
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/networking/</guid>
-        <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &#39;/inet addr:/ {print $2}&#39; | sed &#39;s/addr://&#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where,
--nn: Show PCI vendor and device codes as both numbers and names.
--k: Show driver information for a device.
--d: Filter on just the &#39;Ethernet&#39; device class (0200)
+        <description>Networking Tips Find the eth0 ip addr ETH0_IP=`ifconfig eth0 2&amp;gt;/dev/null | awk &amp;#39;/inet addr:/ {print $2}&amp;#39; | sed &amp;#39;s/addr://&amp;#39;`    troubleshooting NIC # lspci -nn | grep Ethernet # lspci -k -d ::0200   where, -nn: Show PCI vendor and device codes as both numbers and names. -k: Show driver information for a device. -d: Filter on just the &amp;#39;Ethernet&amp;#39; device class (0200)
   Check Kernel module load # dmesg | grep e1000e   (kernel module e1000e found above)</description>
       </item>
     
@@ -265,7 +312,7 @@ $ find /directory -type f -print0 | xargs -0 sed -i &#39;s/old-text/new-text/g&#
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/vim/</guid>
         <description>VIM Tips   Set YAML filetypes to have two spaces on indent
-$ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn&amp;#8217;t opened with sudo:
+$ echo &amp;#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&amp;#34; &amp;gt;&amp;gt; ~/.vimrc     write with sudo when it wasn’t opened with sudo:
 :w !sudo tee %        </description>
       </item>
     
@@ -275,7 +322,7 @@ $ echo &#34;autocmd FileType yaml,yml setlocal ai ts=2 sw=2 et&#34; &amp;gt;&amp
         <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/xml/</guid>
         <description>XML Tips   Format raw xml on the cli
-echo &#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&#34;b&#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&#34;ipsum&#34; /&amp;gt;&amp;lt;/root&amp;gt;&#39; | xmllint --format -        </description>
+echo &amp;#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&amp;#34;b&amp;#34;&amp;gt;lorem&amp;lt;/foo&amp;gt;&amp;lt;bar value=&amp;#34;ipsum&amp;#34; /&amp;gt;&amp;lt;/root&amp;gt;&amp;#39; | xmllint --format -        </description>
       </item>
     
   </channel>

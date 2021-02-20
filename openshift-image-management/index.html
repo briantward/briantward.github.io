@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="OpenShift Image Management">
 <meta itemprop="description" content="OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 &#43; 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&lt;none&gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7.">
-<meta itemprop="datePublished" content="2018-08-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-08-15T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-08-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-08-15T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1545">
 
 
 
 <meta itemprop="keywords" content="sync,Red Hat,container,imagestream," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift Image Management"/>
 <meta name="twitter:description" content="OpenShift Image Management $ oc project openshift Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;. $ oc get is | grep php NAME DOCKER REPO TAGS UPDATED php docker-registry.default.svc:5000/openshift/php 7.1,latest,5.6 &#43; 2 more... 11 days ago   $ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-17 --confirm The import completed successfully. Name:	php-70-rhel7 Namespace:	openshift Created:	Less than a second ago Labels:	&lt;none&gt; Annotations:	openshift.io/image.dockerRepositoryCheck=2018-08-15T18:38:10Z Docker Pull Spec:	docker-registry.default.svc:5000/openshift/php-70-rhel7 Image Lookup:	local=false Unique Images:	1 Tags:	1 7."/>
@@ -134,7 +135,7 @@
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc project openshift
-Now using project "openshift" on server "https://openshift.example.com:8443".
+Now using project &#34;openshift&#34; on server &#34;https://openshift.example.com:8443&#34;.
 $ oc get is | grep php
 NAME                                  DOCKER REPO                                                                      TAGS                           UPDATED
 php                                   docker-registry.default.svc:5000/openshift/php                                   7.1,latest,5.6 + 2 more...     11 days ago</code></pre>
@@ -254,7 +255,7 @@ php-70-rhel7                          docker-registry.default.svc:5000/openshift
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc import-image registry.access.redhat.com/rhscl/php-70-rhel7:7.0-15 --confirm
-error: the tag "7.0-15" does not exist on the image stream - choose an existing tag to import or use the 'tag' command to create a new tag
+error: the tag &#34;7.0-15&#34; does not exist on the image stream - choose an existing tag to import or use the &#39;tag&#39; command to create a new tag
 
 $ oc get is | grep php
 php                                   docker-registry.default.svc:5000/openshift/php                                   7.1,latest,5.6 + 2 more...     11 days ago
@@ -279,14 +280,14 @@ Tags:			3
 latest
   tagged from is
 
-  ! error: Import failed (Unauthorized): you may not have access to the Docker image "is:latest"
+  ! error: Import failed (Unauthorized): you may not have access to the Docker image &#34;is:latest&#34;
       10 minutes ago
 
 7.0-17
   tagged from is
 
   ~ importing latest image ...
-  ! error: Import failed (Unauthorized): you may not have access to the Docker image "is:latest"
+  ! error: Import failed (Unauthorized): you may not have access to the Docker image &#34;is:latest&#34;
       11 minutes ago
   * registry.access.redhat.com/rhscl/php-70-rhel7@sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
       12 minutes ago
@@ -395,7 +396,7 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &gt;   creationTimestamp: 2018-03-06T16:02:48Z
 9a10,13
 &gt;   namespace: openshift
-&gt;   resourceVersion: "39554952"
+&gt;   resourceVersion: &#34;39554952&#34;
 &gt;   selfLink: /oapi/v1/namespaces/openshift/imagestreams/php
 &gt;   uid: d1142d8c-2157-11e8-97ea-001a4a16015f
 26c30
@@ -419,9 +420,9 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &lt;       name: docker-registry.default.svc:5000/openshift/php:latest
 ---
 &gt;       kind: ImageStreamTag
-&gt;       name: "7.1"
+&gt;       name: &#34;7.1&#34;
 106c110,157
-&lt;   dockerImageRepository: ""
+&lt;   dockerImageRepository: &#34;&#34;
 ---
 &gt;   dockerImageRepository: docker-registry.default.svc:5000/openshift/php
 &gt;   tags:
@@ -430,7 +431,7 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &gt;       dockerImageReference: registry.access.redhat.com/openshift3/php-55-rhel7@sha256:c82d399564d21b9737ac58c1c812c31c42b4afc94443a8e276cd63979dde2930
 &gt;       generation: 51
 &gt;       image: sha256:c82d399564d21b9737ac58c1c812c31c42b4afc94443a8e276cd63979dde2930
-&gt;     tag: "5.5"
+&gt;     tag: &#34;5.5&#34;
 &gt;   - items:
 &gt;     - created: 2018-07-25T13:16:46Z
 &gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-56-rhel7@sha256:920c2cf85b5da5d0701898f0ec9ee567473fa4b9af6f3ac5b2b3f863796bbd68
@@ -440,7 +441,7 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-56-rhel7@sha256:2ccd499a6082be8dd931e7bf5ec4984307dcf2d029d115213cf9576eddfbf937
 &gt;       generation: 2
 &gt;       image: sha256:2ccd499a6082be8dd931e7bf5ec4984307dcf2d029d115213cf9576eddfbf937
-&gt;     tag: "5.6"
+&gt;     tag: &#34;5.6&#34;
 &gt;   - items:
 &gt;     - created: 2018-07-24T19:25:27Z
 &gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:c02accaae8746e7121597883438f714d3a80cdb4ff37f79a314a078e91941f64
@@ -450,13 +451,13 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-70-rhel7@sha256:e27b8848aeecd8fa5cb0c08e6951823375d2b944b5200c72da53a9700d4d3ddf
 &gt;       generation: 2
 &gt;       image: sha256:e27b8848aeecd8fa5cb0c08e6951823375d2b944b5200c72da53a9700d4d3ddf
-&gt;     tag: "7.0"
+&gt;     tag: &#34;7.0&#34;
 &gt;   - items:
 &gt;     - created: 2018-08-03T20:46:30Z
 &gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-71-rhel7@sha256:c20188e7775607c5bbb9b526a041a526c5dc0be749d2a071f73e7d81c0066bdf
 &gt;       generation: 53
 &gt;       image: sha256:c20188e7775607c5bbb9b526a041a526c5dc0be749d2a071f73e7d81c0066bdf
-&gt;     tag: "7.1"
+&gt;     tag: &#34;7.1&#34;
 &gt;   - items:
 &gt;     - created: 2018-08-03T20:46:30Z
 &gt;       dockerImageReference: registry.access.redhat.com/rhscl/php-71-rhel7@sha256:c20188e7775607c5bbb9b526a041a526c5dc0be749d2a071f73e7d81c0066bdf
@@ -482,7 +483,7 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &gt;   creationTimestamp: 2018-08-15T18:38:10Z
 8a9,12
 &gt;   namespace: openshift
-&gt;   resourceVersion: "42526771"
+&gt;   resourceVersion: &#34;42526771&#34;
 &gt;   selfLink: /oapi/v1/namespaces/openshift/imagestreams/php-70-rhel7
 &gt;   uid: 5c1c4189-a0ba-11e8-9280-001a4a160161
 16c20
@@ -508,7 +509,7 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &gt;     referencePolicy:
 &gt;       type: Source
 41c54,89
-&lt;   dockerImageRepository: ""
+&lt;   dockerImageRepository: &#34;&#34;
 ---
 &gt;   dockerImageRepository: docker-registry.default.svc:5000/openshift/php-70-rhel7
 &gt;   tags:
@@ -521,9 +522,9 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &gt;   - conditions:
 &gt;     - generation: 3
 &gt;       lastTransitionTime: 2018-08-15T18:39:19Z
-&gt;       message: you may not have access to the Docker image "is:latest"
+&gt;       message: you may not have access to the Docker image &#34;is:latest&#34;
 &gt;       reason: Unauthorized
-&gt;       status: "False"
+&gt;       status: &#34;False&#34;
 &gt;       type: ImportSuccess
 &gt;     items:
 &gt;     - created: 2018-08-15T18:38:10Z
@@ -540,9 +541,9 @@ $ oc get is php-70-rhel7 -o yaml &gt; php-70-rhel7-get.yaml</code></pre>
 &gt;   - conditions:
 &gt;     - generation: 6
 &gt;       lastTransitionTime: 2018-08-15T18:39:35Z
-&gt;       message: you may not have access to the Docker image "is:latest"
+&gt;       message: you may not have access to the Docker image &#34;is:latest&#34;
 &gt;       reason: Unauthorized
-&gt;       status: "False"
+&gt;       status: &#34;False&#34;
 &gt;       type: ImportSuccess
 &gt;     items: null
 &gt;     tag: latest</code></pre>

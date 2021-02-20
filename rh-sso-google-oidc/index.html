@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -42,6 +42,7 @@
 
 
 <meta itemprop="keywords" content="google,rh-sso,keycloak,ansible,authentication,authorization," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Configure RH-SSO to Identity Broker with Google by Hosted Domain"/>
 <meta name="twitter:description" content="Configure RH-SSO to Identity Broker with Google by Hosted Domain In a browser, go to your RH-SSO admin console. This should be your hostname with context /auth/admin, e.g. https://sso.apps.example.com/auth/admin/
@@ -160,35 +161,35 @@ SSO_ADMIN_PASSWORD=redacted</pre>
 </div>
 <div class="paragraph">
 <p>First, create a new realm for your OpenShift users.  Out of the box, RH-SSO is configured with a master realm,
-but this should only be used for administration of the RH-SSO server itself. Hover over the name "Master" on the left
+but this should only be used for administration of the RH-SSO server itself. Hover over the name &#34;Master&#34; on the left
 menu bar, then click <code>Add Realm</code>.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-001-realms.png" alt="Realms" title="Realms"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-001-realms.png" alt="Realms" title="Realms"/></span></p>
 </div>
 <div class="paragraph">
 <p>Name your realm something such as <code>ocp</code> and click <code>Create</code>.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-002-add-realm.png" alt="Add Realm" title="Add Realm"></span>
-<span class="image"><img src="/images/rh-sso-ocp/setupgoidc-003-realm-fp.png" alt="Realm Front Page" title="Realm Front Page"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-002-add-realm.png" alt="Add Realm" title="Add Realm"/></span>
+<span class="image"><img src="/images/rh-sso-ocp/setupgoidc-003-realm-fp.png" alt="Realm Front Page" title="Realm Front Page"/></span></p>
 </div>
 <div class="paragraph">
 <p>Click on <code>Identity Providers</code> on the left menu bar.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-004-idp.png" alt="Identity Providers" title="Identity Providers"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-004-idp.png" alt="Identity Providers" title="Identity Providers"/></span></p>
 </div>
 <div class="paragraph">
-<p>Click the dropdown <code>Add provider&#8230;&#8203;</code> and choose <code>OpenID Connect v1.0</code> from the dropdown.
+<p>Click the dropdown <code>Add provider…​</code> and choose <code>OpenID Connect v1.0</code> from the dropdown.
 Note that there is an easy-setup for Google. Do not use this one, as it
 does not allow you to configure the hosted domain.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-005-add-idp.png" alt="Add Identity Provider" title="Add Identity Provider"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-005-add-idp.png" alt="Add Identity Provider" title="Add Identity Provider"/></span></p>
 </div>
 <div class="paragraph">
-<p>Note your redirect URI will be needed to configure the Google OIDC client in the Google Cloud Console. Add that now if you haven&#8217;t already done so.</p>
+<p>Note your redirect URI will be needed to configure the Google OIDC client in the Google Cloud Console. Add that now if you haven’t already done so.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -198,7 +199,7 @@ does not allow you to configure the hosted domain.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-006-add-idp-2.png" alt="Add Identity Provider Details" title="Add Identity Provider Details"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-006-add-idp-2.png" alt="Add Identity Provider Details" title="Add Identity Provider Details"/></span></p>
 </div>
 <div class="paragraph">
 <p>I named mine <code>google-oidc</code>. Enter the following fields:</p>
@@ -241,51 +242,51 @@ does not allow you to configure the hosted domain.</p>
 <p>Click <code>Authentication</code> from the left menu bar.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-007-auth-flow.png" alt="Authentication Flow" title="Authentication Flow"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-007-auth-flow.png" alt="Authentication Flow" title="Authentication Flow"/></span></p>
 </div>
 <div class="paragraph">
 <p>On the <code>Flows</code> tab choose from the dropdown menu <code>Browser</code>.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-008-auth-browser.png" alt="Browser Auth Flow" title="Browser Auth Flow"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-008-auth-browser.png" alt="Browser Auth Flow" title="Browser Auth Flow"/></span></p>
 </div>
 <div class="paragraph">
 <p>Click the <code>copy</code> button on the top right. Name it something like <code>Browser-GoogleIDP</code> and click <code>ok</code>.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-009-auth-new-browser.png" alt="setupgoidc 009 auth new browser"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-009-auth-new-browser.png" alt="setupgoidc 009 auth new browser"/></span></p>
 </div>
 <div class="paragraph">
 <p>You can use the default Browser flow as well, but here we made a new one to preserve the original default and give
 us some flexibility.</p>
 </div>
 <div class="paragraph">
-<p>Since we don&#8217;t want <code>Kerberos</code> or <code>Browser-GoogleIDP Forms</code>, click <code>Actions</code> &gt; <code>Delete</code> for both of them. The former
+<p>Since we don’t want <code>Kerberos</code> or <code>Browser-GoogleIDP Forms</code>, click <code>Actions</code> &gt; <code>Delete</code> for both of them. The former
 works when federating a kerberos/ldap server, which we are not doing here.  The latter would provide a form login
 when Google IDP failed to identify a user.  In our case, all the users in our corporate directory are using Google,
-so we know that&#8217;s the only auth mechanism we want.  Leave the <code>Cookie</code> auth flow in place because that&#8217;s what is responsible
+so we know that’s the only auth mechanism we want.  Leave the <code>Cookie</code> auth flow in place because that’s what is responsible
 for the SSO between other apps authenticating with the RH-SSO server that we may add later.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-010-auth-delete-exec.png" alt="setupgoidc 010 auth delete exec"></span>
-<span class="image"><img src="/images/rh-sso-ocp/setupgoidc-011-auth-browser-final.png" alt="setupgoidc 011 auth browser final"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-010-auth-delete-exec.png" alt="setupgoidc 010 auth delete exec"/></span>
+<span class="image"><img src="/images/rh-sso-ocp/setupgoidc-011-auth-browser-final.png" alt="setupgoidc 011 auth browser final"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now on the <code>Identity Provider Redirector</code> flow, click <code>Actions</code> &gt; <code>Config</code>.  Give it any alias but be sure <code>Default Identity Provider</code>
 matches the identity provider alias you chose in the steps above when creating the OIDC provider.  Click <code>Save</code>.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-012-auth-oidc-config.png" alt="setupgoidc 012 auth oidc config"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-012-auth-oidc-config.png" alt="setupgoidc 012 auth oidc config"/></span></p>
 </div>
 <div class="paragraph">
 <p>Go back to <code>Authentication Flows</code> or choose <code>Authentication</code> from the left menu bar.  Click on <code>Bindings</code>. Change <code>Browser Flow</code> to
 <code>Browser-GoogleIDP</code> or whatever you named your new flow.  Click <code>Save</code>.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-013-auth-bindings.png" alt="setupgoidc 013 auth bindings"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-013-auth-bindings.png" alt="setupgoidc 013 auth bindings"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-014-auth-bindings-new.png" alt="setupgoidc 014 auth bindings new"></span></p>
+<p><span class="image"><img src="/images/rh-sso-ocp/setupgoidc-014-auth-bindings-new.png" alt="setupgoidc 014 auth bindings new"/></span></p>
 </div>
 <div class="paragraph">
 <p>Your RH-SSO server is now configured for your Google authentication.</p>
@@ -297,7 +298,7 @@ matches the identity provider alias you chose in the steps above when creating t
 <p>Debug Notes:</p>
 </div>
 <div class="paragraph">
-<p>I ran into this issue where OpenShift did not authenticate my user, but rather gave me this "Could not create user." error.
+<p>I ran into this issue where OpenShift did not authenticate my user, but rather gave me this &#34;Could not create user.&#34; error.
 I came to realize that while I had been deleting the test user in RH-SSO to perform various scenario tests,
 I had failed to delete the user created in OpenShift as well.  If you are deleting and recreating your test user, be sure
 to delete it both from RH-SSO and OpenShift.</p>

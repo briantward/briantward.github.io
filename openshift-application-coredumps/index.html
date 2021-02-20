@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -31,13 +31,14 @@
 
 <meta itemprop="name" content="OpenShift Application Core Dumps">
 <meta itemprop="description" content="OpenShift Application Core Dumps When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system. This is not something we want to do on a regular basis in production. Ideally such problems are discovered during application performance and load testing in lower environments. In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover.">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="852">
 
 
 
 <meta itemprop="keywords" content="containers,applications,developers,core,dumps," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift Application Core Dumps"/>
 <meta name="twitter:description" content="OpenShift Application Core Dumps When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system. This is not something we want to do on a regular basis in production. Ideally such problems are discovered during application performance and load testing in lower environments. In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover."/>
@@ -139,12 +140,12 @@
 <p>When logs fail to provide us the information we need to diagnose an application problem, we may find it useful to take core dumps of memory, showing us the processes as they are currently running in the system.  This is not something we want to do on a regular basis in production.  Ideally such problems are discovered during application performance and load testing in lower environments.  In reality we frequently find something unique about the real-world application load that our test scenarios could never uncover.  However, it is also a great practice to do regular analysis of core dumps of your application during its testing phases.</p>
 </div>
 <div class="paragraph">
-<p>One of the awesome features of kubernetes and OpenShift in general is the ability to control deployment scenarios.  Unfortunately we don&#8217;t have a specific feature yet to allow us to capture core dumps only on specific application pods.  However, we can control core dumps by the nodes on which the applications are deployed.  And since we are running kubernetes, we have very simple but powerful control over our application placement.  We can schedule our pods to be deployed on nodes that are ready to capture core dumps while preventing other pods that do not need core dumps to be prevented from running on these same nodes.</p>
+<p>One of the awesome features of kubernetes and OpenShift in general is the ability to control deployment scenarios.  Unfortunately we don’t have a specific feature yet to allow us to capture core dumps only on specific application pods.  However, we can control core dumps by the nodes on which the applications are deployed.  And since we are running kubernetes, we have very simple but powerful control over our application placement.  We can schedule our pods to be deployed on nodes that are ready to capture core dumps while preventing other pods that do not need core dumps to be prevented from running on these same nodes.</p>
 </div>
 <div class="sect2">
 <h3 id="_configuring_a_node_to_capture_core_dumps">Configuring a Node to Capture Core Dumps</h3>
 <div class="paragraph">
-<p>These notes are for OpenShift 3.x where you have control over changing the node directly.  I&#8217;ll share OpenShift 4.x configurations later.</p>
+<p>These notes are for OpenShift 3.x where you have control over changing the node directly.  I’ll share OpenShift 4.x configurations later.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -152,7 +153,7 @@
 <p>Change the core dump pattern to be written straight to temp file</p>
 <div class="literalblock">
 <div class="content">
-<pre>echo "/tmp/cores/core.%e.%p.%h.%t" &gt; /proc/sys/kernel/core_pattern</pre>
+<pre>echo &#34;/tmp/cores/core.%e.%p.%h.%t&#34; &gt; /proc/sys/kernel/core_pattern</pre>
 </div>
 </div>
 </li>
@@ -196,7 +197,7 @@ chmod a+rwx /tmp/cores</pre>
 <p>Change the core dump pattern to be processed by systemd</p>
 <div class="literalblock">
 <div class="content">
-<pre>echo '|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %e' &gt; /proc/sys/kernel/core_pattern</pre>
+<pre>echo &#39;|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %e&#39; &gt; /proc/sys/kernel/core_pattern</pre>
 </div>
 </div>
 </li>
@@ -350,7 +351,7 @@ oc new-app ruby~https://github.com/openshift/ruby-ex.git</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Add "default-ulimits": {"core": {"Name": "core", "Hard": -1, "Soft": -1}} to /etc/docker/daemon.json</p>
+<p>Add &#34;default-ulimits&#34;: {&#34;core&#34;: {&#34;Name&#34;: &#34;core&#34;, &#34;Hard&#34;: -1, &#34;Soft&#34;: -1}} to /etc/docker/daemon.json</p>
 </div>
 <div class="ulist">
 <ul>
@@ -420,7 +421,7 @@ oc new-app ruby~https://github.com/openshift/ruby-ex.git</pre>
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <a href="https://www.freedesktop.org/software/systemd/man/coredump.conf.html" class="bare">https://www.freedesktop.org/software/systemd/man/coredump.conf.html</a>
 </div>

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -33,13 +33,14 @@
 <meta itemprop="name" content="Red Hat Identity Management Server - Missing DNS Record">
 <meta itemprop="description" content="Red Hat Identity Management Server - Missing DNS Record Recently my server lab lost power. Stuff did not come back cleanly, and I needed to get my house back in order.
  My Red Hat Identity Management Server, aka freeipa, running on a RHEL7 machine, restarted along with all the other physicals and vms. When the IdM server came back up, I noticed after some time that it had missing DNS records for some of my machines.">
-<meta itemprop="datePublished" content="2019-07-26T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-07-26T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-07-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-07-26T00:00:00+00:00" />
 <meta itemprop="wordCount" content="392">
 
 
 
 <meta itemprop="keywords" content="rhel,freeipa,IdM,ipa,dns,named," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Red Hat Identity Management Server - Missing DNS Record"/>
 <meta name="twitter:description" content="Red Hat Identity Management Server - Missing DNS Record Recently my server lab lost power. Stuff did not come back cleanly, and I needed to get my house back in order.
@@ -149,7 +150,7 @@
 <p>My Red Hat Identity Management Server, aka freeipa, running on a RHEL7 machine, restarted along with all the other physicals and vms.
 When the IdM server came back up, I noticed after some time that it had missing DNS records for some of my machines.  Some dependent
 machines and services that required connectivity to those machines were failing, because the DNS was not resolving correctly.  At first I thought it
-strange, and a small quirk since this doesn&#8217;t happen often.  But after three or more times of power loss and fixing the problem manually by recreating the DNS,
+strange, and a small quirk since this doesn’t happen often.  But after three or more times of power loss and fixing the problem manually by recreating the DNS,
 records I decided it was time to investigate.</p>
 </div>
 <div class="paragraph">
@@ -163,9 +164,9 @@ Jul 26 21:21:44 idm.example.com named-pkcs11[1840]: client 192.168.1.2#40684/key
 </div>
 <div class="paragraph">
 <p>Sure looks like the client host itself was the culprit.  As it turns out, I registered my machines with <code>--enable-dns-updates</code>.  I did this originally without worrying about the details, and thinking
-this would be nice to have if I used DHCP.  Later on I decided to use static IPs for other reasons, so it really isn&#8217;t important at the moment.
-I could turn the feature off, but that still didn&#8217;t explain why the record was being removed, because the correct IP was still associated to
-the machine&#8217;s interface.  However, looking at it a bit, I recognized that I had added a bridge, such that the IP address was listed on
+this would be nice to have if I used DHCP.  Later on I decided to use static IPs for other reasons, so it really isn’t important at the moment.
+I could turn the feature off, but that still didn’t explain why the record was being removed, because the correct IP was still associated to
+the machine’s interface.  However, looking at it a bit, I recognized that I had added a bridge, such that the IP address was listed on
 the bridge rather than the physical interface. Bingo!  I had to switch from <code>em1</code> to <code>ovirtmgmt</code>.</p>
 </div>
 <div class="paragraph">
@@ -195,9 +196,9 @@ dyndns_ttl = 2400
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Jul 26 22:12:49 idm named-pkcs11[1840]: client 192.168.1.2#33238/key host/host1.example.com\@EXAMPLE.COM: updating zone 'example.com/IN': deleting rrset at 'host1.example.com' A
-Jul 26 22:12:49 idm named-pkcs11[1840]: client 192.168.1.2#33238/key host/host1.example.com\@EXAMPLE.COM: updating zone 'example.com/IN': adding an RR at 'host1.example.com' A
-Jul 26 22:12:49 idm named-pkcs11[1840]: client 192.168.1.2#39324/key host/host1.example.com\@EXAMPLE.COM: updating zone 'example.com/IN': deleting rrset at 'host1.example.com' AAAA</pre>
+<pre>Jul 26 22:12:49 idm named-pkcs11[1840]: client 192.168.1.2#33238/key host/host1.example.com\@EXAMPLE.COM: updating zone &#39;example.com/IN&#39;: deleting rrset at &#39;host1.example.com&#39; A
+Jul 26 22:12:49 idm named-pkcs11[1840]: client 192.168.1.2#33238/key host/host1.example.com\@EXAMPLE.COM: updating zone &#39;example.com/IN&#39;: adding an RR at &#39;host1.example.com&#39; A
+Jul 26 22:12:49 idm named-pkcs11[1840]: client 192.168.1.2#39324/key host/host1.example.com\@EXAMPLE.COM: updating zone &#39;example.com/IN&#39;: deleting rrset at &#39;host1.example.com&#39; AAAA</pre>
 </div>
 </div>
 <div class="paragraph">

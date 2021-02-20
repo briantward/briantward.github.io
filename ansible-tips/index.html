@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,7 +22,7 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="Ansible Tips" />
-<meta property="og:description" content="Ansible Tips Print to stout and log at same time&#8230;&#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&#8230;&#8203; this one cleans up your journals&#8230;&#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      " />
+<meta property="og:description" content="Ansible Tips Print to stout and log at same time…​ ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts…​ this one cleans up your journals…​ and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/ansible-tips/" />
 <meta property="article:published_time" content="2018-12-15T00:00:00+00:00" />
@@ -30,17 +30,18 @@
 
 
 <meta itemprop="name" content="Ansible Tips">
-<meta itemprop="description" content="Ansible Tips Print to stout and log at same time&#8230;&#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&#8230;&#8203; this one cleans up your journals&#8230;&#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      ">
-<meta itemprop="datePublished" content="2018-12-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-15T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Ansible Tips Print to stout and log at same time…​ ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts…​ this one cleans up your journals…​ and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      ">
+<meta itemprop="datePublished" content="2018-12-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-15T00:00:00+00:00" />
 <meta itemprop="wordCount" content="45">
 
 
 
 <meta itemprop="keywords" content="ansible," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ansible Tips"/>
-<meta name="twitter:description" content="Ansible Tips Print to stout and log at same time&#8230;&#8203; ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts&#8230;&#8203; this one cleans up your journals&#8230;&#8203; and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      "/>
+<meta name="twitter:description" content="Ansible Tips Print to stout and log at same time…​ ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log    Run a single command on all hosts…​ this one cleans up your journals…​ and runs 10 at a time ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10      "/>
 
 
   </head>
@@ -120,7 +121,7 @@
 <h2 id="_ansible_tips">Ansible Tips</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_print_to_stout_and_log_at_same_time">Print to stout and log at same time&#8230;&#8203;</h3>
+<h3 id="_print_to_stout_and_log_at_same_time">Print to stout and log at same time…​</h3>
 <div class="literalblock">
 <div class="content">
 <pre>ansible-playbook -i hosts playbook.yml -vvv | tee -a output.log</pre>
@@ -128,10 +129,10 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_run_a_single_command_on_all_hosts_this_one_cleans_up_your_journals_and_runs_10_at_a_time">Run a single command on all hosts&#8230;&#8203; this one cleans up your journals&#8230;&#8203; and runs 10 at a time</h3>
+<h3 id="_run_a_single_command_on_all_hosts_this_one_cleans_up_your_journals_and_runs_10_at_a_time">Run a single command on all hosts…​ this one cleans up your journals…​ and runs 10 at a time</h3>
 <div class="literalblock">
 <div class="content">
-<pre>ansible all -a 'journalctl --vacuum-time=2d' -f 10</pre>
+<pre>ansible all -a &#39;journalctl --vacuum-time=2d&#39; -f 10</pre>
 </div>
 </div>
 </div>

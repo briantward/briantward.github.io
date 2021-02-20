@@ -1,0 +1,26 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>build tools on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/build-tools/</link>
+    <description>Recent content in build tools on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/build-tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>C Build Tools</title>
+        <link>https://briantward.github.io/c-build-tools/</link>
+        <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/c-build-tools/</guid>
+        <description>C Build Tools   autotools
+  bmake
+  cmake
+  llvm
+     </description>
+      </item>
+    
+  </channel>
+</rss>

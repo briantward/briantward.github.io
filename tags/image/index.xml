@@ -15,7 +15,7 @@
         <link>https://briantward.github.io/image-video-metadata-p2/</link>
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/image-video-metadata-p2/</guid>
-        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn&amp;#8217;t right, it can be pretty confusing/noticeable.</description>
+        <description>Image Video Metadata Tips Recently I found a bunch of photos that had the wrong capture date, a result of the device not having the correct date when the photos were captured. This is pretty annoying, but can be fixed with a nice perl utility called exiftool. Apple and a bunch of other photo tools these days use these dates for sorting your photos. So if something isn’t right, it can be pretty confusing/noticeable.</description>
       </item>
     
       <item>
@@ -23,7 +23,7 @@
         <link>https://briantward.github.io/image-video-metadata/</link>
         <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/image-video-metadata/</guid>
-        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn&amp;#8217;t give you a lot of customization options. We couldn&amp;#8217;t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
+        <description>Image Video Metadata Tips My wife and I wanted to combine photos and videos from my Samsung S7 and her iPhone 6. Apple has a nice app that compiles photos and videos with background music, but doesn’t give you a lot of customization options. We couldn’t sort except by date. Since we wanted one particular photo at the end, we figured we would just hack the create date to trick it.</description>
       </item>
     
   </channel>

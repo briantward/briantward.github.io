@@ -15,9 +15,9 @@
         <link>https://briantward.github.io/ssh-tips/</link>
         <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/ssh-tips/</guid>
-        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &#34;email organization&#34;    SSH-Forwarding Like this guy&amp;#8217;s example. After using nc for years, ProxyJump is now very useful!
+        <description>SSH Tips SSH Tunnel $ ssh user@remote-host -L 9993:remote-host:9993    SSH Keyen $ ssh-keygen -t rsa -b 4096 -C &amp;#34;email organization&amp;#34;    SSH-Forwarding Like this guy’s example. After using nc for years, ProxyJump is now very useful!
  Host forum HostName www.nixcraft.com ProxyJump vivek@jumhost.nixcraft.com:22 User vivek   https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/
-  ForwardAgent I&amp;#8217;m not truly certain about the security implications of using ForwardAgent, but this article does suggest there are some issues.</description>
+  ForwardAgent I’m not truly certain about the security implications of using ForwardAgent, but this article does suggest there are some issues.</description>
       </item>
     
   </channel>

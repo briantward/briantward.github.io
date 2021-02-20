@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenShift RBAC - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="OpenShift RBAC" />
+<meta property="og:description" content="OpenShift RBAC oc auth can-i VERB OBJECT oc adm policy who-can VERB OBJECT   oc get clusterrole basic-user -o yaml oc get clusterrole cluster-admin -o yaml   https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications
+   " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/openshift-roles/" />
+<meta property="article:published_time" content="2021-02-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-20T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="OpenShift RBAC">
+<meta itemprop="description" content="OpenShift RBAC oc auth can-i VERB OBJECT oc adm policy who-can VERB OBJECT   oc get clusterrole basic-user -o yaml oc get clusterrole cluster-admin -o yaml   https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications
+   ">
+<meta itemprop="datePublished" content="2021-02-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="26">
+
+
+
+<meta itemprop="keywords" content="rbac," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift RBAC"/>
+<meta name="twitter:description" content="OpenShift RBAC oc auth can-i VERB OBJECT oc adm policy who-can VERB OBJECT   oc get clusterrole basic-user -o yaml oc get clusterrole cluster-admin -o yaml   https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications
+   "/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2021-02-20 12:00">2021-02-20</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          
+            , 
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>OpenShift RBAC</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/rbac">
+              <span class="hash">#</span>rbac</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_openshift_rbac">OpenShift RBAC</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>oc auth can-i VERB OBJECT
+oc adm policy who-can VERB OBJECT</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>oc get clusterrole basic-user -o yaml
+oc get clusterrole cluster-admin -o yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications" class="bare">https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications</a></p>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -22,8 +22,7 @@
 <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
 
 <meta property="og:title" content="OpenShift Web Console Extensions" />
-<meta property="og:description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
-Applicable Environment: OpenShift 3.9&#43;
+<meta property="og:description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11 Applicable Environment: OpenShift 3.9&#43;
  As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
  In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files." />
 <meta property="og:type" content="article" />
@@ -33,21 +32,20 @@ Applicable Environment: OpenShift 3.9&#43;
 
 
 <meta itemprop="name" content="OpenShift Web Console Extensions">
-<meta itemprop="description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
-Applicable Environment: OpenShift 3.9&#43;
+<meta itemprop="description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11 Applicable Environment: OpenShift 3.9&#43;
  As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
  In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files.">
-<meta itemprop="datePublished" content="2018-12-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-04T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-12-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-04T00:00:00+00:00" />
 <meta itemprop="wordCount" content="544">
 
 
 
 <meta itemprop="keywords" content="sync,Red Hat,container,webconsole,extensions," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift Web Console Extensions"/>
-<meta name="twitter:description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11
-Applicable Environment: OpenShift 3.9&#43;
+<meta name="twitter:description" content="OpenShift Web Console Extensions Testing Environment: OpenShift 3.11 Applicable Environment: OpenShift 3.9&#43;
  As of OpenShift 3.9, the web console requires URL references rather than static content directories.[1]
  In OpenShift 3.7 and lower, you could mount static files from your masters through the master-config.yaml file.[2] Since this no longer applies, we have to provide our own webserver with the content, to be referenced by the web console pod remotely. I checked for ways to mount static files to the web console pod; however, in the new design there is no static directory location within the pod itself from which it could reference such files."/>
 
@@ -145,7 +143,7 @@ Applicable Environment: OpenShift 3.9&#43;
 <h2 id="_openshift_web_console_extensions">OpenShift Web Console Extensions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Testing Environment: OpenShift 3.11<br>
+<p>Testing Environment: OpenShift 3.11<br/>
 Applicable Environment: OpenShift 3.9+</p>
 </div>
 <div class="paragraph">
@@ -159,7 +157,7 @@ Applicable Environment: OpenShift 3.9+</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>openshift_web_console_extension_script_urls=['https://webconsole-extensions.apps.example.com/disable-catalog.js']</pre>
+<pre>openshift_web_console_extension_script_urls=[&#39;https://webconsole-extensions.apps.example.com/disable-catalog.js&#39;]</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -172,9 +170,9 @@ Applicable Environment: OpenShift 3.9+</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc new-project webconsole-extensions
-Now using project "webconsole-extensions" on server "https://openshift.example.com:8443".
+Now using project &#34;webconsole-extensions&#34; on server &#34;https://openshift.example.com:8443&#34;.
 
-You can add applications to this project with the 'new-app' command. For example, try:
+You can add applications to this project with the &#39;new-app&#39; command. For example, try:
 
     oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
 
@@ -183,11 +181,11 @@ to build a new example application in Ruby.</code></pre>
 </div>
 </li>
 <li>
-<p>Create a new app from httpd imagestream (which on my cluster points to registry.redhat.io/rhscl/httpd-24-rhel7). Check out the docs for details on building for this image, if you want to use Passthrough or ReEncrypt you&#8217;ll need to add your own certs. <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+<p>Create a new app from httpd imagestream (which on my cluster points to registry.redhat.io/rhscl/httpd-24-rhel7). Check out the docs for details on building for this image, if you want to use Passthrough or ReEncrypt you’ll need to add your own certs. <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ oc new-app httpd~https://github.com/briantward/webconsole-extensions
---&gt; Found image 9477422 (8 days old) in image stream "openshift/httpd" under tag "2.4" for "httpd"
+--&gt; Found image 9477422 (8 days old) in image stream &#34;openshift/httpd&#34; under tag &#34;2.4&#34; for &#34;httpd&#34;
 
     Apache httpd 2.4
     ----------------
@@ -196,22 +194,22 @@ to build a new example application in Ruby.</code></pre>
     Tags: builder, httpd, httpd24
 
     * A source build using source code from https://github.com/briantward/webconsole-extensions will be created
-      * The resulting image will be pushed to image stream tag "webconsole-extensions:latest"
-      * Use 'start-build' to trigger a new build
-    * This image will be deployed in deployment config "webconsole-extensions"
-    * Ports 8080/tcp, 8443/tcp will be load balanced by service "webconsole-extensions"
-      * Other containers can access this service through the hostname "webconsole-extensions"
+      * The resulting image will be pushed to image stream tag &#34;webconsole-extensions:latest&#34;
+      * Use &#39;start-build&#39; to trigger a new build
+    * This image will be deployed in deployment config &#34;webconsole-extensions&#34;
+    * Ports 8080/tcp, 8443/tcp will be load balanced by service &#34;webconsole-extensions&#34;
+      * Other containers can access this service through the hostname &#34;webconsole-extensions&#34;
 
 --&gt; Creating resources ...
-    imagestream.image.openshift.io "webconsole-extensions" created
-    buildconfig.build.openshift.io "webconsole-extensions" created
-    deploymentconfig.apps.openshift.io "webconsole-extensions" created
-    service "webconsole-extensions" created
+    imagestream.image.openshift.io &#34;webconsole-extensions&#34; created
+    buildconfig.build.openshift.io &#34;webconsole-extensions&#34; created
+    deploymentconfig.apps.openshift.io &#34;webconsole-extensions&#34; created
+    service &#34;webconsole-extensions&#34; created
 --&gt; Success
-    Build scheduled, use 'oc logs -f bc/webconsole-extensions' to track its progress.
+    Build scheduled, use &#39;oc logs -f bc/webconsole-extensions&#39; to track its progress.
     Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
-     'oc expose svc/webconsole-extensions'
-    Run 'oc status' to view your app.</code></pre>
+     &#39;oc expose svc/webconsole-extensions&#39;
+    Run &#39;oc status&#39; to view your app.</code></pre>
 </div>
 </div>
 </li>
@@ -248,7 +246,7 @@ window.OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE = true</code></p
 <pre class="highlight"><code>...
     extensions:
       properties: null
-      scriptURLs: ['https://webconsole-extensions.apps.example.com/disable-catalog.js']
+      scriptURLs: [&#39;https://webconsole-extensions.apps.example.com/disable-catalog.js&#39;]
       stylesheetURLs: []
 ...</code></pre>
 </div>
@@ -262,7 +260,7 @@ window.OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE = true</code></p
 </div>
 </div>
 <div id="footnotes">
-<hr>
+<hr/>
 <div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <a href="https://docs.openshift.com/container-platform/3.9/install_config/web_console_customization.html#loading-custom-scripts-and-stylesheets" class="bare">https://docs.openshift.com/container-platform/3.9/install_config/web_console_customization.html#loading-custom-scripts-and-stylesheets</a>
 </div>

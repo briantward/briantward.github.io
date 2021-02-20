@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -39,11 +39,12 @@
  I recently installed a local identity management server with Red Hat Identity Management. This is essentially a free-ipa server that hosts some certificate management, DNS, and LDAP to track both my machines and my users on my local network.">
 <meta itemprop="datePublished" content="2018-05-01T10:40:00-04:00" />
 <meta itemprop="dateModified" content="2018-05-01T10:40:00-04:00" />
-<meta itemprop="wordCount" content="756">
+<meta itemprop="wordCount" content="759">
 
 
 
 <meta itemprop="keywords" content="dns,vpn,dnsmasq," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Split DNS Resolution with VPN DNS and Local DNS"/>
 <meta name="twitter:description" content="Split DNS Resolution with VPN DNS and Local DNS Edit 2019-05-16: This work is superceded by this wonderful feature in NetworkManager now:
@@ -153,7 +154,7 @@
 <p>I recently installed a local identity management server with Red Hat
 Identity Management.  This is essentially a free-ipa server that hosts
 some certificate management, DNS, and LDAP to track both my machines and
-my users on my local network.  I don&#8217;t have a whole lot of users, but I
+my users on my local network.  I don’t have a whole lot of users, but I
 would like to have my username and passwords synced over the network.</p>
 </div>
 <div class="paragraph">
@@ -170,12 +171,12 @@ laptop is my primary work machine.</p>
 <p>The first solution I attempted did not work.  I thought, what if I somehow
 make my VPN connection stop applying its DNS override?  If I do that, I need
 my own local DNS to resolve the internal company hostnames when needed.  After
-all, that&#8217;s the whole purpose of the VPN DNS&#8201;&#8212;&#8201;to provide hostname resolution
+all, that’s the whole purpose of the VPN DNS — to provide hostname resolution
 to internal network machines that are not available to the outside world.  My
-answer to that was to add my company VPN DNS to a list of forwarded addresses by zone in the DNS server.  That did not work at all.  Then I decided to try adding the company VPN DNS to a list of globally forwarded addresses in the DNS server.  That worked but not completely.  The problem is that my local DNS machine would have to access the DNS server on the VPN itself to provide correct resolutions.  That wasn&#8217;t a scenario I wanted.  I would have to permanently bridge my company VPN to my local network.</p>
+answer to that was to add my company VPN DNS to a list of forwarded addresses by zone in the DNS server.  That did not work at all.  Then I decided to try adding the company VPN DNS to a list of globally forwarded addresses in the DNS server.  That worked but not completely.  The problem is that my local DNS machine would have to access the DNS server on the VPN itself to provide correct resolutions.  That wasn’t a scenario I wanted.  I would have to permanently bridge my company VPN to my local network.</p>
 </div>
 <div class="paragraph">
-<p>My final solution was to use a local dns server on my laptop&#8201;&#8212;&#8201; a simplified one using dnsmasq.  It&#8217;s not a traditional bind dns server, but rather it is a flexible dns server that allows me to make fine-grained resolution in certain scenarios.  Below are the steps to acheive what I needed:</p>
+<p>My final solution was to use a local dns server on my laptop —  a simplified one using dnsmasq.  It’s not a traditional bind dns server, but rather it is a flexible dns server that allows me to make fine-grained resolution in certain scenarios.  Below are the steps to acheive what I needed:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -188,8 +189,8 @@ answer to that was to add my company VPN DNS to a list of forwarded addresses by
 <div class="content">
 <pre>[source]
 ----
-domain-needed # anything without dots in it doesn't get forwarded to DNS
-no-resolv # don't use /etc/resolv.conf, specifically because it this service is providing the resolution found in that file and it would be a recursive loop
+domain-needed # anything without dots in it doesn&#39;t get forwarded to DNS
+no-resolv # don&#39;t use /etc/resolv.conf, specifically because it this service is providing the resolution found in that file and it would be a recursive loop
 server=8.8.8.8 # google DNS, the primary external DNS forwarding, because everyone loves google
 server=/home.mydomain.com/192.168.1.1 # my home domain and my home DNS server
 server=/vpn.mycompany.com/8.8.8.8 # use the exernal DNS specifically for the VPN host so we can find it before the VPN is connected
@@ -204,7 +205,7 @@ bind-interfaces # only bind to the interface(s) I just listed above (default to 
 </div>
 </li>
 <li>
-<p>Update my VPN settings.  My VPN is being provided by openVPN.  Other providers will inevitably work differently.  I basically needed a way to instruct my VPN connection NOT to add its DNS servers to my /etc/resolv.conf file.  Actually, I did not acheive exactly that solution, but I did find something that worked.  The remote VPN server is responsible for pushing two DNS host IPs to my /etc/resolv.conf.  Locally, OpenVPN allows you to add a DNS host IP in the configuration file as well.  Actually, I didn&#8217;t need to do that.  However, you can also set the priority on your VPN DNS entries such that the two entries provided by the remote server appear below your existing DNS entry in /etc/resolv.conf.  It looks like this:</p>
+<p>Update my VPN settings.  My VPN is being provided by openVPN.  Other providers will inevitably work differently.  I basically needed a way to instruct my VPN connection NOT to add its DNS servers to my /etc/resolv.conf file.  Actually, I did not acheive exactly that solution, but I did find something that worked.  The remote VPN server is responsible for pushing two DNS host IPs to my /etc/resolv.conf.  Locally, OpenVPN allows you to add a DNS host IP in the configuration file as well.  Actually, I didn’t need to do that.  However, you can also set the priority on your VPN DNS entries such that the two entries provided by the remote server appear below your existing DNS entry in /etc/resolv.conf.  It looks like this:</p>
 <div class="literalblock">
 <div class="content">
 <pre>/etc/NetworkManager/system-connections/MYVPN.ovpn</pre>

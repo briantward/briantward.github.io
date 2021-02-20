@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -35,13 +35,14 @@
 <meta itemprop="description" content="Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
  $ echo $XDG_SESSION_TYPE    Switch gui terminal ctrl &#43; alt &#43; f1    Restart You can restart the gnome-shell by pressing Alt&#43;F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.
   Software Center History This app, gnome-software is sorta nice in its GUI flashiness and reminds me of Apple app store.">
-<meta itemprop="datePublished" content="2018-08-05T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-08-05T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-08-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-08-05T00:00:00+00:00" />
 <meta itemprop="wordCount" content="250">
 
 
 
 <meta itemprop="keywords" content="gnome,session,wayland,xorg," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Gnome Session"/>
 <meta name="twitter:description" content="Gnome Session Show whether you are on wayland or x11: $ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type   or
@@ -141,7 +142,7 @@
 <h3 id="_show_whether_you_are_on_wayland_or_x11">Show whether you are on wayland or x11:</h3>
 <div class="literalblock">
 <div class="content">
-<pre>$ loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type</pre>
+<pre>$ loginctl show-session $(loginctl | grep $(whoami) | awk &#39;{print $1}&#39;) -p Type</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -164,13 +165,13 @@
 <div class="sect2">
 <h3 id="_restart">Restart</h3>
 <div class="paragraph">
-<p>You can restart the gnome-shell by pressing Alt+F2 and then typing in either "restart" or just "r" and pressing enter.</p>
+<p>You can restart the gnome-shell by pressing Alt+F2 and then typing in either &#34;restart&#34; or just &#34;r&#34; and pressing enter.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_software_center_history">Software Center History</h3>
 <div class="paragraph">
-<p>This app, <code>gnome-software</code>  is sorta nice in its GUI flashiness and reminds me of Apple app store.  Wouldn&#8217;t it be nice to see my history of installations through this tool?  In the backend it apparently uses PackageKit.  What is odd though is that it doesn&#8217;t record history through the dnf tool.  So all my command line history is captured but none of the GUI installs are captured.  If you need to see packages by installation you need to run through some RPM commands.  You might also have this problem when installing RPMs directly, without DNF.</p>
+<p>This app, <code>gnome-software</code>  is sorta nice in its GUI flashiness and reminds me of Apple app store.  Wouldn’t it be nice to see my history of installations through this tool?  In the backend it apparently uses PackageKit.  What is odd though is that it doesn’t record history through the dnf tool.  So all my command line history is captured but none of the GUI installs are captured.  If you need to see packages by installation you need to run through some RPM commands.  You might also have this problem when installing RPMs directly, without DNF.</p>
 </div>
 <div class="paragraph">
 <p>Show DNF history:</p>

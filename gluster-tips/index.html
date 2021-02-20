@@ -7,7 +7,7 @@
 <meta name="author" content="Everyday Linux">
 <meta name="description" content="Examples of working solutions in everyday Linux.">
 
-<meta name="generator" content="Hugo 0.69.0" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
@@ -23,7 +23,7 @@
 
 <meta property="og:title" content="Gluster Tips" />
 <meta property="og:description" content="Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
- # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&#8217;s all down." />
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it’s all down." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/gluster-tips/" />
 <meta property="article:published_time" content="2019-10-19T00:00:00+00:00" />
@@ -32,18 +32,19 @@
 
 <meta itemprop="name" content="Gluster Tips">
 <meta itemprop="description" content="Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
- # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&#8217;s all down.">
-<meta itemprop="datePublished" content="2019-10-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-10-19T00:00:00&#43;00:00" />
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it’s all down.">
+<meta itemprop="datePublished" content="2019-10-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-10-19T00:00:00+00:00" />
 <meta itemprop="wordCount" content="548">
 
 
 
 <meta itemprop="keywords" content="tips," />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Gluster Tips"/>
 <meta name="twitter:description" content="Gluster Tips Setting Gluster Up for RHV Host # yum install glusterfs-server -y # service glusterd start # gluster v create vmstore localhost:/your/brick force # gluster v start vmstore # mount -t glusterfs localhost:/vmstore /var/lib/libvirt/images   # gluster v set vmstore group virt   Adjust ownership to qemu user
- # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it&#8217;s all down."/>
+ # gluster volume set gkvms storage.owner-uid 36 # gluster volume set gkvms storage.owner-gid 36   Stop glusterd. This little bash script ensures it’s all down."/>
 
 
   </head>
@@ -151,7 +152,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Stop glusterd. This little bash script ensures it&#8217;s all down.</p>
+<p>Stop glusterd. This little bash script ensures it’s all down.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -178,22 +179,22 @@ fi</code></pre>
 <div class="content">
 <pre class="highlight"><code># Remove files and directories in /var/lib/glusterd except hooks directory.
 # As these files and directory will be re-created freshly when glusterd
-# is re-started except the "hooks". But all the configuration information
+# is re-started except the &#34;hooks&#34;. But all the configuration information
 # will be gone, including the volfiles and peer info.
 for file in /var/lib/glusterd/*
 do
-    if ! echo $file | grep 'hooks' &gt;/dev/null 2&gt;&amp;1;then
+    if ! echo $file | grep &#39;hooks&#39; &gt;/dev/null 2&gt;&amp;1;then
         rm -rf $file
     fi
 done
 
 # Remove the export bricks
-rm -rf "/bricks/*"
+rm -rf &#34;/bricks/*&#34;
 
 
-$ ansible rhv -m shell -a './glusterkill.sh'
-$ ansible rhv -m shell -a 'gdeploy -c lv_cleanup.conf'
-$ ansible rhv -m shell -a 'lsblk'</code></pre>
+$ ansible rhv -m shell -a &#39;./glusterkill.sh&#39;
+$ ansible rhv -m shell -a &#39;gdeploy -c lv_cleanup.conf&#39;
+$ ansible rhv -m shell -a &#39;lsblk&#39;</code></pre>
 </div>
 </div>
 </div>
@@ -286,7 +287,7 @@ $ ansible rhv -m shell -a 'lsblk'</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre># echo "/dev/vg_bricks_brick-a1 /brick/brick-a1 xfs 1 2" &gt;&gt; /etc/fstab</pre>
+<pre># echo &#34;/dev/vg_bricks_brick-a1 /brick/brick-a1 xfs 1 2&#34; &gt;&gt; /etc/fstab</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -322,7 +323,7 @@ $ ansible rhv -m shell -a 'lsblk'</code></pre>
 <p>do not reuse brick folders for new bricks because they leave metatdata in extended attributes</p>
 <div class="literalblock">
 <div class="content">
-<pre>getfattr -d -m'.*' &lt;BRICK-DIRECTORY&gt;</pre>
+<pre>getfattr -d -m&#39;.*&#39; &lt;BRICK-DIRECTORY&gt;</pre>
 </div>
 </div>
 </li>

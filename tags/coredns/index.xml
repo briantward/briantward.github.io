@@ -17,7 +17,7 @@
         <guid>https://briantward.github.io/coredns-nonprivileged/</guid>
         <description>CoreDNS Custom DNS Running on OpenShift This example provides the bare requirements for deploying a custom DNS server on OpenShift using the default restricted SCC profile, which means that the pod is run without privileges as a nonroot user. This should work fine on both OpenShift 3.11 and 4.x.
  You can edit this dns-config ConfigMap as necessary to modify the DNS zone records as you need.
- $ echo &#39;apiVersion: v1 data: Corefile: | example.</description>
+ $ echo &amp;#39;apiVersion: v1 data: Corefile: | example.</description>
       </item>
     
   </channel>
