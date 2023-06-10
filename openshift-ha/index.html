@@ -28,19 +28,22 @@
   https://www.openshift.com/blog/stateful-workloads-and-the-two-data-center-conundrum
   https://www.openshift.com/blog/disaster-recovery-with-gitops
   https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html
+  https://cloud.redhat.com/blog/8-application-design-principles-to-cope-with-openshift-maintenance-operations
+  https://cloud.redhat.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://cloud.redhat.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://cloud.redhat.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-3-keycloak
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-four-kafka
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-five-yugabytedb
    DR options
  Failure Scenarios
    Complete datacenter outage
-  Availability Zone failure (network segment or group of racks)
-  Rack failure
-  Host failure
-  VM failure
-  OpenShift master failure
-  OpenShift etcd failure (etcd backup and restore)" />
+  Availability Zone failure (network segment or group of racks)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/openshift-ha/" />
-<meta property="article:published_time" content="2021-02-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-20T00:00:00+00:00" />
+<meta property="article:published_time" content="2022-10-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-22T00:00:00+00:00" />
 
 
 <meta itemprop="name" content="OpenShift HA">
@@ -50,18 +53,21 @@
   https://www.openshift.com/blog/stateful-workloads-and-the-two-data-center-conundrum
   https://www.openshift.com/blog/disaster-recovery-with-gitops
   https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html
+  https://cloud.redhat.com/blog/8-application-design-principles-to-cope-with-openshift-maintenance-operations
+  https://cloud.redhat.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://cloud.redhat.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://cloud.redhat.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-3-keycloak
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-four-kafka
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-five-yugabytedb
    DR options
  Failure Scenarios
    Complete datacenter outage
-  Availability Zone failure (network segment or group of racks)
-  Rack failure
-  Host failure
-  VM failure
-  OpenShift master failure
-  OpenShift etcd failure (etcd backup and restore)">
-<meta itemprop="datePublished" content="2021-02-20T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="281">
+  Availability Zone failure (network segment or group of racks)">
+<meta itemprop="datePublished" content="2022-10-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="289">
 
 
 
@@ -75,15 +81,18 @@
   https://www.openshift.com/blog/stateful-workloads-and-the-two-data-center-conundrum
   https://www.openshift.com/blog/disaster-recovery-with-gitops
   https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html
+  https://cloud.redhat.com/blog/8-application-design-principles-to-cope-with-openshift-maintenance-operations
+  https://cloud.redhat.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://cloud.redhat.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://cloud.redhat.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-3-keycloak
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-four-kafka
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-five-yugabytedb
    DR options
  Failure Scenarios
    Complete datacenter outage
-  Availability Zone failure (network segment or group of racks)
-  Rack failure
-  Host failure
-  VM failure
-  OpenShift master failure
-  OpenShift etcd failure (etcd backup and restore)"/>
+  Availability Zone failure (network segment or group of racks)"/>
 
 
   </head>
@@ -141,7 +150,7 @@
   <article>
     <header>
       <p>
-        <time datetime="2021-02-20 12:00">2021-02-20</time> &bull;
+        <time datetime="2022-10-22 12:00">2022-10-22</time> &bull;
           
             
             <a href="/categories/openshift">OPENSHIFT</a>
@@ -188,6 +197,30 @@
 </li>
 <li>
 <p><a href="https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html" class="bare">https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/8-application-design-principles-to-cope-with-openshift-maintenance-operations" class="bare">https://cloud.redhat.com/blog/8-application-design-principles-to-cope-with-openshift-maintenance-operations</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/stateful-workloads-and-the-two-data-center-conundrum" class="bare">https://cloud.redhat.com/blog/stateful-workloads-and-the-two-data-center-conundrum</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift" class="bare">https://cloud.redhat.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/deploying-openshift-applications-multiple-datacenters" class="bare">https://cloud.redhat.com/blog/deploying-openshift-applications-multiple-datacenters</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb" class="bare">https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-3-keycloak" class="bare">https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-3-keycloak</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-four-kafka" class="bare">https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-four-kafka</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-five-yugabytedb" class="bare">https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-five-yugabytedb</a></p>
 </li>
 </ul>
 </div>
@@ -300,7 +333,7 @@
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

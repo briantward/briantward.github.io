@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenShift Capacity Planning - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="OpenShift Capacity Planning" />
+<meta property="og:description" content="OpenShift Capacity Planning This is a great series of articles written by Raffaele Spazzoli.
+   https://cloud.redhat.com/blog/full-cluster-capacity-management-monitoring-openshift
+  https://cloud.redhat.com/blog/full-cluster-part-2-protecting-nodes
+  https://cloud.redhat.com/blog/full-cluster-part-3-capacity-management
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-4-right-sizing-pods-with-vertical-pod-autoscaler
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-5-a-capacity-management-dashboard
+   Subnet Sizing for OpenShift TODO cleanup formatting here
+ ############################################################################# networking.clusterNetwork[].cidr default: 10.128.0.0/14 (262144 addresses) networking.clusterNetwork[].hostPrefix default: /23 (512 addresses) networking.serviceNetwork default: 172.30.0.0/16 (65536 addresses) networking.machineNetwork[].cidr default: 10.0.0.0/16 (65536 addresses) Each k8s node is assigned a /23 subnet (hostPrefix) out of the given CIDR, allowing for 510 (2^(32 - 23) - 2) Pod IP addresses." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/openshift-capacity-planning/" />
+<meta property="article:published_time" content="2023-04-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-22T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="OpenShift Capacity Planning">
+<meta itemprop="description" content="OpenShift Capacity Planning This is a great series of articles written by Raffaele Spazzoli.
+   https://cloud.redhat.com/blog/full-cluster-capacity-management-monitoring-openshift
+  https://cloud.redhat.com/blog/full-cluster-part-2-protecting-nodes
+  https://cloud.redhat.com/blog/full-cluster-part-3-capacity-management
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-4-right-sizing-pods-with-vertical-pod-autoscaler
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-5-a-capacity-management-dashboard
+   Subnet Sizing for OpenShift TODO cleanup formatting here
+ ############################################################################# networking.clusterNetwork[].cidr default: 10.128.0.0/14 (262144 addresses) networking.clusterNetwork[].hostPrefix default: /23 (512 addresses) networking.serviceNetwork default: 172.30.0.0/16 (65536 addresses) networking.machineNetwork[].cidr default: 10.0.0.0/16 (65536 addresses) Each k8s node is assigned a /23 subnet (hostPrefix) out of the given CIDR, allowing for 510 (2^(32 - 23) - 2) Pod IP addresses.">
+<meta itemprop="datePublished" content="2023-04-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-04-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1333">
+
+
+
+<meta itemprop="keywords" content="capacity,planning," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift Capacity Planning"/>
+<meta name="twitter:description" content="OpenShift Capacity Planning This is a great series of articles written by Raffaele Spazzoli.
+   https://cloud.redhat.com/blog/full-cluster-capacity-management-monitoring-openshift
+  https://cloud.redhat.com/blog/full-cluster-part-2-protecting-nodes
+  https://cloud.redhat.com/blog/full-cluster-part-3-capacity-management
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-4-right-sizing-pods-with-vertical-pod-autoscaler
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-5-a-capacity-management-dashboard
+   Subnet Sizing for OpenShift TODO cleanup formatting here
+ ############################################################################# networking.clusterNetwork[].cidr default: 10.128.0.0/14 (262144 addresses) networking.clusterNetwork[].hostPrefix default: /23 (512 addresses) networking.serviceNetwork default: 172.30.0.0/16 (65536 addresses) networking.machineNetwork[].cidr default: 10.0.0.0/16 (65536 addresses) Each k8s node is assigned a /23 subnet (hostPrefix) out of the given CIDR, allowing for 510 (2^(32 - 23) - 2) Pod IP addresses."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2023-04-22 12:00">2023-04-22</time> &bull;
+          
+            
+            <a href="/categories/kubernetes">KUBERNETES</a>
+          
+            , 
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>OpenShift Capacity Planning</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/capacity">
+              <span class="hash">#</span>capacity</a>
+          
+            , 
+            <a href="/tags/planning">
+              <span class="hash">#</span>planning</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_openshift_capacity_planning">OpenShift Capacity Planning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is a great series of articles written by Raffaele Spazzoli.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cloud.redhat.com/blog/full-cluster-capacity-management-monitoring-openshift" class="bare">https://cloud.redhat.com/blog/full-cluster-capacity-management-monitoring-openshift</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/full-cluster-part-2-protecting-nodes" class="bare">https://cloud.redhat.com/blog/full-cluster-part-2-protecting-nodes</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/full-cluster-part-3-capacity-management" class="bare">https://cloud.redhat.com/blog/full-cluster-part-3-capacity-management</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/how-full-is-my-cluster-part-4-right-sizing-pods-with-vertical-pod-autoscaler" class="bare">https://cloud.redhat.com/blog/how-full-is-my-cluster-part-4-right-sizing-pods-with-vertical-pod-autoscaler</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/how-full-is-my-cluster-part-5-a-capacity-management-dashboard" class="bare">https://cloud.redhat.com/blog/how-full-is-my-cluster-part-5-a-capacity-management-dashboard</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_subnet_sizing_for_openshift">Subnet Sizing for OpenShift</h3>
+<div class="paragraph">
+<p>TODO cleanup formatting here</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>#############################################################################
+
+networking.clusterNetwork[].cidr
+default: 10.128.0.0/14 (262144 addresses)
+
+networking.clusterNetwork[].hostPrefix
+default: /23 (512 addresses)
+
+networking.serviceNetwork
+default: 172.30.0.0/16 (65536 addresses)
+
+networking.machineNetwork[].cidr
+default: 10.0.0.0/16 (65536 addresses)
+
+Each k8s node is assigned a /23 subnet (hostPrefix) out of the given CIDR, allowing for 510 (2^(32 - 23) - 2) Pod IP addresses.
+Result of above: 262144/512 = 512 k8s hosts of 512 addressable pods each
+
+#############################################################################
+
+networking.clusterNetwork[].cidr (Pod Subnet)
+LAB: 10.33.192.0/20 (VLAN 1050) (4096 addresses)
+
+networking.clusterNetwork[].hostPrefix (Pod IPs per k8s host)
+LAB: /24 (256 addresses)
+
+Services Subnet: (Service Endpoint Subnet)
+LAB: 10.33.208.0/21 (VLAN 1051) (2048 addresses)
+
+networking.machineNetwork[].cidr (k8s hosts)
+LAB: 10.33.19.0/24 (VLAN 3319) (256 addresses)
+
+Result of above: 4096/256 = 16 k8s hosts of 256 addressable pods each
+
+What is the typical application profile (cpu/memory)?
+E.G. 1CPU, 2GB
+
+How many applications (service) do we expect?
+E.G. 1000 applications
+
+What is the typical pod load balancing count?
+E.G. 3 pods per service
+
+How many pods do we expect?
+E.G. 1000 applications * 3 pods per service = 3000 pods
+
+What is the typical node profile (cpu/memory)?
+4 cpu / 16GB
+
+
+How many nodes do we expect?
+E.G. 1CPU * 3000 pods / 4CPU per node = 750 nodes (based on CPU request)
+E.G. 2GB * 3000 pods / 16GB per node = 375 nodes (based on memory request)
+CPU request is higher, so 750 nodes is the need.
+
+We need 750 nodes, each hosting 4 pods. This is not an ideal architecture or load.
+We could estimate this as being inside a a.b.c.0/20 subnet (4096 addresses) with a hostprefix of /29 (8 addresses)
+Then we get 4096/8 = 512 k8s hosts of 8 addressable pods each - still doesn&#39;t work.
+This is a highly customized and restricted workload, and not flexible in the least.
+
+We could estimate this as being inside a a.b.c.0/20 subnet (4096 addresses) with a hostprefix of /27 (32 addresses)
+Then we get 4096/32 = 128 k8s hosts of 32 addressable pods each - still doesn&#39;t work since we need more nodes.
+We could bump the subnet to a /18 to get 16,384 addresses.
+Then we get 32768/32 = 1024 k8s hosts of 32 addressable pods each - we get &gt; 750 nodes but still highly inflexible and a lot of waste here.
+
+
+262144/512 = 512 k8s hosts of 512 addressable pods each
+
+Readjust memory limit to match the app requirements: 4cpu, 8GB ram
+
+Let&#39;s change the default size to something more reasonable:
+16 cpu / 32GB
+
+Then we get:
+1CPU * 3000 pods / 16CPU per node = 187.5 nodes each host 16 pods.
+
+Let&#39;s change the default app profile to memory intensive: 500m / 4 GB
+
+Then we get
+0.5CPU * 3000 pods / 16 CPU per node = 93.75 nodes
+4GB * 3000 pods / 32 GB per node = 375 nodes each host 4 pods.
+
+Let&#39;s then change the default size to something more reasonable:
+12 cpu / 96GB
+
+Then we get
+0.5CPU * 3000 pods / 12 CPU per node = 125 nodes
+4GB * 3000 pods / 96 GB per node = 125 nodes each host 24 pods.
+
+Let&#39;s reverse engineer the 512/512 subnet, that could give us:
+
+a node profile of 32 cpu / 128 GB would give us:
+32 * 512 = 16384 CPU
+128 * 512 = 65537 GB RAM
+
+an average app profile, matching the node profile in ratio (1:4) for best allocation of resources, of 1 cpu / 4GB would give us 16384 pods among 512 nodes. We would be using only 32 IPs on each node.
+
+an average app profile, matching the node profile in ratio (1:4) for best allocation of resources, of 500m cpu / 2GB would give us 32768 pods among 512 nodes. We would be using only 64 IPs on each node.
+
+an average app profile, matching the node profile in ratio (1:4) for best allocation of resources, of 250m cpu / 1GB would give us 65536 pods among 512 nodes. We would be using only 128 IPs on each node. We have still wasted 512-128 = 384 IPs on each node.
+
+If we only need 65536 IPs, we should block out a CIDR of /16 rather than /14, with /25 hostprefix to get a maximum allocation of IPs.  We would also only need a service subnet allocating 65536/3= 21846 IPS, which most closely matches a /17
+
+That results in something like this:
+
+networking.clusterNetwork[].cidr
+default: 10.128.0.0/16 (65536 addresses)
+
+networking.clusterNetwork[].hostPrefix
+default: /24 (256 addresses)
+
+networking.serviceNetwork
+default: 172.30.0.0/17 (32768 addresses)
+
+networking.machineNetwork[].cidr
+default: 10.0.0.0/16 (65536 addresses)
+
+Each k8s node is assigned a /24 subnet (hostPrefix) out of the given CIDR, allowing for 126 (2^(32 - 24) - 2) Pod IP addresses.
+Result of above: 65536/256 = 256 k8s hosts of 256 addressable pods each
+
+
+
+Questions:
+- How does this correspond to prod vs nonprod? If we start with prod sizing, then we know we may need approx N times as much resources available for N environments (dev, test, stage, sandbox, etc) of Nonprod.  However, we don&#39;t usually need the same scalability, i.e. number of pods per application/service or cpu/memory combination in each lower enviromment
+- What is this really critical for? We could just claim these subnets internally and not care about them. We would only need to really be concerned if the subnet overlapped with an existing resource that was in another part of the greater enterprise network for a company, such as a database or other service.  That database would need a NAT&#39;d IP address to be reachable from the pod directly to the database.
+- Unfortunately, each node must get an equal allocation of IP addresses, such that a node with less resources such as 4cpu and 16GB RAM gets the same address allocation as one with more resources such as 64cpu and 128GB RAM.  In essence, IP address allocation is inflexible itself, because clearly a node with larger resources could potentially hold more applications, especially if those applications were in the same profile as those running on the smaller node.
+- There is planning for what we know we have, there is planning for growth (new applications/services), there is planning for scaling (more pods per service), there is planning for failover and redundancy (not designing for 100% capacity but some fraction of it)
+
+a node profile of 32 cpu / 128 GB would give us:
+32 * 512 = 16384 CPU
+128 * 512 = 65537 GB RAM
+
+an average app profile, matching the node profile in ratio (1:4) for best allocation of resources, of 62.5m cpu / 0.25GB would give us 262144 pods among 512 nodes. We would then be using the max 512 IPs per node.
+
+32/0.0625 = 512
+128/0.25 = 512
+
+Let&#39;s start with average app profile: 0.5 cpu / 2GB
+Then pick an average node profile matching in ratio for best allocation/scheduling: 16cpu / 64GB
+Then we should need only 32 IPs per node (64/2=32 or 16/0.5=32). (this is pretty inflexible, and we know there are likely to be a dozen or so pods on any given node for node functionality, so let&#39;s at least double it to 64...)
+If we only need 64 IPs..
+CPU of node / avg CPU of pod = total addresses
+hostprefix of /26 provides 64 addresses (technically 62)
+Then pick the number of pods we need to run: 3000
+The closest subnet size for this would be 4096: /20
+And if we assume 3 pods per service, 1000 service addresses: /22
+
+That results in something like this:
+
+networking.clusterNetwork[].cidr
+default: 10.128.0.0/20 (4096 addresses)
+
+networking.clusterNetwork[].hostPrefix
+default: /26 (64 addresses)
+
+networking.serviceNetwork
+default: 172.30.0.0/22 (1024 addresses)
+
+networking.machineNetwork[].cidr
+default: 10.0.0.0/16 (65536 addresses)
+
+Each k8s node is assigned a /26 subnet (hostPrefix) out of the given CIDR, allowing for 30 (2^(32 - 26) - 2) Pod IP addresses.
+Result of above: 4096/64 = 64 k8s hosts of 64 (actual 62) addressable pods each
+
+
+(default service to pod ratio is 1:4)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

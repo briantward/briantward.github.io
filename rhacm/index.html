@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RHACM - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="RHACM" />
+<meta property="og:description" content="RHACM https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html-single/applications/index#gitops-config
+ ArgoCD GitOps for Configuration Management GitOps instance per ManagedClusterSet
+ Things that make you pick single, central:
+   Good starting point
+  Simple management, single place
+   Things that make you change to distributed:
+   One ArgoCD is overloaded.
+  Separation of duties. One ArgoCD for Production. One ArgoCD for NonProduction.
+  Separation of use. E.G. PCI Compliance, separation of elements in different clusters" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/rhacm/" />
+<meta property="article:published_time" content="2023-04-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-22T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="RHACM">
+<meta itemprop="description" content="RHACM https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html-single/applications/index#gitops-config
+ ArgoCD GitOps for Configuration Management GitOps instance per ManagedClusterSet
+ Things that make you pick single, central:
+   Good starting point
+  Simple management, single place
+   Things that make you change to distributed:
+   One ArgoCD is overloaded.
+  Separation of duties. One ArgoCD for Production. One ArgoCD for NonProduction.
+  Separation of use. E.G. PCI Compliance, separation of elements in different clusters">
+<meta itemprop="datePublished" content="2023-04-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-04-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="441">
+
+
+
+<meta itemprop="keywords" content="acm,rhacm," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="RHACM"/>
+<meta name="twitter:description" content="RHACM https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html-single/applications/index#gitops-config
+ ArgoCD GitOps for Configuration Management GitOps instance per ManagedClusterSet
+ Things that make you pick single, central:
+   Good starting point
+  Simple management, single place
+   Things that make you change to distributed:
+   One ArgoCD is overloaded.
+  Separation of duties. One ArgoCD for Production. One ArgoCD for NonProduction.
+  Separation of use. E.G. PCI Compliance, separation of elements in different clusters"/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2023-04-22 12:00">2023-04-22</time> &bull;
+          
+            
+            <a href="/categories/kubernetes">KUBERNETES</a>
+          
+            , 
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>RHACM</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/acm">
+              <span class="hash">#</span>acm</a>
+          
+            , 
+            <a href="/tags/rhacm">
+              <span class="hash">#</span>rhacm</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_rhacm">RHACM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html-single/applications/index#gitops-config" class="bare">https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html-single/applications/index#gitops-config</a></p>
+</div>
+<div class="sect2">
+<h3 id="_argocd_gitops_for_configuration_management">ArgoCD GitOps for Configuration Management</h3>
+<div class="paragraph">
+<p>GitOps instance per ManagedClusterSet</p>
+</div>
+<div class="paragraph">
+<p>Things that make you pick single, central:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Good starting point</p>
+</li>
+<li>
+<p>Simple management, single place</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Things that make you change to distributed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>One ArgoCD is overloaded.</p>
+</li>
+<li>
+<p>Separation of duties.  One ArgoCD for Production. One ArgoCD for NonProduction.</p>
+</li>
+<li>
+<p>Separation of use.  E.G. PCI Compliance, separation of elements in different clusters</p>
+</li>
+<li>
+<p>Separation of Teams, RBAC. Provide ArgoCD per major team or organization.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ACM vs independent GitOps</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ACM is a centralized Hub model.  You can still run multiple ArgoCD from ACM using different ManagedClusterSets.</p>
+</li>
+<li>
+<p>If you don’t have ACM, GitOps can be run natively in clusters as desired, distributed (multiple instances) or centralized (single instance).</p>
+</li>
+<li>
+<p>If you do have ACM but don’t want to use ManagedClusterSets, you can also deploy ACM Policy to deploy GitOps</p>
+</li>
+<li>
+<p>If you do have ACM, you can also use GitOps to manage remote cluster infrastructure as well (in lieu of ACM Policy)</p>
+</li>
+<li>
+<p>ACM also offers a native Application/Subscription model for placing applications in clusters, but this has been less popular</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_useful_links_and_topics">Useful links and topics</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=WiC8P1LUwbI">GitOps Guide to the Galaxy (Ep 20): Multi-cluster management w/ ACM</a></p>
+</li>
+<li>
+<p><a href="https://rcarrata.com/openshift/secure-argo-supply-chain/">Secure GitOps Supply Chain with GnuPG Signature verification in ArgoCD</a></p>
+</li>
+<li>
+<p><a href="https://kyverno.io/docs/writing-policies/generate/">Generate Resources</a></p>
+</li>
+<li>
+<p><a href="https://rcarrata.com/openshift/argo-and-acm/">Generate and Manage ApplicationSets of OpenShift-GitOps/ArgoCD in ACM</a></p>
+</li>
+<li>
+<p><a href="https://github.com/stolostron/policy-collection/issues/217">Install-Policy-Collection-Repository using gitops-operator</a></p>
+</li>
+<li>
+<p><a href="https://github.com/stolostron/policy-collection/tree/main/deploy">Deploy policies to Open Cluster Management</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes-sigs/application">Application metadata descriptor CRD</a></p>
+</li>
+<li>
+<p><a href="https://issues.redhat.com/browse/ACM-1234">ACM Creating a Controller for GitopsOperator Integration which uses a PullModel</a></p>
+</li>
+<li>
+<p><a href="https://github.com/rokej/RHACM-GitOps-MultiTenancy-Demo">Multi-tenancy model example with Red Hat Advanced Cluster Management and OpenShift GitOps operator</a></p>
+</li>
+<li>
+<p><a href="https://michaelkotelnikov.medium.com/how-to-manage-multiple-openshift-clusters-with-rhacm-hybrid-cloud-a1929000be66">How to Manage Multiple OpenShift Clusters with RHACM — Hybrid Cloud</a></p>
+</li>
+<li>
+<p><a href="https://gitlab.com/michael.kot/rhacm-demo" class="bare">https://gitlab.com/michael.kot/rhacm-demo</a></p>
+</li>
+<li>
+<p><a href="https://github.com/noseka1/multicluster-management-rhacm-argocd">Managing multiple OpenShift/Kubernetes clusters using RHACM and Argo CD</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sabre1041/rhacm-argocd#deployment-of-argo-cd-to-red-hat-advanced-cluster-management-to-managed-clusters">Red Hat Advanced Cluster Management for Kubernetes and Argo CD</a></p>
+</li>
+<li>
+<p><a href="https://github.com/christianh814/openshift-cluster-config">Openshift Cluster Config (ArgoCD)</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/red-hat-and-intel-use-red-hat-advanced-cluster-management-rhacm-for-kubernetes-to-manage-a-multicloud-openshift-solution">Red Hat and Intel Use Red Hat Advanced Cluster Management (RHACM) for Kubernetes to Manage a Multicloud OpenShift Solution</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/generating-governance-policies-using-kustomize-and-gitops">Generating Governance Policies Using Kustomize and GitOps</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/using-policyreports-to-view-and-alert-for-governance-violations">Using PolicyReports to View and Alert for Governance Violations</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/viewing-cluster-alerts-warnings-or-recommendations-in-an-aggregated-view-with-red-hat-advanced-cluster-management-observability">Viewing Cluster Alerts, Warnings, or Recommendations in an Aggregated View With Red Hat Advanced Cluster Management Observability</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/how-to-observe-your-clusters-with-red-hat-advanced-cluster-management-customize-the-grafana-dashboard">How to Observe your Clusters with Red Hat Advanced Cluster Management - Customize the Grafana Dashboard</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/advanced-configurations-for-the-observability-service-in-red-hat-advanced-cluster-management-for-kubernetes">Advanced Configurations for the Observability Service in Red Hat Advanced Cluster Management for Kubernetes</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/solutions/6184721">TODO verify WIP How to create a ClusterDeployment in RHACM using external-secrets</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/articles/6218901">Red Hat Advanced Cluster Management for Kubernetes 2.4 Support Matrix</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/bring-your-own-fleet-with-red-hat-advanced-cluster-management-for-kubernetes-auto-import-and-automation-tools">Bring your own fleet with Red Hat Advanced Cluster Management for Kubernetes auto-import and automation tools</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/scaling-to-multicluster-from-the-command-line-with-clusterpools">Scaling to multicluster from the command line with ClusterPools</a></p>
+</li>
+<li>
+<p><a href="https://github.com/nasx/umbrella-gitops/tree/main/manifests/ansible-runner/base">GitOps for Lab Clusters</a></p>
+</li>
+<li>
+<p><a href="https://github.com/redhat-cop/gitops-catalog/tree/main/advanced-cluster-management/operator">Advanced Cluster Management Operator</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jnpacker/gitops-fleet-samples">gitops-fleet-sample</a></p>
+</li>
+<li>
+<p><a href="https://cloud.redhat.com/blog/gitops-using-red-hat-openshift-pipelines-tekton-and-red-hat-advanced-cluster-management">GitOps Using Red Hat OpenShift Pipelines (Tekton) and Red Hat Advanced Cluster Management</a></p>
+</li>
+<li>
+<p><a href="https://schmaustech.blogspot.com/2021/05/configuring-noobaa-s3-storage-for-red.html?m=0">Configuring Noobaa S3 Storage for Red Hat Advanced Cluster Management Observability</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

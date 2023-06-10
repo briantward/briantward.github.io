@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>monitoring on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/monitoring/</link>
+    <description>Recent content in monitoring on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift Monitoring Blogs</title>
+        <link>https://briantward.github.io/openshift-monitoring-blogs/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-monitoring-blogs/</guid>
+        <description>OpenShift Monitoring Blogs   https://cloud.redhat.com/blog/monitoring-infrastructure-openshift-4.x-using-zabbix-operator
+  https://cloud.redhat.com/blog/how-to-monitoring-openshift-4.x-with-zabbix-using-prometheus-part-2
+  https://cloud.redhat.com/blog/prometheus-alerts-on-openshift
+     </description>
+      </item>
+    
+  </channel>
+</rss>

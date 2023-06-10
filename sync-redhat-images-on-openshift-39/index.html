@@ -35,7 +35,7 @@
  $ oc get is -n openshift NAME DOCKER REPO TAGS UPDATED imagestreams/eap71-openshift docker-registry.default.svc:5000/openshift/eap71-openshift latest 3 months ago imagestreams/httpd docker-registry.">
 <meta itemprop="datePublished" content="2018-07-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-07-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1408">
+<meta itemprop="wordCount" content="1406">
 
 
 
@@ -250,7 +250,7 @@ openshift_master_image_policy_config={&#34;maxImagesBulkImportedPerRepository&#3
 <div class="paragraph">
 <p>Second, you need to update all your imagestreams to automatically update.  Note that the openshift_examples installed
 by the Advanced Installer only install into your OpenShift environment ONCE.  They never get updated.  If new templates
-arrive in subsequent updates, they do get added, and some get removed. But they never get updated! <sup class="footnote" id="_footnote_openshift_examples_repo">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> Here is how to change that.</p>
+arrive in subsequent updates, they do get added, and some get removed. But they never get updated! <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> Here is how to change that.</p>
 </div>
 <div class="paragraph">
 <p>To perform this operation on all imagestreams in the <code>openshift</code> namespace:</p>
@@ -487,9 +487,6 @@ metadata:
 <div class="footnote" id="_footnotedef_3">
 <a href="#_footnoteref_3">3</a>. <a href="https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L103" class="bare">https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example#L103</a>
 </div>
-<div class="footnote" id="_footnotedef_4">
-<a href="#_footnoteref_4">4</a>. <a href="https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_examples" class="bare">https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_examples</a>
-</div>
 </div>
 </section>
     <footer>
@@ -504,7 +501,7 @@ metadata:
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

@@ -16,8 +16,7 @@
         <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/kubernetes-service-aws-elb/</guid>
         <description>AWS ELB Kubernetes Service By default, services of type LoadBalancer create public-facing load balancers. To use an internal load balancer, apply the following annotation to your service:
- service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;
- https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
+ service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;   https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
    </description>
       </item>
     

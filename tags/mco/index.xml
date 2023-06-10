@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mco on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/mco/</link>
+    <description>Recent content in mco on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/mco/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>ArgoCD MCO</title>
+        <link>https://briantward.github.io/argocd-mco/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/argocd-mco/</guid>
+        <description>Provide ArgoCD permissions to control Advanced Cluster Management’s Multicluster Observability RHACM MCO One off command:
+  $ oc adm policy add-cluster-role-to-user multiclusterobservabilities.observability.open-cluster-management.io-v1beta2-admin -z openshift-gitops-argocd-application-controller -n openshift-gitops clusterrole.rbac.authorization.k8s.io/multiclusterobservabilities.observability.open-cluster-management.io-v1beta2-admin added: &amp;#34;openshift-gitops-argocd-application-controller&amp;#34;    $ oc adm policy add-cluster-role-to-user multiclusterobservabilities.observability.open-cluster-management.io-v1beta1-admin -z openshift-gitops-argocd-application-controller -n openshift-gitops clusterrole.rbac.authorization.k8s.io/multiclusterobservabilities.observability.open-cluster-management.io-v1beta1-admin added: &amp;#34;openshift-gitops-argocd-application-controller&amp;#34;   Declarative Spec for the same:
+ apiVersion: v1 items: - apiVersion: rbac.authorization.k8s.io/v1 kind: ClusterRoleBinding metadata: name: argocd-mcov1-admin roleRef: apiGroup: rbac.authorization.k8s.io kind: ClusterRole name: multiclusterobservabilities.</description>
+      </item>
+    
+  </channel>
+</rss>

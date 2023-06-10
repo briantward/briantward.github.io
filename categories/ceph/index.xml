@@ -1,0 +1,26 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ceph on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/ceph/</link>
+    <description>Recent content in ceph on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/ceph/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Ceph Tips (mostly from ODF)</title>
+        <link>https://briantward.github.io/ceph-tips/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/ceph-tips/</guid>
+        <description>Ceph Tips (mostly from ODF) Example must-gather (be sure to use current version)
+ $ oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.7 --dest-dir=must-gather   TODO: add ODF version
+ Running commands from the node
+ ceph -c /var/lib/rook/openshift-storage/openshift-storage.config health ceph -c /var/lib/rook/openshift-storage/openshift-storage.config -s ceph -c /var/lib/rook/openshift-storage/openshift-storage.config df   Use the tools pod:
+ $ oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch &amp;#39;[{ &amp;#34;op&amp;#34;: &amp;#34;replace&amp;#34;, &amp;#34;path&amp;#34;: &amp;#34;/spec/enableCephTools&amp;#34;, &amp;#34;value&amp;#34;: true }]&amp;#39; $ TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name) $ oc rsh -n openshift-storage $TOOLS_POD   Or all in one:</description>
+      </item>
+    
+  </channel>
+</rss>

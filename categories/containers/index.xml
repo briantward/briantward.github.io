@@ -1,0 +1,27 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>containers on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/containers/</link>
+    <description>Recent content in containers on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/containers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Keycloak and oauth2-proxy</title>
+        <link>https://briantward.github.io/keycloak-oauth2-proxy/</link>
+        <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/keycloak-oauth2-proxy/</guid>
+        <description>Keycloak and oauth2-proxy Using the Keycloak Docker image:
+ https://hub.docker.com/r/jboss/keycloak/
+ To run Keycloak:
+ podman run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To increase the debug/trace loglevel, use KEYCLOAK_LOGLEVEL=ALL
+ podman run -e KEYCLOAK_LOGLEVEL=ALL -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To run the oauth2-proxy
+ podman run --volume /home/bward/oauth-proxy-my-app/oauth2-proxy.cfg:/etc/oauth2-proxy.cfg --volume /home/bward/oauth-proxy-my-app/certs:/etc/x509 -p 4180:4180 oauth2-proxy/oauth2-proxy:latest --config=/etc/oauth2-proxy.cfg   Oauth2-proxy has very little information in logging.</description>
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>powershell on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/powershell/</link>
+    <description>Recent content in powershell on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/powershell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>PowerShell Tips</title>
+        <link>https://briantward.github.io/powershell-tips/</link>
+        <pubDate>Tue, 02 May 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/powershell-tips/</guid>
+        <description>PowerShell Tips Sometimes I gotta work with Windows.
+ Convert a file to base64 to move it safely across the network.
+ [convert]::ToBase64String((Get-Content -path &amp;#34;your_file_path&amp;#34; -Encoding byte))   https://learn.microsoft.com/en-us/previous-versions/troubleshoot/winautomation/process-development-tips/text-manipulation/convert-file-to-base64-string-format
+   </description>
+      </item>
+    
+  </channel>
+</rss>

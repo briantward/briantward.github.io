@@ -5,10 +5,316 @@
     <description>Recent content in List of posts on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Helm and ArgoCD</title>
+        <link>https://briantward.github.io/helm-argocd/</link>
+        <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/helm-argocd/</guid>
+        <description>Helm and ArgoCD Feature discussions…​
+   https://argoproj.github.io/argo-cd/user-guide/helm/
+  https://github.com/argoproj/argo-cd/issues/5826
+  https://github.com/argoproj/argo-cd/issues/2789
+     ArgoCD and useful GitOps blogs   https://github.com/sa-ne/acm-argocd-application
+  https://github.com/open-gitops/documents/tree/main
+  https://www.youtube.com/playlist?list=PLaR6Rq6Z4IqfGCkI28cUMbNhPhsnj4nq3
+  https://tost.dev/blog/ignore_differences_in_argocd/
+  https://argo-cd.readthedocs.io/en/stable/user-guide/compare-options/
+  https://github.com/jannfis/argo-cd/pull/17/files
+  https://github.com/argoproj/argo-cd/pull/9791
+  https://github.com/argoproj/argo-cd/issues/8683#issuecomment-1111605207
+  https://github.com/argoproj/argo-cd/issues/4487
+  https://docs.openshift.com/container-platform/4.12/cicd/gitops/argo-cd-custom-resource-properties.html
+  https://docs.openshift.com/container-platform/4.12/cicd/gitops/argo-cd-custom-resource-properties.html
+  https://developers.redhat.com/articles/2022/04/13/manage-namespaces-multitenant-clusters-argo-cd-kustomize-and-helm
+  https://cloud.redhat.com/blog/a-guide-to-going-from-zero-to-openshift-cluster-with-gitops
+  https://cloud.redhat.com/blog/configuring-openshift-cluster-with-applicationsets-using-helmkustomize-and-acm-policies
+  https://rcarrata.com/openshift/argo-and-acm/</description>
+      </item>
+    
+      <item>
+        <title>oc Tips</title>
+        <link>https://briantward.github.io/oc-tips/</link>
+        <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   Older kubectl/oc
+ $ oc whoami --config=$HOME/.kube/config   Current kubectl/oc
+ $ oc whoami --kubeconfig=$HOME/.kube/config   Show all resources…​ and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)</description>
+      </item>
+    
+      <item>
+        <title>OpenShift SecurityContextConstraints (SCC)</title>
+        <link>https://briantward.github.io/scc/</link>
+        <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/scc/</guid>
+        <description>OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
+ Using # oc adm policy add-scc-to-user anyuid -z useroot will create a rolebinding to a role granting access to modify the SCC (this was changed from directly adding users/groups to the SCC object itself in earlier versions of OpenShift). Note that the -n for namespace is not acknowledged correctly for this command at this time (2023-06-10, TODO: file an issue or fix the code), so you should be in the namespace of the serviceaccount to make this work correctly.</description>
+      </item>
+    
+      <item>
+        <title>PowerShell Tips</title>
+        <link>https://briantward.github.io/powershell-tips/</link>
+        <pubDate>Tue, 02 May 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/powershell-tips/</guid>
+        <description>PowerShell Tips Sometimes I gotta work with Windows.
+ Convert a file to base64 to move it safely across the network.
+ [convert]::ToBase64String((Get-Content -path &amp;#34;your_file_path&amp;#34; -Encoding byte))   https://learn.microsoft.com/en-us/previous-versions/troubleshoot/winautomation/process-development-tips/text-manipulation/convert-file-to-base64-string-format
+   </description>
+      </item>
+    
+      <item>
+        <title>ArgoCD MCO</title>
+        <link>https://briantward.github.io/argocd-mco/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/argocd-mco/</guid>
+        <description>Provide ArgoCD permissions to control Advanced Cluster Management’s Multicluster Observability RHACM MCO One off command:
+  $ oc adm policy add-cluster-role-to-user multiclusterobservabilities.observability.open-cluster-management.io-v1beta2-admin -z openshift-gitops-argocd-application-controller -n openshift-gitops clusterrole.rbac.authorization.k8s.io/multiclusterobservabilities.observability.open-cluster-management.io-v1beta2-admin added: &amp;#34;openshift-gitops-argocd-application-controller&amp;#34;    $ oc adm policy add-cluster-role-to-user multiclusterobservabilities.observability.open-cluster-management.io-v1beta1-admin -z openshift-gitops-argocd-application-controller -n openshift-gitops clusterrole.rbac.authorization.k8s.io/multiclusterobservabilities.observability.open-cluster-management.io-v1beta1-admin added: &amp;#34;openshift-gitops-argocd-application-controller&amp;#34;   Declarative Spec for the same:
+ apiVersion: v1 items: - apiVersion: rbac.authorization.k8s.io/v1 kind: ClusterRoleBinding metadata: name: argocd-mcov1-admin roleRef: apiGroup: rbac.authorization.k8s.io kind: ClusterRole name: multiclusterobservabilities.</description>
+      </item>
+    
+      <item>
+        <title>Ceph Tips (mostly from ODF)</title>
+        <link>https://briantward.github.io/ceph-tips/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/ceph-tips/</guid>
+        <description>Ceph Tips (mostly from ODF) Example must-gather (be sure to use current version)
+ $ oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.7 --dest-dir=must-gather   TODO: add ODF version
+ Running commands from the node
+ ceph -c /var/lib/rook/openshift-storage/openshift-storage.config health ceph -c /var/lib/rook/openshift-storage/openshift-storage.config -s ceph -c /var/lib/rook/openshift-storage/openshift-storage.config df   Use the tools pod:
+ $ oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch &amp;#39;[{ &amp;#34;op&amp;#34;: &amp;#34;replace&amp;#34;, &amp;#34;path&amp;#34;: &amp;#34;/spec/enableCephTools&amp;#34;, &amp;#34;value&amp;#34;: true }]&amp;#39; $ TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name) $ oc rsh -n openshift-storage $TOOLS_POD   Or all in one:</description>
+      </item>
+    
+      <item>
+        <title>Debugging Containers in OpenShift</title>
+        <link>https://briantward.github.io/debugging-containers-in-openshift/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/debugging-containers-in-openshift/</guid>
+        <description>Debugging Containers in OpenShift   https://docs.openshift.com/container-platform/4.11/support/troubleshooting/investigating-pod-issues.html
+  https://www.redhat.com/sysadmin/how-oc-debug-works
+  https://gist.github.com/nmasse-itix/0173f925587155ce600a74fe6a912595
+  https://developers.redhat.com/blog/2020/01/09/debugging-applications-within-red-hat-openshift-containers
+  https://access.redhat.com/solutions/1611883
+  https://briantward.github.io/nsenter/
+  https://www.redhat.com/sysadmin/container-namespaces-nsenter
+  https://access.redhat.com/solutions/4569211
+   TODO add more thoughts on this topic
+   </description>
+      </item>
+    
+      <item>
+        <title>Default ResourceQuota</title>
+        <link>https://briantward.github.io/default-resourcequota/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/default-resourcequota/</guid>
+        <description>Default ResourceQuota The question of how do I manage application onboarding usually introduces the topic of how to set specific values for ResourceQuota for the applications being onboarded.
+ In the past I have been a part of teams suggesting the concept of T-shirt sizing your applications, e.g. Small, Medium, and Large. Then, during onboarding process, one selects the appropriate T-shirt size ResourceQuota. Your values here could be dependent on your typical workloads.</description>
+      </item>
+    
+      <item>
+        <title>MetalLB Demo</title>
+        <link>https://briantward.github.io/metallb-demo/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/metallb-demo/</guid>
+        <description>MetalLB Demo Adapted from other people’s work. This demo shows MetalLB spreading requests across two k8s clusters.
+ https://cloud.redhat.com/blog/metallb-in-bgp-mode
+ Update your linux OS settings to handle what is about to happen in the demo. Otherwise things will fail.
+ $ sudo sysctl fs.inotify.max_user_watches=524288 $ sudo sysctl fs.inotify.max_user_instances=8192   Make that permanent:
+ # echo &amp;#39;fs.inotify.max_user_watches=524288 fs.inotify.max_user_instances=8192&amp;#39; &amp;gt; /etc/sysctl.d/90-metallb-demo.conf   Install golang and a needed library. This was undocumented at the time.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Capacity Planning</title>
+        <link>https://briantward.github.io/openshift-capacity-planning/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-capacity-planning/</guid>
+        <description>OpenShift Capacity Planning This is a great series of articles written by Raffaele Spazzoli.
+   https://cloud.redhat.com/blog/full-cluster-capacity-management-monitoring-openshift
+  https://cloud.redhat.com/blog/full-cluster-part-2-protecting-nodes
+  https://cloud.redhat.com/blog/full-cluster-part-3-capacity-management
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-4-right-sizing-pods-with-vertical-pod-autoscaler
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-5-a-capacity-management-dashboard
+   Subnet Sizing for OpenShift TODO cleanup formatting here
+ ############################################################################# networking.clusterNetwork[].cidr default: 10.128.0.0/14 (262144 addresses) networking.clusterNetwork[].hostPrefix default: /23 (512 addresses) networking.serviceNetwork default: 172.30.0.0/16 (65536 addresses) networking.machineNetwork[].cidr default: 10.0.0.0/16 (65536 addresses) Each k8s node is assigned a /23 subnet (hostPrefix) out of the given CIDR, allowing for 510 (2^(32 - 23) - 2) Pod IP addresses.</description>
+      </item>
+    
+      <item>
+        <title>RHACM</title>
+        <link>https://briantward.github.io/rhacm/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rhacm/</guid>
+        <description>RHACM https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html-single/applications/index#gitops-config
+ ArgoCD GitOps for Configuration Management GitOps instance per ManagedClusterSet
+ Things that make you pick single, central:
+   Good starting point
+  Simple management, single place
+   Things that make you change to distributed:
+   One ArgoCD is overloaded.
+  Separation of duties. One ArgoCD for Production. One ArgoCD for NonProduction.
+  Separation of use. E.G. PCI Compliance, separation of elements in different clusters</description>
+      </item>
+    
+      <item>
+        <title>Secret Management in Kubernetes</title>
+        <link>https://briantward.github.io/secret-management-in-kubernetes/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/secret-management-in-kubernetes/</guid>
+        <description>Secret Management in Kubernetes   BeyondTrust
+  SealedSecret
+  Ansible Vault
+  Hashicorp Vault
+   TODO add links to resources. Add thoughts to objectives.
+   </description>
+      </item>
+    
+      <item>
+        <title>Update Win10 to Win11 VM</title>
+        <link>https://briantward.github.io/update-win10-to-win11-vm/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/update-win10-to-win11-vm/</guid>
+        <description>Update Win10 to Win11 VM Because I do need to use Microsoft Windows from time to time.
+ migrating to TPM and UEFI on windows VM for windows 11 prep
+ https://www.maketecheasier.com/convert-legacy-bios-uefi-windows10/
+   </description>
+      </item>
+    
+      <item>
+        <title>OpenShift HA</title>
+        <link>https://briantward.github.io/openshift-ha/</link>
+        <pubDate>Sat, 22 Oct 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-ha/</guid>
+        <description>OpenShift HA Good references and resources
+   https://www.openshift.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://www.openshift.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://www.openshift.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://www.openshift.com/blog/disaster-recovery-with-gitops
+  https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html
+  https://cloud.redhat.com/blog/8-application-design-principles-to-cope-with-openshift-maintenance-operations
+  https://cloud.redhat.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://cloud.redhat.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://cloud.redhat.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-3-keycloak
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-four-kafka
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-five-yugabytedb
+   DR options
+ Failure Scenarios
+   Complete datacenter outage
+  Availability Zone failure (network segment or group of racks)</description>
+      </item>
+    
+      <item>
+        <title>Red Hat Support on JBoss EAP in Containers</title>
+        <link>https://briantward.github.io/eap-container-support/</link>
+        <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/eap-container-support/</guid>
+        <description>Red Hat Support on JBoss EAP in Containers   Red Hat JBoss Middleware Product Update and Support Policy
+  Life Cycle and Update Policies
+  Red Hat OpenShift Container Platform Life Cycle Policy
+  Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
+  Support Guidelines for Red Hat Middleware Products Deployed in 3rd-party Environments
+  Support for Red Hat JBoss Middleware Containers</description>
+      </item>
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://briantward.github.io/bash-tips/</link>
+        <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/bash-tips/</guid>
+        <description>Command Tips String the watch command with several commands at once
+ watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don’t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
+ Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
+ $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
+      </item>
+    
+      <item>
+        <title>CoreOS Notes</title>
+        <link>https://briantward.github.io/coreos-notes/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/coreos-notes/</guid>
+        <description>CoreOS Notes findmnt --real   sudo rpm-ostree install emacs     </description>
+      </item>
+    
+      <item>
+        <title>Create Bastion in AWS to Reach OpenShift Over Private VPC</title>
+        <link>https://briantward.github.io/aws-bastion-to-ocp-over-vpc/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/aws-bastion-to-ocp-over-vpc/</guid>
+        <description>Create Bastion in AWS to Reach OpenShift Over Private VPC  vpc peering request from VPC-A
+  vpc peering accept from VPC-B
+  set route from VPC-A to VPC-B on all route definitions
+  set route from VPC-B to VPC-A on all route definitions
+  set security group allow on VPC-A sg’s to accpet connections from VPC-B
+  set security group allow on VPC-B sg’s to accpet connections from VPC-A</description>
+      </item>
+    
+      <item>
+        <title>Kubernetes and OpenShift Certificate Signing Requests</title>
+        <link>https://briantward.github.io/kubernetes-openshift-csr/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/kubernetes-openshift-csr/</guid>
+        <description>Kubernetes and OpenShift Certificate Signing Requests Types of CSRs
+ https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/
+   kubernetes.io/kube-apiserver-client: signs certificates that will be honored as client certificates by the API server. Never auto-approved by kube-controller-manager.
+  kubernetes.io/kube-apiserver-client-kubelet: signs client certificates that will be honored as client certificates by the API server. May be auto-approved by kube-controller-manager.
+  kubernetes.io/kubelet-serving: signs serving certificates that are honored as a valid kubelet serving certificate by the API server, but has no other guarantees.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Automation Examples</title>
+        <link>https://briantward.github.io/openshift-automation-examples/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-automation-examples/</guid>
+        <description>OpenShift Automation Examples   https://github.com/sa-ne/openshift4-rhv-upi
+  https://github.com/sushilsuresh/ocp4-ansible-roles
+  https://github.com/redhat-cop/infra-ansible
+  https://github.com/openshift/openshift-ansible
+  https://github.com/openshift/installer/tree/master/upi/
+     </description>
+      </item>
+    
+      <item>
+        <title>OpenShift Monitoring Blogs</title>
+        <link>https://briantward.github.io/openshift-monitoring-blogs/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-monitoring-blogs/</guid>
+        <description>OpenShift Monitoring Blogs   https://cloud.redhat.com/blog/monitoring-infrastructure-openshift-4.x-using-zabbix-operator
+  https://cloud.redhat.com/blog/how-to-monitoring-openshift-4.x-with-zabbix-using-prometheus-part-2
+  https://cloud.redhat.com/blog/prometheus-alerts-on-openshift
+     </description>
+      </item>
+    
+      <item>
+        <title>External to Internal IdP Initiated Login on RH-SSO</title>
+        <link>https://briantward.github.io/external-to-internal-idp/</link>
+        <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/external-to-internal-idp/</guid>
+        <description>External to Internal IdP Initiated Login on RH-SSO Install the Internal RH-SSO Download the zip install package from access.redhat.com.
+   rh-sso-7.5.0-server-dist.zip
+  rh-sso-7.5.0-saml-eap7-adapter-dist.zip
+   Unzip an installation for your internal IdP.
+ $ unzip rh-sso-7.5.0-server-dist.zip -d internal   Install client adapter for SAML example application on internal RH-SSO
+ $ unzip -o rh-sso-7.5.0-saml-eap7-adapter-dist.zip -d internal/rh-sso-7.5/ $ ./internal/rh-sso-7.5/bin/jboss-cli.sh --file=./internal/rh-sso-7.5/bin/adapter-elytron-install-saml-offline.cli   Install client adapter for OIDC example application on internal RH-SSO</description>
+      </item>
+    
+      <item>
+        <title>Keycloak and oauth2-proxy</title>
+        <link>https://briantward.github.io/keycloak-oauth2-proxy/</link>
+        <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/keycloak-oauth2-proxy/</guid>
+        <description>Keycloak and oauth2-proxy Using the Keycloak Docker image:
+ https://hub.docker.com/r/jboss/keycloak/
+ To run Keycloak:
+ podman run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To increase the debug/trace loglevel, use KEYCLOAK_LOGLEVEL=ALL
+ podman run -e KEYCLOAK_LOGLEVEL=ALL -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To run the oauth2-proxy
+ podman run --volume /home/bward/oauth-proxy-my-app/oauth2-proxy.cfg:/etc/oauth2-proxy.cfg --volume /home/bward/oauth-proxy-my-app/certs:/etc/x509 -p 4180:4180 oauth2-proxy/oauth2-proxy:latest --config=/etc/oauth2-proxy.cfg   Oauth2-proxy has very little information in logging.</description>
+      </item>
     
       <item>
         <title>AWS ELB Kubernetes Service</title>
@@ -16,8 +322,7 @@
         <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/kubernetes-service-aws-elb/</guid>
         <description>AWS ELB Kubernetes Service By default, services of type LoadBalancer create public-facing load balancers. To use an internal load balancer, apply the following annotation to your service:
- service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;
- https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
+ service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;   https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
    </description>
       </item>
     
@@ -103,17 +408,6 @@
       </item>
     
       <item>
-        <title>OpenShift SecurityContextConstraints (SCC)</title>
-        <link>https://briantward.github.io/scc/</link>
-        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/scc/</guid>
-        <description>OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
- Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
- # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
- # oc create rolebinding useroot --role=useroot --serviceaccount=&amp;lt;namespace&amp;gt;:&amp;lt;sa&amp;gt;   (bind it to the service account)</description>
-      </item>
-    
-      <item>
         <title>OpenShift SSH Client in a Pod</title>
         <link>https://briantward.github.io/openshift-ssh-client-in-pod/</link>
         <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
@@ -165,16 +459,6 @@
  $ rpm -qa openshot ffmpeg ffmpeg-4.3.1-16.fc33.x86_64 openshot-2.5.1-4.fc33.noarch   I found the following when searching around for similar issues:
  https://devtalk.blender.org/t/ffmpeg-issues-with-2-83-3/14559
  Which took me to this in the blender code:</description>
-      </item>
-    
-      <item>
-        <title>oc Tips</title>
-        <link>https://briantward.github.io/oc-tips/</link>
-        <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/oc-tips/</guid>
-        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources…​ and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
- $ for node in $(oc get pods -o jsonpath=&amp;#39;{range .items[*].spec}{.nodeName}{&amp;#34; &amp;#34;}{end}&amp;#39;); do echo $node; ssh $node &amp;#34;docker images&amp;#34;;done   Capture total CPU usage in cluster:</description>
       </item>
     
       <item>
@@ -317,19 +601,6 @@ curl -O http://download.newrelic.com/infrastructure_agent/integrations/kubernete
         <description>An Introduction to Running Java on Kubernetes You will need access to a container build tool, a container runtime environment, and a kubernetes environment. There will be suggestions along the way for acquiring these. You will need a virtualization technology to run the minikube or minishift VMs for your kubernetes development environment.
    Build a Demo Spring Boot App  Build an app
 $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</description>
-      </item>
-    
-      <item>
-        <title>bash Tips</title>
-        <link>https://briantward.github.io/bash-tips/</link>
-        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/bash-tips/</guid>
-        <description>Command Tips String the watch command with several commands at once
- watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
- This one is useful when you don’t have a user directory on the system yet.
- /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
- Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
- $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
       </item>
     
       <item>
@@ -1101,6 +1372,17 @@ echo &amp;#39;&amp;lt;root&amp;gt;&amp;lt;foo a=&amp;#34;b&amp;#34;&amp;gt;lorem
  THIS CONFIGURATION HAS NOT BEEN TESTED! THIS IS INTENDED AS A STARTING GUIDE ONLY.
  RPM Base Installation  Register your machine if you have not done so.
 # subscription-manager register     List the available subscriptions you have. Look for the Pool ID of your JBoss Web Server subscription</description>
+      </item>
+    
+      <item>
+        <title>Custom OpenShift 4 Ingress Router</title>
+        <link>https://briantward.github.io/custom-openshift-4-ingress-router/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/custom-openshift-4-ingress-router/</guid>
+        <description>Custom OpenShift 4 Ingress Router This solution is incomplete and is mostly scratch notes. This design is NOT supported by Red Hat! Use at your own risk.
+  Create custom HAProxy Template
+  Create a ConfigMap From the HAProxy Template (these are incomplete Ansible tasks/plays)
+   - name: slurp slurp: src: template file register: haproxy-template - name: k8s: state: present namespace: openshift-ingress definition: apiVersion: v1 kind: ConfigMap metadata: name: haproxy-template data: haproxy-config.</description>
       </item>
     
   </channel>

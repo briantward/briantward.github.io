@@ -23,23 +23,19 @@
 
 <meta property="og:title" content="OpenShift SecurityContextConstraints (SCC)" />
 <meta property="og:description" content="OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
- Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
- # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
- # oc create rolebinding useroot --role=useroot --serviceaccount=&lt;namespace&gt;:&lt;sa&gt;   (bind it to the service account)" />
+ Using # oc adm policy add-scc-to-user anyuid -z useroot will create a rolebinding to a role granting access to modify the SCC (this was changed from directly adding users/groups to the SCC object itself in earlier versions of OpenShift). Note that the -n for namespace is not acknowledged correctly for this command at this time (2023-06-10, TODO: file an issue or fix the code), so you should be in the namespace of the serviceaccount to make this work correctly." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/scc/" />
-<meta property="article:published_time" content="2021-02-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-20T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-06-10T00:00:00+00:00" />
 
 
 <meta itemprop="name" content="OpenShift SecurityContextConstraints (SCC)">
 <meta itemprop="description" content="OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
- Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
- # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
- # oc create rolebinding useroot --role=useroot --serviceaccount=&lt;namespace&gt;:&lt;sa&gt;   (bind it to the service account)">
-<meta itemprop="datePublished" content="2021-02-20T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="65">
+ Using # oc adm policy add-scc-to-user anyuid -z useroot will create a rolebinding to a role granting access to modify the SCC (this was changed from directly adding users/groups to the SCC object itself in earlier versions of OpenShift). Note that the -n for namespace is not acknowledged correctly for this command at this time (2023-06-10, TODO: file an issue or fix the code), so you should be in the namespace of the serviceaccount to make this work correctly.">
+<meta itemprop="datePublished" content="2023-06-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-06-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="336">
 
 
 
@@ -48,9 +44,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift SecurityContextConstraints (SCC)"/>
 <meta name="twitter:description" content="OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
- Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
- # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
- # oc create rolebinding useroot --role=useroot --serviceaccount=&lt;namespace&gt;:&lt;sa&gt;   (bind it to the service account)"/>
+ Using # oc adm policy add-scc-to-user anyuid -z useroot will create a rolebinding to a role granting access to modify the SCC (this was changed from directly adding users/groups to the SCC object itself in earlier versions of OpenShift). Note that the -n for namespace is not acknowledged correctly for this command at this time (2023-06-10, TODO: file an issue or fix the code), so you should be in the namespace of the serviceaccount to make this work correctly."/>
 
 
   </head>
@@ -108,7 +102,7 @@
   <article>
     <header>
       <p>
-        <time datetime="2021-02-20 12:00">2021-02-20</time> &bull;
+        <time datetime="2023-06-10 12:00">2023-06-10</time> &bull;
           
             
             <a href="/categories/openshift">OPENSHIFT</a>
@@ -140,7 +134,7 @@
 <p>It’s recommended to use RBAC to provide access to existing SCCs.</p>
 </div>
 <div class="paragraph">
-<p>Using <code>#oc adm policy add-scc-to-user anyuid -z useroot</code> will modify the SCC.  Instead you can do the following:</p>
+<p>Using <code># oc adm policy add-scc-to-user anyuid -z useroot</code> will create a rolebinding to a role granting access to modify the SCC (this was changed from directly adding users/groups to the SCC object itself in earlier versions of OpenShift). Note that the <code>-n</code> for namespace is not acknowledged correctly for this command at this time (2023-06-10, TODO: file an issue or fix the code), so you should be in the namespace of the serviceaccount to make this work correctly.  You can also do the following:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -164,6 +158,21 @@
 <div class="paragraph">
 <p><a href="https://www.openshift.com/blog/managing-sccs-in-openshift" class="bare">https://www.openshift.com/blog/managing-sccs-in-openshift</a></p>
 </div>
+<div class="sect2">
+<h3 id="_creating_a_custom_more_restrictive_scc">Creating a custom, more restrictive SCC</h3>
+<div class="paragraph">
+<p>I would like a custom SCC that is more restrictive than our current default.  I would like it to be available to all users to selectively use, which means creating a RoleBinding from a ServiceAccount to a ClusterRole that allows use of the particular SCC.  In order to do that, I must add the system:authenticated group to the SCC.  However, that results in a priority challenge with the existing restricted SCC that also is available to the same group, and based on our SCC priority rules, this new more restrictive SCC takes precendence over the default restricted SCC.  This ends up breaking other applications which are part of the platform using the standard restricted SCC.</p>
+</div>
+<div class="paragraph">
+<p>As a result, if you want to use your custom SCC as a default, you cannot configure it as default in OpenShift.  I would recommend configuring it as a part of a pipeline and creating a policy to enforce the rule on pods inclusive or exclusive to a particular namespace.  This way you could manage preventing platform pods from accidentally using the SCC.</p>
+</div>
+<div class="paragraph">
+<p>TODO: link to github project with example restrictive SCC. Links to updated restricted v2 and upstream.</p>
+</div>
+<div class="paragraph">
+<p>Walk through an example.</p>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -179,7 +188,7 @@
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

@@ -5,10 +5,27 @@
     <description>Recent content in debugging on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/debugging/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Debugging Containers in OpenShift</title>
+        <link>https://briantward.github.io/debugging-containers-in-openshift/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/debugging-containers-in-openshift/</guid>
+        <description>Debugging Containers in OpenShift   https://docs.openshift.com/container-platform/4.11/support/troubleshooting/investigating-pod-issues.html
+  https://www.redhat.com/sysadmin/how-oc-debug-works
+  https://gist.github.com/nmasse-itix/0173f925587155ce600a74fe6a912595
+  https://developers.redhat.com/blog/2020/01/09/debugging-applications-within-red-hat-openshift-containers
+  https://access.redhat.com/solutions/1611883
+  https://briantward.github.io/nsenter/
+  https://www.redhat.com/sysadmin/container-namespaces-nsenter
+  https://access.redhat.com/solutions/4569211
+   TODO add more thoughts on this topic
+   </description>
+      </item>
     
       <item>
         <title>Debugging Ephemeral Disk in Kubernetes</title>

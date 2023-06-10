@@ -1,0 +1,26 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>metallb on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/metallb/</link>
+    <description>Recent content in metallb on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/metallb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>MetalLB Demo</title>
+        <link>https://briantward.github.io/metallb-demo/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/metallb-demo/</guid>
+        <description>MetalLB Demo Adapted from other people’s work. This demo shows MetalLB spreading requests across two k8s clusters.
+ https://cloud.redhat.com/blog/metallb-in-bgp-mode
+ Update your linux OS settings to handle what is about to happen in the demo. Otherwise things will fail.
+ $ sudo sysctl fs.inotify.max_user_watches=524288 $ sudo sysctl fs.inotify.max_user_instances=8192   Make that permanent:
+ # echo &amp;#39;fs.inotify.max_user_watches=524288 fs.inotify.max_user_instances=8192&amp;#39; &amp;gt; /etc/sysctl.d/90-metallb-demo.conf   Install golang and a needed library. This was undocumented at the time.</description>
+      </item>
+    
+  </channel>
+</rss>

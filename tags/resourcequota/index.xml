@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>resourcequota on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/resourcequota/</link>
+    <description>Recent content in resourcequota on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/resourcequota/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Default ResourceQuota</title>
+        <link>https://briantward.github.io/default-resourcequota/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/default-resourcequota/</guid>
+        <description>Default ResourceQuota The question of how do I manage application onboarding usually introduces the topic of how to set specific values for ResourceQuota for the applications being onboarded.
+ In the past I have been a part of teams suggesting the concept of T-shirt sizing your applications, e.g. Small, Medium, and Large. Then, during onboarding process, one selects the appropriate T-shirt size ResourceQuota. Your values here could be dependent on your typical workloads.</description>
+      </item>
+    
+  </channel>
+</rss>

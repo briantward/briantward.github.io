@@ -5,7 +5,7 @@
     <description>Recent content in scc on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/scc/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,12 +13,10 @@
       <item>
         <title>OpenShift SecurityContextConstraints (SCC)</title>
         <link>https://briantward.github.io/scc/</link>
-        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+        <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/scc/</guid>
         <description>OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
- Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
- # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
- # oc create rolebinding useroot --role=useroot --serviceaccount=&amp;lt;namespace&amp;gt;:&amp;lt;sa&amp;gt;   (bind it to the service account)</description>
+ Using # oc adm policy add-scc-to-user anyuid -z useroot will create a rolebinding to a role granting access to modify the SCC (this was changed from directly adding users/groups to the SCC object itself in earlier versions of OpenShift). Note that the -n for namespace is not acknowledged correctly for this command at this time (2023-06-10, TODO: file an issue or fix the code), so you should be in the namespace of the serviceaccount to make this work correctly.</description>
       </item>
     
   </channel>

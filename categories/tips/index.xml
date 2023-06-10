@@ -5,10 +5,34 @@
     <description>Recent content in tips on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>oc Tips</title>
+        <link>https://briantward.github.io/oc-tips/</link>
+        <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/oc-tips/</guid>
+        <description>OC Command Tips $ oc login -u system:admin   Older kubectl/oc
+ $ oc whoami --config=$HOME/.kube/config   Current kubectl/oc
+ $ oc whoami --kubeconfig=$HOME/.kube/config   Show all resources…​ and I mean ALL:
+ $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)</description>
+      </item>
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://briantward.github.io/bash-tips/</link>
+        <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/bash-tips/</guid>
+        <description>Command Tips String the watch command with several commands at once
+ watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don’t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
+ Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
+ $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
+      </item>
     
       <item>
         <title>Building a Media Server</title>
@@ -51,16 +75,6 @@
       </item>
     
       <item>
-        <title>oc Tips</title>
-        <link>https://briantward.github.io/oc-tips/</link>
-        <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/oc-tips/</guid>
-        <description>OC Command Tips $ oc login -u system:admin   $ oc whoami --config=$HOME/.kube/config   Show all resources…​ and I mean ALL:
- $ kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n openshift-monitoring   Show docker images on node for each node found in pods listing. (Thanks Todd Penn)
- $ for node in $(oc get pods -o jsonpath=&amp;#39;{range .items[*].spec}{.nodeName}{&amp;#34; &amp;#34;}{end}&amp;#39;); do echo $node; ssh $node &amp;#34;docker images&amp;#34;;done   Capture total CPU usage in cluster:</description>
-      </item>
-    
-      <item>
         <title>DD-WRT Custom Certificate</title>
         <link>https://briantward.github.io/dd-wrt-certificate/</link>
         <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
@@ -94,19 +108,6 @@
   cmake
   llvm
      </description>
-      </item>
-    
-      <item>
-        <title>bash Tips</title>
-        <link>https://briantward.github.io/bash-tips/</link>
-        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/bash-tips/</guid>
-        <description>Command Tips String the watch command with several commands at once
- watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
- This one is useful when you don’t have a user directory on the system yet.
- /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
- Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
- $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
       </item>
     
       <item>

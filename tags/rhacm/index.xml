@@ -1,0 +1,30 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rhacm on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/rhacm/</link>
+    <description>Recent content in rhacm on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/rhacm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>RHACM</title>
+        <link>https://briantward.github.io/rhacm/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rhacm/</guid>
+        <description>RHACM https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html-single/applications/index#gitops-config
+ ArgoCD GitOps for Configuration Management GitOps instance per ManagedClusterSet
+ Things that make you pick single, central:
+   Good starting point
+  Simple management, single place
+   Things that make you change to distributed:
+   One ArgoCD is overloaded.
+  Separation of duties. One ArgoCD for Production. One ArgoCD for NonProduction.
+  Separation of use. E.G. PCI Compliance, separation of elements in different clusters</description>
+      </item>
+    
+  </channel>
+</rss>

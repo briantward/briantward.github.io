@@ -5,10 +5,23 @@
     <description>Recent content in keycloak on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/keycloak/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>External to Internal IdP Initiated Login on RH-SSO</title>
+        <link>https://briantward.github.io/external-to-internal-idp/</link>
+        <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/external-to-internal-idp/</guid>
+        <description>External to Internal IdP Initiated Login on RH-SSO Install the Internal RH-SSO Download the zip install package from access.redhat.com.
+   rh-sso-7.5.0-server-dist.zip
+  rh-sso-7.5.0-saml-eap7-adapter-dist.zip
+   Unzip an installation for your internal IdP.
+ $ unzip rh-sso-7.5.0-server-dist.zip -d internal   Install client adapter for SAML example application on internal RH-SSO
+ $ unzip -o rh-sso-7.5.0-saml-eap7-adapter-dist.zip -d internal/rh-sso-7.5/ $ ./internal/rh-sso-7.5/bin/jboss-cli.sh --file=./internal/rh-sso-7.5/bin/adapter-elytron-install-saml-offline.cli   Install client adapter for OIDC example application on internal RH-SSO</description>
+      </item>
     
       <item>
         <title>RH-SSO Filter Examples</title>

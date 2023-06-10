@@ -5,10 +5,23 @@
     <description>Recent content in bash on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jun 2022 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://briantward.github.io/bash-tips/</link>
+        <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/bash-tips/</guid>
+        <description>Command Tips String the watch command with several commands at once
+ watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don’t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
+ Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
+ $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
+      </item>
     
       <item>
         <title>DD-WRT Custom Certificate</title>
@@ -24,19 +37,6 @@
   USB Storage Support: Enabled
   Automatic Drive Mount: Enabled
    Click Apply Settings</description>
-      </item>
-    
-      <item>
-        <title>bash Tips</title>
-        <link>https://briantward.github.io/bash-tips/</link>
-        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/bash-tips/</guid>
-        <description>Command Tips String the watch command with several commands at once
- watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
- This one is useful when you don’t have a user directory on the system yet.
- /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
- Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
- $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
       </item>
     
       <item>

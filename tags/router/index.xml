@@ -74,5 +74,16 @@
  Log message on router pod attempting to spin up. If you don’t have one attempting to spin up now (i.e. it failed a while back and just rolled back to the previous ReplicationController), delete the latest ReplicationController (not the one running the good pods!</description>
       </item>
     
+      <item>
+        <title>Custom OpenShift 4 Ingress Router</title>
+        <link>https://briantward.github.io/custom-openshift-4-ingress-router/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/custom-openshift-4-ingress-router/</guid>
+        <description>Custom OpenShift 4 Ingress Router This solution is incomplete and is mostly scratch notes. This design is NOT supported by Red Hat! Use at your own risk.
+  Create custom HAProxy Template
+  Create a ConfigMap From the HAProxy Template (these are incomplete Ansible tasks/plays)
+   - name: slurp slurp: src: template file register: haproxy-template - name: k8s: state: present namespace: openshift-ingress definition: apiVersion: v1 kind: ConfigMap metadata: name: haproxy-template data: haproxy-config.</description>
+      </item>
+    
   </channel>
 </rss>

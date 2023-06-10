@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ceph Tips (mostly from ODF) - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Ceph Tips (mostly from ODF)" />
+<meta property="og:description" content="Ceph Tips (mostly from ODF) Example must-gather (be sure to use current version)
+ $ oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.7 --dest-dir=must-gather   TODO: add ODF version
+ Running commands from the node
+ ceph -c /var/lib/rook/openshift-storage/openshift-storage.config health ceph -c /var/lib/rook/openshift-storage/openshift-storage.config -s ceph -c /var/lib/rook/openshift-storage/openshift-storage.config df   Use the tools pod:
+ $ oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch &#39;[{ &#34;op&#34;: &#34;replace&#34;, &#34;path&#34;: &#34;/spec/enableCephTools&#34;, &#34;value&#34;: true }]&#39; $ TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name) $ oc rsh -n openshift-storage $TOOLS_POD   Or all in one:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/ceph-tips/" />
+<meta property="article:published_time" content="2023-04-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-22T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="Ceph Tips (mostly from ODF)">
+<meta itemprop="description" content="Ceph Tips (mostly from ODF) Example must-gather (be sure to use current version)
+ $ oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.7 --dest-dir=must-gather   TODO: add ODF version
+ Running commands from the node
+ ceph -c /var/lib/rook/openshift-storage/openshift-storage.config health ceph -c /var/lib/rook/openshift-storage/openshift-storage.config -s ceph -c /var/lib/rook/openshift-storage/openshift-storage.config df   Use the tools pod:
+ $ oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch &#39;[{ &#34;op&#34;: &#34;replace&#34;, &#34;path&#34;: &#34;/spec/enableCephTools&#34;, &#34;value&#34;: true }]&#39; $ TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name) $ oc rsh -n openshift-storage $TOOLS_POD   Or all in one:">
+<meta itemprop="datePublished" content="2023-04-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-04-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="276">
+
+
+
+<meta itemprop="keywords" content="ceph,odf," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ceph Tips (mostly from ODF)"/>
+<meta name="twitter:description" content="Ceph Tips (mostly from ODF) Example must-gather (be sure to use current version)
+ $ oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.7 --dest-dir=must-gather   TODO: add ODF version
+ Running commands from the node
+ ceph -c /var/lib/rook/openshift-storage/openshift-storage.config health ceph -c /var/lib/rook/openshift-storage/openshift-storage.config -s ceph -c /var/lib/rook/openshift-storage/openshift-storage.config df   Use the tools pod:
+ $ oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch &#39;[{ &#34;op&#34;: &#34;replace&#34;, &#34;path&#34;: &#34;/spec/enableCephTools&#34;, &#34;value&#34;: true }]&#39; $ TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name) $ oc rsh -n openshift-storage $TOOLS_POD   Or all in one:"/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2023-04-22 12:00">2023-04-22</time> &bull;
+          
+            
+            <a href="/categories/ceph">CEPH</a>
+          </p>
+      <h1>Ceph Tips (mostly from ODF)</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/ceph">
+              <span class="hash">#</span>ceph</a>
+          
+            , 
+            <a href="/tags/odf">
+              <span class="hash">#</span>odf</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_ceph_tips_mostly_from_odf">Ceph Tips (mostly from ODF)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Example must-gather (be sure to use current version)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.7 --dest-dir=must-gather</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>TODO: add ODF version</p>
+</div>
+<div class="paragraph">
+<p>Running commands from the node</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ceph -c /var/lib/rook/openshift-storage/openshift-storage.config health
+ceph -c /var/lib/rook/openshift-storage/openshift-storage.config -s
+ceph -c /var/lib/rook/openshift-storage/openshift-storage.config df</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use the tools pod:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch &#39;[{ &#34;op&#34;: &#34;replace&#34;, &#34;path&#34;: &#34;/spec/enableCephTools&#34;, &#34;value&#34;: true }]&#39;
+$ TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+$ oc rsh -n openshift-storage $TOOLS_POD</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or all in one:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc rsh -n openshift-storage $(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example ad-hoc command on toolbox</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc rsh -n openshift-storage $(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name) rbd -p ocs-storagecluster-cephblockpool info csi-vol-4b2fe3ea-24d6-11eb-a381-0a580a81021d</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example useful ceph command outputs (rtm for details)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ceph -s cluster
+ceph osd dump
+ceph osd tree</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Two ways to get the keyrings in OCP</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ for i in $(oc get secret | grep keyring | awk &#39;{print $1}&#39;) ; do oc extract secret/$i --keys=keyring --to=-</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc get secret | grep keyring | awk &#39;{print $1}&#39; | xargs -L 1 oc extract secret/$1 --keys=keyring --to=-</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pretty print PV output</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc get pv -o &#39;custom-columns=NAME:.spec.claimRef.name,PVNAME:.metadata.name,STORAGECLASS:.spec.storageClassName,VOLUMEHANDLE:.spec.csi.volumeHandle&#39;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>TODO: Run this one again to find out what it does</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc get pv pvc-09addd15-bb02-49bf-931e-9606676c080b -o jsonpath=&#39;{.spec.csi.volumeHandle}&#39; | cut -d &#39;-&#39; -f 6- | awk &#39;{print &#34;csi-vol-&#34;$1}&#39;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ok this isn’t Ceph but it is ODF. I’ll place it somewhere better or rename stuff.
+Get Nooba cli.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ url -s https://api.github.com/repos/noobaa/noobaa-operator/releases/latest | grep &#34;linux&#34; | cut -d : -f 2,3 | tr -d \&#34; | wget -qi - ; mv noobaa-linux-* noobaa ; chmod +x noobaa; sudo mv noobaa /usr/bin/</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

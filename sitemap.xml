@@ -3,6 +3,336 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://briantward.github.io/categories/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/csr/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/helm-argocd/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/kubernetes/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/linux/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/posts/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/oc/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/oc-tips/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/openshift/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/scc/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/scc/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/security/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/tips/</loc>
+    <lastmod>2023-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/powershell/</loc>
+    <lastmod>2023-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/powershell-tips/</loc>
+    <lastmod>2023-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/windows/</loc>
+    <lastmod>2023-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/acm/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/argocd-mco/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/capacity/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/ceph/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/ceph/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/ceph-tips/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/debugging/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/debugging-containers-in-openshift/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/default-resourcequota/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/management/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/mco/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/metallb/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/metallb-demo/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/odf/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/openshift-capacity-planning/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/planning/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/resourcequota/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/rhacm/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/rhacm/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/secret-management-in-kubernetes/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/secrets/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/update-win10-to-win11-vm/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/windows/</loc>
+    <lastmod>2023-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/ha/</loc>
+    <lastmod>2022-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/highly-available/</loc>
+    <lastmod>2022-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/openshift-ha/</loc>
+    <lastmod>2022-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/red-hat/</loc>
+    <lastmod>2022-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/eap-container-support/</loc>
+    <lastmod>2022-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/support/</loc>
+    <lastmod>2022-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/bash/</loc>
+    <lastmod>2022-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/bash-tips/</loc>
+    <lastmod>2022-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/automation/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/coreos/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/coreos-notes/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/aws-bastion-to-ocp-over-vpc/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/kubernetes-openshift-csr/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/monitoring/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/openshift-automation-examples/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/openshift-monitoring-blogs/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/ostree/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/vpc/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/external-to-internal-idp/</loc>
+    <lastmod>2022-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/keycloak/</loc>
+    <lastmod>2022-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/sso/</loc>
+    <lastmod>2022-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/categories/containers/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/keycloak-oauth2-proxy/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/proxy/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/sso/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://briantward.github.io/tags/mp4/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
@@ -33,11 +363,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/categories/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/cicd/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
@@ -63,11 +388,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/debugging/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/ephemeral/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
@@ -88,37 +408,7 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/ha/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/highly-available/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/integration/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/kubernetes/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/linux/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/posts/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -148,11 +438,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/categories/openshift/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/openshift-cicd/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
@@ -164,11 +449,6 @@
   
   <url>
     <loc>https://briantward.github.io/openshift-roles/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/scc/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -198,16 +478,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/scc/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/security/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/server/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
@@ -223,22 +493,12 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/tcpdump/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://briantward.github.io/tags/time/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/categories/tips/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -278,16 +538,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/oc/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/oc-tips/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/openshift/</loc>
     <lastmod>2021-01-10T00:00:00+00:00</lastmod>
   </url>
@@ -300,11 +550,6 @@
   <url>
     <loc>https://briantward.github.io/categories/performance/</loc>
     <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/bash/</loc>
-    <lastmod>2021-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -538,11 +783,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/bash-tips/</loc>
-    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/multipath/</loc>
     <lastmod>2020-02-01T00:00:00+00:00</lastmod>
   </url>
@@ -659,11 +899,6 @@
   
   <url>
     <loc>https://briantward.github.io/tags/firewall/</loc>
-    <lastmod>2019-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/keycloak/</loc>
     <lastmod>2019-12-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -904,11 +1139,6 @@
   
   <url>
     <loc>https://briantward.github.io/tags/kvm/</loc>
-    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briantward.github.io/tags/windows/</loc>
     <lastmod>2019-05-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -1573,11 +1803,6 @@
   </url>
   
   <url>
-    <loc>https://briantward.github.io/tags/sso/</loc>
-    <lastmod>2018-05-01T12:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://briantward.github.io/tags/dnsmasq/</loc>
     <lastmod>2018-05-01T10:40:00-04:00</lastmod>
   </url>
@@ -1625,6 +1850,14 @@
   <url>
     <loc>https://briantward.github.io/tags/tomcat/</loc>
     <lastmod>2017-06-29T12:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/custom-openshift-4-ingress-router/</loc>
+  </url>
+  
+  <url>
+    <loc>https://briantward.github.io/tags/ingress/</loc>
   </url>
   
   <url>

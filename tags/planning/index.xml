@@ -1,0 +1,29 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>planning on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/planning/</link>
+    <description>Recent content in planning on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/planning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>OpenShift Capacity Planning</title>
+        <link>https://briantward.github.io/openshift-capacity-planning/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-capacity-planning/</guid>
+        <description>OpenShift Capacity Planning This is a great series of articles written by Raffaele Spazzoli.
+   https://cloud.redhat.com/blog/full-cluster-capacity-management-monitoring-openshift
+  https://cloud.redhat.com/blog/full-cluster-part-2-protecting-nodes
+  https://cloud.redhat.com/blog/full-cluster-part-3-capacity-management
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-4-right-sizing-pods-with-vertical-pod-autoscaler
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-5-a-capacity-management-dashboard
+   Subnet Sizing for OpenShift TODO cleanup formatting here
+ ############################################################################# networking.clusterNetwork[].cidr default: 10.128.0.0/14 (262144 addresses) networking.clusterNetwork[].hostPrefix default: /23 (512 addresses) networking.serviceNetwork default: 172.30.0.0/16 (65536 addresses) networking.machineNetwork[].cidr default: 10.0.0.0/16 (65536 addresses) Each k8s node is assigned a /23 subnet (hostPrefix) out of the given CIDR, allowing for 510 (2^(32 - 23) - 2) Pod IP addresses.</description>
+      </item>
+    
+  </channel>
+</rss>

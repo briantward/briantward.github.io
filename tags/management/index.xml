@@ -1,0 +1,27 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>management on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/management/</link>
+    <description>Recent content in management on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/management/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Secret Management in Kubernetes</title>
+        <link>https://briantward.github.io/secret-management-in-kubernetes/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/secret-management-in-kubernetes/</guid>
+        <description>Secret Management in Kubernetes   BeyondTrust
+  SealedSecret
+  Ansible Vault
+  Hashicorp Vault
+   TODO add links to resources. Add thoughts to objectives.
+   </description>
+      </item>
+    
+  </channel>
+</rss>

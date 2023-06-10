@@ -1,0 +1,27 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vpc on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/vpc/</link>
+    <description>Recent content in vpc on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/vpc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Create Bastion in AWS to Reach OpenShift Over Private VPC</title>
+        <link>https://briantward.github.io/aws-bastion-to-ocp-over-vpc/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/aws-bastion-to-ocp-over-vpc/</guid>
+        <description>Create Bastion in AWS to Reach OpenShift Over Private VPC  vpc peering request from VPC-A
+  vpc peering accept from VPC-B
+  set route from VPC-A to VPC-B on all route definitions
+  set route from VPC-B to VPC-A on all route definitions
+  set security group allow on VPC-A sg’s to accpet connections from VPC-B
+  set security group allow on VPC-B sg’s to accpet connections from VPC-A</description>
+      </item>
+    
+  </channel>
+</rss>

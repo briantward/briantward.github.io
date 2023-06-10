@@ -1,0 +1,52 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>csr on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/csr/</link>
+    <description>Recent content in csr on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/csr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Helm and ArgoCD</title>
+        <link>https://briantward.github.io/helm-argocd/</link>
+        <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/helm-argocd/</guid>
+        <description>Helm and ArgoCD Feature discussions…​
+   https://argoproj.github.io/argo-cd/user-guide/helm/
+  https://github.com/argoproj/argo-cd/issues/5826
+  https://github.com/argoproj/argo-cd/issues/2789
+     ArgoCD and useful GitOps blogs   https://github.com/sa-ne/acm-argocd-application
+  https://github.com/open-gitops/documents/tree/main
+  https://www.youtube.com/playlist?list=PLaR6Rq6Z4IqfGCkI28cUMbNhPhsnj4nq3
+  https://tost.dev/blog/ignore_differences_in_argocd/
+  https://argo-cd.readthedocs.io/en/stable/user-guide/compare-options/
+  https://github.com/jannfis/argo-cd/pull/17/files
+  https://github.com/argoproj/argo-cd/pull/9791
+  https://github.com/argoproj/argo-cd/issues/8683#issuecomment-1111605207
+  https://github.com/argoproj/argo-cd/issues/4487
+  https://docs.openshift.com/container-platform/4.12/cicd/gitops/argo-cd-custom-resource-properties.html
+  https://docs.openshift.com/container-platform/4.12/cicd/gitops/argo-cd-custom-resource-properties.html
+  https://developers.redhat.com/articles/2022/04/13/manage-namespaces-multitenant-clusters-argo-cd-kustomize-and-helm
+  https://cloud.redhat.com/blog/a-guide-to-going-from-zero-to-openshift-cluster-with-gitops
+  https://cloud.redhat.com/blog/configuring-openshift-cluster-with-applicationsets-using-helmkustomize-and-acm-policies
+  https://rcarrata.com/openshift/argo-and-acm/</description>
+      </item>
+    
+      <item>
+        <title>Kubernetes and OpenShift Certificate Signing Requests</title>
+        <link>https://briantward.github.io/kubernetes-openshift-csr/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/kubernetes-openshift-csr/</guid>
+        <description>Kubernetes and OpenShift Certificate Signing Requests Types of CSRs
+ https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/
+   kubernetes.io/kube-apiserver-client: signs certificates that will be honored as client certificates by the API server. Never auto-approved by kube-controller-manager.
+  kubernetes.io/kube-apiserver-client-kubelet: signs client certificates that will be honored as client certificates by the API server. May be auto-approved by kube-controller-manager.
+  kubernetes.io/kubelet-serving: signs serving certificates that are honored as a valid kubelet serving certificate by the API server, but has no other guarantees.</description>
+      </item>
+    
+  </channel>
+</rss>

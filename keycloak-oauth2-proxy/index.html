@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keycloak and oauth2-proxy - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Keycloak and oauth2-proxy" />
+<meta property="og:description" content="Keycloak and oauth2-proxy Using the Keycloak Docker image:
+ https://hub.docker.com/r/jboss/keycloak/
+ To run Keycloak:
+ podman run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To increase the debug/trace loglevel, use KEYCLOAK_LOGLEVEL=ALL
+ podman run -e KEYCLOAK_LOGLEVEL=ALL -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To run the oauth2-proxy
+ podman run --volume /home/bward/oauth-proxy-my-app/oauth2-proxy.cfg:/etc/oauth2-proxy.cfg --volume /home/bward/oauth-proxy-my-app/certs:/etc/x509 -p 4180:4180 oauth2-proxy/oauth2-proxy:latest --config=/etc/oauth2-proxy.cfg   Oauth2-proxy has very little information in logging." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/keycloak-oauth2-proxy/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="Keycloak and oauth2-proxy">
+<meta itemprop="description" content="Keycloak and oauth2-proxy Using the Keycloak Docker image:
+ https://hub.docker.com/r/jboss/keycloak/
+ To run Keycloak:
+ podman run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To increase the debug/trace loglevel, use KEYCLOAK_LOGLEVEL=ALL
+ podman run -e KEYCLOAK_LOGLEVEL=ALL -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To run the oauth2-proxy
+ podman run --volume /home/bward/oauth-proxy-my-app/oauth2-proxy.cfg:/etc/oauth2-proxy.cfg --volume /home/bward/oauth-proxy-my-app/certs:/etc/x509 -p 4180:4180 oauth2-proxy/oauth2-proxy:latest --config=/etc/oauth2-proxy.cfg   Oauth2-proxy has very little information in logging.">
+<meta itemprop="datePublished" content="2021-04-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="146">
+
+
+
+<meta itemprop="keywords" content="sso,security,proxy," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Keycloak and oauth2-proxy"/>
+<meta name="twitter:description" content="Keycloak and oauth2-proxy Using the Keycloak Docker image:
+ https://hub.docker.com/r/jboss/keycloak/
+ To run Keycloak:
+ podman run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To increase the debug/trace loglevel, use KEYCLOAK_LOGLEVEL=ALL
+ podman run -e KEYCLOAK_LOGLEVEL=ALL -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To run the oauth2-proxy
+ podman run --volume /home/bward/oauth-proxy-my-app/oauth2-proxy.cfg:/etc/oauth2-proxy.cfg --volume /home/bward/oauth-proxy-my-app/certs:/etc/x509 -p 4180:4180 oauth2-proxy/oauth2-proxy:latest --config=/etc/oauth2-proxy.cfg   Oauth2-proxy has very little information in logging."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2021-04-15 12:00">2021-04-15</time> &bull;
+          
+            
+            <a href="/categories/containers">CONTAINERS</a>
+          
+            , 
+            <a href="/categories/linux">LINUX</a>
+          </p>
+      <h1>Keycloak and oauth2-proxy</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/sso">
+              <span class="hash">#</span>sso</a>
+          
+            , 
+            <a href="/tags/security">
+              <span class="hash">#</span>security</a>
+          
+            , 
+            <a href="/tags/proxy">
+              <span class="hash">#</span>proxy</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_keycloak_and_oauth2_proxy">Keycloak and oauth2-proxy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the Keycloak Docker image:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://hub.docker.com/r/jboss/keycloak/" class="bare">https://hub.docker.com/r/jboss/keycloak/</a></p>
+</div>
+<div class="paragraph">
+<p>To run Keycloak:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>podman run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To increase the debug/trace loglevel, use <code>KEYCLOAK_LOGLEVEL=ALL</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>podman run -e KEYCLOAK_LOGLEVEL=ALL -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To run the oauth2-proxy</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>podman run --volume /home/bward/oauth-proxy-my-app/oauth2-proxy.cfg:/etc/oauth2-proxy.cfg --volume /home/bward/oauth-proxy-my-app/certs:/etc/x509 -p 4180:4180 oauth2-proxy/oauth2-proxy:latest --config=/etc/oauth2-proxy.cfg</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Oauth2-proxy has very little information in logging.  To debug it, I built and ran</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>podman run --security-opt seccomp=unconfined --volume /home/bward/oauth-proxy-my-app/oauth2-proxy.cfg:/etc/oauth2-proxy.cfg --volume /home/bward/oauth-proxy-my-app/certs:/etc/x509 -p 4180:4180 -p 4080:4080 oauth2-proxy-debug:latest --config=/etc/oauth2-proxy.cfg</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Debugging golang:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv.md" class="bare">https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv.md</a></p>
+</li>
+<li>
+<p><a href="https://mikemadisonweb.github.io/2018/06/14/go-remote-debug/" class="bare">https://mikemadisonweb.github.io/2018/06/14/go-remote-debug/</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Docs</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://oauth2-proxy.github.io/oauth2-proxy/docs/" class="bare">https://oauth2-proxy.github.io/oauth2-proxy/docs/</a></p>
+</li>
+<li>
+<p><a href="https://github.com/oauth2-proxy/oauth2-proxy/blob/master/Dockerfile" class="bare">https://github.com/oauth2-proxy/oauth2-proxy/blob/master/Dockerfile</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TODO:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go back and ensure all SSL configs on both keycloak, oauth2-proxy, and app</p>
+</li>
+<li>
+<p>fix backchannel logout by setting trust store — why does it need this here if the rest works fine?? probably because the server is now sending a request, instead of just responses during the login sequence</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

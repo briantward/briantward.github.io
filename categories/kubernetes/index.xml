@@ -5,10 +5,153 @@
     <description>Recent content in kubernetes on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Helm and ArgoCD</title>
+        <link>https://briantward.github.io/helm-argocd/</link>
+        <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/helm-argocd/</guid>
+        <description>Helm and ArgoCD Feature discussions…​
+   https://argoproj.github.io/argo-cd/user-guide/helm/
+  https://github.com/argoproj/argo-cd/issues/5826
+  https://github.com/argoproj/argo-cd/issues/2789
+     ArgoCD and useful GitOps blogs   https://github.com/sa-ne/acm-argocd-application
+  https://github.com/open-gitops/documents/tree/main
+  https://www.youtube.com/playlist?list=PLaR6Rq6Z4IqfGCkI28cUMbNhPhsnj4nq3
+  https://tost.dev/blog/ignore_differences_in_argocd/
+  https://argo-cd.readthedocs.io/en/stable/user-guide/compare-options/
+  https://github.com/jannfis/argo-cd/pull/17/files
+  https://github.com/argoproj/argo-cd/pull/9791
+  https://github.com/argoproj/argo-cd/issues/8683#issuecomment-1111605207
+  https://github.com/argoproj/argo-cd/issues/4487
+  https://docs.openshift.com/container-platform/4.12/cicd/gitops/argo-cd-custom-resource-properties.html
+  https://docs.openshift.com/container-platform/4.12/cicd/gitops/argo-cd-custom-resource-properties.html
+  https://developers.redhat.com/articles/2022/04/13/manage-namespaces-multitenant-clusters-argo-cd-kustomize-and-helm
+  https://cloud.redhat.com/blog/a-guide-to-going-from-zero-to-openshift-cluster-with-gitops
+  https://cloud.redhat.com/blog/configuring-openshift-cluster-with-applicationsets-using-helmkustomize-and-acm-policies
+  https://rcarrata.com/openshift/argo-and-acm/</description>
+      </item>
+    
+      <item>
+        <title>ArgoCD MCO</title>
+        <link>https://briantward.github.io/argocd-mco/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/argocd-mco/</guid>
+        <description>Provide ArgoCD permissions to control Advanced Cluster Management’s Multicluster Observability RHACM MCO One off command:
+  $ oc adm policy add-cluster-role-to-user multiclusterobservabilities.observability.open-cluster-management.io-v1beta2-admin -z openshift-gitops-argocd-application-controller -n openshift-gitops clusterrole.rbac.authorization.k8s.io/multiclusterobservabilities.observability.open-cluster-management.io-v1beta2-admin added: &amp;#34;openshift-gitops-argocd-application-controller&amp;#34;    $ oc adm policy add-cluster-role-to-user multiclusterobservabilities.observability.open-cluster-management.io-v1beta1-admin -z openshift-gitops-argocd-application-controller -n openshift-gitops clusterrole.rbac.authorization.k8s.io/multiclusterobservabilities.observability.open-cluster-management.io-v1beta1-admin added: &amp;#34;openshift-gitops-argocd-application-controller&amp;#34;   Declarative Spec for the same:
+ apiVersion: v1 items: - apiVersion: rbac.authorization.k8s.io/v1 kind: ClusterRoleBinding metadata: name: argocd-mcov1-admin roleRef: apiGroup: rbac.authorization.k8s.io kind: ClusterRole name: multiclusterobservabilities.</description>
+      </item>
+    
+      <item>
+        <title>Debugging Containers in OpenShift</title>
+        <link>https://briantward.github.io/debugging-containers-in-openshift/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/debugging-containers-in-openshift/</guid>
+        <description>Debugging Containers in OpenShift   https://docs.openshift.com/container-platform/4.11/support/troubleshooting/investigating-pod-issues.html
+  https://www.redhat.com/sysadmin/how-oc-debug-works
+  https://gist.github.com/nmasse-itix/0173f925587155ce600a74fe6a912595
+  https://developers.redhat.com/blog/2020/01/09/debugging-applications-within-red-hat-openshift-containers
+  https://access.redhat.com/solutions/1611883
+  https://briantward.github.io/nsenter/
+  https://www.redhat.com/sysadmin/container-namespaces-nsenter
+  https://access.redhat.com/solutions/4569211
+   TODO add more thoughts on this topic
+   </description>
+      </item>
+    
+      <item>
+        <title>Default ResourceQuota</title>
+        <link>https://briantward.github.io/default-resourcequota/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/default-resourcequota/</guid>
+        <description>Default ResourceQuota The question of how do I manage application onboarding usually introduces the topic of how to set specific values for ResourceQuota for the applications being onboarded.
+ In the past I have been a part of teams suggesting the concept of T-shirt sizing your applications, e.g. Small, Medium, and Large. Then, during onboarding process, one selects the appropriate T-shirt size ResourceQuota. Your values here could be dependent on your typical workloads.</description>
+      </item>
+    
+      <item>
+        <title>MetalLB Demo</title>
+        <link>https://briantward.github.io/metallb-demo/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/metallb-demo/</guid>
+        <description>MetalLB Demo Adapted from other people’s work. This demo shows MetalLB spreading requests across two k8s clusters.
+ https://cloud.redhat.com/blog/metallb-in-bgp-mode
+ Update your linux OS settings to handle what is about to happen in the demo. Otherwise things will fail.
+ $ sudo sysctl fs.inotify.max_user_watches=524288 $ sudo sysctl fs.inotify.max_user_instances=8192   Make that permanent:
+ # echo &amp;#39;fs.inotify.max_user_watches=524288 fs.inotify.max_user_instances=8192&amp;#39; &amp;gt; /etc/sysctl.d/90-metallb-demo.conf   Install golang and a needed library. This was undocumented at the time.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Capacity Planning</title>
+        <link>https://briantward.github.io/openshift-capacity-planning/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-capacity-planning/</guid>
+        <description>OpenShift Capacity Planning This is a great series of articles written by Raffaele Spazzoli.
+   https://cloud.redhat.com/blog/full-cluster-capacity-management-monitoring-openshift
+  https://cloud.redhat.com/blog/full-cluster-part-2-protecting-nodes
+  https://cloud.redhat.com/blog/full-cluster-part-3-capacity-management
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-4-right-sizing-pods-with-vertical-pod-autoscaler
+  https://cloud.redhat.com/blog/how-full-is-my-cluster-part-5-a-capacity-management-dashboard
+   Subnet Sizing for OpenShift TODO cleanup formatting here
+ ############################################################################# networking.clusterNetwork[].cidr default: 10.128.0.0/14 (262144 addresses) networking.clusterNetwork[].hostPrefix default: /23 (512 addresses) networking.serviceNetwork default: 172.30.0.0/16 (65536 addresses) networking.machineNetwork[].cidr default: 10.0.0.0/16 (65536 addresses) Each k8s node is assigned a /23 subnet (hostPrefix) out of the given CIDR, allowing for 510 (2^(32 - 23) - 2) Pod IP addresses.</description>
+      </item>
+    
+      <item>
+        <title>RHACM</title>
+        <link>https://briantward.github.io/rhacm/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/rhacm/</guid>
+        <description>RHACM https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html-single/applications/index#gitops-config
+ ArgoCD GitOps for Configuration Management GitOps instance per ManagedClusterSet
+ Things that make you pick single, central:
+   Good starting point
+  Simple management, single place
+   Things that make you change to distributed:
+   One ArgoCD is overloaded.
+  Separation of duties. One ArgoCD for Production. One ArgoCD for NonProduction.
+  Separation of use. E.G. PCI Compliance, separation of elements in different clusters</description>
+      </item>
+    
+      <item>
+        <title>Secret Management in Kubernetes</title>
+        <link>https://briantward.github.io/secret-management-in-kubernetes/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/secret-management-in-kubernetes/</guid>
+        <description>Secret Management in Kubernetes   BeyondTrust
+  SealedSecret
+  Ansible Vault
+  Hashicorp Vault
+   TODO add links to resources. Add thoughts to objectives.
+   </description>
+      </item>
+    
+      <item>
+        <title>Kubernetes and OpenShift Certificate Signing Requests</title>
+        <link>https://briantward.github.io/kubernetes-openshift-csr/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/kubernetes-openshift-csr/</guid>
+        <description>Kubernetes and OpenShift Certificate Signing Requests Types of CSRs
+ https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/
+   kubernetes.io/kube-apiserver-client: signs certificates that will be honored as client certificates by the API server. Never auto-approved by kube-controller-manager.
+  kubernetes.io/kube-apiserver-client-kubelet: signs client certificates that will be honored as client certificates by the API server. May be auto-approved by kube-controller-manager.
+  kubernetes.io/kubelet-serving: signs serving certificates that are honored as a valid kubelet serving certificate by the API server, but has no other guarantees.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift Automation Examples</title>
+        <link>https://briantward.github.io/openshift-automation-examples/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-automation-examples/</guid>
+        <description>OpenShift Automation Examples   https://github.com/sa-ne/openshift4-rhv-upi
+  https://github.com/sushilsuresh/ocp4-ansible-roles
+  https://github.com/redhat-cop/infra-ansible
+  https://github.com/openshift/openshift-ansible
+  https://github.com/openshift/installer/tree/master/upi/
+     </description>
+      </item>
     
       <item>
         <title>AWS ELB Kubernetes Service</title>
@@ -16,8 +159,7 @@
         <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/kubernetes-service-aws-elb/</guid>
         <description>AWS ELB Kubernetes Service By default, services of type LoadBalancer create public-facing load balancers. To use an internal load balancer, apply the following annotation to your service:
- service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;
- https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
+ service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;   https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
    </description>
       </item>
     

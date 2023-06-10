@@ -30,8 +30,8 @@
  $ docker images | grep -v REPO | awk &#39;{print $1&#34;:&#34;$2}&#39; | xargs docker rmi   Otherise this works fine:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://briantward.github.io/bash-tips/" />
-<meta property="article:published_time" content="2020-02-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-02-01T00:00:00+00:00" />
+<meta property="article:published_time" content="2022-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-10T00:00:00+00:00" />
 
 
 <meta itemprop="name" content="bash Tips">
@@ -41,9 +41,9 @@
  /sbin/mkhomedir_helper &lt;username&gt; [&lt;umask&gt; [&lt;skeldir&gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
  Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
  $ docker images | grep -v REPO | awk &#39;{print $1&#34;:&#34;$2}&#39; | xargs docker rmi   Otherise this works fine:">
-<meta itemprop="datePublished" content="2020-02-01T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-02-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="133">
+<meta itemprop="datePublished" content="2022-06-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="152">
 
 
 
@@ -114,7 +114,7 @@
   <article>
     <header>
       <p>
-        <time datetime="2020-02-01 12:00">2020-02-01</time> &bull;
+        <time datetime="2022-06-10 12:00">2022-06-10</time> &bull;
           
             
             <a href="/categories/tips">TIPS</a>
@@ -205,6 +205,14 @@
 <pre>$ cat router-certs-default.json | jq .data[\&#34;tls.crt\&#34;] -r | base64 -d | openssl x509 -in - -text -noout</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Test a port with a telnet connection (useful if you don’t have netcat or telnet)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ curl -v telnet://&lt;ServerIP&gt;:Port</pre>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -220,7 +228,7 @@
     Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
   </div>
   <div class="copyright">
-    &copy; 2021 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
   </div>
 </footer>
 

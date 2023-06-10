@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetalLB Demo - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="MetalLB Demo" />
+<meta property="og:description" content="MetalLB Demo Adapted from other people’s work. This demo shows MetalLB spreading requests across two k8s clusters.
+ https://cloud.redhat.com/blog/metallb-in-bgp-mode
+ Update your linux OS settings to handle what is about to happen in the demo. Otherwise things will fail.
+ $ sudo sysctl fs.inotify.max_user_watches=524288 $ sudo sysctl fs.inotify.max_user_instances=8192   Make that permanent:
+ # echo &#39;fs.inotify.max_user_watches=524288 fs.inotify.max_user_instances=8192&#39; &gt; /etc/sysctl.d/90-metallb-demo.conf   Install golang and a needed library. This was undocumented at the time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/metallb-demo/" />
+<meta property="article:published_time" content="2023-04-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-22T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="MetalLB Demo">
+<meta itemprop="description" content="MetalLB Demo Adapted from other people’s work. This demo shows MetalLB spreading requests across two k8s clusters.
+ https://cloud.redhat.com/blog/metallb-in-bgp-mode
+ Update your linux OS settings to handle what is about to happen in the demo. Otherwise things will fail.
+ $ sudo sysctl fs.inotify.max_user_watches=524288 $ sudo sysctl fs.inotify.max_user_instances=8192   Make that permanent:
+ # echo &#39;fs.inotify.max_user_watches=524288 fs.inotify.max_user_instances=8192&#39; &gt; /etc/sysctl.d/90-metallb-demo.conf   Install golang and a needed library. This was undocumented at the time.">
+<meta itemprop="datePublished" content="2023-04-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-04-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="719">
+
+
+
+<meta itemprop="keywords" content="metallb," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MetalLB Demo"/>
+<meta name="twitter:description" content="MetalLB Demo Adapted from other people’s work. This demo shows MetalLB spreading requests across two k8s clusters.
+ https://cloud.redhat.com/blog/metallb-in-bgp-mode
+ Update your linux OS settings to handle what is about to happen in the demo. Otherwise things will fail.
+ $ sudo sysctl fs.inotify.max_user_watches=524288 $ sudo sysctl fs.inotify.max_user_instances=8192   Make that permanent:
+ # echo &#39;fs.inotify.max_user_watches=524288 fs.inotify.max_user_instances=8192&#39; &gt; /etc/sysctl.d/90-metallb-demo.conf   Install golang and a needed library. This was undocumented at the time."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="2023-04-22 12:00">2023-04-22</time> &bull;
+          
+            
+            <a href="/categories/kubernetes">KUBERNETES</a>
+          
+            , 
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>MetalLB Demo</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/metallb">
+              <span class="hash">#</span>metallb</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_metallb_demo">MetalLB Demo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adapted from other people’s work. This demo shows MetalLB spreading requests across two k8s clusters.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://cloud.redhat.com/blog/metallb-in-bgp-mode" class="bare">https://cloud.redhat.com/blog/metallb-in-bgp-mode</a></p>
+</div>
+<div class="paragraph">
+<p>Update your linux OS settings to handle what is about to happen in the demo.  Otherwise things will fail.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo sysctl fs.inotify.max_user_watches=524288
+$ sudo sysctl fs.inotify.max_user_instances=8192</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Make that permanent:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># echo &#39;fs.inotify.max_user_watches=524288
+fs.inotify.max_user_instances=8192&#39; &gt; /etc/sysctl.d/90-metallb-demo.conf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install golang and a needed library.  This was undocumented at the time.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ go install sigs.k8s.io/controller-tools/cmd/controller-gen@v0.7.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add golang bin to your path.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># cat ~/.bash_profile
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+export PATH=$PATH:/root/go/bin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remove any previous environments</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ inv dev-env-cleanup --name cluster2
+$ inv dev-env-cleanup --name cluster1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remove any previous routes added to base system</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ ip route
+(reverse search &#34;route add&#34;)
+$ ip route del 192.168.10.0/24 via 172.18.0.6</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check everything is gone</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl get nodes -o wide --context kind-cluster1
+$ kubectl get nodes -o wide --context kind-cluster2
+$ docker ps -a</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create first k8s cluster with bgp running (errors may show temporarily while components wait for other components to come up.)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ inv dev-env --name cluster1 --protocol bgp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check first cluster nodes from docker</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker ps</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Show nodes, Show metallb pods</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl get nodes -o wide --context kind-cluster1
+$ kubectl get pods -n metallb-system -o wide --context kind-cluster1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create the nginx deployment and service</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl apply -f dev-env/testsvc.yaml  --context kind-cluster1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check the FRR router container, routes should show up for the service</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker exec frr vtysh -c &#34;show ip bgp summary&#34;
+$ docker exec frr vtysh -c &#34;show ip bgp detail&#34;
+$ docker exec frr ip route</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add a route to base system to use the router for the k8s cluster</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ ip route add 192.168.10.0/24 via 172.18.0.4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run the test.sh script</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ echo &#39;#!/bin/bash
+
+while true; do
+  curl http://192.168.10.0 --connect-timeout 1 --no-keepalive #&gt; /dev/null 2&gt;&amp;1
+  echo $?
+  sleep 1
+done&#39; &gt; ~/test.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>$ chmod +x ~/test.sh</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ ~/test.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Change the nginx Welcome page to show cluster1</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl exec -i -t $(kubectl get pods --context kind-cluster1 -o name) --context kind-cluster1 -- /bin/bash -c &#34;echo cluster1 &gt; /usr/share/nginx/html/index.html&#34;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create second k8s cluster without bgp</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ inv dev-env --name cluster2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check second cluster nodes from docker</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker ps</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Show no changes yet to router</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker exec frr vtysh -c &#34;show ip bgp summary&#34;
+$ docker exec frr vtysh -c &#34;show ip bgp detail&#34;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install MetalLB manually</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.7/config/manifests/metallb-frr.yaml --context kind-cluster2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wait a few seconds before applying the config…​</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl apply -f dev-env/bgp/config.yaml --context kind-cluster2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create the nginx deployment and service</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl apply -f dev-env/testsvc.yaml  --context kind-cluster2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Change the nginx Welcome page to show cluster1</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl exec -i -t $(kubectl get pods --context kind-cluster2 -o name) --context kind-cluster2 -- /bin/bash -c &#34;echo cluster2 &gt; /usr/share/nginx/html/index.html&#34;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Update the router bgpd.conf</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ vi dev-env/bgp/frr-volume/bgpd.conf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>...
+router bgp 64512
+ no bgp default ipv4-unicast
+ no bgp network import-check
+ neighbor 172.18.0.2 remote-as 64512
+ neighbor 172.18.0.3 remote-as 64512
+ neighbor 172.18.0.5 remote-as 64512
+ neighbor 172.18.0.6 remote-as 64512
+
+ address-family ipv4 unicast
+  neighbor 172.18.0.2 activate
+  neighbor 172.18.0.2 next-hop-self
+  neighbor 172.18.0.3 activate
+  neighbor 172.18.0.3 next-hop-self
+  neighbor 172.18.0.5 activate
+  neighbor 172.18.0.5 next-hop-self
+  neighbor 172.18.0.6 activate
+  neighbor 172.18.0.6 next-hop-self
+ exit-address-family
+...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Stop the router</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker ps | grep frr | awk &#39;{print $1}&#39; | xargs docker stop</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run a new router</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker run -d --privileged --network kind --rm --ulimit core=-1 --name frr --volume /root/metallb/dev-env/bgp/frr-volume:/etc/frr frrouting/frr:v7.5.1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Show changes to router</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker exec frr vtysh -c &#34;show ip bgp summary&#34;
+$ docker exec frr vtysh -c &#34;show ip bgp detail&#34;
+$ docker exec frr ip route
+ (2 new nodes show up and take the route)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remove the requested Service LoadBalancer IP</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl delete svc nginx --context kind-cluster2
+$ kubectl get svc nginx --context kind-cluster2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Show changes to router</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker exec frr vtysh -c &#34;show ip bgp summary&#34;
+$ docker exec frr vtysh -c &#34;show ip bgp detail&#34;
+$ docker exec frr ip route
+ (2 new nodes show up and take the route)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Apply the Service back</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl apply -f dev-env/testsvc.yaml  --context kind-cluster2</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ kubectl get bgpadvertisement.metallb.io/empty -n metallb-system -o yaml --context kind-cluster2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run only on workers, not the control-plane:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  annotations:
+  name: empty
+  namespace: metallb-system
+spec:
+  nodeSelectors:
+  - matchExpressions:
+    - {key: node-role.kubernetes.io/control-plane, operator: DoesNotExist}
+  localPref: 0</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

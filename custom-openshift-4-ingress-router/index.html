@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom OpenShift 4 Ingress Router - Everyday Linux</title>
+<meta name="author" content="Everyday Linux">
+<meta name="description" content="Examples of working solutions in everyday Linux.">
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link rel="stylesheet" href='/assets/css/main.6c6783c882af.css'>
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Everyday Linux" />
+<link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Everyday Linux" />
+
+<meta property="og:title" content="Custom OpenShift 4 Ingress Router" />
+<meta property="og:description" content="Custom OpenShift 4 Ingress Router This solution is incomplete and is mostly scratch notes. This design is NOT supported by Red Hat! Use at your own risk.
+  Create custom HAProxy Template
+  Create a ConfigMap From the HAProxy Template (these are incomplete Ansible tasks/plays)
+   - name: slurp slurp: src: template file register: haproxy-template - name: k8s: state: present namespace: openshift-ingress definition: apiVersion: v1 kind: ConfigMap metadata: name: haproxy-template data: haproxy-config." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://briantward.github.io/custom-openshift-4-ingress-router/" />
+
+
+
+<meta itemprop="name" content="Custom OpenShift 4 Ingress Router">
+<meta itemprop="description" content="Custom OpenShift 4 Ingress Router This solution is incomplete and is mostly scratch notes. This design is NOT supported by Red Hat! Use at your own risk.
+  Create custom HAProxy Template
+  Create a ConfigMap From the HAProxy Template (these are incomplete Ansible tasks/plays)
+   - name: slurp slurp: src: template file register: haproxy-template - name: k8s: state: present namespace: openshift-ingress definition: apiVersion: v1 kind: ConfigMap metadata: name: haproxy-template data: haproxy-config.">
+
+<meta itemprop="wordCount" content="221">
+
+
+
+<meta itemprop="keywords" content="router,ingress,kubernetes," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Custom OpenShift 4 Ingress Router"/>
+<meta name="twitter:description" content="Custom OpenShift 4 Ingress Router This solution is incomplete and is mostly scratch notes. This design is NOT supported by Red Hat! Use at your own risk.
+  Create custom HAProxy Template
+  Create a ConfigMap From the HAProxy Template (these are incomplete Ansible tasks/plays)
+   - name: slurp slurp: src: template file register: haproxy-template - name: k8s: state: present namespace: openshift-ingress definition: apiVersion: v1 kind: ConfigMap metadata: name: haproxy-template data: haproxy-config."/>
+
+
+  </head>
+  <body>
+    <nav>
+  <div class="title">
+    
+      <a href="/" title="Homepage">
+        Everyday Linux
+      </a>
+    
+  </div>
+  <div class="nav">
+    
+      <a href="/" title="Homepage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </a>
+    
+    <a href="/posts/index.xml" title="RSS">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="rss"
+      >
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+    <main>
+      
+  <article>
+    <header>
+      <p>
+        <time datetime="0001-01-01 12:00">0001-01-01</time> &bull;
+          
+            
+            <a href="/categories/openshift">OPENSHIFT</a>
+          </p>
+      <h1>Custom OpenShift 4 Ingress Router</h1>
+      <p>
+        
+          
+            
+            <a href="/tags/router">
+              <span class="hash">#</span>router</a>
+          
+            , 
+            <a href="/tags/ingress">
+              <span class="hash">#</span>ingress</a>
+          
+            , 
+            <a href="/tags/kubernetes">
+              <span class="hash">#</span>kubernetes</a>
+          
+        
+      </p>
+    </header>
+    <section>
+      
+<div class="sect1">
+<h2 id="_custom_openshift_4_ingress_router">Custom OpenShift 4 Ingress Router</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This solution is incomplete and is mostly scratch notes. This design is NOT supported by Red Hat! Use at your own risk.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create custom HAProxy Template</p>
+</li>
+<li>
+<p>Create a ConfigMap From the HAProxy Template (these are incomplete Ansible tasks/plays)</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- name: slurp
+  slurp:
+    src: template file
+  register: haproxy-template
+
+- name:
+  k8s:
+    state: present
+    namespace: openshift-ingress
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: haproxy-template
+      data:
+        haproxy-config.template: &#34;{{ haproxy-template | b64decode }}&#34;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a TLS secret for the Custom Domain (use your favorite Secrets sync solution)</p>
+</li>
+<li>
+<p>Create a Custom Router Deployment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>get deployment</p>
+</li>
+<li>
+<p>remove unneeded fields, rename object</p>
+</li>
+<li>
+<p>oc volume add --dry-run</p>
+</li>
+<li>
+<p>create deployment</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create the internal Service for the Custom Router</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>get service</p>
+</li>
+<li>
+<p>remove unneeded fields, rename object</p>
+</li>
+<li>
+<p>modify fields</p>
+</li>
+<li>
+<p>create service</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create the LoadBalancer Service (AWS) for the Custom Router</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>get service</p>
+</li>
+<li>
+<p>remove unneeded fields, rename object</p>
+</li>
+<li>
+<p>modify fields</p>
+</li>
+<li>
+<p>create service</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Wait for the LoadBalancer Service to create an ELB</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- name: Wait
+  k8s:
+    state: present
+    name: router-custom
+    namespace: openshift-ingress
+    api_version: v1
+    kind: Service
+  delay: 5
+  retries: 10
+  register: loadbalancer
+  until: (loadbalancer.results.status.loadBalancer is defined) and (loadbalancer.result.status.loadBalancer.ingress is defined) and (loadbalancer.result.status.loadBalancer.ingress[0].hostname is defined) and (loadbalancer.result.status.loadBalancer.ingress[0].hostname|length &gt; 0)
+
+. Get the Generated ELB name (loadbalancer.result.status.loadBalancer.ingress[0].hostname)
+
+- name:
+  set_fact:
+    generated_elb_name: &#34;{{ loadbalancer.result.status.loadBalancer.ingress[0].hostname }}&#34;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a DNSRecord in <code>openshift-ingress-operator</code> namespace for the Custom Router</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- name:
+  k8s:
+    state: present
+    definition:
+      TODO</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer>
+      
+      
+    </footer>
+  </article>
+
+    </main>
+    <footer>
+  <div class="powered-by">
+    Powered by <a href="https://gohugo.io" title="A Fast and Flexible Website Generator">Hugo</a> &amp; <a href="https://github.com/eshlox/simplicity" title="Hugo theme">Simplicity</a>.
+  </div>
+  <div class="copyright">
+    &copy; 2023 Everyday Linux. <a href="http://creativecommons.org/licenses/by-sa/4.0/">Some Rights Reserved</a>.
+  </div>
+</footer>
+
+    <script src="/assets/js/main.28b0c18ba028.js"></script>
+    
+    
+  </body>
+</html>

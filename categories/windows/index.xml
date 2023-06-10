@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>windows on Everyday Linux</title>
+    <link>https://briantward.github.io/categories/windows/</link>
+    <description>Recent content in windows on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/categories/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Update Win10 to Win11 VM</title>
+        <link>https://briantward.github.io/update-win10-to-win11-vm/</link>
+        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/update-win10-to-win11-vm/</guid>
+        <description>Update Win10 to Win11 VM Because I do need to use Microsoft Windows from time to time.
+ migrating to TPM and UEFI on windows VM for windows 11 prep
+ https://www.maketecheasier.com/convert-legacy-bios-uefi-windows10/
+   </description>
+      </item>
+    
+  </channel>
+</rss>

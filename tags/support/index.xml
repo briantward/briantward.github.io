@@ -1,0 +1,27 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>support on Everyday Linux</title>
+    <link>https://briantward.github.io/tags/support/</link>
+    <description>Recent content in support on Everyday Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Sep 2022 00:00:00 +0000</lastBuildDate>
+    
+      <atom:link href="https://briantward.github.io/tags/support/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Red Hat Support on JBoss EAP in Containers</title>
+        <link>https://briantward.github.io/eap-container-support/</link>
+        <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/eap-container-support/</guid>
+        <description>Red Hat Support on JBoss EAP in Containers   Red Hat JBoss Middleware Product Update and Support Policy
+  Life Cycle and Update Policies
+  Red Hat OpenShift Container Platform Life Cycle Policy
+  Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
+  Support Guidelines for Red Hat Middleware Products Deployed in 3rd-party Environments
+  Support for Red Hat JBoss Middleware Containers</description>
+      </item>
+    
+  </channel>
+</rss>

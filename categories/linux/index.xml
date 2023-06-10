@@ -5,10 +5,109 @@
     <description>Recent content in linux on Everyday Linux</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate>
     
       <atom:link href="https://briantward.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>OpenShift SecurityContextConstraints (SCC)</title>
+        <link>https://briantward.github.io/scc/</link>
+        <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/scc/</guid>
+        <description>OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
+ Using # oc adm policy add-scc-to-user anyuid -z useroot will create a rolebinding to a role granting access to modify the SCC (this was changed from directly adding users/groups to the SCC object itself in earlier versions of OpenShift). Note that the -n for namespace is not acknowledged correctly for this command at this time (2023-06-10, TODO: file an issue or fix the code), so you should be in the namespace of the serviceaccount to make this work correctly.</description>
+      </item>
+    
+      <item>
+        <title>OpenShift HA</title>
+        <link>https://briantward.github.io/openshift-ha/</link>
+        <pubDate>Sat, 22 Oct 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/openshift-ha/</guid>
+        <description>OpenShift HA Good references and resources
+   https://www.openshift.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://www.openshift.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://www.openshift.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://www.openshift.com/blog/disaster-recovery-with-gitops
+  https://docs.openshift.com/container-platform/4.6/backup_and_restore/disaster_recovery/about-disaster-recovery.html
+  https://cloud.redhat.com/blog/8-application-design-principles-to-cope-with-openshift-maintenance-operations
+  https://cloud.redhat.com/blog/stateful-workloads-and-the-two-data-center-conundrum
+  https://cloud.redhat.com/blog/disaster-recovery-strategies-for-applications-running-on-openshift
+  https://cloud.redhat.com/blog/deploying-openshift-applications-multiple-datacenters
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-3-keycloak
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-four-kafka
+  https://cloud.redhat.com/blog/geographically-distributed-stateful-workloads-part-five-yugabytedb
+   DR options
+ Failure Scenarios
+   Complete datacenter outage
+  Availability Zone failure (network segment or group of racks)</description>
+      </item>
+    
+      <item>
+        <title>Red Hat Support on JBoss EAP in Containers</title>
+        <link>https://briantward.github.io/eap-container-support/</link>
+        <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/eap-container-support/</guid>
+        <description>Red Hat Support on JBoss EAP in Containers   Red Hat JBoss Middleware Product Update and Support Policy
+  Life Cycle and Update Policies
+  Red Hat OpenShift Container Platform Life Cycle Policy
+  Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
+  Support Guidelines for Red Hat Middleware Products Deployed in 3rd-party Environments
+  Support for Red Hat JBoss Middleware Containers</description>
+      </item>
+    
+      <item>
+        <title>bash Tips</title>
+        <link>https://briantward.github.io/bash-tips/</link>
+        <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/bash-tips/</guid>
+        <description>Command Tips String the watch command with several commands at once
+ watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
+ This one is useful when you don’t have a user directory on the system yet.
+ /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
+ Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
+ $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
+      </item>
+    
+      <item>
+        <title>Create Bastion in AWS to Reach OpenShift Over Private VPC</title>
+        <link>https://briantward.github.io/aws-bastion-to-ocp-over-vpc/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/aws-bastion-to-ocp-over-vpc/</guid>
+        <description>Create Bastion in AWS to Reach OpenShift Over Private VPC  vpc peering request from VPC-A
+  vpc peering accept from VPC-B
+  set route from VPC-A to VPC-B on all route definitions
+  set route from VPC-B to VPC-A on all route definitions
+  set security group allow on VPC-A sg’s to accpet connections from VPC-B
+  set security group allow on VPC-B sg’s to accpet connections from VPC-A</description>
+      </item>
+    
+      <item>
+        <title>External to Internal IdP Initiated Login on RH-SSO</title>
+        <link>https://briantward.github.io/external-to-internal-idp/</link>
+        <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/external-to-internal-idp/</guid>
+        <description>External to Internal IdP Initiated Login on RH-SSO Install the Internal RH-SSO Download the zip install package from access.redhat.com.
+   rh-sso-7.5.0-server-dist.zip
+  rh-sso-7.5.0-saml-eap7-adapter-dist.zip
+   Unzip an installation for your internal IdP.
+ $ unzip rh-sso-7.5.0-server-dist.zip -d internal   Install client adapter for SAML example application on internal RH-SSO
+ $ unzip -o rh-sso-7.5.0-saml-eap7-adapter-dist.zip -d internal/rh-sso-7.5/ $ ./internal/rh-sso-7.5/bin/jboss-cli.sh --file=./internal/rh-sso-7.5/bin/adapter-elytron-install-saml-offline.cli   Install client adapter for OIDC example application on internal RH-SSO</description>
+      </item>
+    
+      <item>
+        <title>Keycloak and oauth2-proxy</title>
+        <link>https://briantward.github.io/keycloak-oauth2-proxy/</link>
+        <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+        <guid>https://briantward.github.io/keycloak-oauth2-proxy/</guid>
+        <description>Keycloak and oauth2-proxy Using the Keycloak Docker image:
+ https://hub.docker.com/r/jboss/keycloak/
+ To run Keycloak:
+ podman run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To increase the debug/trace loglevel, use KEYCLOAK_LOGLEVEL=ALL
+ podman run -e KEYCLOAK_LOGLEVEL=ALL -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8443:8443 --volume /home/bward/keycloak/certs:/etc/x509/https --volume /home/bward/keycloak/data:/opt/jboss/keycloak/standalone/data jboss/keycloak   To run the oauth2-proxy
+ podman run --volume /home/bward/oauth-proxy-my-app/oauth2-proxy.cfg:/etc/oauth2-proxy.cfg --volume /home/bward/oauth-proxy-my-app/certs:/etc/x509 -p 4180:4180 oauth2-proxy/oauth2-proxy:latest --config=/etc/oauth2-proxy.cfg   Oauth2-proxy has very little information in logging.</description>
+      </item>
     
       <item>
         <title>AWS ELB Kubernetes Service</title>
@@ -16,8 +115,7 @@
         <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
         <guid>https://briantward.github.io/kubernetes-service-aws-elb/</guid>
         <description>AWS ELB Kubernetes Service By default, services of type LoadBalancer create public-facing load balancers. To use an internal load balancer, apply the following annotation to your service:
- service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;
- https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
+ service.beta.kubernetes.io/aws-load-balancer-internal: &amp;#34;true&amp;#34;   https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html
    </description>
       </item>
     
@@ -100,17 +198,6 @@
         <guid>https://briantward.github.io/openshift-roles/</guid>
         <description>OpenShift RBAC oc auth can-i VERB OBJECT oc adm policy who-can VERB OBJECT   oc get clusterrole basic-user -o yaml oc get clusterrole cluster-admin -o yaml   https://www.openshift.com/blog/fine-grained-iam-roles-for-openshift-applications
    </description>
-      </item>
-    
-      <item>
-        <title>OpenShift SecurityContextConstraints (SCC)</title>
-        <link>https://briantward.github.io/scc/</link>
-        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/scc/</guid>
-        <description>OpenShift SecurityContextConstraints (SCC) It’s recommended to use RBAC to provide access to existing SCCs.
- Using #oc adm policy add-scc-to-user anyuid -z useroot will modify the SCC. Instead you can do the following:
- # oc create role useroot --verb=use --resource=securitycontextconstraint --resource-name=anyuid   (create a role that gives access to the anyuuid scc)
- # oc create rolebinding useroot --role=useroot --serviceaccount=&amp;lt;namespace&amp;gt;:&amp;lt;sa&amp;gt;   (bind it to the service account)</description>
       </item>
     
       <item>
@@ -216,19 +303,6 @@
         <description>An Introduction to Running Java on Kubernetes You will need access to a container build tool, a container runtime environment, and a kubernetes environment. There will be suggestions along the way for acquiring these. You will need a virtualization technology to run the minikube or minishift VMs for your kubernetes development environment.
    Build a Demo Spring Boot App  Build an app
 $ mkdir -p my-java-app/container $ cd my-java-app $ git clone https://github.</description>
-      </item>
-    
-      <item>
-        <title>bash Tips</title>
-        <link>https://briantward.github.io/bash-tips/</link>
-        <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-        <guid>https://briantward.github.io/bash-tips/</guid>
-        <description>Command Tips String the watch command with several commands at once
- watch &amp;#39;command | othertool | yet-another-tool&amp;#39;   https://unix.stackexchange.com/questions/318859/how-to-use-watch-command-with-a-piped-chain-of-commands-programs
- This one is useful when you don’t have a user directory on the system yet.
- /sbin/mkhomedir_helper &amp;lt;username&amp;gt; [&amp;lt;umask&amp;gt; [&amp;lt;skeldir&amp;gt;]]   https://serverfault.com/questions/63764/create-home-directories-after-create-users
- Because docker rmi on all image IDs doesn’t work when one image ID maps to multiple repo:tag combinations.
- $ docker images | grep -v REPO | awk &amp;#39;{print $1&amp;#34;:&amp;#34;$2}&amp;#39; | xargs docker rmi   Otherise this works fine:</description>
       </item>
     
       <item>
